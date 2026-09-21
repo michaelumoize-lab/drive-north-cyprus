@@ -1,20 +1,19 @@
 // app/testimonials/page.tsx
-"use client";
+import TestimonialsPage from "@/app/testimonials/TestimonialsPage";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+export const metadata = {
+  title: "Gezgin Yorumları – Drive North Cyprus",
+  description:
+    "Drive North Cyprus ile yola çıkan gezginlerin gerçek deneyim ve yorumlarını inceleyin.",
+  alternates: {
+    canonical: "/testimonials",
+    languages: {
+      tr: "/testimonials",
+      en: "/en/testimonials",
+    },
+  },
+};
 
-export default function TestimonialsRedirect() {
-  const router = useRouter();
-
-  useEffect(() => {
-    try {
-      const lang = localStorage.getItem("drive_kktc_lang");
-      router.replace(lang === "en" ? "/en/testimonials" : "/tr/testimonials");
-    } catch {
-      router.replace("/tr/testimonials");
-    }
-  }, [router]);
-
-  return null;
+export default function TurkishTestimonialsPage() {
+  return <TestimonialsPage lang="tr" />;
 }

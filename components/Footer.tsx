@@ -13,6 +13,7 @@ export default function Footer() {
   const pathname = usePathname();
   const lang: Locale = pathname?.startsWith("/en") ? "en" : "tr";
   const homeHref = lang === "tr" ? "/" : "/en";
+  const routesHref = lang === "tr" ? "/routes" : "/en/routes";
   const dict = getDictionary(lang);
   const currentYear = new Date().getFullYear();
 
@@ -94,7 +95,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href={`/${lang}#routes`}
+                  href={lang === "tr" ? "/#routes" : "/en/#routes"}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {dict.footer.routes}
@@ -102,7 +103,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/about`}
+                  href={lang === "tr" ? "/about" : "/en/about"}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {dict.footer.aboutUs}
@@ -110,7 +111,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/guide`}
+                  href={lang === "tr" ? "/guide" : "/en/guide"}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {dict.footer.drivingGuide}
@@ -118,7 +119,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/testimonials`}
+                  href={lang === "tr" ? "/testimonials" : "/en/testimonials"}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {dict.footer.testimonials}
@@ -126,7 +127,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/faq`}
+                  href={lang === "tr" ? "/faq" : "/en/faq"}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {dict.footer.faq}
@@ -143,7 +144,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href={`/${lang}/routes`}
+                  href={routesHref}
                   className="text-sm font-medium text-primary hover:underline transition-colors"
                 >
                   {dict.footer.viewAll}
@@ -151,7 +152,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/routes?region=girne`}
+                  href={`${routesHref}?region=girne`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Girne & Kuzey Sahili" : "Kyrenia & North Coast"}
@@ -159,7 +160,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/routes?region=magusa`}
+                  href={`${routesHref}?region=magusa`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Gazimağusa & Salamis" : "Famagusta & Salamis"}
@@ -167,7 +168,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/routes?region=karpaz`}
+                  href={`${routesHref}?region=karpaz`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Karpaz Yarımadası" : "Karpaz Peninsula"}
@@ -175,7 +176,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/routes?region=lefkosa`}
+                  href={`${routesHref}?region=lefkosa`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Lefkoşa & Surlariçi" : "Nicosia Old Town"}
@@ -183,7 +184,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/routes?region=iskele`}
+                  href={`${routesHref}?region=iskele`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "İskele & Long Beach" : "Iskele & Long Beach"}
@@ -191,7 +192,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/routes?region=bati`}
+                  href={`${routesHref}?region=bati`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Güzelyurt & Lefke" : "West (Güzelyurt & Lefke)"}
@@ -199,7 +200,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/routes?region=daglar`}
+                  href={`${routesHref}?region=daglar`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Beşparmak Dağları & Köyler" : "Mountains & Villages"}
@@ -207,7 +208,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/routes?region=signature`}
+                  href={`${routesHref}?region=signature`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "İmza Ada Turları (Çok Günlük)" : "Signature Multi-Day Tours"}
@@ -254,12 +255,18 @@ export default function Footer() {
             © {currentYear} Drive North Cyprus. {dict.footer.copyright}
           </p>
           <nav className="flex gap-6 text-xs" aria-label="Legal">
-            <span className="text-muted-foreground">
+            <Link
+              href={lang === "tr" ? "/privacy" : "/en/privacy"}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               {dict.footer.privacyPolicy}
-            </span>
-            <span className="text-muted-foreground">
+            </Link>
+            <Link
+              href={lang === "tr" ? "/terms" : "/en/terms"}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               {dict.footer.termsOfService}
-            </span>
+            </Link>
           </nav>
         </div>
       </div>

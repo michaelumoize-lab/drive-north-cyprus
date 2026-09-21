@@ -1,20 +1,19 @@
 // app/faq/page.tsx
-"use client";
+import FAQList from "@/app/faq/FAQList";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+export const metadata = {
+  title: "Sıkça Sorulan Sorular – Drive North Cyprus",
+  description:
+    "Kuzey Kıbrıs sürüş rotaları, araç kiralama ve yol koşulları hakkında en çok sorulan soruların yanıtları.",
+  alternates: {
+    canonical: "/faq",
+    languages: {
+      tr: "/faq",
+      en: "/en/faq",
+    },
+  },
+};
 
-export default function FAQRedirect() {
-  const router = useRouter();
-
-  useEffect(() => {
-    try {
-      const lang = localStorage.getItem("drive_kktc_lang");
-      router.replace(lang === "en" ? "/en/faq" : "/tr/faq");
-    } catch {
-      router.replace("/tr/faq");
-    }
-  }, [router]);
-
-  return null;
+export default function TurkishFAQPage() {
+  return <FAQList lang="tr" />;
 }

@@ -1,39 +1,11 @@
-// app/[lang]/about/page.tsx
+// components/AboutView.tsx
+import Image from "next/image";
 import Link from "next/link";
 import { Users, Heart, Compass } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Locale, getDictionary, isValidLocale } from "@/lib/i18n";
+import { Locale, getDictionary } from "@/lib/i18n";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
-  const { lang } = await params;
-  const isTr = lang === "tr";
-
-  return {
-    title: isTr ? "Hakkımızda – Drive North Cyprus" : "About Us – Drive North Cyprus",
-    description: isTr
-      ? "Drive North Cyprus'ın hikayesini keşfedin. Yerliler tarafından gezginler için tasarlanmış Kuzey Kıbrıs yol rehberi."
-      : "Discover the story behind Drive North Cyprus – Northern Cyprus' first curated road trip guide platform, built by locals for explorers.",
-    alternates: {
-      canonical: `/${lang}/about`,
-      languages: {
-        tr: "/tr/about",
-        en: "/en/about",
-      },
-    },
-  };
-}
-
-export default async function AboutPage({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
-  const { lang: rawLang } = await params;
-  const lang: Locale = isValidLocale(rawLang) ? rawLang : "tr";
+export function AboutView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
 
   const icons = [
@@ -44,15 +16,25 @@ export default async function AboutPage({
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero */}
-      <section className="relative h-[40vh] min-h-[300px] flex items-center bg-primary/10">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/5" />
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero with scenic background image */}
+      <section className="relative h-[40vh] min-h-[340px] flex items-center bg-black overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero-karpaz.jpg"
+            alt={dict.about.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/60 to-black/40" />
+        </div>
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="max-w-3xl text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white mb-4 tracking-tight drop-shadow-sm">
               {dict.about.title}
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground">
+            <p className="text-lg sm:text-xl text-zinc-200 leading-relaxed drop-shadow-sm">
               {dict.about.subtitle}
             </p>
           </div>
@@ -93,7 +75,7 @@ export default async function AboutPage({
             {dict.about.readySubtitle}
           </p>
           <Link
-            href={`/${lang}#routes`}
+            href={lang === "tr" ? "/#routes" : "/en/#routes"}
             className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition"
           >
             {dict.about.ctaButton}

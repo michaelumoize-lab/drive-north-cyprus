@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import {
   Menu,
   ChevronRight,
+  Home,
   Compass,
   Info,
   Star,
@@ -44,18 +45,22 @@ export default function Navbar() {
   const lang: Locale = pathname?.startsWith("/en") ? "en" : "tr";
   const dict = getDictionary(lang);
   const homeHref = lang === "tr" ? "/" : "/en";
+  const routesHref = lang === "tr" ? "/routes" : "/en/routes";
 
   const navLinks = [
-    { name: dict.nav.exploreItineraries, href: `/${lang}/routes`, icon: Compass },
-    { name: dict.nav.about, href: `/${lang}/about`, icon: Info },
-    { name: dict.nav.testimonials, href: `/${lang}/testimonials`, icon: Star },
-    { name: dict.nav.drivingGuide, href: `/${lang}/guide`, icon: Car },
-    { name: dict.nav.faq, href: `/${lang}/faq`, icon: HelpCircle },
+    { name: dict.nav.home, href: homeHref, icon: Home },
+    { name: dict.nav.exploreItineraries, href: routesHref, icon: Compass },
+    { name: dict.nav.about, href: lang === "tr" ? "/about" : "/en/about", icon: Info },
+    { name: dict.nav.testimonials, href: lang === "tr" ? "/testimonials" : "/en/testimonials", icon: Star },
+    { name: dict.nav.drivingGuide, href: lang === "tr" ? "/guide" : "/en/guide", icon: Car },
+    { name: dict.nav.faq, href: lang === "tr" ? "/faq" : "/en/faq", icon: HelpCircle },
   ];
 
   const isLinkActive = (href: string) => {
-    if (href === `/${lang}` || href === homeHref) return pathname === href;
-    return pathname?.startsWith(href);
+    if (href === "/" || href === "/en") {
+      return pathname === href;
+    }
+    return pathname === href || pathname?.startsWith(`${href}/`);
   };
 
   return (
@@ -87,7 +92,7 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "relative px-3.5 py-1.5 text-sm font-medium rounded-full transition-all duration-200",
+                        "relative px-2.5 lg:px-3.5 py-1.5 text-sm font-medium rounded-full transition-all duration-200",
                         active
                           ? "bg-primary/10 text-primary font-semibold shadow-2xs"
                           : "text-foreground/75 hover:text-foreground hover:bg-muted/60"
@@ -121,7 +126,7 @@ export default function Navbar() {
             size="sm"
             className="hidden lg:inline-flex rounded-xl font-semibold gap-2 shadow-[0_0_20px_rgba(234,88,12,0.25)] hover:shadow-[0_0_25px_rgba(234,88,12,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
-            <Link href={`/${lang}/routes`}>
+            <Link href={routesHref}>
               <Sparkles className="h-3.5 w-3.5" />
               <span>{dict.nav.getStarted}</span>
             </Link>
@@ -222,7 +227,7 @@ export default function Navbar() {
                   size="lg"
                   className="w-full h-11 font-semibold rounded-xl shadow-[0_0_20px_rgba(234,88,12,0.3)] mt-2"
                 >
-                  <Link href={`/${lang}/routes`} onClick={() => setIsOpen(false)}>
+                  <Link href={routesHref} onClick={() => setIsOpen(false)}>
                     <Sparkles className="h-4 w-4 mr-1.5" />
                     {dict.nav.getStarted}
                   </Link>

@@ -1,20 +1,19 @@
 // app/about/page.tsx
-"use client";
+import { AboutView } from "@/components/AboutView";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+export const metadata = {
+  title: "Hakkımızda – Drive North Cyprus",
+  description:
+    "Drive North Cyprus'ın hikayesini keşfedin. Yerliler tarafından gezginler için tasarlanmış Kuzey Kıbrıs yol rehberi.",
+  alternates: {
+    canonical: "/about",
+    languages: {
+      tr: "/about",
+      en: "/en/about",
+    },
+  },
+};
 
-export default function AboutRedirect() {
-  const router = useRouter();
-
-  useEffect(() => {
-    try {
-      const lang = localStorage.getItem("drive_kktc_lang");
-      router.replace(lang === "en" ? "/en/about" : "/tr/about");
-    } catch {
-      router.replace("/tr/about");
-    }
-  }, [router]);
-
-  return null;
+export default function TurkishAboutPage() {
+  return <AboutView lang="tr" />;
 }

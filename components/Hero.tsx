@@ -153,14 +153,14 @@ export default function Hero() {
           {/* Call-to-Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
-              href={`/${lang}#routes`}
+              href={lang === "tr" ? "/#routes" : "/en/#routes"}
               className="group inline-flex items-center justify-center gap-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 rounded-xl shadow-[0_0_30px_rgba(234,88,12,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>{dict.hero.exploreButton}</span>
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
-              href={`/${lang}/about`}
+              href={lang === "tr" ? "/about" : "/en/about"}
               className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 active:bg-white/15 backdrop-blur-md text-white font-medium px-7 py-4 rounded-xl border border-white/25 hover:border-white/40 shadow-sm transition-all duration-300"
             >
               <span>{dict.hero.learnMoreButton}</span>

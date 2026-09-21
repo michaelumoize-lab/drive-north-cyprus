@@ -2,7 +2,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { Locale } from "@/lib/i18n";
+import { Locale, getLocalizedPath } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { Globe } from "lucide-react";
 
@@ -79,19 +79,7 @@ export function LanguageSwitcher({
       // Ignore localStorage errors
     }
 
-    let newPath = pathname;
-    if (newLang === "tr" && (pathname === "/en" || pathname === "/en/")) {
-      newPath = "/";
-    } else if (pathname === "/") {
-      newPath = newLang === "tr" ? "/" : `/${newLang}`;
-    } else if (pathname.startsWith("/en")) {
-      newPath = pathname.replace(/^\/en/, `/${newLang}`);
-    } else if (pathname.startsWith("/tr")) {
-      newPath = pathname.replace(/^\/tr/, `/${newLang}`);
-    } else {
-      newPath = `/${newLang}${pathname === "/" ? "" : pathname}`;
-    }
-
+    const newPath = getLocalizedPath(pathname || "/", newLang);
     router.push(newPath);
   };
 
