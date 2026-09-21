@@ -6,45 +6,55 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://drivenorthcyprus.com";
-  const routes = getRoutes("en");
+  const routes = getRoutes("tr");
   const languages = ["tr", "en"] as const;
-  const staticPaths = ["", "/routes", "/about", "/guide", "/faq", "/testimonials"];
+
+  const staticPages = [
+    { tr: "", en: "/en", priority: 1.0, changeFrequency: "daily" as const },
+    { tr: "/routes", en: "/en/routes", priority: 0.9, changeFrequency: "daily" as const },
+    { tr: "/about", en: "/en/about", priority: 0.7, changeFrequency: "weekly" as const },
+    { tr: "/guide", en: "/en/guide", priority: 0.7, changeFrequency: "weekly" as const },
+    { tr: "/faq", en: "/en/faq", priority: 0.7, changeFrequency: "weekly" as const },
+    { tr: "/testimonials", en: "/en/testimonials", priority: 0.7, changeFrequency: "weekly" as const },
+    { tr: "/privacy", en: "/en/privacy", priority: 0.5, changeFrequency: "monthly" as const },
+    { tr: "/terms", en: "/en/terms", priority: 0.5, changeFrequency: "monthly" as const },
+  ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
   // Static pages for each language
-  languages.forEach((lang) => {
-    staticPaths.forEach((path) => {
-      const isHome = path === "";
-      const isRoutesCatalog = path === "/routes";
-      const url = lang === "tr" && isHome ? baseUrl : `${baseUrl}/${lang}${path}`;
+  staticPages.forEach((page) => {
+    languages.forEach((lang) => {
+      const pagePath = lang === "tr" ? page.tr : page.en;
+      const url = `${baseUrl}${pagePath}`;
 
       sitemapEntries.push({
         url,
         lastModified: new Date(),
-        changeFrequency: isHome ? "daily" : isRoutesCatalog ? "daily" : "weekly",
-        priority: isHome ? 1.0 : isRoutesCatalog ? 0.9 : 0.7,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
         alternates: {
           languages: {
-            tr: isHome ? baseUrl : `${baseUrl}/tr${path}`,
-            en: `${baseUrl}/en${path}`,
+            tr: `${baseUrl}${page.tr}`,
+            en: `${baseUrl}${page.en}`,
           },
         },
       });
     });
   });
 
-  // Individual route detail pages (41 routes in both languages)
+  // Individual route detail pages (all 41 routes)
   routes.forEach((route) => {
     languages.forEach((lang) => {
+      const path = lang === "tr" ? `/routes/${route.slug}` : `/en/routes/${route.slug}`;
       sitemapEntries.push({
-        url: `${baseUrl}/${lang}/routes/${route.slug}`,
+        url: `${baseUrl}${path}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.8,
         alternates: {
           languages: {
-            tr: `${baseUrl}/tr/routes/${route.slug}`,
+            tr: `${baseUrl}/routes/${route.slug}`,
             en: `${baseUrl}/en/routes/${route.slug}`,
           },
         },

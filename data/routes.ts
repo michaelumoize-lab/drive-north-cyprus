@@ -79,7 +79,7 @@ interface RawRouteItem {
 export const rawRoutes: RawRouteItem[] = [
   {
     "id": "lef-oldcity",
-    "slug": "nicosia-old-city-loop",
+    "slug": "lef-oldcity",
     "region": "lefkosa",
     "themes": [
       "history"
@@ -98,7 +98,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Girne Kapısı",
       "en": "Büyük Han & Kyrenia Gate"
     },
-    "heroImage": "/images/routes/nicosia-loop.jpg",
+    "heroImage": "/images/route-card-images/walled-city-culture.jpg",
     "title": {
       "tr": "Surlariçi Kültür & Sokak Yürüyüşü",
       "en": "Walled City Culture & Historic Walking Loop"
@@ -347,7 +347,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Girne Kapısı",
       "en": "Kyrenia Gate"
     },
-    "heroImage": "/images/routes/nicosia-loop.jpg",
+    "heroImage": "/images/route-card-images/museums-and-ottoman-heritage-of-nicosia.jpg",
     "title": {
       "tr": "Müzeler & Osmanlı Mirası",
       "en": "Museums & Ottoman Heritage of Nicosia"
@@ -529,7 +529,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Klasik Araba Müzesi (YDÜ)",
       "en": "Dereboyu Avenue"
     },
-    "heroImage": "/images/routes/nicosia-loop.jpg",
+    "heroImage": "/images/route-card-images/modern-nicosia.jpg",
     "title": {
       "tr": "Modern Lefkoşa: Alışveriş, Müze & Gece",
       "en": "Modern Nicosia: Shopping, Classic Cars & Zahra Street"
@@ -676,7 +676,7 @@ export const rawRoutes: RawRouteItem[] = [
   },
   {
     "id": "gir-classic",
-    "slug": "kyrenia-heritage-coastal",
+    "slug": "gir-classic",
     "region": "girne",
     "themes": [
       "history",
@@ -929,7 +929,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Lapta Sahil Yürüyüş Yolu",
       "en": "Lapta Coastal Promenade"
     },
-    "heroImage": "/images/routes/kyrenia-loop.jpg",
+    "heroImage": "/images/route-card-images/kyrenia-coastline.jpeg",
     "title": {
       "tr": "Girne Sahil Şeridi & Gizli Plajlar",
       "en": "Kyrenia Coastline & Secret Swimming Coves"
@@ -1107,7 +1107,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Mavi Köşk (Blue House)",
       "en": "Bellapais Village"
     },
-    "heroImage": "/images/routes/kyrenia-loop.jpg",
+    "heroImage": "/images/route-card-images/kyrenia-sunset.jpg",
     "title": {
       "tr": "Gün Batımı & Fotoğraf Noktaları",
       "en": "Kyrenia Sunset Panoramas & Photography Trail"
@@ -1302,7 +1302,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Escape Beach Club",
       "en": "Kyrenia Marina"
     },
-    "heroImage": "/images/routes/kyrenia-loop.jpg",
+    "heroImage": "/images/route-card-images/kyrenia-glamour.jpg",
     "title": {
       "tr": "Girne Eğlence & Gece Hayatı",
       "en": "Kyrenia Glamour: Beach Clubs, Dining & Nightlife"
@@ -1455,7 +1455,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Lapta Eski Köy",
       "en": "Lapta Old Village"
     },
-    "heroImage": "/images/routes/kyrenia-loop.jpg",
+    "heroImage": "/images/route-card-images/lapta-mountain.jpg",
     "title": {
       "tr": "Lapta Pınarları, Eski Köy & Sahil Yürüyüşü",
       "en": "Lapta Mountain Springs, Old Village & Coastal Promenade"
@@ -1584,7 +1584,7 @@ export const rawRoutes: RawRouteItem[] = [
   },
   {
     "id": "mag-walledcity",
-    "slug": "famagusta-history-loop",
+    "slug": "mag-walledcity",
     "region": "magusa",
     "themes": [
       "history"
@@ -1818,7 +1818,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Salamis Harabeleri",
       "en": "Ancient Salamis Ruins"
     },
-    "heroImage": "/images/routes/famagusta-loop.jpg",
+    "heroImage": "/images/route-card-images/ancient-salamis.jpg",
     "title": {
       "tr": "Salamis Antik Kenti & St. Barnabas",
       "en": "Ancient Salamis & St. Barnabas Monastery"
@@ -2019,7 +2019,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Kapalı Maraş (Açık Bölgeler)",
       "en": "Varosha Entrance"
     },
-    "heroImage": "/images/routes/famagusta-loop.jpg",
+    "heroImage": "/images/route-card-images/varosha-ghost-city.jpg",
     "title": {
       "tr": "Kapalı Maraş & Palm Beach",
       "en": "Varosha Ghost City & Palm Beach Coastline"
@@ -2202,7 +2202,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Enkomi Antik Kenti",
       "en": "Enkomi Ancient Site"
     },
-    "heroImage": "/images/routes/famagusta-loop.jpg",
+    "heroImage": "/images/route-card-images/enkomi.jpg",
     "title": {
       "tr": "Enkomi Bronz Çağı & Kırsal Mağusa",
       "en": "Enkomi Bronze Age Capital & Rural Famagusta"
@@ -2351,7 +2351,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "İskele Arkeoloji Müzesi",
       "en": "Iskele Town Center"
     },
-    "heroImage": "/images/routes/famagusta-loop.jpg",
+    "heroImage": "/images/route-card-images/iskele-golden-sands.jpg",
     "title": {
       "tr": "İskele Sahil & Miras Rotası",
       "en": "Iskele Golden Sands & Coastal Heritage Trail"
@@ -2530,7 +2530,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Kantara Kalesi",
       "en": "Kantara Castle Entrance"
     },
-    "heroImage": "/images/routes/famagusta-loop.jpg",
+    "heroImage": "/images/route-card-images/kantara.jpg",
     "title": {
       "tr": "Kantara Kalesi & Doğu Panoraması",
       "en": "Kantara Mountain Fortress & Dual-Coast Panorama"
@@ -2685,7 +2685,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Mehmetçik Köyü",
       "en": "Mehmetçik Village"
     },
-    "heroImage": "/images/routes/famagusta-loop.jpg",
+    "heroImage": "/images/route-card-images/bogaz-harbor.jpg",
     "title": {
       "tr": "Mehmetçik Bağları, Bafra & Boğaz Kıyısı",
       "en": "Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour"
@@ -2834,7 +2834,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Boğaz Balıkçı Limanı",
       "en": "Boğaz Harbour"
     },
-    "heroImage": "/images/routes/famagusta-loop.jpg",
+    "heroImage": "/images/route-card-images/bogaz-wetlands.jpg",
     "title": {
       "tr": "Boğaz Sulak Alan & Kuş Gözlem",
       "en": "Boğaz Wetlands, Salt Flats & Birdwatching Trail"
@@ -2964,7 +2964,7 @@ export const rawRoutes: RawRouteItem[] = [
   },
   {
     "id": "kar-classic",
-    "slug": "karpaz-nature-loop",
+    "slug": "kar-classic",
     "region": "karpaz",
     "themes": [
       "nature",
@@ -3259,7 +3259,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Blue House Deniz Mağarası",
       "en": "Kaplıca Coast"
     },
-    "heroImage": "/images/routes/karpaz-loop.jpg",
+    "heroImage": "/images/route-card-images/blue-sea-cave.jpg",
     "title": {
       "tr": "Gizli Koylar & Deniz Mağaraları",
       "en": "Hidden Karpaz Coves & Glowing Sea Caves"
@@ -3452,7 +3452,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Yenierenköy",
       "en": "Yenierenköy"
     },
-    "heroImage": "/images/routes/karpaz-loop.jpg",
+    "heroImage": "/images/route-card-images/yenierenkoy.jpg",
     "title": {
       "tr": "Karpaz Vahşi Doğa (70 km Yarımada)",
       "en": "Karpaz 70 km Wild Nature Peninsula Drive"
@@ -3701,7 +3701,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Yudi Dağı Yürüyüş Parkuru",
       "en": "Mount Yudi Trailhead"
     },
-    "heroImage": "/images/routes/karpaz-loop.jpg",
+    "heroImage": "/images/route-card-images/mount-yudi.jpg",
     "title": {
       "tr": "Yudi Dağı Yürüyüşü & Karpaz Gate Marina",
       "en": "Mount Yudi Trail Hike & Karpaz Gate Marina"
@@ -3851,7 +3851,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Hill Coffee",
       "en": "Hill Coffee Lookout"
     },
-    "heroImage": "/images/routes/karpaz-loop.jpg",
+    "heroImage": "/images/route-card-images/ayios-philon-church.jpg",
     "title": {
       "tr": "Karpaz Mağaraları & Antik İzler",
       "en": "Karpaz Caves & Ancient Coastal Antiquities"
@@ -4017,7 +4017,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "İskele Arkeoloji Müzesi",
       "en": "Büyükkonuk Village"
     },
-    "heroImage": "/images/routes/karpaz-loop.jpg",
+    "heroImage": "/images/route-card-images/buyukkonuk.jpg",
     "title": {
       "tr": "Büyükkonuk Eko-Köy & Doğu Kapısı",
       "en": "Büyükkonuk Eco-Village & Traditional Village Crafts"
@@ -4180,7 +4180,7 @@ export const rawRoutes: RawRouteItem[] = [
   },
   {
     "id": "bati-soli",
-    "slug": "guzelyurt-lefke-heritage",
+    "slug": "bati-soli",
     "region": "bati",
     "themes": [
       "history",
@@ -4395,7 +4395,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Güzelyurt Merkez",
       "en": "Güzelyurt Town Center"
     },
-    "heroImage": "/images/routes/guzelyurt-loop.jpg",
+    "heroImage": "/images/route-card-images/guzelyurt-archaeology.jpg",
     "title": {
       "tr": "Güzelyurt Arkeoloji & Portakal Kasabası",
       "en": "Güzelyurt Archaeology & Citrus Capital"
@@ -4579,7 +4579,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Lefke Merkez",
       "en": "Lefke Town Center"
     },
-    "heroImage": "/images/routes/guzelyurt-loop.jpg",
+    "heroImage": "/images/route-card-images/lefke-citrus.jpg",
     "title": {
       "tr": "Lefke Narenciye & Osmanlı Su Kemerleri",
       "en": "Lefke Citrus Groves, Date Palms & Ottoman Aqueducts"
@@ -4747,7 +4747,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Eski CMC Yapıları",
       "en": "Gemikonağı Pier"
     },
-    "heroImage": "/images/routes/guzelyurt-loop.jpg",
+    "heroImage": "/images/route-card-images/gemikonagi-industrial-heritage.jpg",
     "title": {
       "tr": "Gemikonağı Endüstri Hafızası & CMC Mirası",
       "en": "Gemikonağı Industrial Heritage & CMC Mining Relics"
@@ -4900,7 +4900,7 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Soli Antik Kenti",
       "en": "Yeşilırmak Village"
     },
-    "heroImage": "/images/routes/guzelyurt-loop.jpg",
+    "heroImage": "/images/route-card-images/yesilirmak-strawberry.jpg",
     "title": {
       "tr": "Yeşilırmak Çilek Bahçeleri & Batı Kıyısı",
       "en": "Yeşilırmak Strawberry Terraces & Far West Shore"

@@ -78,9 +78,11 @@ export default function RouteCard({
   const difficulty = getDifficulty();
   const regionLabel = regionNames[route.region]?.[lang] || route.region;
 
+  const routeHref = lang === "tr" ? `/routes/${route.slug}` : `/en/routes/${route.slug}`;
+
   return (
     <Link
-      href={`/${lang}/routes/${route.slug}`}
+      href={routeHref}
       className="group block h-full select-none"
     >
       <div className="bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/5 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1.5 h-full flex flex-col border border-border/80">

@@ -25,26 +25,33 @@ export function getDictionary(locale: string): Dictionary {
 }
 
 /**
- * Prefix an internal path with the chosen locale, e.g. /routes -> /tr/routes
+ * Prefix an internal path with the chosen locale:
+ * Turkish (standard default): / or /about or /routes
+ * English: /en or /en/about or /en/routes
+ * Clean URLs without trailing slashes
  */
 export function getLocalizedPath(path: string, locale: Locale): string {
-  // Strip leading slash for clean splitting
-  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  let clean = path.trim();
+  if (!clean.startsWith("/")) clean = `/${clean}`;
   
-  // If path already starts with /tr or /en, replace it
-  const match = cleanPath.match(/^\/(tr|en)(\/.*)?$/);
-  if (match) {
-    const rest = match[2] || "";
-    if (locale === "tr" && (!rest || rest === "/")) {
-      return "/";
-    }
-    return `/${locale}${rest}`;
+  // Strip any leading /tr or /en
+  clean = clean.replace(/^\/(tr|en)(\/|$)/, "/");
+  if (!clean.startsWith("/")) clean = `/${clean}`;
+
+  // Strip trailing slash unless it's root "/"
+  if (clean.length > 1 && clean.endsWith("/")) {
+    clean = clean.slice(0, -1);
   }
 
-  // Handle root
-  if (cleanPath === "/") {
-    return locale === "tr" ? "/" : `/${locale}`;
+  if (locale === "tr") {
+    return clean;
   }
 
-  return `/${locale}${cleanPath}`;
+  // English
+  if (clean === "/") {
+    return "/en";
+  }
+  return `/en${clean}`;
 }
+
+

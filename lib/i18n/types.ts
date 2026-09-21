@@ -13,6 +13,8 @@ export interface Dictionary {
     distance: string;
     startFinish: string;
     totalStops: string;
+    stops: string;
+    difficultyLevel: string;
     waypoints: string;
     exploreStops: string;
     interactiveMap: string;
@@ -34,6 +36,7 @@ export interface Dictionary {
     };
   };
   nav: {
+    home: string;
     exploreItineraries: string;
     about: string;
     testimonials: string;
@@ -75,6 +78,7 @@ export interface Dictionary {
     gpsTag: string;
     mapTitle: string;
     mapSubtitle: string;
+    viewMap: string;
     practicalInfoTag: string;
     practicalInfoTitle: string;
     ctaTitle: string;
@@ -119,6 +123,8 @@ export interface Dictionary {
     button: string;
     success: string;
   };
+  privacy: LegalPageContent;
+  terms: LegalPageContent;
   footer: {
     tagline: string;
     quickLinks: string;
@@ -135,4 +141,17 @@ export interface Dictionary {
     contact: string;
     copyright: string;
   };
+}
+
+export interface LegalSection {
+  id: string;
+  title: string;
+  content: string[];
+}
+
+export interface LegalPageContent {
+  title: string;
+  subtitle: string;
+  lastUpdated: string;
+  sections: LegalSection[];
 }

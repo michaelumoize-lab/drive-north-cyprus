@@ -1,44 +1,44 @@
-# cPanel Apache Configuration for Drive North Cyprus Static Export
+# cPanel Apache Configuration for Drive North Cyprus
+# Clean URLs without trailing slashes: Turkish at root (/), English at /en
 
 # 1. Prevent directory listing (disables "Index of /" screens)
 Options -Indexes
 
-# 2. Tell Apache to look for index.html inside any directory
-DirectoryIndex index.html index.php
+# 2. Directory Index
+DirectoryIndex index.html
+
+# 3. Custom Error Page
+ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # 3. Redirect root / to /tr/
-  RewriteRule ^$ /tr/ [R=301,L]
+  # 4. Redirect legacy /tr and /tr/ to clean root /
+  RewriteRule ^tr/?$ / [R=301,L]
+  RewriteRule ^tr/(.*)$ /$1 [R=301,L]
 
-  # 4. Redirect language without trailing slash (/tr -> /tr/ and /en -> /en/)
-  RewriteRule ^(tr|en)$ /$1/ [R=301,L]
+  # 5. Legacy alias redirects
+  RewriteRule ^privacy-policy/?$ /privacy [R=301,L]
+  RewriteRule ^terms-of-service/?$ /terms [R=301,L]
 
-  # 5. Redirect legacy unlocalized URLs to /tr/...
-  RewriteRule ^(about|faq|guide|testimonials|routes)(/.*)?$ /tr/$1$2/ [R=301,L]
+  # 6. Redirect direct .html requests to clean URLs (e.g. /about.html -> /about)
+  RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+  RewriteRule ^ /%1 [R=301,L]
 
-  # 6. Compatibility: If tr.html / en.html exists in root and user requests /tr/ or /en/
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteCond %{REQUEST_FILENAME}/index.html !-f
-  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^(tr|en)/?$ /$1.html [L]
-
-  # 7. Compatibility: If user requests /tr/routes/ and routes.html exists
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteCond %{REQUEST_FILENAME}/index.html !-f
-  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^(.*)/$ /$1.html [L]
-
-  # 8. Clean URLs: if request is /path and path.html exists
-  RewriteCond %{REQUEST_FILENAME} !-f
+  # 7. Strip trailing slashes on non-directory requests (e.g. /routes/ -> /routes)
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [R=301,L]
+
+  # 8. Clean URLs: internally rewrite /path to /path.html
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
   RewriteRule ^(.*)$ $1.html [L]
 </IfModule>
 
-# Browser Caching for static assets
+# 9. Browser Caching for static assets
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/jpg "access plus 1 year"
@@ -49,4 +49,6 @@ DirectoryIndex index.html index.php
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
 </IfModule>

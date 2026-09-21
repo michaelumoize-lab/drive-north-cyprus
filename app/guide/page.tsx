@@ -1,20 +1,19 @@
 // app/guide/page.tsx
-"use client";
+import { GuideView } from "@/components/GuideView";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+export const metadata = {
+  title: "Sürüş Rehberi – Drive North Cyprus",
+  description:
+    "Kuzey Kıbrıs'ta araç kullanırken dikkat edilmesi gerekenler. Kurallar, yol koşulları ve güvenlik tüyoları.",
+  alternates: {
+    canonical: "/guide",
+    languages: {
+      tr: "/guide",
+      en: "/en/guide",
+    },
+  },
+};
 
-export default function GuideRedirect() {
-  const router = useRouter();
-
-  useEffect(() => {
-    try {
-      const lang = localStorage.getItem("drive_kktc_lang");
-      router.replace(lang === "en" ? "/en/guide" : "/tr/guide");
-    } catch {
-      router.replace("/tr/guide");
-    }
-  }, [router]);
-
-  return null;
+export default function TurkishGuidePage() {
+  return <GuideView lang="tr" />;
 }

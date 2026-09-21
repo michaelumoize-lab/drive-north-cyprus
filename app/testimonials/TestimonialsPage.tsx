@@ -1,6 +1,7 @@
 // app/testimonials/TestimonialsPage.tsx
 "use client";
 
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
@@ -12,14 +13,26 @@ export default function TestimonialsPage({ lang = "tr" }: { lang?: Locale }) {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero */}
-      <section className="relative py-12 sm:py-16 md:py-20 bg-primary/5">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero with scenic background image */}
+      <section className="relative py-16 sm:py-20 md:py-24 bg-black overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/routes/famagusta-loop.jpg"
+            alt={lang === "tr" ? "Gezgin Yorumları" : "Testimonials"}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/60 to-black/40" />
+        </div>
+
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="max-w-3xl text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white mb-4 tracking-tight drop-shadow-sm">
               {lang === "tr" ? "Gezgin Yorumları" : "Testimonials"}
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground">
+            <p className="text-lg sm:text-xl text-zinc-200 leading-relaxed drop-shadow-sm">
               {lang === "tr"
                 ? "Kuzey Kıbrıs yollarında rehberlerimizle gezen yolcularımızın gerçek değerlendirmeleri."
                 : "Hear what our travelers have to say about their Northern Cyprus adventures."}

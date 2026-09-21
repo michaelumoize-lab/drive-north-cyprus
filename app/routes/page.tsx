@@ -1,20 +1,19 @@
 // app/routes/page.tsx
-"use client";
+import RoutesPage from "@/app/routes/RoutesPage";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+export const metadata = {
+  title: "Tüm Sürüş Rotaları – Drive North Cyprus",
+  description:
+    "Kuzey Kıbrıs'ın tüm rotalarını inceleyin. Girne kalelerinden Karpaz'ın bakir koylarına mükemmel seyahat planları.",
+  alternates: {
+    canonical: "/routes",
+    languages: {
+      tr: "/routes",
+      en: "/en/routes",
+    },
+  },
+};
 
-export default function RoutesRedirect() {
-  const router = useRouter();
-
-  useEffect(() => {
-    try {
-      const lang = localStorage.getItem("drive_kktc_lang");
-      router.replace(lang === "en" ? "/en/routes" : "/tr/routes");
-    } catch {
-      router.replace("/tr/routes");
-    }
-  }, [router]);
-
-  return null;
+export default function TurkishRoutesPage() {
+  return <RoutesPage lang="tr" />;
 }

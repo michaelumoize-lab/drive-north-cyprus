@@ -1,10 +1,8 @@
-// app/[lang]/routes/[slug]/page.tsx
+// components/RouteDetailView.tsx
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getRoutes, getRouteBySlug } from "@/data/routes";
+import { Route } from "@/data/routes";
 import {
-  MapPin,
   Clock,
   ArrowLeft,
   Navigation,
@@ -19,72 +17,17 @@ import { RouteTimeline } from "@/components/RouteTimeline";
 import { RouteMap } from "@/components/RouteMap";
 import { RouteStopsSection } from "@/components/RouteStopsSection";
 import { PracticalInfoGrid } from "@/components/PracticalInfoGrid";
-import { locales, Locale, getDictionary, isValidLocale } from "@/lib/i18n";
+import { Locale, getDictionary } from "@/lib/i18n";
 
-// Generate static paths for all languages and routes
-export function generateStaticParams() {
-  const params: { lang: string; slug: string }[] = [];
-  for (const lang of locales) {
-    for (const route of getRoutes(lang)) {
-      params.push({ lang, slug: route.slug });
-    }
-  }
-  return params;
-}
-
-export async function generateMetadata({
-  params,
+export function RouteDetailView({
+  route,
+  lang,
 }: {
-  params: Promise<{ lang: string; slug: string }>;
+  route: Route;
+  lang: Locale;
 }) {
-  const { lang, slug } = await params;
-  const currentLocale: Locale = isValidLocale(lang) ? lang : "tr";
-  const route = getRouteBySlug(slug, currentLocale);
-
-  if (!route) {
-    return {
-      title: currentLocale === "tr" ? "Rota Bulunamadı" : "Route Not Found",
-    };
-  }
-
-  return {
-    title: `${route.seo.title} | Drive North Cyprus`,
-    description: route.seo.description,
-    alternates: {
-      canonical: `/${currentLocale}/routes/${slug}`,
-      languages: {
-        tr: `/tr/routes/${slug}`,
-        en: `/en/routes/${slug}`,
-      },
-    },
-    openGraph: {
-      title: route.seo.title,
-      description: route.seo.description,
-      images: [route.heroImage],
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: route.seo.title,
-      description: route.seo.description,
-      images: [route.heroImage],
-    },
-  };
-}
-
-export default async function RouteDetailPage({
-  params,
-}: {
-  params: Promise<{ lang: string; slug: string }>;
-}) {
-  const { lang: rawLang, slug } = await params;
-  const lang: Locale = isValidLocale(rawLang) ? rawLang : "tr";
   const dict = getDictionary(lang);
-  const route = getRouteBySlug(slug, lang);
-
-  if (!route) {
-    notFound();
-  }
+  const allRoutesHref = lang === "tr" ? "/routes" : "/en/routes";
 
   return (
     <main className="min-h-screen bg-background pb-24 overflow-x-clip">
@@ -108,7 +51,7 @@ export default async function RouteDetailPage({
           <div className="max-w-4xl space-y-4 text-left">
             {/* Back Button Pill */}
             <Link
-              href={`/${lang}/routes`}
+              href={allRoutesHref}
               className="inline-flex items-center gap-2 text-white/90 hover:text-white bg-black/35 hover:bg-black/50 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all group shadow-sm"
             >
               <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
@@ -183,17 +126,17 @@ export default async function RouteDetailPage({
               </div>
             </div>
 
-            {/* 3. Start / Finish */}
+            {/* 3. Difficulty */}
             <div className="flex items-center gap-3">
               <div className="p-3 rounded-2xl bg-primary/10 text-primary shrink-0 border border-primary/20">
-                <MapPin className="h-5 w-5" />
+                <Compass className="h-5 w-5" />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground font-medium">
-                  {dict.common.startFinish}
+                  {dict.common.difficultyLevel}
                 </p>
-                <p className="text-sm sm:text-base font-heading font-bold text-foreground truncate">
-                  {route.startFinish}
+                <p className="text-sm sm:text-base font-heading font-bold text-foreground whitespace-nowrap">
+                  {dict.common.difficulty.moderate}
                 </p>
               </div>
             </div>
@@ -201,48 +144,34 @@ export default async function RouteDetailPage({
             {/* 4. Total Stops */}
             <div className="flex items-center gap-3">
               <div className="p-3 rounded-2xl bg-primary/10 text-primary shrink-0 border border-primary/20">
-                <Compass className="h-5 w-5" />
+                <Sparkles className="h-5 w-5" />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground font-medium">
-                  {dict.common.totalStops}
+                  {dict.common.waypoints}
                 </p>
                 <p className="text-sm sm:text-base font-heading font-bold text-foreground whitespace-nowrap">
-                  {route.stops.length} {dict.common.waypoints}
+                  {route.stops.length} {dict.common.stops}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Action Triggers */}
-          <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 pt-4 2xl:pt-0 border-t 2xl:border-t-0 2xl:border-l border-border/60 2xl:pl-6 shrink-0">
-            <Button
-              asChild
-              variant="default"
-              size="sm"
-              className="rounded-xl h-11 px-5 gap-2 font-semibold shadow-md shadow-primary/20 flex-1 sm:flex-none"
-            >
-              <a href="#stops">
-                <MapPin className="h-4 w-4" />
-                <span>{dict.common.exploreStops}</span>
-              </a>
-            </Button>
+          {/* Action CTA Button */}
+          <div className="flex items-center gap-3">
             {route.mapEmbedUrl && (
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="rounded-xl h-11 px-5 gap-2 font-semibold flex-1 sm:flex-none border-border/80"
-              >
+              <Button asChild size="lg" className="rounded-2xl gap-2 font-semibold shadow-lg shadow-primary/20">
                 <a href="#route-map">
-                  <Navigation className="h-4 w-4 text-primary" />
-                  <span>{dict.common.interactiveMap}</span>
+                  <Navigation className="h-4 w-4" />
+                  <span>{dict.routeDetail.viewMap}</span>
                 </a>
               </Button>
             )}
-            <div className="w-full sm:w-32 shrink-0">
-              <ShareButton title={route.title} />
-            </div>
+            <ShareButton
+              title={route.title}
+              lang={lang}
+              className="rounded-2xl h-11 px-4 gap-2 font-semibold border-border/80"
+            />
           </div>
         </div>
       </div>
@@ -342,12 +271,16 @@ export default async function RouteDetailPage({
               size="lg"
               className="rounded-xl px-7 h-12 font-semibold shadow-lg shadow-primary/20 w-full sm:w-auto"
             >
-              <Link href={`/${lang}/routes`}>
+              <Link href={allRoutesHref}>
                 {dict.routeDetail.exploreMore}
               </Link>
             </Button>
-            <div className="w-full sm:w-44">
-              <ShareButton title={route.title} />
+            <div className="w-full sm:w-auto">
+              <ShareButton
+                title={route.title}
+                lang={lang}
+                className="rounded-xl h-12 px-6 gap-2 font-semibold border-border/80 w-full sm:w-auto"
+              />
             </div>
           </div>
         </section>
