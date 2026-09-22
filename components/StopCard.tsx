@@ -6,7 +6,6 @@ import {
   MapPin,
   ExternalLink,
   Car,
-  Lightbulb,
 } from "lucide-react";
 import { StopGallery } from "@/components/StopGallery";
 import { Button } from "@/components/ui/button";
@@ -20,7 +19,6 @@ interface StopCardProps {
     visitTime?: string;
     openingHours?: string;
     entranceFee?: string;
-    tip?: string;
     images?: string[];
     suggestedArrival?: string;
     driveTime?: string;
@@ -145,23 +143,6 @@ export function StopCard({ stop, index, lang = "tr" }: StopCardProps) {
               </div>
             )}
           </div>
-
-          {/* Local Tip Card */}
-          {stop.tip && (
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 p-4 sm:p-5 flex items-start gap-3.5">
-              <div className="p-2 rounded-xl bg-amber-500/15 text-amber-500 shrink-0 mt-0.5">
-                <Lightbulb className="h-4 w-4" />
-              </div>
-              <div className="text-xs sm:text-sm leading-relaxed">
-                <span className="font-bold text-foreground block mb-0.5">
-                  {isTr ? "Yerel Sürücü İpucu" : "Local Driver Tip"}
-                </span>
-                <span className="text-muted-foreground italic">
-                  &ldquo;{stop.tip}&rdquo;
-                </span>
-              </div>
-            </div>
-          )}
 
           {/* Stop Photo Gallery */}
           {stop.images && stop.images.length > 0 && (

@@ -33,7 +33,7 @@ export default function RoutesGrid({ lang = "tr" }: { lang?: Locale }) {
         </div>
 
         <Button asChild variant="outline" className="hidden sm:inline-flex rounded-xl gap-2 font-medium">
-          <Link href={`/${lang}/routes`}>
+          <Link href={lang === "tr" ? "/routes" : "/en/routes"}>
             <span>{lang === "tr" ? "Tüm 41 Rotayı Gör" : "View All 41 Routes"}</span>
             <ArrowRight className="h-4 w-4" />
           </Link>

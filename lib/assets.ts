@@ -6,19 +6,19 @@ export const HERO_BG = "/images/hero-bg.jpg";
 export const HERO_IMAGES = [
   {
     src: "/images/hero-kyrenia.jpg",
-    alt: "Kyrenia Harbour and Castle",
+    alt: "Kyrenia Venetian Harbour and Castle",
   },
   {
     src: "/images/hero-karpaz.jpg",
-    alt: "Karpaz Peninsula wild donkeys and beach",
+    alt: "Karpaz Peninsula wild donkey on Golden Beach",
   },
   {
     src: "/images/hero-famagusta.jpg",
-    alt: "Famagusta ancient ruins",
+    alt: "Ancient Salamis Roman columns in Famagusta at sunset",
   },
   {
     src: "/images/hero-nicosia.jpg",
-    alt: "Nicosia old city walls",
+    alt: "Büyük Han Ottoman caravanserai in historic Nicosia old town",
   },
 ];
 

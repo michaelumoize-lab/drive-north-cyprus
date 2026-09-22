@@ -12,7 +12,6 @@ interface Stop {
   visitTime?: string;
   openingHours?: string;
   entranceFee?: string;
-  tip?: string;
   images?: string[];
   suggestedArrival?: string;
   driveTime?: string;
