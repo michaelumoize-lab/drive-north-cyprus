@@ -151,9 +151,13 @@ export default function RouteCard({
                 {route.duration}
               </span>
             </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
+            <div className="flex items-center gap-2 text-muted-foreground" title={route.practicalInfo?.bestSeason}>
               <Calendar className="h-3.5 w-3.5 text-primary shrink-0" />
-              <span className="truncate">{dict.routesGrid.springAutumn}</span>
+              <span className="truncate">
+                {route.practicalInfo?.bestSeason
+                  ? route.practicalInfo.bestSeason.split("(")[0].trim() || route.practicalInfo.bestSeason
+                  : dict.routesGrid.springAutumn}
+              </span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />

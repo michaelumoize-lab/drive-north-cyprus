@@ -8,7 +8,6 @@ export interface RouteStop {
   visitTime?: string;
   openingHours?: string;
   entranceFee?: string;
-  tip?: string;
   suggestedArrival?: string;
   driveTime?: string;
 }
@@ -35,7 +34,6 @@ export interface Route {
   heroImage: string;
   duration: string;
   distance: string;
-  rating: number;
   mapEmbedUrl?: string;
   intro: string;
   suggestedStart?: string;
@@ -54,7 +52,6 @@ interface RawRouteItem {
   slug: string;
   region: string;
   themes: string[];
-  rating: number;
   distance: string;
   duration: { tr: string; en: string };
   difficulty: { tr: string; en: string };
@@ -84,8 +81,7 @@ export const rawRoutes: RawRouteItem[] = [
     "themes": [
       "history"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "3–5 km",
     "duration": {
       "tr": "3–4 saat",
       "en": "3–4 hours"
@@ -133,7 +129,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Girne Kapısı",
           "description": "Girne Kapısı, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -148,7 +143,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sarayönü / Atatürk Meydanı",
           "description": "Sarayönü / Atatürk Meydanı, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -156,7 +150,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Büyük Han",
           "description": "Büyük Han, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -171,7 +164,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Selimiye Camii",
           "description": "Selimiye Camii, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -186,7 +178,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bandabuliya",
           "description": "Bandabuliya, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -203,7 +194,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Arasta Sokağı",
           "description": "Arasta Sokağı, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         },
@@ -211,7 +201,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Samanbahçe Evleri",
           "description": "Samanbahçe Evleri, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 dk"
         }
@@ -221,7 +210,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Gate",
           "description": "Kyrenia Gate is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -236,7 +224,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sarayönü / Atatürk Square",
           "description": "Sarayönü / Atatürk Square is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -244,7 +231,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Büyük Han (Great Inn)",
           "description": "Büyük Han (Great Inn) is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min",
           "images": [
@@ -259,7 +245,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Selimiye Mosque (St. Sophia Cathedral)",
           "description": "Selimiye Mosque (St. Sophia Cathedral) is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min",
           "images": [
@@ -274,7 +259,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bandabuliya Municipal Market",
           "description": "Bandabuliya Municipal Market is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min",
           "images": [
@@ -291,7 +275,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Arasta Pedestrian Street",
           "description": "Arasta Pedestrian Street is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         },
@@ -299,7 +282,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Samanbahçe Traditional Quarter",
           "description": "Samanbahçe Traditional Quarter is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 min"
         }
@@ -307,7 +289,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Ekim–Mayıs İdeal)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -316,7 +298,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (October–May Ideal)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -333,8 +315,7 @@ export const rawRoutes: RawRouteItem[] = [
     "themes": [
       "history"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "3–5 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -375,7 +356,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Girne Kapısı",
           "description": "Girne Kapısı, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -390,7 +370,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mevlevi Tekke Müzesi",
           "description": "Mevlevi Tekke Müzesi, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -398,7 +377,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Derviş Paşa Etnografya Müzesi",
           "description": "Derviş Paşa Etnografya Müzesi, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -406,7 +384,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Rüstem Kitabevi",
           "description": "Rüstem Kitabevi, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -414,7 +391,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kumarcılar Hanı",
           "description": "Kumarcılar Hanı, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -422,7 +398,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lüzinyan Evi",
           "description": "Lüzinyan Evi, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -432,7 +407,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Gate",
           "description": "Kyrenia Gate is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -447,7 +421,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mevlevi Tekke Museum",
           "description": "Mevlevi Tekke Museum is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -455,7 +428,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dervish Pasha Ethnographic Museum",
           "description": "Dervish Pasha Ethnographic Museum is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -463,7 +435,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Rüstem Bookshop & Cultural Courtyard",
           "description": "Rüstem Bookshop & Cultural Courtyard is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -471,7 +442,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kumarcılar Han (Gamblers Inn)",
           "description": "Kumarcılar Han (Gamblers Inn) is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -479,7 +449,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lusignan Medieval Mansion",
           "description": "Lusignan Medieval Mansion is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -487,7 +456,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Müze Saatlerine Göre)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -496,7 +465,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Check Museum Hours)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -515,8 +484,7 @@ export const rawRoutes: RawRouteItem[] = [
       "food",
       "nightlife"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "15–20 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -557,7 +525,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Klasik Araba Müzesi (YDÜ)",
           "description": "Klasik Araba Müzesi (YDÜ), Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -565,7 +532,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dereboyu Caddesi",
           "description": "Dereboyu Caddesi, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -573,7 +539,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Surlariçi",
           "description": "Surlariçi, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -581,7 +546,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Zahra Sokağı",
           "description": "Zahra Sokağı, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -589,7 +553,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mooi Cafe",
           "description": "Mooi Cafe, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -597,7 +560,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sedo Ice Cream & Cakes",
           "description": "Sedo Ice Cream & Cakes, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -607,7 +569,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cyprus Classic Car Museum (NEU)",
           "description": "Cyprus Classic Car Museum (NEU) is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -615,7 +576,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dereboyu Avenue Promenade",
           "description": "Dereboyu Avenue Promenade is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -623,7 +583,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Walled City Old Quarters",
           "description": "Walled City Old Quarters is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -631,7 +590,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Zahra Street Night Scene",
           "description": "Zahra Street Night Scene is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -639,7 +597,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mooi Artisan Cafe",
           "description": "Mooi Artisan Cafe is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -647,7 +604,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sedo Traditional Patisserie",
           "description": "Sedo Traditional Patisserie is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -655,7 +611,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Akşam & Gece)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -664,7 +620,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Evenings & Nights)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -683,8 +639,7 @@ export const rawRoutes: RawRouteItem[] = [
       "scenic",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "35–45 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -736,7 +691,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Girne Limanı",
           "description": "Girne Limanı, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -751,7 +705,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Girne Kalesi",
           "description": "Girne Kalesi, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -767,7 +720,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Batık Gemi Müzesi",
           "description": "Batık Gemi Müzesi, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -775,7 +727,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bellapais Köyü & Manastırı",
           "description": "Bellapais Köyü & Manastırı, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -790,7 +741,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Hilarion Kalesi",
           "description": "St. Hilarion Kalesi, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -803,7 +753,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Beşparmak Manzara Noktası",
           "description": "Beşparmak Manzara Noktası, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -813,7 +762,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Old Harbour",
           "description": "Kyrenia Old Harbour is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -828,7 +776,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Castle",
           "description": "Kyrenia Castle is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min",
           "images": [
@@ -844,7 +791,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ancient Shipwreck Museum",
           "description": "Ancient Shipwreck Museum is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -852,7 +798,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bellapais Village & Abbey",
           "description": "Bellapais Village & Abbey is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min",
           "images": [
@@ -867,7 +812,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Hilarion Mountain Fortress",
           "description": "St. Hilarion Mountain Fortress is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min",
           "images": [
@@ -880,7 +824,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Five Finger Mountain Lookout",
           "description": "Five Finger Mountain Lookout is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -888,7 +831,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Kasım (İlkbahar & Sonbahar)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -897,7 +840,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–November (Spring & Autumn)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -915,8 +858,7 @@ export const rawRoutes: RawRouteItem[] = [
       "coast",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "45–60 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -958,7 +900,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lapta Sahil Yürüyüş Yolu",
           "description": "Lapta Sahil Yürüyüş Yolu, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -966,7 +907,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Escape Beach",
           "description": "Escape Beach, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -974,7 +914,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karaoğlanoğlu Kıyısı",
           "description": "Karaoğlanoğlu Kıyısı, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -982,7 +921,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Alagadi Kaplumbağa Plajı",
           "description": "Alagadi Kaplumbağa Plajı, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -995,7 +933,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gizli Yüzme Koyları",
           "description": "Gizli Yüzme Koyları, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -1003,7 +940,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Esentepe Seyir Noktaları",
           "description": "Esentepe Seyir Noktaları, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -1013,7 +949,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lapta Coastal Boardwalk",
           "description": "Lapta Coastal Boardwalk is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -1021,7 +956,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Escape Beach Cove",
           "description": "Escape Beach Cove is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -1029,7 +963,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karaoğlanoğlu Rocky Shore",
           "description": "Karaoğlanoğlu Rocky Shore is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -1037,7 +970,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Alagadi Turtle Sanctuary Beach",
           "description": "Alagadi Turtle Sanctuary Beach is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min",
           "images": [
@@ -1050,7 +982,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Hidden Mediterranean Coves",
           "description": "Hidden Mediterranean Coves is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -1058,7 +989,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Esentepe Coastal Viewpoints",
           "description": "Esentepe Coastal Viewpoints is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -1066,7 +996,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mayıs–Ekim (Yaz & Yüzme)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -1075,7 +1005,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "May–October (Summer & Swimming)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -1093,8 +1023,7 @@ export const rawRoutes: RawRouteItem[] = [
       "scenic",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "35–50 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -1138,7 +1067,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mavi Köşk (Blue House)",
           "description": "Mavi Köşk (Blue House), Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -1146,7 +1074,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bellapais Terası",
           "description": "Bellapais Terası, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -1161,7 +1088,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Hilarion Seyir Noktası",
           "description": "St. Hilarion Seyir Noktası, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -1174,7 +1100,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Acapulco / Escape Beach Deck",
           "description": "Acapulco / Escape Beach Deck, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -1182,7 +1107,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Camelot Beach",
           "description": "Camelot Beach, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -1190,7 +1114,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gün Batımı Noktası",
           "description": "Gün Batımı Noktası, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -1200,7 +1123,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mavi Köşk (The Blue Mansion)",
           "description": "Mavi Köşk (The Blue Mansion) is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -1208,7 +1130,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bellapais Panoramic Terrace",
           "description": "Bellapais Panoramic Terrace is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min",
           "images": [
@@ -1223,7 +1144,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Hilarion Sunset Lookout",
           "description": "St. Hilarion Sunset Lookout is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min",
           "images": [
@@ -1236,7 +1156,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Acapulco & Escape Sunset Decks",
           "description": "Acapulco & Escape Sunset Decks is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -1244,7 +1163,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Camelot Beach Cove",
           "description": "Camelot Beach Cove is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -1252,7 +1170,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Coast Golden Hour Point",
           "description": "Kyrenia Coast Golden Hour Point is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -1260,7 +1177,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Yaz Gün Batımları)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -1269,7 +1186,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Summer Sunsets)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -1288,8 +1205,7 @@ export const rawRoutes: RawRouteItem[] = [
       "food",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "15–25 km",
     "duration": {
       "tr": "Öğleden akşama",
       "en": "Afternoon to night"
@@ -1331,7 +1247,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Escape Beach Club",
           "description": "Escape Beach Club, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -1339,7 +1254,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "The House / Marina",
           "description": "The House / Marina, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -1347,7 +1261,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Eziç Restaurant",
           "description": "Eziç Restaurant, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -1355,7 +1268,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sky Lounge Bar",
           "description": "Sky Lounge Bar, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -1363,7 +1275,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cage / La Nouba Club",
           "description": "Cage / La Nouba Club, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -1373,7 +1284,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Escape Beach Club",
           "description": "Escape Beach Club is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -1381,7 +1291,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "The House Marina Lounge",
           "description": "The House Marina Lounge is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -1389,7 +1298,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Eziç Premier Waterfront Dining",
           "description": "Eziç Premier Waterfront Dining is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -1397,7 +1305,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sky Lounge Panoramic Rooftop",
           "description": "Sky Lounge Panoramic Rooftop is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -1405,7 +1312,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cage & La Nouba Open-Air Club",
           "description": "Cage & La Nouba Open-Air Club is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -1413,7 +1319,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mayıs–Ekim (Yaz Sezonu)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -1422,7 +1328,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "May–October (Summer Peak)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -1441,8 +1347,7 @@ export const rawRoutes: RawRouteItem[] = [
       "history",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "25–35 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -1481,7 +1386,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lapta Eski Köy",
           "description": "Lapta Eski Köy, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -1489,7 +1393,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Başpınar",
           "description": "Başpınar, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -1497,7 +1400,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Tarihi Lapta Su Kanalları",
           "description": "Tarihi Lapta Su Kanalları, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -1505,7 +1407,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lapta Sahil Yürüyüş Yolu",
           "description": "Lapta Sahil Yürüyüş Yolu, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -1513,7 +1414,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karşıyaka Gün Batımı Kıyısı",
           "description": "Karşıyaka Gün Batımı Kıyısı, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -1523,7 +1423,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lapta Old Stone Village",
           "description": "Lapta Old Stone Village is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -1531,7 +1430,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Başpınar Natural Spring",
           "description": "Başpınar Natural Spring is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -1539,7 +1437,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Historic Lapta Aqueducts",
           "description": "Historic Lapta Aqueducts is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -1547,7 +1444,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lapta Seaside Promenade",
           "description": "Lapta Seaside Promenade is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -1555,7 +1451,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karşıyaka Sunset Shoreline",
           "description": "Karşıyaka Sunset Shoreline is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -1563,7 +1458,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Kasım (İlkbahar–Sonbahar)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -1572,7 +1467,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–November (Spring–Autumn)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -1589,8 +1484,7 @@ export const rawRoutes: RawRouteItem[] = [
     "themes": [
       "history"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "3–5 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -1633,7 +1527,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Akkule (Land Gate)",
           "description": "Akkule (Land Gate), Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -1641,7 +1534,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lala Mustafa Paşa Camii",
           "description": "Lala Mustafa Paşa Camii, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -1656,7 +1548,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Venedik Sarayı Kalıntıları",
           "description": "Venedik Sarayı Kalıntıları, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -1664,7 +1555,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Namık Kemal Zindanı",
           "description": "Namık Kemal Zindanı, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -1672,7 +1562,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Othello Kalesi",
           "description": "Othello Kalesi, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -1688,7 +1577,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Canbulat Müzesi",
           "description": "Canbulat Müzesi, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         },
@@ -1696,7 +1584,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Şehir Surları",
           "description": "Şehir Surları, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 dk"
         }
@@ -1706,7 +1593,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Land Gate (Akkule Fort)",
           "description": "Land Gate (Akkule Fort) is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -1714,7 +1600,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lala Mustafa Pasha Mosque (St. Nicholas Cathedral)",
           "description": "Lala Mustafa Pasha Mosque (St. Nicholas Cathedral) is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min",
           "images": [
@@ -1729,7 +1614,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Venetian Palace Courtyard Ruins",
           "description": "Venetian Palace Courtyard Ruins is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -1737,7 +1621,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Namık Kemal Dungeon & Quarters",
           "description": "Namık Kemal Dungeon & Quarters is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -1745,7 +1628,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Othello Castle & Citadel",
           "description": "Othello Castle & Citadel is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min",
           "images": [
@@ -1761,7 +1643,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Canbulat Bastion & Museum",
           "description": "Canbulat Bastion & Museum is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         },
@@ -1769,7 +1650,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Venetian Ramparts Promenade",
           "description": "Venetian Ramparts Promenade is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 min"
         }
@@ -1777,7 +1657,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Sonbahar & Kış İdeal)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -1786,7 +1666,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Fall & Winter Ideal)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -1804,8 +1684,7 @@ export const rawRoutes: RawRouteItem[] = [
       "history",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "25–35 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -1850,7 +1729,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Salamis Harabeleri",
           "description": "Salamis Harabeleri, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -1866,7 +1744,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Roma Tiyatrosu",
           "description": "Roma Tiyatrosu, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -1874,7 +1751,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Barnabas Manastırı & İkon Müzesi",
           "description": "St. Barnabas Manastırı & İkon Müzesi, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -1890,7 +1766,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kral Mezarları",
           "description": "Kral Mezarları, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -1898,7 +1773,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Glapsides Plajı",
           "description": "Glapsides Plajı, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -1915,7 +1789,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Salamis Ancient Ruins & Gymnasium",
           "description": "Salamis Ancient Ruins & Gymnasium is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -1931,7 +1804,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Roman Marble Amphitheatre",
           "description": "Roman Marble Amphitheatre is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -1939,7 +1811,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Barnabas Monastery & Icon Museum",
           "description": "St. Barnabas Monastery & Icon Museum is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min",
           "images": [
@@ -1955,7 +1826,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Royal Tombs Necropolis",
           "description": "Royal Tombs Necropolis is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -1963,7 +1833,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Glapsides Golden Beach",
           "description": "Glapsides Golden Beach is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min",
           "images": [
@@ -1978,7 +1847,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Haziran & Eylül–Kasım",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -1987,7 +1856,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–June & September–November",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -2005,8 +1874,7 @@ export const rawRoutes: RawRouteItem[] = [
       "history",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "10–15 km",
     "duration": {
       "tr": "Yarım–tam gün",
       "en": "Half to full day"
@@ -2051,7 +1919,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kapalı Maraş (Açık Bölgeler)",
           "description": "Kapalı Maraş (Açık Bölgeler), Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -2066,7 +1933,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Maraş Sahili",
           "description": "Maraş Sahili, Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -2081,7 +1947,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Palm Beach",
           "description": "Palm Beach, Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -2089,7 +1954,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Petek Pastanesi",
           "description": "Petek Pastanesi, Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -2097,7 +1961,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sahil Kafeleri",
           "description": "Sahil Kafeleri, Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -2107,7 +1970,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Varosha (Open Boulevards)",
           "description": "Varosha (Open Boulevards) is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -2122,7 +1984,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Varosha Coastal Boulevard",
           "description": "Varosha Coastal Boulevard is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min",
           "images": [
@@ -2137,7 +1998,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Palm Beach Waterfront",
           "description": "Palm Beach Waterfront is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -2145,7 +2005,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Petek Traditional Confectionery",
           "description": "Petek Traditional Confectionery is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -2153,7 +2012,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Coastal Seaside Cafes",
           "description": "Coastal Seaside Cafes is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -2161,7 +2019,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Deniz İçin Yaz)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -2170,7 +2028,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Summer for Beach)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -2188,8 +2046,7 @@ export const rawRoutes: RawRouteItem[] = [
       "history",
       "nature"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "35–45 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -2228,7 +2085,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Enkomi Antik Kenti",
           "description": "Enkomi Antik Kenti, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -2236,7 +2092,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mağusa Kırsal Yolu",
           "description": "Mağusa Kırsal Yolu, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -2244,7 +2099,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Eski Nehir Yatağı Manzarası",
           "description": "Eski Nehir Yatağı Manzarası, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -2252,7 +2106,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Tuzla Köy Kafesi",
           "description": "Tuzla Köy Kafesi, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -2260,7 +2113,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gazimağusa Surlarına Yaklaşım",
           "description": "Gazimağusa Surlarına Yaklaşım, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -2270,7 +2122,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Enkomi Bronze Age Ruins",
           "description": "Enkomi Bronze Age Ruins is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -2278,7 +2129,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Famagusta Countryside Lane",
           "description": "Famagusta Countryside Lane is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -2286,7 +2136,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ancient Riverbed Panorama",
           "description": "Ancient Riverbed Panorama is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -2294,7 +2143,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Tuzla Village Traditional Cafe",
           "description": "Tuzla Village Traditional Cafe is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -2302,7 +2150,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Approaching Famagusta Ramparts",
           "description": "Approaching Famagusta Ramparts is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -2310,7 +2157,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Mayıs & Ekim–Kasım",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -2319,7 +2166,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–May & October–November",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -2337,8 +2184,7 @@ export const rawRoutes: RawRouteItem[] = [
       "coast",
       "history"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "25–40 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -2380,7 +2226,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "İskele Arkeoloji Müzesi",
           "description": "İskele Arkeoloji Müzesi, İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -2394,7 +2239,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Panayia Theotokos İkon Müzesi",
           "description": "Panayia Theotokos İkon Müzesi, İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -2402,7 +2246,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Long Beach (Altınkum)",
           "description": "Long Beach (Altınkum), İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -2417,7 +2260,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Boğaz Balıkçı Limanı",
           "description": "Boğaz Balıkçı Limanı, İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -2425,7 +2267,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kalecik Halk Plajı",
           "description": "Kalecik Halk Plajı, İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -2435,7 +2276,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Iskele Archaeology Museum",
           "description": "Iskele Archaeology Museum is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -2449,7 +2289,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Panayia Theotokos Icon Museum",
           "description": "Panayia Theotokos Icon Museum is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -2457,7 +2296,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Long Beach Golden Sands Promenade",
           "description": "Long Beach Golden Sands Promenade is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min",
           "images": [
@@ -2472,7 +2310,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Boğaz Picturesque Fishing Harbour",
           "description": "Boğaz Picturesque Fishing Harbour is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -2480,7 +2317,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kalecik Public Beach & Cove",
           "description": "Kalecik Public Beach & Cove is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -2488,7 +2324,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mayıs–Ekim (Yaz Sezonu)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -2497,7 +2333,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "May–October (Summer Season)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -2516,8 +2352,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "55–75 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -2561,7 +2396,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kantara Kalesi",
           "description": "Kantara Kalesi, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -2569,7 +2403,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kantara Köyü",
           "description": "Kantara Köyü, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -2577,7 +2410,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mersinlik Ormanı",
           "description": "Mersinlik Ormanı, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -2585,7 +2417,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kaplıca Sahili",
           "description": "Kaplıca Sahili, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -2593,7 +2424,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Tatlısu Kıyısı",
           "description": "Tatlısu Kıyısı, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -2603,7 +2433,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kantara Crusader Castle",
           "description": "Kantara Crusader Castle is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -2611,7 +2440,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kantara Mountain Village",
           "description": "Kantara Mountain Village is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -2619,7 +2447,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mersinlik Pine Forest Path",
           "description": "Mersinlik Pine Forest Path is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -2627,7 +2454,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kaplıca Sandy Coast",
           "description": "Kaplıca Sandy Coast is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -2635,7 +2461,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Tatlısu Coastal Shoreline",
           "description": "Tatlısu Coastal Shoreline is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -2643,7 +2468,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Mayıs & Eylül–Kasım",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -2652,7 +2477,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–May & September–November",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -2671,8 +2496,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "50–70 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -2711,7 +2535,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mehmetçik Köyü",
           "description": "Mehmetçik Köyü, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -2719,7 +2542,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mehmetçik Festival Meydanı",
           "description": "Mehmetçik Festival Meydanı, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -2727,7 +2549,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Üzüm Bağı Manzarası",
           "description": "Üzüm Bağı Manzarası, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -2735,7 +2556,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bafra Halk Plajı",
           "description": "Bafra Halk Plajı, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -2743,7 +2563,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Boğaz Balıkçı Limanı",
           "description": "Boğaz Balıkçı Limanı, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -2753,7 +2572,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mehmetçik Grape Village",
           "description": "Mehmetçik Grape Village is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -2761,7 +2579,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mehmetçik Festival Square",
           "description": "Mehmetçik Festival Square is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -2769,7 +2586,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Rolling Vineyards Viewpoint",
           "description": "Rolling Vineyards Viewpoint is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -2777,7 +2593,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bafra Public Beach",
           "description": "Bafra Public Beach is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -2785,7 +2600,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Boğaz Seafood Harbour",
           "description": "Boğaz Seafood Harbour is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -2793,7 +2607,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mayıs–Ekim (Bağ Bozumu & Deniz)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -2802,7 +2616,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "May–October (Harvest & Beach)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -2820,8 +2634,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "25–40 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -2861,7 +2674,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Boğaz Balıkçı Limanı",
           "description": "Boğaz Balıkçı Limanı, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -2869,7 +2681,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gastria Sulak Alanı",
           "description": "Gastria Sulak Alanı, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -2877,7 +2688,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kaplıca Sahili",
           "description": "Kaplıca Sahili, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -2885,7 +2695,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Tuz Düzlüğü Manzarası",
           "description": "Tuz Düzlüğü Manzarası, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -2893,7 +2702,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kıyı Kuş Gözlem Noktası",
           "description": "Kıyı Kuş Gözlem Noktası, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -2903,7 +2711,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Boğaz Harbour Docks",
           "description": "Boğaz Harbour Docks is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -2911,7 +2718,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gastria Coastal Wetland",
           "description": "Gastria Coastal Wetland is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -2919,7 +2725,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kaplıca Natural Bay",
           "description": "Kaplıca Natural Bay is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -2927,7 +2732,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Coastal Salt Flats Vista",
           "description": "Coastal Salt Flats Vista is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -2935,7 +2739,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Coastal Bird Sanctuary Point",
           "description": "Coastal Bird Sanctuary Point is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -2943,7 +2746,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Kasım–Nisan (Kuş Göç Dönemi)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -2952,7 +2755,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "November–April (Bird Migration)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -2971,8 +2774,7 @@ export const rawRoutes: RawRouteItem[] = [
       "scenic",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "140–170 km",
     "duration": {
       "tr": "Tam gün (uzun sürüş)",
       "en": "Full day (scenic drive)"
@@ -3025,7 +2827,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dipkarpaz Köyü",
           "description": "Dipkarpaz Köyü, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -3039,7 +2840,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz Manzaralı Sürüş",
           "description": "Karpaz Manzaralı Sürüş, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -3047,7 +2847,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yabani Eşek Bölgesi",
           "description": "Yabani Eşek Bölgesi, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3062,7 +2861,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Altınkum (Golden Beach)",
           "description": "Altınkum (Golden Beach), Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3077,7 +2875,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ayios Philon Kilisesi",
           "description": "Ayios Philon Kilisesi, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3090,7 +2887,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Apostolos Andreas Manastırı",
           "description": "Apostolos Andreas Manastırı, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3105,7 +2901,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Zafer Burnu",
           "description": "Zafer Burnu, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3122,7 +2917,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dipkarpaz Village Center",
           "description": "Dipkarpaz Village Center is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -3136,7 +2930,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz Scenic National Highway",
           "description": "Karpaz Scenic National Highway is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -3144,7 +2937,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Wild Donkey Sanctuary Zone",
           "description": "Wild Donkey Sanctuary Zone is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3159,7 +2951,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Golden Beach (Altınkum)",
           "description": "Golden Beach (Altınkum) is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3174,7 +2965,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ayios Philon Ancient Church",
           "description": "Ayios Philon Ancient Church is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3187,7 +2977,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Apostolos Andreas Monastery",
           "description": "Apostolos Andreas Monastery is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3202,7 +2991,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cape Apostolos Andreas (Zafer Burnu)",
           "description": "Cape Apostolos Andreas (Zafer Burnu) is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3217,7 +3005,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mayıs–Ekim (Yaz & Deniz)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -3226,7 +3014,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "May–October (Summer & Swimming)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -3245,8 +3033,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "90–120 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -3285,7 +3072,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Blue House Deniz Mağarası",
           "description": "Blue House Deniz Mağarası, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -3293,7 +3079,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Camel Point",
           "description": "Camel Point, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -3301,7 +3086,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Horseshoe Beach",
           "description": "Horseshoe Beach, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -3309,7 +3093,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kaplıca Sahili",
           "description": "Kaplıca Sahili, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -3317,7 +3100,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Altınkum (Az Kalabalık Uç)",
           "description": "Altınkum (Az Kalabalık Uç), Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3332,7 +3114,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Zafer Burnu Kayalıkları",
           "description": "Zafer Burnu Kayalıkları, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3349,7 +3130,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Blue Sea Cave & Grotto",
           "description": "Blue Sea Cave & Grotto is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -3357,7 +3137,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Camel Point Rock Formation",
           "description": "Camel Point Rock Formation is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -3365,7 +3144,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Horseshoe Cove",
           "description": "Horseshoe Cove is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -3373,7 +3151,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kaplıca Sand Beach",
           "description": "Kaplıca Sand Beach is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -3381,7 +3158,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Golden Beach (Quiet Far End)",
           "description": "Golden Beach (Quiet Far End) is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3396,7 +3172,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cape Zafer Sea Cliffs",
           "description": "Cape Zafer Sea Cliffs is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3411,7 +3186,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Haziran–Eylül (Sakin Deniz)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -3420,7 +3195,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "June–September (Calm Seas)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -3438,8 +3213,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "130–160 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -3478,7 +3252,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yenierenköy",
           "description": "Yenierenköy, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -3486,7 +3259,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz Milli Parkı",
           "description": "Karpaz Milli Parkı, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3501,7 +3273,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Altınkum",
           "description": "Altınkum, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3516,7 +3287,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dipkarpaz Köyü",
           "description": "Dipkarpaz Köyü, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3530,7 +3300,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Zafer Burnu",
           "description": "Zafer Burnu, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3545,7 +3314,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Apostolos Andreas",
           "description": "Apostolos Andreas, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -3560,7 +3328,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ronnas Koyu",
           "description": "Ronnas Koyu, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 dk"
         }
@@ -3570,7 +3337,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yenierenköy Coastal Hub",
           "description": "Yenierenköy Coastal Hub is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -3578,7 +3344,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz National Park Gateway",
           "description": "Karpaz National Park Gateway is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3593,7 +3358,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Golden Beach Dunes",
           "description": "Golden Beach Dunes is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3608,7 +3372,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dipkarpaz Traditional Quarter",
           "description": "Dipkarpaz Traditional Quarter is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3622,7 +3385,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cape Zafer Edge",
           "description": "Cape Zafer Edge is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3637,7 +3399,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Apostolos Andreas Grounds",
           "description": "Apostolos Andreas Grounds is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min",
           "images": [
@@ -3652,7 +3413,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ronnas Secluded Bay",
           "description": "Ronnas Secluded Bay is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 min"
         }
@@ -3660,7 +3420,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Kasım (İlkbahar & Güz)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -3669,7 +3429,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–November (Spring & Fall)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -3687,8 +3447,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "50–70 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -3727,7 +3486,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yudi Dağı Yürüyüş Parkuru",
           "description": "Yudi Dağı Yürüyüş Parkuru, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -3735,7 +3493,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yeni Erenköy Halk Plajı",
           "description": "Yeni Erenköy Halk Plajı, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -3743,7 +3500,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz Gate Marina",
           "description": "Karpaz Gate Marina, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -3751,7 +3507,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gün Batımı Noktası",
           "description": "Gün Batımı Noktası, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -3759,7 +3514,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Revaklı Ev Konağı",
           "description": "Revaklı Ev Konağı, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -3769,7 +3523,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mount Yudi Hiking Trail",
           "description": "Mount Yudi Hiking Trail is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -3777,7 +3530,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yeni Erenköy Public Beach",
           "description": "Yeni Erenköy Public Beach is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -3785,7 +3537,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz Gate Marina Promenade",
           "description": "Karpaz Gate Marina Promenade is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -3793,7 +3544,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Marina Pier Sunset View",
           "description": "Marina Pier Sunset View is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -3801,7 +3551,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Revaklı Ev Heritage Mansion",
           "description": "Revaklı Ev Heritage Mansion is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -3809,7 +3558,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Mayıs & Eylül–Kasım",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -3818,7 +3567,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–May & September–November",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -3837,8 +3586,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "80–110 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -3877,7 +3625,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Hill Coffee",
           "description": "Hill Coffee, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -3885,7 +3632,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Antik Mağaralar",
           "description": "Antik Mağaralar, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -3893,7 +3639,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Agla Trias",
           "description": "Agla Trias, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -3901,7 +3646,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Aylos Kilisesi",
           "description": "Aylos Kilisesi, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -3909,7 +3653,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Big Sand Beach",
           "description": "Big Sand Beach, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -3917,7 +3660,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Rizokarpaso (Uç Nokta)",
           "description": "Rizokarpaso (Uç Nokta), Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -3927,7 +3669,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Hill Coffee Hillside Lookout",
           "description": "Hill Coffee Hillside Lookout is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -3935,7 +3676,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ancient Rock-Cut Caves",
           "description": "Ancient Rock-Cut Caves is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -3943,7 +3683,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Agla Trias Basilica Mosaics",
           "description": "Agla Trias Basilica Mosaics is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -3951,7 +3690,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Aylos Historic Chapel",
           "description": "Aylos Historic Chapel is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -3959,7 +3697,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Big Sand Beach Shoreline",
           "description": "Big Sand Beach Shoreline is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -3967,7 +3704,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Rizokarpaso Wilderness Point",
           "description": "Rizokarpaso Wilderness Point is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -3975,7 +3711,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Nisan–Haziran & Eylül–Ekim",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -3984,7 +3720,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "April–June & September–October",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -4003,8 +3739,7 @@ export const rawRoutes: RawRouteItem[] = [
       "food",
       "history"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "35–50 km",
     "duration": {
       "tr": "Yarım–tam gün",
       "en": "Half to full day"
@@ -4043,7 +3778,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "İskele Arkeoloji Müzesi",
           "description": "İskele Arkeoloji Müzesi, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -4057,7 +3791,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kantara Kalesi",
           "description": "Kantara Kalesi, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -4065,7 +3798,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Büyükkonuk Eko-Köy",
           "description": "Büyükkonuk Eko-Köy, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -4073,7 +3805,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dipkarpaz Köyü",
           "description": "Dipkarpaz Köyü, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -4087,7 +3818,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ayios Philon Kilisesi",
           "description": "Ayios Philon Kilisesi, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -4102,7 +3832,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Iskele Archaeology Museum",
           "description": "Iskele Archaeology Museum is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -4116,7 +3845,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kantara Castle Foothills",
           "description": "Kantara Castle Foothills is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -4124,7 +3852,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Büyükkonuk Eco-Village Square",
           "description": "Büyükkonuk Eco-Village Square is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -4132,7 +3859,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dipkarpaz Village Lanes",
           "description": "Dipkarpaz Village Lanes is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min",
           "images": [
@@ -4146,7 +3872,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ayios Philon Seaside Church",
           "description": "Ayios Philon Seaside Church is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min",
           "images": [
@@ -4159,7 +3884,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Bahar Eko-Günleri)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -4168,7 +3893,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Spring Eco-Festivals)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -4186,8 +3911,7 @@ export const rawRoutes: RawRouteItem[] = [
       "history",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "45–65 km",
     "duration": {
       "tr": "Yarım–tam gün",
       "en": "Half to full day"
@@ -4233,7 +3957,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Soli Bazilikası",
           "description": "Soli Bazilikası, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -4247,7 +3970,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Soli Roma Tiyatrosu",
           "description": "Soli Roma Tiyatrosu, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -4261,7 +3983,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Antik Agora",
           "description": "Antik Agora, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -4269,7 +3990,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Vouni Sarayı",
           "description": "Vouni Sarayı, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -4284,7 +4004,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Manzara Noktası",
           "description": "Manzara Noktası, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -4294,7 +4013,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Soli Basilica & Swan Mosaic",
           "description": "Soli Basilica & Swan Mosaic is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -4308,7 +4026,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Soli Roman Amphitheatre",
           "description": "Soli Roman Amphitheatre is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min",
           "images": [
@@ -4322,7 +4039,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ancient Roman Agora",
           "description": "Ancient Roman Agora is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -4330,7 +4046,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Vouni Cliffside Palace",
           "description": "Vouni Cliffside Palace is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min",
           "images": [
@@ -4345,7 +4060,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Morphou Bay Scenic Lookout",
           "description": "Morphou Bay Scenic Lookout is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -4353,7 +4067,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Haziran & Eylül–Kasım",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -4362,7 +4076,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–June & September–November",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -4381,8 +4095,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "food"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "15–25 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -4423,7 +4136,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Güzelyurt Merkez",
           "description": "Güzelyurt Merkez, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -4434,7 +4146,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Arkeoloji & Doğa Tarihi Müzesi",
           "description": "Arkeoloji & Doğa Tarihi Müzesi, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -4448,7 +4159,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Mamas Kilisesi & İkon Müzesi",
           "description": "St. Mamas Kilisesi & İkon Müzesi, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -4463,7 +4173,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Portakal Bahçeleri",
           "description": "Portakal Bahçeleri, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -4471,7 +4180,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yakın Köyler",
           "description": "Yakın Köyler, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -4481,7 +4189,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Güzelyurt Town Center",
           "description": "Güzelyurt Town Center is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -4492,7 +4199,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Archaeology & Nature Museum",
           "description": "Archaeology & Nature Museum is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min",
           "images": [
@@ -4506,7 +4212,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Mamas Church & Icon Museum",
           "description": "St. Mamas Church & Icon Museum is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min",
           "images": [
@@ -4521,7 +4226,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Citrus & Orange Groves Trail",
           "description": "Citrus & Orange Groves Trail is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -4529,7 +4233,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Surrounding Countryside Villages",
           "description": "Surrounding Countryside Villages is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -4537,7 +4240,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Aralık–Mayıs (Narenciye Hasadı)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -4546,7 +4249,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "December–May (Citrus Harvest)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -4565,8 +4268,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "food"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "20–30 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -4608,7 +4310,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke Merkez",
           "description": "Lefke Merkez, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -4616,7 +4317,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Piri Mehmet Paşa Camii",
           "description": "Piri Mehmet Paşa Camii, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -4624,7 +4324,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Osmanlı Su Kemeri",
           "description": "Osmanlı Su Kemeri, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -4632,7 +4331,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Narenciye Bahçeleri",
           "description": "Narenciye Bahçeleri, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -4640,7 +4338,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yerel Kahvehaneler",
           "description": "Yerel Kahvehaneler, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -4648,7 +4345,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Citrus Pazarı",
           "description": "Citrus Pazarı, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -4658,7 +4354,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke Historic Center",
           "description": "Lefke Historic Center is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -4666,7 +4361,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Piri Mehmet Pasha Ottoman Mosque",
           "description": "Piri Mehmet Pasha Ottoman Mosque is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -4674,7 +4368,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Historic Ottoman Aqueduct",
           "description": "Historic Ottoman Aqueduct is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -4682,7 +4375,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke Date & Citrus Orchards",
           "description": "Lefke Date & Citrus Orchards is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -4690,7 +4382,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Traditional Village Coffeehouses",
           "description": "Traditional Village Coffeehouses is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -4698,7 +4389,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Local Farmers Citrus Market",
           "description": "Local Farmers Citrus Market is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -4706,7 +4396,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Sonbahar Hurma Hasadı)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -4715,7 +4405,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Autumn Date Harvest)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -4733,8 +4423,7 @@ export const rawRoutes: RawRouteItem[] = [
       "history",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "15–25 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -4776,7 +4465,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Eski CMC Yapıları",
           "description": "Eski CMC Yapıları, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -4784,7 +4472,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Maden Demiryolu Alanı",
           "description": "Maden Demiryolu Alanı, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -4792,7 +4479,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cengiz Topel Anıtı",
           "description": "Cengiz Topel Anıtı, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -4800,7 +4486,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gemikonağı Limanı & İskele",
           "description": "Gemikonağı Limanı & İskele, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -4808,7 +4493,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sahil Yürüyüş Yolu",
           "description": "Sahil Yürüyüş Yolu, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -4818,7 +4502,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Historic CMC Mining Structures",
           "description": "Historic CMC Mining Structures is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -4826,7 +4509,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Vintage Mine Railway Yard",
           "description": "Vintage Mine Railway Yard is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -4834,7 +4516,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cengiz Topel Coastal Memorial",
           "description": "Cengiz Topel Coastal Memorial is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -4842,7 +4523,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gemikonağı Port & Historic Pier",
           "description": "Gemikonağı Port & Historic Pier is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -4850,7 +4530,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gemikonağı Sea Promenade",
           "description": "Gemikonağı Sea Promenade is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -4858,7 +4537,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Hafıza & Fotoğraf)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -4867,7 +4546,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Heritage & Photography)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -4886,8 +4565,7 @@ export const rawRoutes: RawRouteItem[] = [
       "food",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "35–50 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -4928,7 +4606,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Soli Antik Kenti",
           "description": "Soli Antik Kenti, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk",
           "images": [
@@ -4942,7 +4619,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Vouni Sarayı",
           "description": "Vouni Sarayı, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk",
           "images": [
@@ -4957,7 +4633,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke Yerel Durak",
           "description": "Lefke Yerel Durak, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -4965,7 +4640,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yeşilırmak Çilek Bahçeleri",
           "description": "Yeşilırmak Çilek Bahçeleri, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -4973,7 +4647,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dev Çilek Heykeli",
           "description": "Dev Çilek Heykeli, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -4981,7 +4654,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yedidalga Plajı",
           "description": "Yedidalga Plajı, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -4991,7 +4663,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ancient Soli",
           "description": "Ancient Soli is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min",
           "images": [
@@ -5005,7 +4676,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Vouni Palace",
           "description": "Vouni Palace is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min",
           "images": [
@@ -5020,7 +4690,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke Village Rest Stop",
           "description": "Lefke Village Rest Stop is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -5028,7 +4697,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yeşilırmak Strawberry Fields",
           "description": "Yeşilırmak Strawberry Fields is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -5036,7 +4704,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Giant Strawberry Monument",
           "description": "Giant Strawberry Monument is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -5044,7 +4711,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Yedidalga Seaside Fish Tavern Beach",
           "description": "Yedidalga Seaside Fish Tavern Beach is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -5052,7 +4718,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Nisan–Haziran (Çilek Hasadı)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -5061,7 +4727,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "April–June (Strawberry Season)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -5080,8 +4746,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "50–70 km",
     "duration": {
       "tr": "Yarım–tam gün",
       "en": "Half to full day"
@@ -5121,7 +4786,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kormakitis Burnu Kıyısı",
           "description": "Kormakitis Burnu Kıyısı, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -5129,7 +4793,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Blue Lagoon Yüzme Durağı",
           "description": "Blue Lagoon Yüzme Durağı, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -5137,7 +4800,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Şnorkel Resif Alanı",
           "description": "Şnorkel Resif Alanı, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -5145,7 +4807,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sadrazamköy Sahili",
           "description": "Sadrazamköy Sahili, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -5153,7 +4814,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Limanı Dönüş",
           "description": "Kyrenia Limanı Dönüş, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -5163,7 +4823,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cape Kormakitis Dramatic Shore",
           "description": "Cape Kormakitis Dramatic Shore is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -5171,7 +4830,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Blue Lagoon Snorkeling Bay",
           "description": "Blue Lagoon Snorkeling Bay is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -5179,7 +4837,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Crystal Reef Diving Spot",
           "description": "Crystal Reef Diving Spot is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -5187,7 +4844,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sadrazamköy Peaceful Beach",
           "description": "Sadrazamköy Peaceful Beach is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -5195,7 +4851,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Pier Return",
           "description": "Kyrenia Pier Return is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -5203,7 +4858,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mayıs–Ekim (Tekne & Deniz)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -5212,7 +4867,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "May–October (Boat & Sea)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -5231,8 +4886,7 @@ export const rawRoutes: RawRouteItem[] = [
       "food",
       "coast"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "40–60 km",
     "duration": {
       "tr": "Yarım–tam gün",
       "en": "Half to full day"
@@ -5274,7 +4928,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Koruçam Köy Meydanı",
           "description": "Koruçam Köy Meydanı, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -5282,7 +4935,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. George Maronit Katedrali",
           "description": "St. George Maronit Katedrali, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -5290,7 +4942,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Geleneksel Maronit Yemek Durağı",
           "description": "Geleneksel Maronit Yemek Durağı, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -5298,7 +4949,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Koruçam Sahili",
           "description": "Koruçam Sahili, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -5306,7 +4956,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kormakitis Burnu",
           "description": "Kormakitis Burnu, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -5316,7 +4965,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Koruçam Village Square",
           "description": "Koruçam Village Square is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -5324,7 +4972,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. George Maronite Cathedral",
           "description": "St. George Maronite Cathedral is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -5332,7 +4979,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Traditional Maronite Tavern Lunch",
           "description": "Traditional Maronite Tavern Lunch is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -5340,7 +4986,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Koruçam Coastal Shore",
           "description": "Koruçam Coastal Shore is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -5348,7 +4993,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cape Kormakitis Lighthouse Edge",
           "description": "Cape Kormakitis Lighthouse Edge is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -5356,7 +5000,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Hafta Sonu & Bahar)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -5365,7 +5009,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (Weekends & Spring)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -5384,8 +5028,7 @@ export const rawRoutes: RawRouteItem[] = [
       "food",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "20–30 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -5424,7 +5067,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "LAÜ Kampüsü",
           "description": "LAÜ Kampüsü, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -5432,7 +5074,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke Merkez",
           "description": "Lefke Merkez, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -5440,7 +5081,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Aphrodite Sahil Restoranı",
           "description": "Aphrodite Sahil Restoranı, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -5448,7 +5088,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sahil Yürüyüşü",
           "description": "Sahil Yürüyüşü, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -5456,7 +5095,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gün Batımı Noktası",
           "description": "Gün Batımı Noktası, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -5466,7 +5104,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "EUL University Campus",
           "description": "EUL University Campus is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -5474,7 +5111,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke Historic Center",
           "description": "Lefke Historic Center is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -5482,7 +5118,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Aphrodite Beachfront Restaurant",
           "description": "Aphrodite Beachfront Restaurant is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -5490,7 +5125,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sunset Sea Walkway",
           "description": "Sunset Sea Walkway is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -5498,7 +5132,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Western Horizon Sunset Point",
           "description": "Western Horizon Sunset Point is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -5506,7 +5139,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mayıs–Ekim (Sahil & Kampüs)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -5515,7 +5148,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "May–October (Coast & Campus)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -5534,8 +5167,7 @@ export const rawRoutes: RawRouteItem[] = [
       "history",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "50–70 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -5577,7 +5209,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Buffavento Kalesi",
           "description": "Buffavento Kalesi, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -5585,7 +5216,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Alevkaya Piknik Alanı",
           "description": "Alevkaya Piknik Alanı, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -5593,7 +5223,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sourp Magar Ermeni Manastırı",
           "description": "Sourp Magar Ermeni Manastırı, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -5601,7 +5230,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Antiphonitis Kilisesi",
           "description": "Antiphonitis Kilisesi, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -5609,7 +5237,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Esentepe Dağ Seyir Noktası",
           "description": "Esentepe Dağ Seyir Noktası, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -5619,7 +5246,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Buffavento Mountain Fortress",
           "description": "Buffavento Mountain Fortress is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -5627,7 +5253,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Alevkaya Forest Picnic Grounds",
           "description": "Alevkaya Forest Picnic Grounds is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -5635,7 +5260,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sourp Magar Armenian Monastery",
           "description": "Sourp Magar Armenian Monastery is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -5643,7 +5267,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Antiphonitis Byzantine Church",
           "description": "Antiphonitis Byzantine Church is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -5651,7 +5274,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Esentepe Mountain Ridge Lookout",
           "description": "Esentepe Mountain Ridge Lookout is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -5659,7 +5281,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Mayıs & Eylül–Kasım",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -5668,7 +5290,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–May & September–November",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -5686,8 +5308,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "60–85 km",
     "duration": {
       "tr": "Yarım–tam gün",
       "en": "Half to full day"
@@ -5729,7 +5350,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Değirmenlik Orman Girişi",
           "description": "Değirmenlik Orman Girişi, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -5737,7 +5357,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Beşparmak Sırt Yolu",
           "description": "Beşparmak Sırt Yolu, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -5745,7 +5364,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Panoramik Seyir Noktası",
           "description": "Panoramik Seyir Noktası, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -5753,7 +5371,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Orman Piknik Alanı",
           "description": "Orman Piknik Alanı, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -5761,7 +5378,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Herbaryum (Alevkaya)",
           "description": "Herbaryum (Alevkaya), Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -5769,7 +5385,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Köy Kafesi",
           "description": "Köy Kafesi, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -5779,7 +5394,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Değirmenlik Forest Trailhead",
           "description": "Değirmenlik Forest Trailhead is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -5787,7 +5401,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Beşparmak Crest Mountain Road",
           "description": "Beşparmak Crest Mountain Road is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -5795,7 +5408,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dual-Sea High Viewpoint",
           "description": "Dual-Sea High Viewpoint is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -5803,7 +5415,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Pine Forest Picnic Glade",
           "description": "Pine Forest Picnic Glade is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -5811,7 +5422,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Alevkaya Herbarium & Botanical Station",
           "description": "Alevkaya Herbarium & Botanical Station is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -5819,7 +5429,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Traditional Mountain Village Cafe",
           "description": "Traditional Mountain Village Cafe is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -5827,7 +5436,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Kasım (Serin Dağ Havası)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -5836,7 +5445,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–November (Cool Mountain Air)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -5854,8 +5463,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "35–50 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -5895,7 +5503,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Geçitköy Barajı",
           "description": "Geçitköy Barajı, Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -5903,7 +5510,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Çam Ormanı Patikası",
           "description": "Çam Ormanı Patikası, Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -5911,7 +5517,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Geçitköy Köyü (Taş Evler)",
           "description": "Geçitköy Köyü (Taş Evler), Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -5919,7 +5524,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Piknik Alanı",
           "description": "Piknik Alanı, Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -5927,7 +5531,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Panoramik Baraj Manzarası",
           "description": "Panoramik Baraj Manzarası, Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -5937,7 +5540,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Geçitköy Reservoir Dam",
           "description": "Geçitköy Reservoir Dam is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -5945,7 +5547,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Pine Forest Nature Trail",
           "description": "Pine Forest Nature Trail is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -5953,7 +5554,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Geçitköy Stone Village",
           "description": "Geçitköy Stone Village is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -5961,7 +5561,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lakeside Picnic Area",
           "description": "Lakeside Picnic Area is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -5969,7 +5568,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Panoramic Dam Lookout",
           "description": "Panoramic Dam Lookout is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -5977,7 +5575,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Şubat–Mayıs (Yeşil Doğa Sezonu)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -5986,7 +5584,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "February–May (Lush Green Season)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -6004,8 +5602,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "scenic"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "25–35 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -6044,7 +5641,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Anıtsal Zeytinlik",
           "description": "Anıtsal Zeytinlik, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -6052,7 +5648,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Çoban Mağarası",
           "description": "Çoban Mağarası, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -6060,7 +5655,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kalkanlı Vadi Manzarası",
           "description": "Kalkanlı Vadi Manzarası, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -6068,7 +5662,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "ODTÜ Kampüs Alanı",
           "description": "ODTÜ Kampüs Alanı, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -6076,7 +5669,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Anı Ağaçları Dinlenme Noktası",
           "description": "Anı Ağaçları Dinlenme Noktası, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         }
@@ -6086,7 +5678,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Monumental Olive Grove Sanctuary",
           "description": "Monumental Olive Grove Sanctuary is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -6094,7 +5685,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Shepherd’s Cave",
           "description": "Shepherd’s Cave is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -6102,7 +5692,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kalkanlı Valley Viewpoint",
           "description": "Kalkanlı Valley Viewpoint is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -6110,7 +5699,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "METU NCC Green Grounds",
           "description": "METU NCC Green Grounds is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -6118,7 +5706,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Heritage Trees Rest Spot",
           "description": "Heritage Trees Rest Spot is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         }
@@ -6126,7 +5713,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Ekim–Mayıs (Zeytin & Yaban Çiçeği)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -6135,7 +5722,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "October–May (Olive & Wildflowers)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -6154,8 +5741,7 @@ export const rawRoutes: RawRouteItem[] = [
       "food",
       "nature"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "15–25 km",
     "duration": {
       "tr": "Yarım gün",
       "en": "Half day"
@@ -6194,7 +5780,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Beylerbeyi Köy Meydanı",
           "description": "Beylerbeyi Köy Meydanı, Beylerbeyi Zanaat & Zeytinlik Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -6202,7 +5787,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Çalışan Çömlek Atölyesi",
           "description": "Çalışan Çömlek Atölyesi, Beylerbeyi Zanaat & Zeytinlik Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -6210,7 +5794,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Zeytinlikler",
           "description": "Zeytinlikler, Beylerbeyi Zanaat & Zeytinlik Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -6218,7 +5801,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Köy Öğle Yemeği Durağı",
           "description": "Köy Öğle Yemeği Durağı, Beylerbeyi Zanaat & Zeytinlik Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         }
@@ -6228,7 +5810,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Beylerbeyi Village Square",
           "description": "Beylerbeyi Village Square is an essential milestone along the Beylerbeyi Artisan Pottery & Village Olive Groves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -6236,7 +5817,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Working Artisan Pottery Studio",
           "description": "Working Artisan Pottery Studio is an essential milestone along the Beylerbeyi Artisan Pottery & Village Olive Groves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -6244,7 +5824,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ancient Village Olive Groves",
           "description": "Ancient Village Olive Groves is an essential milestone along the Beylerbeyi Artisan Pottery & Village Olive Groves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -6252,7 +5831,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Village Meze Tavern Lunch",
           "description": "Village Meze Tavern Lunch is an essential milestone along the Beylerbeyi Artisan Pottery & Village Olive Groves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         }
@@ -6260,7 +5838,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Tüm Yıl (Ekim Zeytin Festivali)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -6269,7 +5847,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "All Year (October Olive Festival)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -6287,8 +5865,7 @@ export const rawRoutes: RawRouteItem[] = [
       "history",
       "food"
     ],
-    "rating": 5,
-    "distance": "35–65 km",
+    "distance": "45–65 km",
     "duration": {
       "tr": "Tam gün",
       "en": "Full day"
@@ -6328,7 +5905,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karmi Köyü",
           "description": "Karmi Köyü, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
@@ -6336,7 +5912,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ozanköy",
           "description": "Ozanköy, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
@@ -6344,7 +5919,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Çatalköy",
           "description": "Çatalköy, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
@@ -6352,7 +5926,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Tepebaşı (Lale Köyü)",
           "description": "Tepebaşı (Lale Köyü), Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
@@ -6360,7 +5933,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sadrazamköy",
           "description": "Sadrazamköy, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
@@ -6368,7 +5940,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Koruçam",
           "description": "Koruçam, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
           "visitTime": "30–60 dakika",
-          "tip": "Fotoğraf çekmek için erken sabah veya gün batımı saatlerini tercih edin. Çevredeki yerel kahvehanelerde mola vermeyi unutmayın.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         }
@@ -6378,7 +5949,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karmi (Karaman) Picturesque Village",
           "description": "Karmi (Karaman) Picturesque Village is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
@@ -6386,7 +5956,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ozanköy Historic Quarter",
           "description": "Ozanköy Historic Quarter is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
@@ -6394,7 +5963,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Çatalköy Foothills",
           "description": "Çatalköy Foothills is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
@@ -6402,7 +5970,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Tepebaşı (Tulip Village)",
           "description": "Tepebaşı (Tulip Village) is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
@@ -6410,7 +5977,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sadrazamköy Rural Outpost",
           "description": "Sadrazamköy Rural Outpost is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
@@ -6418,7 +5984,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Koruçam Traditional Settlement",
           "description": "Koruçam Traditional Settlement is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
           "visitTime": "30–60 mins",
-          "tip": "Arrive early morning or late afternoon for the softest photography light and fewer crowds. Be sure to stop by local village cafes nearby.",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         }
@@ -6426,7 +5991,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar (Nisan–Haziran) & Sonbahar (Eylül–Kasım)",
+        "bestSeason": "Mart–Kasım (Köy Yaşamı)",
         "parking": "Durakların büyük bölümünde rahat ve ücretsiz park alanları mevcuttur.",
         "entranceFees": "Çoğu durak ücretsiz; tarihi alanlarda cüzi müze kart / giriş ücreti uygulanır.",
         "fuelStations": "Şehir merkezlerinde yaygın; kırsal ve dağlık geçişlerden önce deponuzu doldurunuz.",
@@ -6435,7 +6000,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Kişisel veya kiralık araçla seyahat edilmesi tavsiye edilir."
       },
       "en": {
-        "bestSeason": "Spring (April–June) & Autumn (September–November)",
+        "bestSeason": "March–November (Village Life)",
         "parking": "Ample and free parking available at most stops and scenic viewpoints.",
         "entranceFees": "Most natural sites are free; nominal admissions for selected historical museums.",
         "fuelStations": "Abundant in urban hubs; refill before venturing into rural mountain stretches.",
@@ -6454,8 +6019,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "history"
     ],
-    "rating": 5,
-    "distance": "150–350 km",
+    "distance": "380–480 km",
     "duration": {
       "tr": "3–5 gün",
       "en": "3–5 Days"
@@ -6497,7 +6061,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Girne (Liman & Bellapais)",
           "description": "Girne (Liman & Bellapais), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 1",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -6512,7 +6075,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dağlar (Üç Kale)",
           "description": "Dağlar (Üç Kale), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 2",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -6520,7 +6082,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Gazimağusa (Salamis & Surlar)",
           "description": "Gazimağusa (Salamis & Surlar), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -6536,7 +6097,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz (Altınkum & Zafer Burnu)",
           "description": "Karpaz (Altınkum & Zafer Burnu), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 4",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -6551,7 +6111,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Batı (Antik Kentler)",
           "description": "Batı (Antik Kentler), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -6567,7 +6126,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia (Old Harbour & Bellapais Abbey)",
           "description": "Kyrenia (Old Harbour & Bellapais Abbey) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 1",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -6582,7 +6140,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Mountains (Three Crusader Fortresses)",
           "description": "Kyrenia Mountains (Three Crusader Fortresses) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 2",
           "driveTime": "Scenic regional drive"
         },
@@ -6590,7 +6147,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Famagusta (Ancient Salamis & Venetian Ramparts)",
           "description": "Famagusta (Ancient Salamis & Venetian Ramparts) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -6606,7 +6162,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz Peninsula (Golden Beach & Cape Zafer)",
           "description": "Karpaz Peninsula (Golden Beach & Cape Zafer) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 4",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -6621,7 +6176,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "West Coast (Ancient Soli & Vouni Palace)",
           "description": "West Coast (Ancient Soli & Vouni Palace) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -6635,7 +6189,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar ve Sonbahar ayları idealdir.",
+        "bestSeason": "Nisan–Haziran & Eylül–Kasım",
         "parking": "Otel ve duraklarda geniş park imkanları bulunmaktadır.",
         "entranceFees": "Güzergahtaki tarihi ve kültürel duraklara göre değişkenlik gösterir.",
         "fuelStations": "Bölge geçişlerinde ana otoyollardaki istasyonları tercih ediniz.",
@@ -6644,7 +6198,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Özel veya kiralık araçla keşfedilmesi zorunludur."
       },
       "en": {
-        "bestSeason": "Spring and Autumn provide perfect road-tripping weather.",
+        "bestSeason": "April–June & September–November",
         "parking": "Comfortable parking facilities at hotels and key itinerary waypoints.",
         "entranceFees": "Varies according to historic museums and heritage landmarks visited.",
         "fuelStations": "Refuel at main highway junctions between regional crossings.",
@@ -6663,8 +6217,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "history"
     ],
-    "rating": 5,
-    "distance": "150–350 km",
+    "distance": "180–240 km",
     "duration": {
       "tr": "2–3 gün",
       "en": "2–3 Days"
@@ -6704,7 +6257,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Girne Limanı Kahvaltı",
           "description": "Girne Limanı Kahvaltı, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 1",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -6719,7 +6271,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bellapais Köyü",
           "description": "Bellapais Köyü, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 2",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -6734,7 +6285,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Zeytinlik Köyü",
           "description": "Zeytinlik Köyü, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -6742,7 +6292,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke & Vouni",
           "description": "Lefke & Vouni, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 4",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -6757,7 +6306,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Değirmenlik Meze Öğle Yemeği",
           "description": "Değirmenlik Meze Öğle Yemeği, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş"
         }
@@ -6767,7 +6315,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Waterfront Breakfast",
           "description": "Kyrenia Waterfront Breakfast is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 1",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -6782,7 +6329,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bellapais Village Heritage Dining",
           "description": "Bellapais Village Heritage Dining is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 2",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -6797,7 +6343,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Zeytinlik Olive & Halloumi Farm",
           "description": "Zeytinlik Olive & Halloumi Farm is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive"
         },
@@ -6805,7 +6350,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lefke Citrus Orchards & Sea Taverns",
           "description": "Lefke Citrus Orchards & Sea Taverns is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 4",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -6820,7 +6364,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Değirmenlik Traditional Meze Feast",
           "description": "Değirmenlik Traditional Meze Feast is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive"
         }
@@ -6828,7 +6371,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar ve Sonbahar ayları idealdir.",
+        "bestSeason": "Tüm Yıl (İlkbahar & Sonbahar İdeal)",
         "parking": "Otel ve duraklarda geniş park imkanları bulunmaktadır.",
         "entranceFees": "Güzergahtaki tarihi ve kültürel duraklara göre değişkenlik gösterir.",
         "fuelStations": "Bölge geçişlerinde ana otoyollardaki istasyonları tercih ediniz.",
@@ -6837,7 +6380,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Özel veya kiralık araçla keşfedilmesi zorunludur."
       },
       "en": {
-        "bestSeason": "Spring and Autumn provide perfect road-tripping weather.",
+        "bestSeason": "All Year (Spring & Fall Ideal)",
         "parking": "Comfortable parking facilities at hotels and key itinerary waypoints.",
         "entranceFees": "Varies according to historic museums and heritage landmarks visited.",
         "fuelStations": "Refuel at main highway junctions between regional crossings.",
@@ -6856,8 +6399,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "history"
     ],
-    "rating": 5,
-    "distance": "150–350 km",
+    "distance": "85–120 km",
     "duration": {
       "tr": "1–2 gün",
       "en": "1–2 Days"
@@ -6898,7 +6440,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cemsa Karting (Ortaköy)",
           "description": "Cemsa Karting (Ortaköy), Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 1",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -6906,7 +6447,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lapta Resif Dalışı",
           "description": "Lapta Resif Dalışı, Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 2",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -6914,7 +6454,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "ATV / Buggy Safari",
           "description": "ATV / Buggy Safari, Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -6922,7 +6461,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Hilarion Seyir",
           "description": "St. Hilarion Seyir, Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 4",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -6935,7 +6473,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Escape Beach Gün Batımı",
           "description": "Escape Beach Gün Batımı, Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş"
         }
@@ -6945,7 +6482,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cemsa International Karting Circuit",
           "description": "Cemsa International Karting Circuit is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 1",
           "driveTime": "Scenic regional drive"
         },
@@ -6953,7 +6489,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lapta Reef Scuba Diving Spot",
           "description": "Lapta Reef Scuba Diving Spot is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 2",
           "driveTime": "Scenic regional drive"
         },
@@ -6961,7 +6496,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Mountain Foothills ATV Buggy Trail",
           "description": "Mountain Foothills ATV Buggy Trail is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive"
         },
@@ -6969,7 +6503,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Hilarion High Peak Lookout",
           "description": "St. Hilarion High Peak Lookout is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 4",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -6982,7 +6515,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Escape Beach Sunset Chill & Water Sports",
           "description": "Escape Beach Sunset Chill & Water Sports is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive"
         }
@@ -6990,7 +6522,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar ve Sonbahar ayları idealdir.",
+        "bestSeason": "Mayıs–Ekim (Açık Hava & Su Sporu)",
         "parking": "Otel ve duraklarda geniş park imkanları bulunmaktadır.",
         "entranceFees": "Güzergahtaki tarihi ve kültürel duraklara göre değişkenlik gösterir.",
         "fuelStations": "Bölge geçişlerinde ana otoyollardaki istasyonları tercih ediniz.",
@@ -6999,7 +6531,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Özel veya kiralık araçla keşfedilmesi zorunludur."
       },
       "en": {
-        "bestSeason": "Spring and Autumn provide perfect road-tripping weather.",
+        "bestSeason": "May–October (Outdoor & Watersports)",
         "parking": "Comfortable parking facilities at hotels and key itinerary waypoints.",
         "entranceFees": "Varies according to historic museums and heritage landmarks visited.",
         "fuelStations": "Refuel at main highway junctions between regional crossings.",
@@ -7018,8 +6550,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "history"
     ],
-    "rating": 5,
-    "distance": "150–350 km",
+    "distance": "30–45 km",
     "duration": {
       "tr": "1 gün",
       "en": "1 Day"
@@ -7059,7 +6590,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ocean Akvaryum",
           "description": "Ocean Akvaryum, Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 1",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -7067,7 +6597,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Girne Marina Tekne Turu",
           "description": "Girne Marina Tekne Turu, Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 2",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -7082,7 +6611,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Escape Beach (Sığ Koy)",
           "description": "Escape Beach (Sığ Koy), Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -7090,7 +6618,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Lunapark",
           "description": "Lunapark, Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 4",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -7098,7 +6625,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Dondurma Kafesi",
           "description": "Dondurma Kafesi, Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş"
         }
@@ -7108,7 +6634,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Ocean Aquarium & Marine Exhibits",
           "description": "Ocean Aquarium & Marine Exhibits is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 1",
           "driveTime": "Scenic regional drive"
         },
@@ -7116,7 +6641,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Harbour Family Boat Tour",
           "description": "Kyrenia Harbour Family Boat Tour is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 2",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -7131,7 +6655,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Escape Beach Safe Shallow Cove",
           "description": "Escape Beach Safe Shallow Cove is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive"
         },
@@ -7139,7 +6662,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kyrenia Seaside Amusement Park",
           "description": "Kyrenia Seaside Amusement Park is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 4",
           "driveTime": "Scenic regional drive"
         },
@@ -7147,7 +6669,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Traditional Ice Cream Parlour",
           "description": "Traditional Ice Cream Parlour is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive"
         }
@@ -7155,7 +6676,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar ve Sonbahar ayları idealdir.",
+        "bestSeason": "Mayıs–Ekim (Aile & Plaj)",
         "parking": "Otel ve duraklarda geniş park imkanları bulunmaktadır.",
         "entranceFees": "Güzergahtaki tarihi ve kültürel duraklara göre değişkenlik gösterir.",
         "fuelStations": "Bölge geçişlerinde ana otoyollardaki istasyonları tercih ediniz.",
@@ -7164,7 +6685,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Özel veya kiralık araçla keşfedilmesi zorunludur."
       },
       "en": {
-        "bestSeason": "Spring and Autumn provide perfect road-tripping weather.",
+        "bestSeason": "May–October (Family & Beach)",
         "parking": "Comfortable parking facilities at hotels and key itinerary waypoints.",
         "entranceFees": "Varies according to historic museums and heritage landmarks visited.",
         "fuelStations": "Refuel at main highway junctions between regional crossings.",
@@ -7183,8 +6704,7 @@ export const rawRoutes: RawRouteItem[] = [
       "nature",
       "history"
     ],
-    "rating": 5,
-    "distance": "150–350 km",
+    "distance": "120–160 km",
     "duration": {
       "tr": "1 gün",
       "en": "1 Day"
@@ -7225,7 +6745,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Hilarion Seyir Noktası",
           "description": "St. Hilarion Seyir Noktası, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 1",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -7238,7 +6757,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bellapais Terası",
           "description": "Bellapais Terası, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 2",
           "driveTime": "Bölgesel Geçiş",
           "images": [
@@ -7253,7 +6771,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sadrazamköy Gün Batımı",
           "description": "Sadrazamköy Gün Batımı, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -7261,7 +6778,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Kormakitis Burnu",
           "description": "Kormakitis Burnu, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 4",
           "driveTime": "Bölgesel Geçiş"
         },
@@ -7269,7 +6785,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz Gece Göğü",
           "description": "Karpaz Gece Göğü, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
           "visitTime": "Yarım–Tam gün",
-          "tip": "Fotoğraf çekimi ve yerel keşifler için geniş vakit ayırınız.",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş"
         }
@@ -7279,7 +6794,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "St. Hilarion Golden Hour Pinnacle",
           "description": "St. Hilarion Golden Hour Pinnacle is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 1",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -7292,7 +6806,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Bellapais Blue Hour Terrace",
           "description": "Bellapais Blue Hour Terrace is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 2",
           "driveTime": "Scenic regional drive",
           "images": [
@@ -7307,7 +6820,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Sadrazamköy Western Cape Sunset",
           "description": "Sadrazamköy Western Cape Sunset is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive"
         },
@@ -7315,7 +6827,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Cape Kormakitis Dusk Horizon",
           "description": "Cape Kormakitis Dusk Horizon is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 4",
           "driveTime": "Scenic regional drive"
         },
@@ -7323,7 +6834,6 @@ export const rawRoutes: RawRouteItem[] = [
           "name": "Karpaz Wilderness Dark Sky Stargazing",
           "description": "Karpaz Wilderness Dark Sky Stargazing is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
           "visitTime": "Half to Full day",
-          "tip": "Allow ample time for photography, local dining, and hidden gem exploration.",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive"
         }
@@ -7331,7 +6841,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "practicalInfo": {
       "tr": {
-        "bestSeason": "İlkbahar ve Sonbahar ayları idealdir.",
+        "bestSeason": "Haziran–Eylül (Açık Gökyüzü)",
         "parking": "Otel ve duraklarda geniş park imkanları bulunmaktadır.",
         "entranceFees": "Güzergahtaki tarihi ve kültürel duraklara göre değişkenlik gösterir.",
         "fuelStations": "Bölge geçişlerinde ana otoyollardaki istasyonları tercih ediniz.",
@@ -7340,7 +6850,7 @@ export const rawRoutes: RawRouteItem[] = [
         "publicTransport": "Özel veya kiralık araçla keşfedilmesi zorunludur."
       },
       "en": {
-        "bestSeason": "Spring and Autumn provide perfect road-tripping weather.",
+        "bestSeason": "June–September (Clear Night Skies)",
         "parking": "Comfortable parking facilities at hotels and key itinerary waypoints.",
         "entranceFees": "Varies according to historic museums and heritage landmarks visited.",
         "fuelStations": "Refuel at main highway junctions between regional crossings.",
@@ -7377,7 +6887,6 @@ export function getRoutes(lang: Locale = "tr"): Route[] {
     heroImage: r.heroImage,
     duration: isTr ? r.duration.tr : r.duration.en,
     distance: r.distance,
-    rating: r.rating || 5,
     mapEmbedUrl: r.mapEmbedUrl,
     intro: isTr ? r.intro.tr : r.intro.en,
     insiderTip: isTr ? r.insiderTip.tr : r.insiderTip.en,

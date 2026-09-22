@@ -24,14 +24,14 @@ const SLIDE_METADATA: Record<
   en: [
     { region: "Kyrenia / Girne", landmark: "Old Venetian Harbour & Castle" },
     { region: "Karpaz Peninsula", landmark: "Golden Beach & Wild Coast" },
-    { region: "Famagusta / Gazimağusa", landmark: "Ancient Walled City Ruins" },
-    { region: "Nicosia / Lefkoşa", landmark: "Historic Old Town & Venetian Walls" },
+    { region: "Famagusta / Gazimağusa", landmark: "Ancient Salamis & Roman Columns" },
+    { region: "Nicosia / Lefkoşa", landmark: "Büyük Han & Historic Walled City" },
   ],
   tr: [
     { region: "Girne", landmark: "Tarihi Venedik Limanı ve Kalesi" },
     { region: "Karpaz Yarımadası", landmark: "Altın Kumsal ve Vahşi Sahil" },
-    { region: "Gazimağusa", landmark: "Tarihi Surlar ve Antik Kalıntılar" },
-    { region: "Lefkoşa", landmark: "Tarihi Surlar ve Eski Şehir" },
+    { region: "Gazimağusa", landmark: "Salamis Antik Kenti ve Sütunları" },
+    { region: "Lefkoşa", landmark: "Büyük Han ve Tarihi Surlar" },
   ],
 };
 

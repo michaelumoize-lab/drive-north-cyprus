@@ -38,9 +38,9 @@ export default function Footer() {
               <Image
                 src={LOGO}
                 alt="Drive North Cyprus - Kuzey Kıbrıs Yol Rehberi"
-                width={140}
-                height={88}
-                className="h-12 w-auto"
+                width={240}
+                height={80}
+                className="h-16 sm:h-18 w-auto object-contain"
                 priority
               />
             </Link>
@@ -204,14 +204,6 @@ export default function Footer() {
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Beşparmak Dağları & Köyler" : "Mountains & Villages"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`${routesHref}?region=signature`}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {lang === "tr" ? "İmza Ada Turları (Çok Günlük)" : "Signature Multi-Day Tours"}
                 </Link>
               </li>
             </ul>

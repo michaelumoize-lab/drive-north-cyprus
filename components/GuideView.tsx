@@ -85,12 +85,16 @@ export function GuideView({ lang }: { lang: Locale }) {
               </h3>
               <ul className="mt-2 space-y-1 text-sm text-amber-700 dark:text-amber-400">
                 <li>
-                  {lang === "tr" ? "Acil Yardım (Polis, Ambulans, İtfaiye): " : "Emergency Services (Police, Ambulance, Fire): "}
+                  {lang === "tr" ? "Ambulans / Sağlık İmdat: " : "Ambulance / Medical Emergency: "}
                   <strong>112</strong>
                 </li>
                 <li>
-                  {lang === "tr" ? "Polis İmdat: " : "Police: "}
+                  {lang === "tr" ? "Polis İmdat: " : "Police Emergency: "}
                   <strong>155</strong>
+                </li>
+                <li>
+                  {lang === "tr" ? "İtfaiye: " : "Fire Brigade: "}
+                  <strong>199</strong>
                 </li>
                 <li>
                   {lang === "tr" ? "Orman Yangın İhbar: " : "Forest Fire Hotline: "}

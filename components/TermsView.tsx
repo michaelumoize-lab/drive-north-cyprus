@@ -1,45 +1,30 @@
 // components/TermsView.tsx
 import Image from "next/image";
-import Link from "next/link";
-import { FileText, Mail, ArrowLeft, AlertTriangle } from "lucide-react";
+import { FileText, Mail, AlertTriangle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Locale, getDictionary } from "@/lib/i18n";
 
 export function TermsView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
-  const homeHref = lang === "tr" ? "/" : "/en/";
 
   return (
     <main className="min-h-screen bg-background">
       {/* Hero with scenic background image */}
-      <section className="relative py-16 sm:py-20 md:py-24 bg-black overflow-hidden border-b border-border/50">
+      <section className="relative py-16 sm:py-20 md:py-24 bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero-famagusta.jpg"
+            src="/images/hero-bg.jpg"
             alt={dict.terms.title}
             fill
             priority
             sizes="100vw"
             className="object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/65 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/60 to-black/40" />
         </div>
 
-        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-          <div className="mb-6">
-            <Link
-              href={homeHref}
-              className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 transition-all group shadow-sm"
-            >
-              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              <span>{dict.common.backToAllRoutes}</span>
-            </Link>
-          </div>
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="max-w-3xl text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium mb-4">
-              <FileText className="h-3.5 w-3.5 text-primary" />
-              <span className="text-white/90">{dict.terms.lastUpdated}</span>
-            </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white mb-4 tracking-tight drop-shadow-sm">
               {dict.terms.title}
             </h1>
@@ -51,7 +36,12 @@ export function TermsView({ lang }: { lang: Locale }) {
       </section>
 
       {/* Safety Notice Callout */}
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-10">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-10 space-y-6">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground font-medium">
+          <FileText className="h-3.5 w-3.5 text-primary" />
+          <span>{dict.terms.lastUpdated}</span>
+        </div>
+
         <div className="bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/60 rounded-xl p-6 sm:p-7 flex items-start gap-4">
           <AlertTriangle className="h-6 w-6 text-amber-600 dark:text-amber-500 flex-shrink-0 mt-0.5" />
           <div className="space-y-1 text-sm text-amber-900 dark:text-amber-200">

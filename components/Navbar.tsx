@@ -65,7 +65,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/65 transition-all duration-300">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo */}
         <Link
           href={homeHref}
@@ -74,9 +74,9 @@ export default function Navbar() {
           <Image
             src={LOGO}
             alt="Drive North Cyprus"
-            width={140}
-            height={88}
-            className="h-10 w-auto object-contain"
+            width={217}
+            height={73}
+            className="h-12 sm:h-14 w-auto object-contain"
             priority
           />
         </Link>
