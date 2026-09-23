@@ -136,7 +136,7 @@ export function RouteDetailView({
                   {dict.common.difficultyLevel}
                 </p>
                 <p className="text-sm sm:text-base font-heading font-bold text-foreground whitespace-nowrap">
-                  {dict.common.difficulty.moderate}
+                  {route.difficulty || dict.common.difficulty.moderate}
                 </p>
               </div>
             </div>

@@ -1,15 +1,12 @@
-// data/routes.ts
-import { Locale } from "@/lib/i18n";
+export type Locale = "tr" | "en";
 
 export interface RouteStop {
   name: string;
   description: string;
+  visitTime: string;
+  suggestedArrival: string;
+  driveTime: string;
   images?: string[];
-  visitTime?: string;
-  openingHours?: string;
-  entranceFee?: string;
-  suggestedArrival?: string;
-  driveTime?: string;
 }
 
 export interface PracticalInfo {
@@ -34,6 +31,7 @@ export interface Route {
   heroImage: string;
   duration: string;
   distance: string;
+  difficulty: string;
   mapEmbedUrl?: string;
   intro: string;
   suggestedStart?: string;
@@ -57,6 +55,7 @@ interface RawRouteItem {
   difficulty: { tr: string; en: string };
   startFinish: { tr: string; en: string };
   heroImage: string;
+  suggestedStart?: string;
   mapEmbedUrl?: string;
   title: { tr: string; en: string };
   subtitle: { tr: string; en: string };
@@ -76,7 +75,7 @@ interface RawRouteItem {
 export const rawRoutes: RawRouteItem[] = [
   {
     "id": "lef-oldcity",
-    "slug": "lef-oldcity",
+    "slug": "nicosia-old-city-loop",
     "region": "lefkosa",
     "themes": [
       "history"
@@ -88,28 +87,28 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "difficulty": {
       "tr": "Kolay (yürüyüş)",
-      "en": "Easy (walking)"
+      "en": "Easy (walk)"
     },
     "startFinish": {
       "tr": "Girne Kapısı",
-      "en": "Büyük Han & Kyrenia Gate"
+      "en": "Kyrenia Gate"
     },
     "heroImage": "/images/route-card-images/walled-city-culture.jpg",
     "title": {
       "tr": "Surlariçi Kültür & Sokak Yürüyüşü",
-      "en": "Walled City Culture & Historic Walking Loop"
+      "en": "Walled City Culture & Walking Tour"
     },
     "subtitle": {
       "tr": "Şehir kapılarından tarihi hanlara, çarşı sokaklarından meydanlara uzanan kompakt bir surlariçi rotası. Her şey yürüme mesafesinde.",
-      "en": "A compact walking tour stretching from historic city gates to caravanserais and lively bazaars. Everything within easy walking distance."
+      "en": "A compact walled city walk stretching from historic city gates to grand inns, bazaar lanes, and open squares. Everything within easy walking distance."
     },
     "intro": {
       "tr": "Şehir kapılarından tarihi hanlara, çarşı sokaklarından meydanlara uzanan kompakt bir surlariçi rotası. Her şey yürüme mesafesinde. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "A compact walking tour stretching from historic city gates to caravanserais and lively bazaars. Everything within easy walking distance. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A compact walled city walk stretching from historic city gates to grand inns, bazaar lanes, and open squares. Everything within easy walking distance. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Gün batımına doğru gidin — tur grupları dağılınca Selimiye'ye vuran altın ışık ve sessiz sokaklar şehrin en güzel atmosferini yaratır.",
-      "en": "Go towards sunset — once the tour groups disperse, the golden hour light hitting Selimiye and the quiet cobbled alleys create the city’s finest atmosphere."
+      "en": "Head out towards sunset — as the tour groups disperse, the warm golden light hitting the Selimiye Mosque and the quiet cobbled alleys create the city's finest atmosphere."
     },
     "proposers": [
       "E.A.",
@@ -127,79 +126,49 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Girne Kapısı",
-          "description": "Girne Kapısı, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Venedikliler tarafından 1567 yılında inşa edilen ve mimarı Kont Giulio Savorgnan'ın adıyla Porta del Proveditore olarak anılan Girne Kapısı, Lefkoşa'nın kuzey giriş kapısıdır. Osmanlı döneminde 1821 yılında üzerine eklenen kubbeli nöbetçi odası ve sur duvarlarındaki kitabelerle günümüzdeki halini almıştır. Kapının hemen yanındaki burç üzerinde Atatürk heykeli yer alır ve yapı günümüzde turizm danışma ofisi olarak hizmet verir. Surlariçi yürüyüş rotaları için kentin en tanınan ve pratik başlangıç noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/nicosia/kyrenia-gate/1.jpg",
-            "/images/routes/nicosia/kyrenia-gate/2.jpg",
-            "/images/routes/nicosia/kyrenia-gate/3.jpg",
-            "/images/routes/nicosia/kyrenia-gate/4.jpg",
-            "/images/routes/nicosia/kyrenia-gate/5.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Sarayönü / Atatürk Meydanı",
-          "description": "Sarayönü / Atatürk Meydanı, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lüzinyan ve Venedik dönemlerinden bu yana Lefkoşa'nın yönetsel merkezi sayılan Atatürk Meydanı, yerel adıyla Sarayönü olarak bilinir. Meydanın odak noktasında, 1489 yılında Salamis harabelerinden getirilerek dikilen ve üzerinde Venedik soylularının armalarını taşıyan granit Venedik Sütunu yükselir. Meydanı çevreleyen İngiliz sömürge dönemi mahkeme binaları, Osmanlı çeşmesi ve tarihi kahvehaneler, başkentin idari ve toplumsal geçmişinin yüzyıllar içindeki dönüşümünü gözler önüne serer.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Büyük Han",
-          "description": "Büyük Han, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıbrıs'ın fethinden hemen sonra, 1572 yılında Beylerbeyi Sinan Paşa tarafından inşa ettirilen Büyük Han, adadaki Osmanlı sivil mimarisinin en görkemli yapısıdır. İki katlı revaklarla çevrili geniş iç avlusunun ortasında, sütunlar üzerine oturtulmuş altıgen bir köşk mescit ve şadırvan yer alır. Geçmişte tüccarların konakladığı hücre odaları günümüzde geleneksel el sanatları atölyelerine, gölge oyunu sahnelerine ve Kıbrıs kahvesi sunan otantik avlu kafelerine ev sahipliği yapar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/nicosia/büyük-han/1.jpg",
-            "/images/routes/nicosia/büyük-han/2.jpg",
-            "/images/routes/nicosia/büyük-han/3.jpg",
-            "/images/routes/nicosia/büyük-han/4.jpg",
-            "/images/routes/nicosia/büyük-han/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Selimiye Camii",
-          "description": "Selimiye Camii, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "1209 ile 1326 yılları arasında Fransız Gotik üslubunda katedral olarak inşa edilen yapı, Lüzinyan krallarının taç giydiği Azize Sofya Katedrali'dir. 1571 yılında Osmanlı idaresine geçtikten sonra camiye dönüştürülmüş ve batı cephesine iki zarif minare eklenmiştir. Devasa sivri kemerleri, görkemli payandaları ve gül pencereleriyle Akdeniz havzasındaki en etkileyici Orta Çağ Gotik anıtlarından biridir. Yapı, Doğu ile Batı mimarlık geleneklerinin eşsiz bir sentezini sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/nicosia/selimiye-mosque/1.jpg",
-            "/images/routes/nicosia/selimiye-mosque/2.jpg",
-            "/images/routes/nicosia/selimiye-mosque/3.jpg",
-            "/images/routes/nicosia/selimiye-mosque/4.jpg",
-            "/images/routes/nicosia/selimiye-mosque/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Bandabuliya",
-          "description": "Bandabuliya, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefkoşa Belediye Pazarı olarak da bilinen Bandabuliya, İngiliz sömürge yönetimi döneminde 1930'lu yılların başında inşa edilmiş kapalı bir çarşıdır. Kesme taş mimarisi ve tonozlu geçitleriyle dikkat çeken mekan, kentin ticari hayatının yüzyıllık merkezidir. İçerisinde geleneksel hellim peyniri, ceviz macunu, zivaniya, taze baharatlar satan yerel dükkanların yanı sıra küçük zanaatkarlar ve sahne sanatları etkinliklerine ayrılmış kültürel alanlar yer alır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/nicosia/bandabuliya-market/1.jpg",
-            "/images/routes/nicosia/bandabuliya-market/2.jpg",
-            "/images/routes/nicosia/bandabuliya-market/3.jpg",
-            "/images/routes/nicosia/bandabuliya-market/4.jpg",
-            "/images/routes/nicosia/bandabuliya-market/5.jpg",
-            "/images/routes/nicosia/bandabuliya-market/6.jpg",
-            "/images/routes/nicosia/bandabuliya-market/7.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Arasta Sokağı",
-          "description": "Arasta Sokağı, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Selimiye Camii çevresinden Lokmacı sınır kapısına kadar uzanan Arasta Sokağı, Lefkoşa'nın en köklü ve hareketli tarihi çarşı aksıdır. Yayalaştırılmış taş döşeli sokak boyunca dizilen dükkanlarda geleneksel Lefkara işleri, deri zanaatları, el yapımı hediyelikler ve yerel tatlılar satılır. Tarih boyunca farklı zanaat kollarını barındıran arasta dokusu, günümüzde renkli gölgelikleri ve sokak kahveleriyle başkentin yaşayan gündelik kültürünü yansıtır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Samanbahçe Evleri",
-          "description": "Samanbahçe Evleri, Surlariçi Kültür & Sokak Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "19. yüzyılın sonlarında, 1898-1955 yılları arasında Evkaf İdaresi tarafından dar gelirli aileler için inşa edilen Samanbahçe, Kıbrıs'ın ilk toplu sosyal konut projesidir. Düzenli ızgara planı boyunca sıralanan tek katlı, sarı taştan yapılmış bitişik nizam evler ve yeşil panjurlu pencereler sakin bir mahalle atmosferi sunar. Yerleşkenin merkezinde kubbeli bir meydan çeşmesi yer alır; burası kentin gürültüsünden uzaklaşmak için ideal bir açık hava mimarlık durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 dk"
@@ -208,79 +177,49 @@ export const rawRoutes: RawRouteItem[] = [
       "en": [
         {
           "name": "Kyrenia Gate",
-          "description": "Kyrenia Gate is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Constructed by the Venetians in 1567 as Porta del Proveditore, the Kyrenia Gate served as the primary northern portal through Nicosia's massive fortified perimeter. The structure was modified under Ottoman rule in 1821 with the addition of a domed guardhouse and commemorative inscriptions. Situated beside a prominent bastion featuring an Atatürk memorial, it functions today as a municipal tourism information office and serves as the primary starting point for exploring the historic walled quarter.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/nicosia/kyrenia-gate/1.jpg",
-            "/images/routes/nicosia/kyrenia-gate/2.jpg",
-            "/images/routes/nicosia/kyrenia-gate/3.jpg",
-            "/images/routes/nicosia/kyrenia-gate/4.jpg",
-            "/images/routes/nicosia/kyrenia-gate/5.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Sarayönü / Atatürk Square",
-          "description": "Sarayönü / Atatürk Square is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Sarayönü / Atatürk Square (Venetian Column)",
+          "description": "Serving as the civic heart of Nicosia since the Lusignan and Venetian administrations, Atatürk Square is widely known by locals as Sarayönü. The center of the plaza is marked by the Venetian Column, a granite monument transported from the ancient ruins of Salamis in 1489 that bears carved coats of arms of noble Venetian families. Surrounded by British colonial-era judicial buildings and a classical Ottoman fountain, the square encapsulates the capital's multifaceted civic evolution.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "Büyük Han (Great Inn)",
-          "description": "Büyük Han (Great Inn) is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Built in 1572 by Lala Mustafa Pasha's successor, Sinan Pasha, shortly after the Ottoman capture of Cyprus, the Great Inn represents the pinnacle of Ottoman commercial architecture on the island. The imposing two-storey stone caravanserai features an expansive central courtyard anchored by an octagonal domed prayer kiosk elevated over a fountain. Former merchant lodging chambers now house traditional craft studios, shadow puppet exhibits, and shaded cafes serving authentic Cypriot coffee.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/nicosia/büyük-han/1.jpg",
-            "/images/routes/nicosia/büyük-han/2.jpg",
-            "/images/routes/nicosia/büyük-han/3.jpg",
-            "/images/routes/nicosia/büyük-han/4.jpg",
-            "/images/routes/nicosia/büyük-han/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
           "name": "Selimiye Mosque (St. Sophia Cathedral)",
-          "description": "Selimiye Mosque (St. Sophia Cathedral) is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Erected between 1209 and 1326 in French High Gothic style, this monumental complex originated as the Cathedral of Saint Sophia, where Lusignan kings were formally crowned. Converted into the city's principal mosque following the Ottoman conquest in 1571, the building retains soaring flying buttresses, pointed arcades, and a dramatic stone rose window, complemented by two distinctive minarets. It stands as one of the most prominent surviving Gothic masterworks in the Eastern Mediterranean basin.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/nicosia/selimiye-mosque/1.jpg",
-            "/images/routes/nicosia/selimiye-mosque/2.jpg",
-            "/images/routes/nicosia/selimiye-mosque/3.jpg",
-            "/images/routes/nicosia/selimiye-mosque/4.jpg",
-            "/images/routes/nicosia/selimiye-mosque/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
           "name": "Bandabuliya Municipal Market",
-          "description": "Bandabuliya Municipal Market is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Constructed during the British administration in the early 1930s, the Municipal Covered Market—known universally as the Bandabuliya—is an enduring anchor of urban commerce in northern Nicosia. Its vaulted stone halls contain traditional stalls offering artisanal halloumi cheese, fruit preserves, locally distilled spirits, and bulk herbs. Recent restoration has introduced multipurpose community venues and bookshops alongside generational tradesmen.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/nicosia/bandabuliya-market/1.jpg",
-            "/images/routes/nicosia/bandabuliya-market/2.jpg",
-            "/images/routes/nicosia/bandabuliya-market/3.jpg",
-            "/images/routes/nicosia/bandabuliya-market/4.jpg",
-            "/images/routes/nicosia/bandabuliya-market/5.jpg",
-            "/images/routes/nicosia/bandabuliya-market/6.jpg",
-            "/images/routes/nicosia/bandabuliya-market/7.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Arasta Pedestrian Street",
-          "description": "Arasta Pedestrian Street is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Arasta Bazaar Street",
+          "description": "Stretching from the Selimiye precinct south toward the Ledra Street pedestrian crossing, Arasta Street is the capital's historic bazaar corridor. Lined with independent shops beneath shaded awnings, the street offers handcrafted Lefkara lace, leatherware, copper vessels, and local confections. The pedestrian walkway preserves the lively character of traditional Cypriot urban trade, providing an intimate setting for walking, window shopping, and sampling street-level snacks.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Samanbahçe Traditional Quarter",
-          "description": "Samanbahçe Traditional Quarter is an essential milestone along the Walled City Culture & Historic Walking Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Samanbahçe Historic Quarter",
+          "description": "Developed between 1898 and 1955 by the Evkaf Administration, Samanbahçe represents the first planned social housing estate built in Cyprus. The compact neighborhood comprises continuous terraces of single-storey, honey-hued sandstone cottages organized along clean geometric lanes, shaded by bougainvillea. At the quarter's heart sits a central domed fountain where residents historically gathered, offering visitors an intimate look at vernacular domestic urban planning.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 min"
@@ -306,7 +245,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "lef-museums",
@@ -331,19 +271,19 @@ export const rawRoutes: RawRouteItem[] = [
     "heroImage": "/images/route-card-images/museums-and-ottoman-heritage-of-nicosia.jpg",
     "title": {
       "tr": "Müzeler & Osmanlı Mirası",
-      "en": "Museums & Ottoman Heritage of Nicosia"
+      "en": "Museums & Ottoman Heritage"
     },
     "subtitle": {
       "tr": "Mevlevi Tekke'den Derviş Paşa Konağı'na, Rüstem Kitabevi'nden Lüzinyan Evi'ne — başkentin katmanlı geçmişine odaklanan bir müze rotası.",
-      "en": "From Mevlevi Tekke to Dervish Pasha Mansion, Rüstem Bookshop, and Lusignan House — a deep dive into the capital’s layered history."
+      "en": "From the Mevlevi Tekke to Derviş Pasha Mansion, Rüstem Bookstore to the Lusignan House — a dedicated museum trail uncovering the layered heritage of the capital."
     },
     "intro": {
       "tr": "Mevlevi Tekke'den Derviş Paşa Konağı'na, Rüstem Kitabevi'nden Lüzinyan Evi'ne — başkentin katmanlı geçmişine odaklanan bir müze rotası. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "From Mevlevi Tekke to Dervish Pasha Mansion, Rüstem Bookshop, and Lusignan House — a deep dive into the capital’s layered history. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "From the Mevlevi Tekke to Derviş Pasha Mansion, Rüstem Bookstore to the Lusignan House — a dedicated museum trail uncovering the layered heritage of the capital. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Rüstem Kitabevi'nin arka bahçesindeki kafe, yürüyüş arası kahve molası için ideal ve çoğu turistin gözünden kaçar.",
-      "en": "The courtyard cafe tucked behind Rüstem Bookshop is ideal for a quiet coffee break between walking segments and is often missed by tourists."
+      "en": "The secluded courtyard café tucked behind Rüstem Bookstore is the perfect spot for a tranquil mid-walk coffee break, easily missed by most visitors."
     },
     "proposers": [
       "E.A.",
@@ -354,49 +294,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Girne Kapısı",
-          "description": "Girne Kapısı, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefkoşa surlarının kuzey ekseninde yer alan Girne Kapısı, 16. yüzyıl Venedik askeri mimarisinin sağlam bir örneğidir. Venediklilerin Porta del Proveditore olarak adlandırdığı kapı, Osmanlı idaresinde eklenen kubbeli üst yapı ve 1930'larda İngilizler tarafından açılan yan yol geçitleriyle kentin modern ulaşımına uyarlanmıştır. Müzeler ve Osmanlı mirası turu için ideal bir toplanma noktası olup, surlar üzerindeki stratejik konumu kentin savunma geçmişine ışık tutar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/nicosia/kyrenia-gate/1.jpg",
-            "/images/routes/nicosia/kyrenia-gate/2.jpg",
-            "/images/routes/nicosia/kyrenia-gate/3.jpg",
-            "/images/routes/nicosia/kyrenia-gate/4.jpg",
-            "/images/routes/nicosia/kyrenia-gate/5.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Mevlevi Tekke Müzesi",
-          "description": "Mevlevi Tekke Müzesi, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne Kapısı'nın hemen güneyinde yer alan Mevlevi Tekkesi, 17. yüzyılın başlarında inşa edilmiş adanın en önemli Tasavvuf merkezidir. Semahane, derviş odaları ve tekke şeyhlerine ait türbeleri barındıran yapı günümüzde etnografik bir müze olarak hizmet verir. Müzede derviş giysileri, ney ve kudüm gibi tasavvufi müzik aletleri, el yazması Kur'an nüshaları ve dervişlerin gündelik yaşamını canlandıran mankenler sergilenir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Derviş Paşa Etnografya Müzesi",
-          "description": "Derviş Paşa Etnografya Müzesi, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Tarihi Arabahmet Mahallesi'nde yer alan konak, Kıbrıs'ın ilk Türkçe gazetesi 'Zaman'ın yayıncısı Derviş Paşa'ya aitti. 19. yüzyıl Osmanlı konak mimarisini yansıtan iki katlı yapı, taş zeminli geniş avlusu, ahşap tavan işlemeleri ve tipik cumbasıyla korunmuştur. Müzede dönemin geleneksel ev yaşamını anlatan mutfak eşyaları, dokuma tezgahları, gelin giysileri ve ahşap oymacılığı örnekleri sergilenerek eski Lefkoşa burjuvazisinin gündelik yaşamı aktarılır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Rüstem Kitabevi",
-          "description": "Rüstem Kitabevi, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "1937 yılında Kemal Rüstem tarafından kurulan Rüstem Kitabevi, Kıbrıs'ın en köklü kültür ve edebiyat merkezidir. Tarihi bir Lefkoşa konağında yer alan mekan, nadir Kıbrıs kitapları, antika haritalar, sanat galerisi ve avlu kafesiyle kentin entelektüel buluşma noktasıdır. Ahşap merdivenleri, tavan freskleri ve sakin avlu bahçesi, ziyaretçilere hem edebiyat tarihiyle iç içe bir atmosfer hem de dinlendirici bir mola imkanı sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kumarcılar Hanı",
-          "description": "Kumarcılar Hanı, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "17. yüzyılın sonlarında inşa edilen Kumarcılar Hanı, Asmaaltı Meydanı'nda yer alan ve Büyük Han'a kıyasla daha küçük ölçekli tipik bir Osmanlı şehir içi kervansarayıdır. Özgün adı 'Hımarlar Hanı' (Eşekçiler Hanı) olan yapı, üst katta kemerli revaklara açılan misafir odaları ve zemin kattaki dükkanlardan oluşur. Titiz bir restorasyon sonrasında zanaat dükkanları, antikacılar ve yerel lezzetler sunan kafelerle yeniden kent yaşamına kazandırılmıştır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Lüzinyan Evi",
-          "description": "Lüzinyan Evi, Müzeler & Osmanlı Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yenicami Mahallesi'nde yer alan Lüzinyan Evi, 15. yüzyıl Lüzinyan Gotik mimarisinin karakteristik taş işçiliğini ve daha sonraki Osmanlı dönemi ahşap köşk eklemelerini bünyesinde birleştiren nadir bir konuttur. Giriş kapısındaki Lüzinyan kraliyet arması ve sivri kemerli pencereleri yapının aristokratik geçmişini gösterir. Müze evde Orta Çağ ve Osmanlı dönemine ait mobilyalar, giysiler ve günlük kullanım eşyaları sergilenmektedir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -405,49 +338,42 @@ export const rawRoutes: RawRouteItem[] = [
       "en": [
         {
           "name": "Kyrenia Gate",
-          "description": "Kyrenia Gate is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Positioned on the northern perimeter of Nicosia's Venetian walls, the Kyrenia Gate illustrates 16th-century Italian defensive masonry. Engineered as Porta del Proveditore, the gateway features later Ottoman inscriptions and a square masonry guard chamber topped by a dome. Serving as an orienting landmark for cultural explorers entering the walled city, it marks the gateway to the capital's historic dervish lodges, civic museums, and traditional Ottoman quarters.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/nicosia/kyrenia-gate/1.jpg",
-            "/images/routes/nicosia/kyrenia-gate/2.jpg",
-            "/images/routes/nicosia/kyrenia-gate/3.jpg",
-            "/images/routes/nicosia/kyrenia-gate/4.jpg",
-            "/images/routes/nicosia/kyrenia-gate/5.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
           "name": "Mevlevi Tekke Museum",
-          "description": "Mevlevi Tekke Museum is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Located just inside the Kyrenia Gate, this early 17th-century complex served as the premier Mevlevi Sufi lodge in Cyprus until the order was dissolved in the mid-20th century. Now curated as a museum, the complex retains its ceremonial whirling hall (semahane), residential dervish quarters, and domed mausoleum containing tombs of former sheikhs. Exhibits showcase musical instruments including reed flutes (ney), illuminated manuscripts, Sufi vestments, and ethnographic dioramas.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Dervish Pasha Ethnographic Museum",
-          "description": "Dervish Pasha Ethnographic Museum is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Derviş Pasha Ethnography Mansion",
+          "description": "Occupying a well-preserved 19th-century mansion in the historic Arabahmet quarter, this museum was once the estate of Derviş Pasha, publisher of Cyprus's first Turkish newspaper. The residence exemplifies late Ottoman domestic architecture with ground-floor stone arcades surrounding a secluded courtyard, leading up to an overhanging timber bay window (cumba). The interior displays period furnishings, bridal costumes, copper kitchenware, and looms depicting daily life in historic Nicosia.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Rüstem Bookshop & Cultural Courtyard",
-          "description": "Rüstem Bookshop & Cultural Courtyard is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Rüstem Historic Bookstore & Café",
+          "description": "Established in 1937 by Kemal Rüstem, this legendary institution is Cyprus's oldest operating bookstore and publisher. Set within a restored historic townhouse, it houses an extensive archive of Cypriot literature, rare antique maps, an upstairs art gallery, and a tranquil courtyard cafe. The venue remains an intellectual salon where literary history, visual arts, and specialty coffee converge in the center of the old city.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Kumarcılar Han (Gamblers Inn)",
-          "description": "Kumarcılar Han (Gamblers Inn) is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Kumarcılar Hanı (Gamblers' Inn)",
+          "description": "Dating to the late 17th century, the Gamblers' Inn—historically known as the Donkeys' Inn (Hımarlar Hanı)—is an intimate Ottoman urban caravanserai located on Asmaaltı Square. Built on a smaller scale than the nearby Büyük Han, it features two storeys of arched colonnades enclosing a central paved court. Following an extensive restoration, its upper chambers and street-facing shops now host artisan workshops, antique boutiques, and traditional coffeehouses.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Lusignan Medieval Mansion",
-          "description": "Lusignan Medieval Mansion is an essential milestone along the Museums & Ottoman Heritage of Nicosia. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Lusignan House Museum",
+          "description": "Located in the Yenicami neighborhood, the Lusignan House is a rare hybrid residence combining 15th-century French Gothic stone masonry with later Ottoman timber-framed additions. The facade preserves carved stone mouldings and a Gothic entrance portal bearing a medieval coat of arms. Inside, period rooms exhibit Lusignan-era archaeological fragments alongside Ottoman-era costumes, rugs, and decorative furnishings illustrating the layers of the capital's domestic history.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -473,7 +399,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "lef-modern",
@@ -495,24 +422,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Klasik Araba Müzesi (YDÜ)",
-      "en": "Dereboyu Avenue"
+      "en": "Classic Car Museum (NEU)"
     },
     "heroImage": "/images/route-card-images/modern-nicosia.jpg",
     "title": {
       "tr": "Modern Lefkoşa: Alışveriş, Müze & Gece",
-      "en": "Modern Nicosia: Shopping, Classic Cars & Zahra Street"
+      "en": "Modern Nicosia: Shopping, Museums & Nightlife"
     },
     "subtitle": {
       "tr": "Klasik Araba Müzesi'nden Dereboyu'nun sokak modasına, tarihi konaklardan çağdaş kafe ve barlara — başkentin eski ve yeni yüzü.",
-      "en": "From the Classic Car Museum to Dereboyu fashion street, historical mansions, and contemporary cafes — the vibrant faces of the capital."
+      "en": "From the Classic Car Museum to Dereboyu's street fashion, historic mansions, and contemporary cafés and cocktail bars — experience the dual rhythm of past and present."
     },
     "intro": {
       "tr": "Klasik Araba Müzesi'nden Dereboyu'nun sokak modasına, tarihi konaklardan çağdaş kafe ve barlara — başkentin eski ve yeni yüzü. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "From the Classic Car Museum to Dereboyu fashion street, historical mansions, and contemporary cafes — the vibrant faces of the capital. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "From the Classic Car Museum to Dereboyu's street fashion, historic mansions, and contemporary cafés and cocktail bars — experience the dual rhythm of past and present. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Dereboyu akşam üstü canlanır; gündüz alışveriş, akşam ise kafe-bar atmosferi için ideal. Zahra Sokak gece atmosferinin kalbi.",
-      "en": "Dereboyu comes alive in the late afternoon; ideal for daytime boutique shopping and evening cafe culture. Zahra Street is the true heartbeat of the old quarter at night."
+      "en": "Dereboyu truly comes alive late in the afternoon; visit for shopping by day and stay for the lively bistro vibe by night. Zahra Street is the buzzing heart of the evening scene."
     },
     "proposers": [
       "A.T.",
@@ -523,42 +450,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Klasik Araba Müzesi (YDÜ)",
-          "description": "Klasik Araba Müzesi (YDÜ), Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yakın Doğu Üniversitesi kampüsünde yer alan Kıbrıs Araba Müzesi, 19. yüzyılın sonlarından 20. yüzyılın sonlarına uzanan 150'den fazla klasik ve spor araca ev sahipliği yapar. Koleksiyonda 1899 model Crestmobile'dan başlayarak Model T Ford'lar, klasik Jaguar, Mercedes-Benz, Porsche ve nadir Amerikan muscle arabaları sergilenir. Hem otomotiv tarihinin teknik gelişimini hem de dönem modellerinin tasarım estetiğini gözler önüne seren kapsamlı bir koleksiyondur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Dereboyu Caddesi",
-          "description": "Dereboyu Caddesi, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Resmi adı Mehmet Akif Caddesi olan Dereboyu, modern Lefkoşa'nın ana alışveriş, yeme-içme ve sosyal yaşam merkezidir. Kanlıdere yatağına paralel uzanan bulvar boyunca uluslararası giyim markaları, üçüncü nesil kahveciler, füzyon restoranlar ve akşam saatlerinde canlanan barlar sıralanır. Kentin dinamik genç nüfusunun buluşma noktası olan cadde, günün her saati canlı bir kentsel ritim sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Surlariçi",
-          "description": "Surlariçi, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "16. yüzyıldan kalma dairesel Venedik surlarının çevrelediği Surlariçi bölgesi, Lefkoşa'nın tarihi çekirdeğini oluşturur. Dar labirent sokakları, sarı kesme taştan inşa edilmiş cumbalı konakları ve avlulu yapılarıyla modern kentin hareketinden tamamen farklı bir dünya sunar. Son yıllarda yapılan restorasyonlarla açılan tasarım atölyeleri, butik oteller ve sanat mekanlarıyla kültürel bir rönesans yaşamaktadır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Zahra Sokağı",
-          "description": "Zahra Sokağı, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Arabahmet Mahallesi boyunca Venedik surlarının batı yamacı üzerinde uzanan Zahra Sokağı, Lefkoşa'nın en gözde akşam yürüyüş ve gastronomi aksıdır. Bir tarafında tarihi cumbalı taş evler, diğer tarafında ise sur hendeğine bakan açık şehir manzarası uzanır. Canlı müzik yapan modern meyhaneleri, şarap evleri ve açık hava bistrolarıyla gün batımından gece geç saatlere kadar başkentin sosyal nabzını tutar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Mooi Cafe",
-          "description": "Mooi Cafe, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dereboyu'nun hareketli sokak dokusu içerisinde yer alan Mooi Cafe, çağdaş iç mekan tasarımı ve zengin menüsüyle öne çıkan popüler bir buluşma noktasıdır. Nitelikli kahve çeşitleri, taze pastane ürünleri, kahvaltı tabakları ve hafif öğle yemekleriyle hem dinlendirici bir kahve molası hem de açık hava terasında şehir akışını izleme fırsatı sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Sedo Ice Cream & Cakes",
-          "description": "Sedo Ice Cream & Cakes, Modern Lefkoşa: Alışveriş, Müze & Gece güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefkoşa'nın modern tatlı kültürünün bilinen adreslerinden biri olan Sedo, özellikle el yapımı dondurmaları, waffle tabakları ve taze pastalarıyla tanınır. Yaz aylarında akşam saatlerinde yerli halkın ve üniversite öğrencilerinin uğrak yeri haline gelen mekan, modern Lefkoşa turunun tatlı ve keyifli bir final durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -566,43 +493,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Cyprus Classic Car Museum (NEU)",
-          "description": "Cyprus Classic Car Museum (NEU) is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Classic Car Museum (NEU)",
+          "description": "Situated on the Near East University campus, the Cyprus Car Museum features an extensive private collection of over 150 vintage, classic, and sports automobiles spanning from the late 19th century onward. Highlights include an 1899 Crestmobile, iconic Ford Model Ts, and meticulously preserved post-war convertibles from Jaguar, Mercedes-Benz, and Porsche. The museum provides an engaging technological retrospective for motoring enthusiasts visiting the capital.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Dereboyu Avenue Promenade",
-          "description": "Dereboyu Avenue Promenade is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Dereboyu Avenue",
+          "description": "Formally designated as Mehmet Akif Avenue, Dereboyu is the premier commercial and entertainment artery of modern Nicosia. Running parallel to the Pedieos (Kanlıdere) riverbed, this boulevard features international fashion retailers, specialty coffee shops, open-air bistros, and cocktail lounges. As the focal point of the capital's contemporary youth and social culture, it transitions seamlessly from daytime retail into energetic nighttime dining.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Walled City Old Quarters",
-          "description": "Walled City Old Quarters is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Old Walled City Quarter",
+          "description": "Enclosed within circular 16th-century Venetian earthwork fortifications with eleven heart-shaped bastions, the walled city represents Nicosia's historic core. Its labyrinthine residential alleyways showcase sandstone townhouses with shuttered bay windows and hidden citrus courtyards. In recent years, adaptive reuse projects have filled the historic quarter with boutique hotels, independent art spaces, and design workshops that bridge heritage with urban creativity.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Zahra Street Night Scene",
-          "description": "Zahra Street Night Scene is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Zahra Street Promenade",
+          "description": "Perched atop the western curtain wall overlooking the municipal moat in the Arabahmet quarter, Zahra Street has evolved into northern Nicosia's most fashionable culinary promenade. Preserved sandstone residences have been repurposed into contemporary mezze taverns, wine bars, and al fresco cocktail lounges. The street offers panoramic views across the dry moat buffer zone, drawing lively crowds from sunset late into the evening.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Mooi Artisan Cafe",
-          "description": "Mooi Artisan Cafe is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Mooi Cafe & Bakery",
+          "description": "Set along the buzzing Dereboyu commercial avenue, Mooi Cafe is a contemporary establishment popular for its sleek modern aesthetic and diverse menu. Offering specialty brewed coffees, artisan patisserie pastries, and light European-inspired brunch plates, its outdoor seating provides an ideal urban vantage point for a relaxed pause during a tour of modern Nicosia.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Sedo Traditional Patisserie",
-          "description": "Sedo Traditional Patisserie is an essential milestone along the Modern Nicosia: Shopping, Classic Cars & Zahra Street. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Sedo Artisan Ice Cream & Desserts",
+          "description": "A favored local destination in Lefkoşa for frozen desserts and confectionery, Sedo is best known for its wide selection of artisan gelato, signature cakes, and made-to-order waffles. Popular among local residents and university students particularly on warm evenings, it provides a light and casual dessert stop to conclude an itinerary through the modern districts of the capital.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -628,11 +555,12 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "gir-classic",
-    "slug": "gir-classic",
+    "slug": "kyrenia-heritage-coastal",
     "region": "girne",
     "themes": [
       "history",
@@ -646,7 +574,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "difficulty": {
       "tr": "Orta (kale tırmanışı)",
-      "en": "Moderate (castle climb)"
+      "en": "Moderate (kale climbı)"
     },
     "startFinish": {
       "tr": "Girne Limanı",
@@ -655,19 +583,19 @@ export const rawRoutes: RawRouteItem[] = [
     "heroImage": "/images/routes/kyrenia-loop.jpg",
     "title": {
       "tr": "Girne Klasik: Liman, Kale, Bellapais & St. Hilarion",
-      "en": "Kyrenia Heritage & Coastal Loop"
+      "en": "Classic Kyrenia: Harbour, Castle, Bellapais & St. Hilarion"
     },
     "subtitle": {
       "tr": "Adanın en ikonik rotası: nal biçimli tarihi liman, Haçlı kalesi, Batık Gemi Müzesi, Gotik Bellapais Manastırı ve masalsı St. Hilarion. Dağdan kıyıya bütün Girne bir günde.",
-      "en": "The island’s most iconic route: picturesque horseshoe harbour, Crusader castle, 4th-century BC Shipwreck Museum, Gothic Bellapais Abbey, and fairy-tale St. Hilarion."
+      "en": "The island's most iconic route: the horseshoe-shaped historic harbour, Crusader stronghold, Shipwreck Museum, Gothic Bellapais Abbey, and fairytale St. Hilarion. The essence of Kyrenia from peak to shoreline in one day."
     },
     "intro": {
       "tr": "Adanın en ikonik rotası: nal biçimli tarihi liman, Haçlı kalesi, Batık Gemi Müzesi, Gotik Bellapais Manastırı ve masalsı St. Hilarion. Dağdan kıyıya bütün Girne bir günde. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "The island’s most iconic route: picturesque horseshoe harbour, Crusader castle, 4th-century BC Shipwreck Museum, Gothic Bellapais Abbey, and fairy-tale St. Hilarion. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "The island's most iconic route: the horseshoe-shaped historic harbour, Crusader stronghold, Shipwreck Museum, Gothic Bellapais Abbey, and fairytale St. Hilarion. The essence of Kyrenia from peak to shoreline in one day. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "St. Hilarion'a sabah erken çıkın — sıcak basmadan tırmanış çok daha keyifli ve Kraliçe'nin Penceresi'nden manzara sissizken en berrak.",
-      "en": "Climb St. Hilarion Castle in the early morning before midday heat. The view from the Queen’s Window across the coastline is clearest in the early hours."
+      "en": "Ascend to St. Hilarion early in the morning — the climb is far cooler and more pleasant before the midday heat, and the panorama through Queen Eleanor's Window is at its clearest."
     },
     "proposers": [
       "H.G.",
@@ -689,69 +617,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Girne Limanı",
-          "description": "Girne Limanı, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Nal biçimindeki mimarisiyle Akdeniz'in en fotojenik tarihi limanlarından biri olan Girne Limanı, geçmişte keçiboynuzu ve zeytin ticaretinin kalbi olan eski taş ambarlarla çevrilidir. Günümüzde bu binalar deniz mahsulü restoranlarına ve kafelere dönüştürülmüştür. Ahşap guletlerin demirlediği rıhtım boyunca yapılan yürüyüşler, masmavi deniz ve hemen yanı başında yükselen Girne Kalesi'nin surlarıyla birleşerek kentin simge atmosferini oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/kyrenia/kyrenia-harbour/1.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/2.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/3.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/4.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/5.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Girne Kalesi",
-          "description": "Girne Kalesi, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Limanın doğu ucunu koruyan kale, kökleri 7. yüzyıl Bizans dönemine dayanan, Lüzinyanlar tarafından genişletilip 16. yüzyılda Venediklilerce topçu savunmasına uygun kalın dairesel burçlarla güçlendirilen anıtsal bir savunma yapısıdır. Geniş iç avlusunda Bizans dönemine ait St. George Şapeli, Lüzinyan zindanları ve Venedik kuleleri yer alır. Kale surları boyunca yürüyen ziyaretçiler, limanın ve Beşparmak Dağları'nın panoramik manzarasını izleyebilir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/kyrenia/kyrenia-castle/1.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/2.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/3.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/4.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/5.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/6.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Batık Gemi Müzesi",
-          "description": "Batık Gemi Müzesi, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne Kalesi'nin içinde yer alan müze, MÖ 3. yüzyılda (yaklaşık MÖ 300) Girne açıklarında batan ve 1967 yılında denizden çıkarılan ticari bir Helenistik gemiyi barındırır. Dünyada sergilenen en eski deniz batıklarından biri olan geminin Halep çamından yapılmış omurgasının yanı sıra kargo bölümünden çıkarılan yüzlerce Rodos amforası, badem çuvalları ve değirmen taşları da bu özel salonda korunmaktadır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Bellapais Köyü & Manastırı",
-          "description": "Bellapais Köyü & Manastırı, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Beşparmak Dağları'nın eteklerinde yer alan Bellapais Manastırı (Abbaye de la Paix), 13. yüzyılda Lüzinyan Kralı I. Hugh tarafından kurulan bir Fransız Augustinus manastırıdır. Gotik mimarinin Akdeniz'deki en seçkin örneklerinden biri kabul edilen yapının yemekhanesi (refectorium), zarif kemerli revakları ve servi ağaçlarıyla çevrili avlusu büyüleyicidir. İngiliz yazar Lawrence Durrell'in 'Kıbrıs'ın Acı Limonları' kitabını yazdığı köy, dar taş sokaklarıyla huzurlu bir atmosfere sahiptir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "St. Hilarion Kalesi",
-          "description": "St. Hilarion Kalesi, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Deniz seviyesinden 732 metre yükseklikte sarp kayalıklar üzerine inşa edilen St. Hilarion, Beşparmak Dağları'nı koruyan üç kardeş kaleden en batıdakidir. Bizans döneminde keşiş Hilarion'un inziva yeri olarak başlayan yerleşim, Lüzinyanlar döneminde kraliyet ailesinin yazlık sarayı ve savunma kalesi haline getirilmiştir. Taş basamaklarla tırmanılan üst kaledeki Gotik oymalı Kraliçe Penceresi, tüm Girne kıyı şeridini kuşbakışı gören efsanevi bir seyir noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/kyrenia/st-hilarion-castle/1.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/2.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/3.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Beşparmak Manzara Noktası",
-          "description": "Beşparmak Manzara Noktası, Girne Klasik: Liman, Kale, Bellapais & St. Hilarion güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne-Lefkoşa dağ geçidi üzerinde veya Beşparmak sırtında yer alan seyir noktası, adanın kuzey sahilini ve güneydeki Mesarya Ovası'nı aynı anda görme fırsatı verir. Karstik kireçtaşı dorukların çam ormanlarıyla buluştuğu bu yüksek yamaçlar, özellikle gün batımında Akdeniz'in üzerindeki ışık kırılmalarını ve kıyı şeridini fotoğraflamak isteyenler için popüler bir duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -759,70 +660,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Kyrenia Old Harbour",
-          "description": "Kyrenia Old Harbour is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Kyrenia Old Venetian Harbour",
+          "description": "Kyrenia Harbour is a crescent-shaped Mediterranean port bordered by former 19th-century carob warehouses that now operate as waterfront seafood taverns and cafes. Anchored with traditional wooden gulets and fishing skiffs, the cobblestone quay affords picturesque views of the water and the sheer stone bastions of Kyrenia Castle. It remains the visual and historical centerpiece of coastal Northern Cyprus.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/kyrenia/kyrenia-harbour/1.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/2.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/3.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/4.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/5.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
           "name": "Kyrenia Castle",
-          "description": "Kyrenia Castle is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Guarding the eastern entrance to the harbor, Kyrenia Castle is a massive fortress originating in the Byzantine era that was extensively fortified by the Lusignans and later re-engineered by the Venetians in the 16th century with broad circular gun towers. Within its expansive stone perimeter lie the 12th-century Byzantine Chapel of Saint George, royal living quarters, and ramparts offering sweeping 360-degree vistas across the harbour and the Kyrenia Mountains.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/kyrenia/kyrenia-castle/1.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/2.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/3.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/4.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/5.jpg",
-            "/images/routes/kyrenia/kyrenia-castle/6.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
           "name": "Ancient Shipwreck Museum",
-          "description": "Ancient Shipwreck Museum is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Housed within an environmentally regulated chamber inside Kyrenia Castle, the Shipwreck Museum preserves the timbers of a Hellenistic merchant vessel that foundered around 300 BC and was salvaged in 1967. As one of the oldest trade vessels ever retrieved from the sea, its Aleppo pine hull is displayed alongside an inventory of over 400 Rhodian wine amphorae, preserved almonds, and basalt millstones carried aboard.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "Bellapais Village & Abbey",
-          "description": "Bellapais Village & Abbey is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Perched on the lower slopes of the Kyrenia Mountains in the hillside village of Bellapais, this 13th-century monastery—the Abbey of Peace—is a masterpiece of French Gothic architecture built for the Canons Regular of Premontre. Visitors can explore the soaring ribbed vaulting of the monastic refectory and the peaceful arcaded cloister shaded by tall cypresses. The adjacent village was immortalized by author Lawrence Durrell in his memoir 'Bitter Lemons'.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "St. Hilarion Mountain Fortress",
-          "description": "St. Hilarion Mountain Fortress is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "St. Hilarion Castle",
+          "description": "Dramatically integrated into the limestone crags 732 meters above the coastline, Saint Hilarion Castle originated as a 10th-century Byzantine hermitage and monastery before the Lusignans converted it into an unassailable mountain fortress and royal summer retreat. A climb past royal barracks leads to the uppermost bailey, where the renowned Queen's Window with its delicate Gothic tracery frames sheer views over the coastal plain of Kyrenia.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/kyrenia/st-hilarion-castle/1.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/2.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/3.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Five Finger Mountain Lookout",
-          "description": "Five Finger Mountain Lookout is an essential milestone along the Kyrenia Heritage & Coastal Loop. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Five Finger Mountain Viewpoint",
+          "description": "Located along the mountain pass traversing the Kyrenia Range, this scenic viewpoint offers dramatic vistas stretching across the northern Mediterranean coastline to the north and the arid Mesaoria Plain to the south. Flanked by craggy limestone outcrops and fragrant pine woods, it provides a quiet panoramic stop to photograph the rugged geography defining the island's northern territory.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -848,7 +722,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "gir-coastal",
@@ -869,24 +744,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Lapta Sahil Yürüyüş Yolu",
-      "en": "Lapta Coastal Promenade"
+      "en": "Lapta Coastal Boardwalk"
     },
     "heroImage": "/images/route-card-images/kyrenia-coastline.jpeg",
     "title": {
       "tr": "Girne Sahil Şeridi & Gizli Plajlar",
-      "en": "Kyrenia Coastline & Secret Swimming Coves"
+      "en": "Kyrenia Coastline & Secret Beaches"
     },
     "subtitle": {
       "tr": "Girne'den batıya uzanan sahil yolu boyunca altın plajlar, seyir noktaları ve saklı koylar; Alagadi kaplumbağa plajından Lapta yürüyüş yoluna. Nisan–Ekim arası ideal.",
-      "en": "Stretching west along the coast with golden beaches, scenic lookouts, and hidden bays — from the Lapta walkway to protected Alagadi turtle beach."
+      "en": "Golden sandy stretches, coastal view terraces, and hidden coves west of Kyrenia; from Alagadi Turtle Beach to the breezy Lapta coastal boardwalk. Best enjoyed from April to October."
     },
     "intro": {
       "tr": "Girne'den batıya uzanan sahil yolu boyunca altın plajlar, seyir noktaları ve saklı koylar; Alagadi kaplumbağa plajından Lapta yürüyüş yoluna. Nisan–Ekim arası ideal. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Stretching west along the coast with golden beaches, scenic lookouts, and hidden bays — from the Lapta walkway to protected Alagadi turtle beach. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Golden sandy stretches, coastal view terraces, and hidden coves west of Kyrenia; from Alagadi Turtle Beach to the breezy Lapta coastal boardwalk. Best enjoyed from April to October. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Yazın yol kenarındaki meyve tezgahlarında taze incir ve frenk inciri satılır — molada mutlaka deneyin.",
-      "en": "In summer, roadside stalls along the coast sell fresh figs and prickly pears — essential refreshment during your road stops."
+      "en": "During summer, local roadside fruit stalls sell freshly picked sweet figs and prickly pears — be sure to pull over and try some."
     },
     "proposers": [
       "B.S.",
@@ -898,47 +773,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Lapta Sahil Yürüyüş Yolu",
-          "description": "Lapta Sahil Yürüyüş Yolu, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lapta kıyısı boyunca uzanan yaklaşık 3 kilometrelik ahşap ve taş sahil yürüyüş yolu, araç trafiğinden uzak, kesintisiz bir deniz kenarı rotası sunar. Kayalık kıyı şeridini takip eden parkur boyunca deniz feneri, balıkçı barınakları, dinlenme bankları ve yerel kafeler bulunur. Özellikle sabah erken yürüyüşleri veya akşam serinliğinde gün batımını seyretmek için Girne bölgesinin en sevilen sahil yürüyüş parkurudur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Escape Beach",
-          "description": "Escape Beach, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Alsancak mevkiinde yer alan Escape Beach (Çıkarma Plajı), 1974 Barış Harekatı'nın ilk çıkarma noktası olması sebebiyle tarihi bir öneme sahiptir. Korunaklı hilal biçimli koyu, ince altın sarısı kumu ve dalgasız berrak sularıyla bölgenin en popüler organize yüzme plajıdır. Donanımlı plaj kulüpleri, su sporları merkezleri ve çim dinlenme alanlarıyla tatilcilere konforlu bir deniz günü sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Karaoğlanoğlu Kıyısı",
-          "description": "Karaoğlanoğlu Kıyısı, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne'nin batı girişinde yer alan Karaoğlanoğlu kıyısı, balıkçı teknelerinin demirlediği küçük doğal limanı, taş mendireği ve kıyı boyunca uzanan geleneksel balık restoranlarıyla bilinir. Bölgede bulunan Barış ve Özgürlük Müzesi ile askeri şehitlik, sahil şeridine tarihi bir derinlik katar. Sakin dalga sesleri eşliğinde kıyı kahvelerinde oturmak ve taze balık yemek için tercih edilen samimi bir duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Alagadi Kaplumbağa Plajı",
-          "description": "Alagadi Kaplumbağa Plajı, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne'nin doğusunda koruma altındaki Özel Çevre Koruma Bölgesi'nde yer alan Alagadi, Akdeniz'in nesli tükenmekte olan Yeşil Deniz Kaplumbağası (Chelonia mydas) ve İribaş Deniz Kaplumbağası (Caretta caretta) için hayati bir yuvalama alanıdır. Doğal kum tepeleri ve sığ sularıyla dikkat çeken plajda yaz gecelerinde uzman biyologlar eşliğinde kontrollü kaplumbağa gözlem turları düzenlenir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/kyrenia/alagadi-turtle-beach/1.jpg",
-            "/images/routes/kyrenia/alagadi-turtle-beach/2.jpeg",
-            "/images/routes/kyrenia/alagadi-turtle-beach/3.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Gizli Yüzme Koyları",
-          "description": "Gizli Yüzme Koyları, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne ile Esentepe arasındaki sahil yolu boyunca uzanan falezlerin arasına saklanmış küçük çakıllı ve kumlu koylar, kalabalıklardan uzaklaşmak isteyenler için doğal yüzme alanları sunar. Tesisleşmenin olmadığı bu bakir koylarda kristal berraklığındaki sularda şnorkelle dalış yapabilir, Akdeniz'in doğal kıyı ekosistemini ve su altı kayalıklarını keşfedebilirsiniz.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Esentepe Seyir Noktaları",
-          "description": "Esentepe Seyir Noktaları, Girne Sahil Şeridi & Gizli Plajlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Beşparmak Dağları'nın denize dik indiği Esentepe yamaçlarında yer alan bu seyir terasları, Akdeniz'in sonsuz maviliğini yüksek bir perspektiften gözler önüne serer. Çam ağaçları ve zeytinliklerle kaplı yamaçların arasından kıvrılan yol boyunca yerel kahvehaneler bulunur. Berrak günlerde karşı kıyıdaki Toros Dağları'nın silüetini görmek dahi mümkündür.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -946,48 +816,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Lapta Coastal Boardwalk",
-          "description": "Lapta Coastal Boardwalk is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Lapta Coastal Boardwalk Promenade",
+          "description": "Tracing the coastline west of Kyrenia, the Lapta Coastal Walkway is a pedestrian timber and paved boardwalk stretching roughly three kilometers along rocky sea inlets. Designed without motorized access, the trail links scenic coves, a small lighthouse, and local beachfront cafes. It is a premier location in the region for morning jogging or relaxed sunset walks accompanied by the sound of breaking waves.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Escape Beach Cove",
-          "description": "Escape Beach Cove is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Escape Beach",
+          "description": "Situated in Alsancak, Escape Beach holds historic resonance as the primary landing beach of the 1974 Turkish peace operation, commemorated nearby by an open-air memorial. Today, the sheltered golden-sand cove features shallow turquoise water and full beach-club infrastructure, offering paddleboarding, jet ski rentals, and manicured sunbathing lawns protected from open-sea swell.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Karaoğlanoğlu Rocky Shore",
-          "description": "Karaoğlanoğlu Rocky Shore is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Karaoğlanoğlu Shoreline",
+          "description": "Located just west of central Kyrenia, the Karaoğlanoğlu coastline features a sheltered inlet where small local fishing boats anchor beside stone sea jetties. The area hosts waterfront fish taverns renowned for seasonal meze, as well as the Peace and Freedom Memorial Museum and Military Cemetery. Its tranquil shoreline makes it a favored spot for quiet seaside lunches away from major tourist hubs.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Alagadi Turtle Sanctuary Beach",
-          "description": "Alagadi Turtle Sanctuary Beach is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Alagadi Turtle Beach",
+          "description": "Situated within a specially protected environmental zone east of Kyrenia, Alagadi Beach is one of the Mediterranean's most vital nesting grounds for green turtles (Chelonia mydas) and loggerhead turtles (Caretta caretta). Comprising two undeveloped sand bays framed by soft rock formations, it is managed in partnership with conservation groups who coordinate guided night-time hatchling monitoring tours during summer months.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/kyrenia/alagadi-turtle-beach/1.jpg",
-            "/images/routes/kyrenia/alagadi-turtle-beach/2.jpeg",
-            "/images/routes/kyrenia/alagadi-turtle-beach/3.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Hidden Mediterranean Coves",
-          "description": "Hidden Mediterranean Coves is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Hidden Swimming Coves",
+          "description": "Tucked beneath coastal cliffs between Kyrenia and Esentepe lie several secluded swimming inlets accessible via unpaved tracks. Free of commercial development and beach bars, these quiet rocky coves boast exceptionally transparent waters ideal for snorkeling, where marine life congregates around underwater limestone shelves and natural sea arches.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Esentepe Coastal Viewpoints",
-          "description": "Esentepe Coastal Viewpoints is an essential milestone along the Kyrenia Coastline & Secret Swimming Coves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Esentepe Panoramic Viewpoints",
+          "description": "Positioned along the elevated coastal slopes near the village of Esentepe, these vantage points provide panoramic vistas where the pine-clad Kyrenia Mountains tumble directly into the Mediterranean Sea. The high vantage point offers exceptional wide-angle photography of the eastern Kyrenia coastline, occasionally revealing the outline of the Taurus Mountains across the sea on exceptionally clear days.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -1013,7 +878,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "gir-sunset",
@@ -1034,24 +900,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Mavi Köşk (Blue House)",
-      "en": "Bellapais Village"
+      "en": "Mavi Köşk (Blue House)"
     },
     "heroImage": "/images/route-card-images/kyrenia-sunset.jpg",
     "title": {
       "tr": "Gün Batımı & Fotoğraf Noktaları",
-      "en": "Kyrenia Sunset Panoramas & Photography Trail"
+      "en": "Golden Sunset & Panoramic Photo Spots"
     },
     "subtitle": {
       "tr": "Işık ve manzara etrafında kurulu rota: Mavi Köşk, Bellapais terasları, sahil kulüplerinin gün batımı deck'leri ve Instagram'lık sahiller.",
-      "en": "A photography journey crafted around light and dramatic elevations: Mavi Köşk (Blue House), Bellapais terrace gardens, and coastal sunset decks."
+      "en": "An itinerary sculpted around golden light and sweeping views: the enigmatic Mavi Köşk, Bellapais terraced viewpoints, sunset cocktail lounges, and postcard-perfect beaches."
     },
     "intro": {
       "tr": "Işık ve manzara etrafında kurulu rota: Mavi Köşk, Bellapais terasları, sahil kulüplerinin gün batımı deck'leri ve Instagram'lık sahiller. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "A photography journey crafted around light and dramatic elevations: Mavi Köşk (Blue House), Bellapais terrace gardens, and coastal sunset decks. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "An itinerary sculpted around golden light and sweeping views: the enigmatic Mavi Köşk, Bellapais terraced viewpoints, sunset cocktail lounges, and postcard-perfect beaches. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Bellapais terasındaki kafelerde günbatımı için erken gidip masa kapın; manzaralı masalar akşamüstü hızla dolar.",
-      "en": "Arrive early at the Bellapais village cafe terraces to secure a sea-view table; the prime sunset spots fill quickly in the late afternoon."
+      "en": "Arrive early to claim an outdoor table at the hillside cafés of Bellapais; front-row tables facing the panoramic coastline fill up fast as twilight sets in."
     },
     "proposers": [
       "E.A.",
@@ -1065,54 +931,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Mavi Köşk (Blue House)",
-          "description": "Mavi Köşk (Blue House), Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Çamlıbel köyü yakınlarında çam ormanlarıyla kaplı bir tepede yer alan Mavi Köşk, 1957 yılında İtalyan asıllı Rum silah tüccarı ve avukat Byron Pavlides tarafından inşa ettirilmiştir. Dışarıdan görünmeyecek şekilde stratejik olarak konumlandırılan villa; gizli tünelleri, dönemin son derece lüks mimari çözümleri, orijinal İtalyan mobilyaları ve süt banyosu gibi detaylarıyla dikkat çeker. Günümüzde askeri denetim altında rehberli turlarla ziyaret edilen köşk, gizemli tarihiyle ünlüdür.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Bellapais Terası",
-          "description": "Bellapais Terası, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Bellapais Manastırı'nın yanı başında yer alan teraslar, Girne kenti ve Akdeniz'in üzerine bakan en görkemli seyir alanlarından biridir. Gün batımı saatlerinde Gotik manastır revaklarının arasından süzülen altın rengi ışık, zeytin ağaçlarıyla bezeli yamaçları aydınlatır. Çevredeki kafelerde oturup kahve yudumlayarak denizin ve tarihi dokunun oluşturduğu manzarayı fotoğraflamak için vazgeçilmez bir noktadır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "St. Hilarion Seyir Noktası",
-          "description": "St. Hilarion Seyir Noktası, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "St. Hilarion Kalesi'ne çıkan dağ yolu boyunca yer alan cepler ve seyir terasları, Girne kıyı şeridini 700 metre yükseklikten dik bir açıyla izleme olanağı tanır. Akşamüstü güneşinin denize alçaldığı saatlerde kayalık doruklar kızıl renklere bürünür. Kaleye tırmanmadan dahi aracınızı park edip Akdeniz ufkunu ve sahil kasabasını fotoğraflayabileceğiniz en etkileyici yol üstü seyir alanıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/kyrenia/st-hilarion-castle/1.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/2.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/3.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Acapulco / Escape Beach Deck",
-          "description": "Acapulco / Escape Beach Deck, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne'nin popüler sahil tesislerinde denize doğru uzanan ahşap iskeleler ve gün batımı terasları, deniz seviyesinden gün batımı manzarası sunar. Güneşin doğrudan suya battığı yaz akşamlarında bu teraslar, chill-out müzik eşliğinde serinletici içecekler yudumlamak ve suyun üzerindeki renk yansımalarını kaydetmek için harika bir atmosfer sağlar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Camelot Beach",
-          "description": "Camelot Beach, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Alsancak bölgesinde korunaklı küçük bir koyda yer alan Camelot Beach, dalgakıranla korunan sakin lagün benzeri yapısı ve denizin içine kadar uzanan ahşap platformlarıyla bilinir. Kayalık burun üzerinde yükselen terası, batı ufkuna kesintisiz bir bakış açısı sunar. Akşam saatlerinde dingin denize yansıyan gün batımı renkleri, burayı romantik bir fotoğraf durağı haline getirir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Gün Batımı Noktası",
-          "description": "Gün Batımı Noktası, Gün Batımı & Fotoğraf Noktaları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne'nin batı sahil şeridinde yer alan Karşıyaka veya Lapta burnu üzerindeki doğal falezler, adanın batı ufkuna doğrudan bakan doğal bir seyir balkonudur. Hiçbir yapay ışığın ve engelin bulunmadığı bu kayalık kıyıda, güneşin Akdeniz sularında kayboluşunu izlemek ve alacakaranlığın gökyüzünde oluşturduğu kızıllığı fotoğraflamak rotanın en etkileyici kapanış deneyimidir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -1120,55 +974,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Mavi Köşk (The Blue Mansion)",
-          "description": "Mavi Köşk (The Blue Mansion) is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Mavi Köşk (The Blue House)",
+          "description": "Nestled secretly among forested hills near Çamlıbel, the Blue House was constructed in 1957 by Byron Pavlides, an eccentric Greek-Cypriot lawyer and arms dealer. Designed with blind spots concealing it from the road, the villa showcases mid-century luxury, escape tunnels, period Italian furnishings, and unusual architectural details such as a milk bath. Maintained under military auspices, it offers an intriguing window into Cold War-era intrigue.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Bellapais Panoramic Terrace",
-          "description": "Bellapais Panoramic Terrace is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Bellapais Abbey Terrace",
+          "description": "Flanking the 13th-century Gothic abbey in the village of Bellapais, this elevated terrace provides one of the premier panoramic lookouts along the northern coast. As the late afternoon sun casts warm tones across the ancient stone refectory and down through olive groves to Kyrenia town, the spot becomes a sought-after gathering place for photographers and sunset diners.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "St. Hilarion Sunset Lookout",
-          "description": "St. Hilarion Sunset Lookout is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "St. Hilarion Mountain Viewpoint",
+          "description": "Positioned along the winding mountain ascent toward Saint Hilarion Castle, these roadside pull-offs offer dizzying perspectives across the coastal strip from over 700 meters above sea level. In late afternoon, the crags of the Kyrenia Range are bathed in rich golden light, framing dramatic wide-angle views of the coastline without requiring the full summit hike.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/kyrenia/st-hilarion-castle/1.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/2.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/3.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Acapulco & Escape Sunset Decks",
-          "description": "Acapulco & Escape Sunset Decks is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Acapulco / Escape Beach Deck",
+          "description": "These wooden pier structures and sun decks extending over the water at Kyrenia's established beach clubs offer front-row seats for coastal sunsets. As dusk settles over the calm northern waters, visitors gather along the timber boardwalks to enjoy chilled drinks, ambient music, and colorful shoreline light reflections.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Camelot Beach Cove",
-          "description": "Camelot Beach Cove is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Camelot Beach",
+          "description": "Tucked into a protected cove near Alsancak, Camelot Beach features a sheltered inlet protected by breakwaters alongside wooden decks perched directly over clear shallows. Its westward-facing rocky outcrop offers an uninterrupted sightline to the setting sun, making it a peaceful coastal pause for evening photography and relaxed seaside dining.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Kyrenia Coast Golden Hour Point",
-          "description": "Kyrenia Coast Golden Hour Point is an essential milestone along the Kyrenia Sunset Panoramas & Photography Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Panoramic Sunset Point",
+          "description": "Situated on the open coastal bluffs near Lapta and Karşıyaka, this natural viewpoint offers an unobstructed westward vista directly over open waters. Stripped of commercial development, it is a favored local spot to watch the sun sink beneath the Mediterranean horizon as the sky shifts from vivid amber to deep twilight violet.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -1194,7 +1036,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "gir-nightlife",
@@ -1216,24 +1059,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Escape Beach Club",
-      "en": "Kyrenia Marina"
+      "en": "Escape Beach Club"
     },
     "heroImage": "/images/route-card-images/kyrenia-glamour.jpg",
     "title": {
       "tr": "Girne Eğlence & Gece Hayatı",
-      "en": "Kyrenia Glamour: Beach Clubs, Dining & Nightlife"
+      "en": "Kyrenia Glamour & Nightlife"
     },
     "subtitle": {
       "tr": "Sahil kulüpleri, seçkin restoranlar ve gece kulüpleriyle Girne'nin lüks ve enerjik yüzü. Gündüz plaj, akşam DJ.",
-      "en": "Chic beach clubs, seaside marina seafood restaurants, and panoramic rooftop lounges showcasing Kyrenia’s vibrant nightlife."
+      "en": "Vibrant beach clubs, fine waterfront dining, and chic open-air night lounges showcasing the energetic and glamorous side of Kyrenia. Sun-drenched lounging by day, DJ beats by night."
     },
     "intro": {
       "tr": "Sahil kulüpleri, seçkin restoranlar ve gece kulüpleriyle Girne'nin lüks ve enerjik yüzü. Gündüz plaj, akşam DJ. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Chic beach clubs, seaside marina seafood restaurants, and panoramic rooftop lounges showcasing Kyrenia’s vibrant nightlife. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Vibrant beach clubs, fine waterfront dining, and chic open-air night lounges showcasing the energetic and glamorous side of Kyrenia. Sun-drenched lounging by day, DJ beats by night. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Sahil kulüplerinde şezlong için hafta sonu rezervasyon şart; akşam Sky Lounge'ın panoramik terası en iyi manzarayı verir.",
-      "en": "Reservations are recommended for beach club sunbeds on weekends; in the evening, Sky Lounge terrace provides the finest 360-degree harbour view."
+      "en": "Sunbed reservations at premier beach clubs are essential on weekends. Later in the evening, the panoramic terrace at Sky Lounge serves up the finest cocktail views over the bay."
     },
     "proposers": [
       "E.A.",
@@ -1245,35 +1088,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Escape Beach Club",
-          "description": "Escape Beach Club, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Alsancak'ın korunaklı koyunda yer alan Escape Beach Club, gündüzden geceye uzanan canlı plaj atmosferiyle tanınır. Konforlu şezlongları, VIP locaları, açık hava barı ve gün boyu çalan dinamik DJ performanslarıyla eğlence odaklı bir deniz deneyimi sunar. Akşamüstü 'sunset party' etkinlikleriyle başlayan hareketlilik, rotanın enerjik başlangıç noktasını oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "The House / Marina",
-          "description": "The House / Marina, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne Turizm Limanı veya yeni marina aksında yer alan The House Lounge, modern Akdeniz mimarisi ve deniz kenarındaki açık hava terasıyla kentin seçkin gastronomi ve kokteyl mekanlarından biridir. Lüks yatların ve liman ışıklarının eşlik ettiği ortam, akşam yemeği öncesinde gün batımı kokteylleri ve dinlendirici sohbetler için şık bir ambiyans sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Eziç Restaurant",
-          "description": "Eziç Restaurant, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıbrıs'ın en bilinen yerli restoran zincirlerinden olan Eziç (Eziç Premier / Peanuts), Girne kıyısında modern Kıbrıs lezzetleri ve deniz mahsulleri sunar. Tavuk spesiyalleri, taze meze çeşitleri ve kaliteli servisiyle hem yerli halkın hem de turistlerin vazgeçilmez akşam yemeği duraklarından biridir. Denize sıfır terasları gece eğlencesi öncesinde doyurucu bir ziyafet sağlar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Sky Lounge Bar",
-          "description": "Sky Lounge Bar, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne'nin lüks otellerinin çatı katlarında yer alan Sky Lounge Bar, kenti, tarihi kaleyi ve limanı 360 derecelik panoramik bir açıyla gören eşsiz bir konuma sahiptir. Seçkin kokteyl menüsü, modern lounge müziği ve ışıl ışıl parlayan Girne gece manzarasıyla akşamı karşılamak için kentin en sofistike noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Cage / La Nouba Club",
-          "description": "Cage / La Nouba Club, Girne Eğlence & Gece Hayatı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Doğu Akdeniz'in en büyük ve en prestijli açık hava gece kulüpleri arasında yer alan Cage Club ve La Nouba, Girne gece hayatının zirvesini temsil eder. Yaz sezonunda uluslararası üne sahip DJ'leri, tematik sahne dans gösterilerini, etkileyici ışık ve lazer şovlarını ağırlayan mekanlar, sabahın ilk ışıklarına kadar süren enerjik bir dans deneyimi sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -1282,35 +1125,35 @@ export const rawRoutes: RawRouteItem[] = [
       "en": [
         {
           "name": "Escape Beach Club",
-          "description": "Escape Beach Club is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Located in Alsancak, Escape Beach Club is a premier daytime beach club destination combining a sheltered cove with high-energy coastal entertainment. Featuring VIP cabanas, an open-air cocktail bar, and resident DJs who set the tempo from afternoon lounge beats to lively sunset parties, it serves as the launching pad for Girne's summer entertainment circuit.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "The House Marina Lounge",
-          "description": "The House Marina Lounge is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "The House Garden & Marina Lounge",
+          "description": "Positioned by the Kyrenia waterfront marina area, The House offers sophisticated coastal dining with a breezy sea-facing lounge deck. Overlooking docked motor yachts and the open water, this polished venue is a favorite for pre-dinner aperitifs, signature cocktails, and Mediterranean fusion small plates in an upscale social setting.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Eziç Premier Waterfront Dining",
-          "description": "Eziç Premier Waterfront Dining is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Eziç Premier Restaurant",
+          "description": "A celebrated local culinary brand in Northern Cyprus, Eziç (such as Eziç Premier and Peanuts) delivers a dependable, high-quality dining experience along the Kyrenia coastline. Known for signature poultry dishes, fresh local mezes, and sea-view outdoor terraces, it is an essential dining stop for socializing and savoring local hospitality before heading into the nightlife.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "Sky Lounge Panoramic Rooftop",
-          "description": "Sky Lounge Panoramic Rooftop is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Perched on the rooftop of a luxury resort in central Kyrenia, Sky Lounge Bar provides an elevated 360-degree viewpoint over the illuminated harbor, historic castle, and mountain backdrop. Featuring an extensive mixology menu and chilled ambient soundscapes, it offers a sophisticated vantage point for twilight cocktails high above the town.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Cage & La Nouba Open-Air Club",
-          "description": "Cage & La Nouba Open-Air Club is an essential milestone along the Kyrenia Glamour: Beach Clubs, Dining & Nightlife. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Cage / La Nouba Club",
+          "description": "Representing the height of Kyrenia's summer nightlife, open-air superclubs like Cage Club and La Nouba draw international partygoers to the northern coast. Equipped with state-of-the-art sound systems, theatrical lighting, acrobatic stage performances, and sets by global electronic music DJs, they keep the open-air dancefloors moving until the early morning hours.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -1336,7 +1179,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "gir-lapta",
@@ -1363,19 +1207,19 @@ export const rawRoutes: RawRouteItem[] = [
     "heroImage": "/images/route-card-images/lapta-mountain.jpg",
     "title": {
       "tr": "Lapta Pınarları, Eski Köy & Sahil Yürüyüşü",
-      "en": "Lapta Mountain Springs, Old Village & Coastal Promenade"
+      "en": "Lapta Springs, Historic Village & Coastal Walk"
     },
     "subtitle": {
       "tr": "Tarihi üst köy, geleneksel su kaynakları ve Girne'nin batısındaki uzun sahil yürüyüş yolunu birleştiren sakin bir rota.",
-      "en": "A serene trail connecting historic upper village stone houses, natural hillside water springs, and Kyrenia’s longest seaside walking path."
+      "en": "A peaceful route connecting the historic upper village, cool freshwater springs, and the expansive coastal walking promenade west of Kyrenia."
     },
     "intro": {
       "tr": "Tarihi üst köy, geleneksel su kaynakları ve Girne'nin batısındaki uzun sahil yürüyüş yolunu birleştiren sakin bir rota. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "A serene trail connecting historic upper village stone houses, natural hillside water springs, and Kyrenia’s longest seaside walking path. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A peaceful route connecting the historic upper village, cool freshwater springs, and the expansive coastal walking promenade west of Kyrenia. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Az bilinen bir rota — köyün üst kısmındaki tarihi su kanalları serin ve gölgeli, yaz sıcağında ideal bir mola.",
-      "en": "A true insider gem — the historic stone aqueducts in the upper village are shaded and refreshingly cool, offering a tranquil escape from summer heat."
+      "en": "An off-the-beaten-path delight — the centuries-old stone aqueducts in the upper village remain wonderfully cool and shaded, offering an idyllic respite from the summer sun."
     },
     "proposers": [
       "C.A."
@@ -1384,35 +1228,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Lapta Eski Köy",
-          "description": "Lapta Eski Köy, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Antik Lapethos kentinin mirası üzerinde, Beşparmak Dağları'nın dik yamaçlarına kurulu Lapta Yukarı Köyü; narenciye ağaçları, asmalar ve incir bahçeleriyle çevrili dar taş sokaklara sahiptir. Venedik ve Osmanlı dönemlerinden kalma taş evleri, tarihi kiliseleri ve gür su kaynaklarıyla beslenen yeşil dokusuyla, kıyıdaki modern turizm yapılarından çok farklı ve otantik bir köy yaşamı sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Başpınar",
-          "description": "Başpınar, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lapta'nın dağ yamacında, çınar ve ceviz ağaçlarının gölgesinde yer alan Başpınar, dağın kalbinden fışkıran buz gibi kaynak sularıyla ünlüdür. Tarih boyunca Lapta'nın tüm değirmenlerini ve bereketli bahçelerini besleyen bu ana pınar, çevresindeki geleneksel köy kahveleri ve dinlenme alanlarıyla yaz aylarında serin bir sığınak sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Tarihi Lapta Su Kanalları",
-          "description": "Tarihi Lapta Su Kanalları, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Başpınar kaynağından çıkan suyu köyün teraslanmış bahçelerine, zeytinliklerine ve tarihi un değirmenlerine taşıyan açık taş su kanalları (arklar), yüzlerce yıllık bir hidrolik mühendislik mirasıdır. Kanalları takip eden gölgeli patikalarda yürürken suyun şırıltısını dinleyebilir, geleneksel Kıbrıs tarımının su paylaşım kültürüne tanıklık edebilirsiniz.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Lapta Sahil Yürüyüş Yolu",
-          "description": "Lapta Sahil Yürüyüş Yolu, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dağ yamaçlarındaki su kaynaklarından kıyıya inildiğinde ulaşılan Lapta Sahil Yürüyüş Yolu, yaklaşık 3 kilometre uzunluğundaki ahşap güvertesi ve taş döşemesiyle denizle iç içe bir yürüyüş parkurudur. Dalgaların dövdüğü kayalık burunları ve doğal koyları aşan rota, ferahlatıcı deniz esintisiyle yürüyüşçülere ve koşuculara keyifli anlar yaşatır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Karşıyaka Gün Batımı Kıyısı",
-          "description": "Karşıyaka Gün Batımı Kıyısı, Lapta Pınarları, Eski Köy & Sahil Yürüyüşü güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lapta'nın hemen batısında yer alan Karşıyaka (Vasilia) kıyısı, balıkçı barınağı ve batıya açık geniş çakıllı sahiliyle günün yorgunluğunu atmak için mükemmel bir noktadır. Güneşin denize alçalarak Akdeniz ufkunu kızıla boyadığı akşam saatlerinde, yerel balık lokantalarında taze meze eşliğinde sessizliğin ve manzaranın tadı çıkarılır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -1420,36 +1264,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Lapta Old Stone Village",
-          "description": "Lapta Old Stone Village is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Lapta Upper Historic Village",
+          "description": "Perched on the steep terraced foothills of the Kyrenia Range, the upper village of Lapta (ancient Lapethos) is celebrated for its lush gardens of citrus, figs, and walnut trees. Its narrow, winding lanes feature historic stone masonry residences, Greek Orthodox churches, and Ottoman-era fountains fed by perennial mountain springs, offering a quiet glimpse of rural Cypriot life away from the coastline.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
           "name": "Başpınar Natural Spring",
-          "description": "Başpınar Natural Spring is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Nestled beneath plane trees high up in upper Lapta, Başpınar (Head Spring) is the principal freshwater karst source that has supplied irrigation to the settlement for centuries. The cold mountain water emerges here before flowing into stone channels, making this shaded spring area and its quiet local cafes a cool retreat during hot summer afternoons.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Historic Lapta Aqueducts",
-          "description": "Historic Lapta Aqueducts is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Historic Lapta Stone Aqueducts",
+          "description": "Distributing spring water from the mountain sources across terraced orchards and historic flour mill foundations, Lapta's open stone aqueducts and irrigation ditches illustrate traditional rural water management. Following these quiet streams along walking paths reveals stone arches, abandoned waterwheels, and fragrant gardens sustained by centuries of shared irrigation rights.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Lapta Seaside Promenade",
-          "description": "Lapta Seaside Promenade is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Lapta Coastal Boardwalk Promenade",
+          "description": "Transitioning from the foothills down to the sea, this dedicated coastal path extends for roughly three kilometers along the Mediterranean shore. Elevated timber boardwalk sections and paved paths wind past limestone shelves, sea coves, and waterside gazebos, creating a popular setting for refreshing strolls alongside the surf.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Karşıyaka Sunset Shoreline",
-          "description": "Karşıyaka Sunset Shoreline is an essential milestone along the Lapta Mountain Springs, Old Village & Coastal Promenade. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Karşıyaka Sunset Coast",
+          "description": "Situated just west of Lapta, the coastline of Karşıyaka (historically Vasilia) features a working boat shelter and an open pebble beach looking west across the sea. Unobstructed by dense hotel developments, it is a favored destination for travelers seeking peaceful sundown vistas and fresh fish dinners at modest local taverns right by the water.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -1475,11 +1319,12 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "mag-walledcity",
-    "slug": "mag-walledcity",
+    "slug": "famagusta-history-loop",
     "region": "magusa",
     "themes": [
       "history"
@@ -1491,7 +1336,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "difficulty": {
       "tr": "Orta (yürüyüş)",
-      "en": "Moderate (walking)"
+      "en": "Moderate (walk)"
     },
     "startFinish": {
       "tr": "Akkule (Land Gate)",
@@ -1500,19 +1345,19 @@ export const rawRoutes: RawRouteItem[] = [
     "heroImage": "/images/routes/famagusta-loop.jpg",
     "title": {
       "tr": "Surlariçi & Ortaçağ Mirası",
-      "en": "Famagusta Walled City & Medieval Heritage"
+      "en": "Walled City & Medieval Heritage"
     },
     "subtitle": {
       "tr": "Ayakta duran Venedik surları, Gotik Lala Mustafa Paşa Camii, Othello Kalesi ve Namık Kemal Zindanı. Tarihseverler için zengin bir rota.",
-      "en": "Standing Venetian ramparts, the soaring Gothic Lala Mustafa Pasha Mosque, Othello Castle, and historic dungeons for deep history lovers."
+      "en": "Mighty Venetian defensive bastions, the soaring Gothic Lala Mustafa Pasha Mosque, historic Othello Castle, and Namık Kemal Dungeon. A treasure trove for history lovers."
     },
     "intro": {
       "tr": "Ayakta duran Venedik surları, Gotik Lala Mustafa Paşa Camii, Othello Kalesi ve Namık Kemal Zindanı. Tarihseverler için zengin bir rota. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Standing Venetian ramparts, the soaring Gothic Lala Mustafa Pasha Mosque, Othello Castle, and historic dungeons for deep history lovers. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Mighty Venetian defensive bastions, the soaring Gothic Lala Mustafa Pasha Mosque, historic Othello Castle, and Namık Kemal Dungeon. A treasure trove for history lovers. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Petek Pastanesi surlariçinin kalbinde; geleneksel Kıbrıs tatlıları için tarihi turun ortasında mola verin.",
-      "en": "Petek Patisserie sits at the heart of the walled city — pause here for authentic traditional Cypriot sweets and lemonade in a historic setting."
+      "en": "Petek Patisserie sits right in the heart of the walled town; stop by mid-tour to sample authentic Cypriot syrup pastries and homemade dondurma."
     },
     "proposers": [
       "H.G.",
@@ -1525,64 +1370,49 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Akkule (Land Gate)",
-          "description": "Akkule (Land Gate), Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gazimağusa surlarının güneybatı köşesinde yer alan Akkule (Porta di Terra veya Ravelin), Venedikliler tarafından 1490'lı yıllardan itibaren topçu saldırılarına karşı inşa edilmiş devasa bir savunma tabyasıdır. Kuru hendek üzerindeki köprüsü, tonozlu yeraltı dehlizleri ve mazgallarıyla 1571 yılındaki Osmanlı kuşatmasının en şiddetli çatışmalarına sahne olmuştur. Surlariçi bölgesine giriş için en görkemli kapı olup kentin savunma dehasını yansıtır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Lala Mustafa Paşa Camii",
-          "description": "Lala Mustafa Paşa Camii, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "1298–1312 yılları arasında Fransız Gotik üslubunda inşa edilen ve Lüzinyan krallarının Kudüs Krallığı tacını giydiği tarihi Aziz Nikolaos Katedrali'dir. Üç görkemli portalı, taş oyma gül penceresi ve havada asılı gibi duran payandalarıyla Reims Katedrali'nin Akdeniz'deki ikizi olarak anılır. 1571 yılında Osmanlılar tarafından camiye dönüştürülmüş ve kuzey kulesine bir minare eklenmiştir; önünde 700 yılı aşkın tarihi bir cümbez ağacı yükselir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/famagusta/famagusta-walled-city/1.jpg",
-            "/images/routes/famagusta/famagusta-walled-city/2.jpg",
-            "/images/routes/famagusta/famagusta-walled-city/3.jpg",
-            "/images/routes/famagusta/famagusta-walled-city/4.jpg",
-            "/images/routes/famagusta/famagusta-walled-city/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Venedik Sarayı Kalıntıları",
-          "description": "Venedik Sarayı Kalıntıları, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lala Mustafa Paşa Camii'nin tam karşısındaki meydanda yer alan Palazzo del Proveditore, 13. yüzyılda Lüzinyan kraliyet sarayı olarak yapılmış, 16. yüzyılda ise Venedik valisinin ikametgahı haline getirilmiştir. Günümüze Salamis harabelerinden getirilen sütunlarla inşa edilmiş anıtsal üç kemerli giriş cephesi ve geniş iç avlusu ulaşmıştır. Avluda kuşatmadan kalan gülleler ve Osmanlı dönemi kalıntıları sergilenmektedir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Namık Kemal Zindanı",
-          "description": "Namık Kemal Zindanı, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Venedik Sarayı'nın avlusunda yer alan iki katlı taş bina, Osmanlı edebiyatının ve düşünce dünyasının öncülerinden şair Namık Kemal'in 'Vatan yahut Silistre' oyunu sonrasında 1873-1876 yılları arasında sürgünde tutulduğu yerdir. Zemin katı zindan, üst katı ise şairin kaldığı oda olan yapı günümüzde müze olarak düzenlenmiştir. İçinde Namık Kemal'e ait büst, belgeler ve eserlerinin ilk baskıları sergilenir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Othello Kalesi",
-          "description": "Othello Kalesi, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "14. yüzyılda Lüzinyanlar tarafından limanı korumak için inşa edilen ve 1492 yılında Venedikli kaptan Nicolo Foscarini tarafından dönüştürülen müstahkem iç kaledir. Giriş kapısının üzerinde Venedik'in simgesi olan mermer St. Mark Aslanı kabartması yer alır. Shakespeare'in ünlü trajedisine adını veren kale; devasa yemekhanesi, topçu kuleleri ve limana hakim teraslarıyla Akdeniz askeri mimarisinin başyapıtlarındandır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/famagusta/othello-castle/1.jpg",
-            "/images/routes/famagusta/othello-castle/2.jpg",
-            "/images/routes/famagusta/othello-castle/3.jpg",
-            "/images/routes/famagusta/othello-castle/4.jpg",
-            "/images/routes/famagusta/othello-castle/5.jpg",
-            "/images/routes/famagusta/othello-castle/6.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Canbulat Müzesi",
-          "description": "Canbulat Müzesi, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gazimağusa surlarının güneydoğu ucundaki Arsenal (Cephanelik) Burcu'nda yer alan türbe ve müze, 1571 kuşatmasında büyük kahramanlık gösteren Kilis Sancakbeyi Canbulat Bey'in anısına yapılmıştır. Efsaneye göre Venediklilerin çarklı kılıç mekanizmasını vücuduyla durdurarak surların aşılmasını sağlayan Canbulat Bey'in kabrinin yer aldığı tabyada, Osmanlı dönemi silahları, zırhları ve etnografik savaş gereçleri sergilenir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Şehir Surları",
-          "description": "Şehir Surları, Surlariçi & Ortaçağ Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gazimağusa'yı yaklaşık 3 kilometre boyunca çevreleyen Venedik surları, 15 metreye varan yükseklikleri ve 8 metreyi aşan kalınlıklarıyla dünyanın en iyi korunmuş Rönesans dönemi topçu tahkimatları arasındadır. Dışarıdaki derin kuru hendek ve hendek boyunca uzanan Martínengo gibi yıldız tabyalar, askeri mimarlık tarihinin zirvesini temsil eder. Surların üzerinde yürüyerek hem kentin tarihi silüeti hem de liman seyredilebilir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 dk"
@@ -1590,65 +1420,50 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Land Gate (Akkule Fort)",
-          "description": "Land Gate (Akkule Fort) is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Land Gate (Porta del Provveditore)",
+          "description": "Anchoring the southwestern angle of Famagusta's fortifications, the Land Gate—known as the Ravelin or Akkule—is a formidable Renaissance bastion engineered by Venetian military architects from the 1490s onward. Protected by a deep dry moat and accessed via an arched stone bridge, this subterranean complex witnessed fierce fighting during the 1571 Ottoman siege. It remains the most monumental pedestrian entry into the old walled city.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
           "name": "Lala Mustafa Pasha Mosque (St. Nicholas Cathedral)",
-          "description": "Lala Mustafa Pasha Mosque (St. Nicholas Cathedral) is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Constructed between 1298 and 1312, this French High Gothic monument was originally the Cathedral of Saint Nicholas, where Lusignan monarchs received the ceremonial crown of the Kingdom of Jerusalem. Renowned for its triple gabled portals, delicate rose window, and flying buttresses reminiscent of Reims Cathedral, it was converted into Famagusta's principal mosque in 1571 with the addition of a minaret. A colossal ficus sycomorus tree planted during construction still thrives at its entrance.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/famagusta/famagusta-walled-city/1.jpg",
-            "/images/routes/famagusta/famagusta-walled-city/2.jpg",
-            "/images/routes/famagusta/famagusta-walled-city/3.jpg",
-            "/images/routes/famagusta/famagusta-walled-city/4.jpg",
-            "/images/routes/famagusta/famagusta-walled-city/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Venetian Palace Courtyard Ruins",
-          "description": "Venetian Palace Courtyard Ruins is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Venetian Palace (Palazzo del Provveditore)",
+          "description": "Situated directly across the central square from the cathedral, the Palazzo del Proveditore was originally the 13th-century Lusignan royal residence before being rebuilt as the Venetian governor's administrative palace in the 16th century. Its surviving facade features a classical triple-arched stone portico supported by salvaged marble columns from ancient Salamis. The inner courtyard displays siege cannonballs, stone armorial crests, and Ottoman architectural fragments.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Namık Kemal Dungeon & Quarters",
-          "description": "Namık Kemal Dungeon & Quarters is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Namık Kemal Dungeon & Museum",
+          "description": "Adjoining the courtyard of the Venetian Palace, this two-storey stone building served as the prison for acclaimed Ottoman reformist poet and playwright Namık Kemal between 1873 and 1876, following the controversial performance of his patriotic play 'Vatan Yahut Silistre'. Now conserved as a memorial museum, the ground-floor vaulted cell and upper living quarters display original documents, photographs, and period editions of his works.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Othello Castle & Citadel",
-          "description": "Othello Castle & Citadel is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Othello Castle",
+          "description": "Constructed as a Lusignan harbor redoubt in the 14th century and modernized in 1492 by Venetian engineer Nicolo Foscarini, this fortified sea citadel guards Famagusta's port. Above its heavy portal sits a carved marble Lion of Saint Mark. Traditionally associated with the setting of Shakespeare's tragic play 'Othello', the fortress preserves a grand vaulted Great Hall, gun platforms, and elevated battlements overlooking the maritime docks.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/famagusta/othello-castle/1.jpg",
-            "/images/routes/famagusta/othello-castle/2.jpg",
-            "/images/routes/famagusta/othello-castle/3.jpg",
-            "/images/routes/famagusta/othello-castle/4.jpg",
-            "/images/routes/famagusta/othello-castle/5.jpg",
-            "/images/routes/famagusta/othello-castle/6.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
           "name": "Canbulat Bastion & Museum",
-          "description": "Canbulat Bastion & Museum is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Housed within the Arsenal Bastion at the southeastern extremity of the seaward walls, this tomb and museum commemorates Ottoman Bey Canbulat, who fell during the breach of the city defenses during the 1571 siege. Revered in local folklore for disabling the defenders' spiked wheel machinery, his preserved domed resting place is surrounded by historic military artifacts, Ottoman halberds, cuirasses, and Ottoman-era ethnographic displays.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Venetian Ramparts Promenade",
-          "description": "Venetian Ramparts Promenade is an essential milestone along the Famagusta Walled City & Medieval Heritage. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Venetian Bastions & City Walls",
+          "description": "Encircling the historic perimeter of Famagusta for over three kilometers, these 16th-century Venetian stone battlements rank among the finest surviving Renaissance artillery fortifications in Europe. Reaching heights of 15 meters and widths exceeding 8 meters, the defensive circuit incorporates arrow-headed bastions such as the Martinengo Bastion and a massive rock-hewn dry moat. Walking atop the ramparts yields panoramic views over the medieval quarter and harbor.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 min"
@@ -1674,7 +1489,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "mag-salamis",
@@ -1695,7 +1511,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Salamis Harabeleri",
-      "en": "Ancient Salamis Ruins"
+      "en": "Salamis Ruins"
     },
     "heroImage": "/images/route-card-images/ancient-salamis.jpg",
     "title": {
@@ -1704,15 +1520,15 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "subtitle": {
       "tr": "Roma jimnazyumu, tiyatrosu ve bazilikasıyla adanın en önemli antik kenti, ardından St. Barnabas Manastırı, Kral Mezarları ve Glapsides plajı.",
-      "en": "Roman gymnasium, marble amphitheatre, and royal necropolis of the island’s most prominent ancient kingdom, followed by Glapsides beach."
+      "en": "Discover the island's grandest classical city with its Roman gymnasium, amphitheatre, and seaside colonnades, paired with St. Barnabas Monastery, Royal Tombs, and Glapsides Beach."
     },
     "intro": {
       "tr": "Roma jimnazyumu, tiyatrosu ve bazilikasıyla adanın en önemli antik kenti, ardından St. Barnabas Manastırı, Kral Mezarları ve Glapsides plajı. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Roman gymnasium, marble amphitheatre, and royal necropolis of the island’s most prominent ancient kingdom, followed by Glapsides beach. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Discover the island's grandest classical city with its Roman gymnasium, amphitheatre, and seaside colonnades, paired with St. Barnabas Monastery, Royal Tombs, and Glapsides Beach. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Salamis'te gölge neredeyse yok — sabah gidin. Saat 11'den sonra taşların üzerindeki sıcak bunaltıcı olur.",
-      "en": "There is minimal shade at ancient Salamis — visit in the morning hours before 11:00 AM when the sun heats the marble columns."
+      "en": "There is virtually no natural shade across the sprawling ruins of Salamis — visit early in the morning. After 11:00 AM, the exposed marble and stone get blistering hot."
     },
     "proposers": [
       "U.S.",
@@ -1727,121 +1543,75 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Salamis Harabeleri",
-          "description": "Salamis Harabeleri, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "MÖ 11. yüzyılda Truva Savaşı kahramanı Teukros tarafından kurulduğu rivayet edilen Salamis, Helenistik ve Roma dönemlerinde Kıbrıs'ın en zengin başkentidir. Geniş arkeolojik alanda mermer sütunlu palaestra, zemin mozaikleriyle süslü Roma hamamları (thermae), latrina ve su kemerleri yer alır. Sahil kenarında okaliptüs ve akasya ağaçlarıyla çevrili kalıntılar, Doğu Akdeniz'in en etkileyici antik yerleşimlerinden birini oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/famagusta/ancient-salamis/1.jpg",
-            "/images/routes/famagusta/ancient-salamis/2.jpg",
-            "/images/routes/famagusta/ancient-salamis/3.jpg",
-            "/images/routes/famagusta/ancient-salamis/4.jpg",
-            "/images/routes/famagusta/ancient-salamis/5.jpg",
-            "/images/routes/famagusta/ancient-salamis/6.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Roma Tiyatrosu",
-          "description": "Roma Tiyatrosu, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Salamis harabelerinin merkezinde yükselen antik Roma tiyatrosu, MS 1. yüzyılda Augustus döneminde inşa edilmiş ve yaklaşık 15.000 seyirci kapasitesiyle adanın en büyük antik gösteri yapısıdır. 50 basamaktan oluşan yarım daire biçimli caveası, orkestra alanı ve sahne binası temelleri günümüze ulaşmıştır. Zaman zaman kültürel etkinliklere ve konserlere ev sahipliği yapan yapı, antik dünyanın akustik ve mimari dehasını sergiler.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "St. Barnabas Manastırı & İkon Müzesi",
-          "description": "St. Barnabas Manastırı & İkon Müzesi, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Hristiyanlığı Kıbrıs'a getiren ve Salamis doğumlu olan Havari Barnabas'ın mezarı üzerine 5. yüzyılda inşa edilen ve 18. yüzyılda bugünkü halini alan bir manastır kompleksidir. Manastır kilisesi günümüzde zengin bir Ortodoks ikon müzesine ev sahipliği yaparken, keşiş odaları Neolitik Çağ'dan Roma dönemine uzanan Kıbrıs arkeoloji koleksiyonunu sergiler. Avlunun biraz ilerisinde Havari Barnabas'ın yeraltı mezar şapeli bulunur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/famagusta/st-barnabas-monastery/1.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/3.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/4.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/5.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/6.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/7.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Kral Mezarları",
-          "description": "Kral Mezarları, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Salamis ile Enkomi arasında geniş bir nekropol alanına yayılan Kral Mezarları, MÖ 8. ve 7. yüzyıllara (Arkaik Dönem) tarihlenen anıtsal mezar odalarıdır. Ölen soylularla birlikte kurban edilen atların iskeletleri, tunç koşum takımları ve tören arabalarının kalıntıları bu mezarlarda bulunmuştur. Geniş dromos (giriş rampası) geçitleri ve taş tonozlu mezar odaları, Homeros dönemi ölü gömme geleneklerini somut biçimde yansıtır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Glapsides Plajı",
-          "description": "Glapsides Plajı, Salamis Antik Kenti & St. Barnabas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Salamis antik kentinin hemen güneyinde uzanan Glapsides Plajı, kilometrelerce uzanan ince kumu ve sığ, kristal berraklığındaki deniziyle Gazimağusa bölgesinin en gözde doğal plajıdır. Rüzgar sörfü ve su sporları için ideal koşullar sunan koy, arkeolojik gezilerin ardından yüzmek, serinlemek ve sahil kafelerinde dinlenmek için mükemmel bir mola noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         }
       ],
       "en": [
         {
-          "name": "Salamis Ancient Ruins & Gymnasium",
-          "description": "Salamis Ancient Ruins & Gymnasium is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ancient Salamis Archaeological Park",
+          "description": "Reputedly founded in the 11th century BC by the Trojan War hero Teucer, Salamis developed into the foremost city-kingdom of ancient Cyprus. The extensive seaside archaeological park preserves monumental Roman remains, including a colonnaded gymnasium, extensive thermal baths lined with geometric mosaics, a public latrine, and Byzantine basilica foundations, all fringed by coastal eucalyptus groves.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/famagusta/ancient-salamis/1.jpg",
-            "/images/routes/famagusta/ancient-salamis/2.jpg",
-            "/images/routes/famagusta/ancient-salamis/3.jpg",
-            "/images/routes/famagusta/ancient-salamis/4.jpg",
-            "/images/routes/famagusta/ancient-salamis/5.jpg",
-            "/images/routes/famagusta/ancient-salamis/6.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Roman Marble Amphitheatre",
-          "description": "Roman Marble Amphitheatre is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ancient Roman Theatre of Salamis",
+          "description": "Dating to the Augustan era in the 1st century AD, the Roman Theatre of Salamis accommodated up to 15,000 spectators, making it the largest classical entertainment structure on the island. While its original upper tiers collapsed during ancient earthquakes, the preserved semicircular cavea, central orchestra, and marble stage foundations provide exceptional acoustic quality and still host open-air performances.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "St. Barnabas Monastery & Icon Museum",
-          "description": "St. Barnabas Monastery & Icon Museum is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Erected in the 5th century and rebuilt in the 18th century, this monastic complex marks the traditional burial place of Saint Barnabas, a native of Salamis who introduced Christianity to Cyprus alongside Saint Paul. The main church houses an extensive collection of 18th- to 20th-century Greek Orthodox icons, while adjacent cloister rooms exhibit regional archaeological artifacts. An underground mausoleum marks the apostle's crypt nearby.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/famagusta/st-barnabas-monastery/1.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/3.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/4.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/5.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/6.jpg",
-            "/images/routes/famagusta/st-barnabas-monastery/7.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Royal Tombs Necropolis",
-          "description": "Royal Tombs Necropolis is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Royal Tombs of Salamis",
+          "description": "Spanning an expansive Archaic necropolis between Salamis and Enkomi, the Royal Tombs date from the 8th and 7th centuries BC. Notable for their monumental dromos entry ramps and ashlar-stone burial chambers, excavations revealed sacrificial chariot horses, bronze fittings, and ivory furnishings buried with aristocratic rulers, illustrating Homeric funerary practices in the ancient Mediterranean.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Glapsides Golden Beach",
-          "description": "Glapsides Golden Beach is an essential milestone along the Ancient Salamis & St. Barnabas Monastery. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Glapsides Sandy Beach",
+          "description": "Stretching along the Famagusta coastline just south of Salamis, Glapsides Beach is celebrated for its pale fine sand and exceptionally shallow, calm water. Widely frequented by locals and windsurfers, this broad curved bay features laid-back beach cafes and water sports facilities, providing an ideal seaside stop to swim and relax after exploring the ancient ruins.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         }
       ]
     },
@@ -1864,7 +1634,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "mag-varosha",
@@ -1877,7 +1648,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "10–15 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Half to full day"
+      "en": "Yarım–tam gün"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -1885,24 +1656,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Kapalı Maraş (Açık Bölgeler)",
-      "en": "Varosha Entrance"
+      "en": "Varosha (Open Sectors)"
     },
     "heroImage": "/images/route-card-images/varosha-ghost-city.jpg",
     "title": {
       "tr": "Kapalı Maraş & Palm Beach",
-      "en": "Varosha Ghost City & Palm Beach Coastline"
+      "en": "Varosha & Palm Beach"
     },
     "subtitle": {
       "tr": "Yakın tarihin sessizliğiyle sahil keyfini birleştiren rota: hayalet şehir Maraş'ın açık bölümleri, ardından Palm Beach'te yüzme, yemek ve mola.",
-      "en": "Witness the silence of recent history across reopened boulevards, followed by turquoise waters and relaxation at iconic Palm Beach."
+      "en": "A poignant journey combining quiet twentieth-century history with coastal leisure: accessible sectors of the ghost city of Varosha, followed by swimming and seaside dining at Palm Beach."
     },
     "intro": {
       "tr": "Yakın tarihin sessizliğiyle sahil keyfini birleştiren rota: hayalet şehir Maraş'ın açık bölümleri, ardından Palm Beach'te yüzme, yemek ve mola. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Witness the silence of recent history across reopened boulevards, followed by turquoise waters and relaxation at iconic Palm Beach. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A poignant journey combining quiet twentieth-century history with coastal leisure: accessible sectors of the ghost city of Varosha, followed by swimming and seaside dining at Palm Beach. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Maraş'ta bisiklet kiralama alanları var; açık bölgeleri pedallayarak gezmek yürümekten çok daha rahat. Su ve güneş koruması getirin.",
-      "en": "Bicycle rentals are available right at the entrance of Varosha; pedalling through the open boulevards is much more comfortable than walking."
+      "en": "Bicycle rental stations are available at the entrance to Varosha; cruising the paved open boulevards on two wheels is far cooler and more comfortable than walking under the sun. Bring plenty of water."
     },
     "proposers": [
       "B.S.",
@@ -1917,49 +1688,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Kapalı Maraş (Açık Bölgeler)",
-          "description": "Kapalı Maraş (Açık Bölgeler), Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "1974 öncesinde Akdeniz'in en popüler turizm merkezlerinden biri olan Maraş (Varosha), 1974 olaylarının ardından askeri bölge statüsüne alınarak yerleşime kapatılmıştır. 2020 yılından itibaren belirli caddeleri ve sahil şeridi yayaların ve bisikletlilerin ziyaretine açılmıştır. Demokrasi Caddesi boyunca yürürken terk edilmiş lüks otelleri, bankaları ve dönemin mimarisini dondurulmuş bir zaman kapsülü gibi gözlemlemek mümkündür.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/famagusta/varosha-viewpoint/1.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/2.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/3.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/4.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/5.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Maraş Sahili",
-          "description": "Maraş Sahili, Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Açılan Maraş bölgesinin kıyısında uzanan sahil şeridi, altın renkli ince kumu ve turkuaz deniziyle adanın en güzel plaj hatlarından biridir. On yıllar boyunca insan müdahalesinden uzak kalarak doğallığını koruyan plaj boyunca yürüyüş parkurları ve ziyaretçiler için temel dinlenme noktaları oluşturulmuştur. Terk edilmiş sahil otellerinin silüeti eşliğinde Akdeniz'in berrak sularını sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/famagusta/varosha-viewpoint/1.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/2.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/3.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/4.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Palm Beach",
-          "description": "Palm Beach, Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gazimağusa surlarının hemen güneyinde, Maraş sınırının başladığı noktada yer alan Palm Beach, kentin en simge kumsal plajıdır. Arka planında Maraş'ın ünlü terkedilmiş yüksek otel binaları yükselirken, önünde altın sarısı kumlar ve sığ, dalgasız bir koy uzanır. Bölge hem denize girmek hem de adanın yakın tarihinin en çarpıcı görsel karşıtlıklarına tanıklık etmek için ziyaret edilir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Petek Pastanesi",
-          "description": "Petek Pastanesi, Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gazimağusa Surlariçi'nin girişinde veya Palm Beach güzergahında yer alan Petek Pastanesi, 1976 yılından bu yana hizmet veren bir Kıbrıs lezzet klasiğidir. Geleneksel ceviz macunu, badem ezmesi, su böreği, baklava ve Maraş dondurması gibi lezzetleriyle ünlüdür. Tarihi objeler ve nostaljik dekorasyonla bezeli salonu, gezi arasında tatlı bir mola vermek için kentin vazgeçilmez durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Sahil Kafeleri",
-          "description": "Sahil Kafeleri, Kapalı Maraş & Palm Beach güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Palm Beach ve Gazimağusa liman hattı boyunca uzanan sahil kafeleri, deniz esintisi eşliğinde dinlenmek için ideal açık hava mekanlarıdır. Kıbrıs kahvesi, serinletici içecekler ve yerel atıştırmalıklar sunan bu kafeler, hem yerel halkın günlük sohbetlerine tanıklık etmek hem de limana girip çıkan gemileri izlemek için keyifli bir dinlenme imkanı sağlar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -1967,50 +1724,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Varosha (Open Boulevards)",
-          "description": "Varosha (Open Boulevards) is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Varosha (Open Walking Sectors)",
+          "description": "Prior to 1974, Varosha (Maraş) stood as one of the Mediterranean's most glamorous resort districts before being evacuated and placed under military exclusion following the 1974 conflict. In late 2020, designated boulevards and coastal strips were opened to pedestrian and bicycle visitors. Walking down avenues such as Demokrasi Caddesi reveals abandoned mid-century hotels, boutiques, and villas standing as an extraordinary modern time capsule.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/famagusta/varosha-viewpoint/1.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/2.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/3.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/4.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/5.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Varosha Coastal Boulevard",
-          "description": "Varosha Coastal Boulevard is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Varosha Shoreline",
+          "description": "Running alongside the opened sectors of Varosha, this coastline boasts fine golden sand and remarkably clean waters that remained virtually untouched by tourism for nearly five decades. Paved boardwalks and monitored swimming sections provide visitors with access to the shore, framed uniquely by the silent silhouettes of modernist 1970s beachfront hotels.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/famagusta/varosha-viewpoint/1.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/2.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/3.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/4.jpg",
-            "/images/routes/famagusta/varosha-viewpoint/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Palm Beach Waterfront",
-          "description": "Palm Beach Waterfront is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Palm Beach & Famagusta Bay",
+          "description": "Directly abutting the perimeter fence of Varosha just south of Famagusta's sea bastions, Palm Beach is a celebrated local sandy bay. Characterized by calm turquoise waters and fine golden sand, it offers a stark visual juxtaposition between traditional beach leisure and the abandoned high-rise resort architecture towering immediately along its southern edge.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Petek Traditional Confectionery",
-          "description": "Petek Traditional Confectionery is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Petek Traditional Patisserie",
+          "description": "Operating since 1976 near the walled city gates, Petek Confectionery is an iconic culinary institution in Famagusta. Renowned for traditional Cypriot sweets, artisan walnut preserves (macun), pistachio baklava, savoury pastries, and Turkish ice cream, its multi-level salon adorned with local antiques offers a quintessential heritage refreshment stop.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Coastal Seaside Cafes",
-          "description": "Coastal Seaside Cafes is an essential milestone along the Varosha Ghost City & Palm Beach Coastline. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Seaside Promenade Cafés",
+          "description": "Clustered near Palm Beach and along the coastal esplanade, these seaside cafes provide relaxed outdoor seating overlooking the Mediterranean Sea. Serving traditional Cypriot coffee, fresh juices, and light meze snacks, they offer an unhurried setting to take in the sea breeze and reflect after a walking tour of the nearby historic quarters.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -2036,7 +1779,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "mag-enkomi",
@@ -2057,24 +1801,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Enkomi Antik Kenti",
-      "en": "Enkomi Ancient Site"
+      "en": "Enkomi Archaeological Site"
     },
     "heroImage": "/images/route-card-images/enkomi.jpg",
     "title": {
       "tr": "Enkomi Bronz Çağı & Kırsal Mağusa",
-      "en": "Enkomi Bronze Age Capital & Rural Famagusta"
+      "en": "Enkomi Bronze Age & Rural Famagusta"
     },
     "subtitle": {
       "tr": "Adanın Bronz Çağı kalıntılarını — Enkomi antik kentini — ziyaret edip sakin kırsal manzaralarla tamamlanan az bilinen bir arkeoloji rotası.",
-      "en": "Explore the Bronze Age ruins of Enkomi — birthplace of ancient copper commerce — paired with peaceful countryside vistas away from crowds."
+      "en": "A lesser-known archaeological route stepping back into the late Bronze Age at ancient Enkomi, rounded out by tranquil rural countryside landscapes."
     },
     "intro": {
       "tr": "Adanın Bronz Çağı kalıntılarını — Enkomi antik kentini — ziyaret edip sakin kırsal manzaralarla tamamlanan az bilinen bir arkeoloji rotası. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Explore the Bronze Age ruins of Enkomi — birthplace of ancient copper commerce — paired with peaceful countryside vistas away from crowds. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A lesser-known archaeological route stepping back into the late Bronze Age at ancient Enkomi, rounded out by tranquil rural countryside landscapes. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Enkomi'yi çoğu ziyaretçi atlar — turist otobüsü yok, antik kenti neredeyse tek başınıza gezersiniz.",
-      "en": "Most tourists overlook Enkomi — there are no tour bus crowds, allowing you to wander this ancient Bronze Age capital in total tranquility."
+      "en": "Enkomi is largely overlooked by mainstream tour buses — you will likely have this fascinating prehistoric site almost entirely to yourself."
     },
     "proposers": [
       "A.M."
@@ -2083,35 +1827,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Enkomi Antik Kenti",
-          "description": "Enkomi Antik Kenti, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Geç Tunç Çağı'nda (yaklaşık MÖ 17. yüzyıl – MÖ 11. yüzyıl) Doğu Akdeniz'in en önemli bakır ticaret merkezi ve liman kenti olan Enkomi (Alasia), Kıbrıs arkeolojisinin kilit noktasıdır. Düzenli ızgara kent planı, Kiklopik taş savunma duvarları, metal işleme atölyeleri ve 'Boynuzlu Tanrı' heykelciğinin bulunduğu tapınak alanlarıyla bilinir. Pedieos (Kanlıdere) nehrinin alüvyonlarıyla limanını kaybetmesi sonucu terk edilmiş ve yerini Salamis'e bırakmıştır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Mağusa Kırsal Yolu",
-          "description": "Mağusa Kırsal Yolu, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Tuzla (Enkomi) köyünden Mesarya Ovası'nın doğu ucuna kıvrılan kırsal güzergah, zeytinlikler, kuru tarım arazileri ve geleneksel taş ağıllarla çevrilidir. Turistik kalabalıklardan uzak olan bu güzergah, adanın kadim tarım geçmişini ve pastoral sessizliğini hissetmek isteyenler için dinlendirici bir sürüş deneyimi sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Eski Nehir Yatağı Manzarası",
-          "description": "Eski Nehir Yatağı Manzarası, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Antik çağlarda Trodos Dağları'ndan doğup Enkomi yakınlarında denize dökülen Kanlıdere'nin (Pedieos) tarihi alüvyon deltası, bölgenin jeolojik kaderini belirlemiştir. Nehrin taşıdığı miller antik limanı doldurarak Enkomi'nin terk edilmesine yol açmıştır. Bugün sazlıklar ve alçak tepelerle çevrili bu sakin vadi, antik coğrafyanın dönüşümünü gözlemlemek için benzersiz bir doğal duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Tuzla Köy Kafesi",
-          "description": "Tuzla Köy Kafesi, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Enkomi harabelerinin hemen yanında yer alan Tuzla köyünün merkezindeki geleneksel kahvehane, dut ve asma ağaçlarının gölgesinde yer alır. Köy sakinlerinin tavla oynayıp sohbet ettiği bu samimi mekan, taze demlenmiş Türk kahvesi veya adaçayı eşliğinde arkeolojik yürüyüş sonrası dinlenmek için otantik bir yerel mola noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Gazimağusa Surlarına Yaklaşım",
-          "description": "Gazimağusa Surlarına Yaklaşım, Enkomi Bronz Çağı & Kırsal Mağusa güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kırsal alandan kente dönerken Akkule ve Canbulat tabyalarına doğru uzanan yaklaşım yolu, Venedik surlarının anıtsal ölçeğini dışarıdan ve kuru hendek seviyesinden görme imkanı tanır. Sarı kesme taştan örülen surların ova düzlüğünden nasıl yükseldiğini gözler önüne seren bu nokta, kırsal sakinlikten Orta Çağ kentine geçişi simgeler.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -2119,36 +1863,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Enkomi Bronze Age Ruins",
-          "description": "Enkomi Bronze Age Ruins is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ancient Enkomi Bronze Age Site",
+          "description": "Flourishing during the Late Bronze Age (c. 17th to 11th century BC), Enkomi—identified with ancient Alashiya—was the premier industrial and maritime hub for copper export across the Eastern Mediterranean. Archaeological excavations uncovered a sophisticated urban grid, Cyclopean stone defensive walls, metal-smelting quarters, and sanctuaries that yielded iconic bronze votive masterpieces such as the Horned God before river silting prompted its relocation to Salamis.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Famagusta Countryside Lane",
-          "description": "Famagusta Countryside Lane is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Famagusta Countryside Trail",
+          "description": "Winding inland from Tuzla village through the eastern edge of the Mesaoria plain, this rural backroad traverses tranquil olive orchards, wheat fields, and dry-stone livestock enclosures. Untouched by heavy tourist transit, it offers an unhurried countryside drive that highlights Cyprus's pastoral agrarian heartland.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Ancient Riverbed Panorama",
-          "description": "Ancient Riverbed Panorama is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ancient Riverbed Valley Vista",
+          "description": "This scenic landscape marks the ancient alluvial delta of the Pedieos (Kanlıdere) river, which originally flowed from the Troodos Mountains into the sea near Enkomi. Over centuries, heavy silt deposits gradually landlocked Enkomi's Bronze Age harbour, altering regional topography. Surrounded by wild tamarisks and low ridges, it offers insight into the geological forces that reshaped ancient Cyprus.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Tuzla Village Traditional Cafe",
-          "description": "Tuzla Village Traditional Cafe is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Tuzla Historic Village Café",
+          "description": "Situated in the rustic village of Tuzla (adjacent to the Enkomi site), the traditional village coffee shop sits beneath the shade of mature mulberry trees and grape trellises. Frequented by local farmers playing backgammon, it provides an unpretentious setting to enjoy freshly brewed Cypriot coffee and herbal infusions after exploring the ruins.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Approaching Famagusta Ramparts",
-          "description": "Approaching Famagusta Ramparts is an essential milestone along the Enkomi Bronze Age Capital & Rural Famagusta. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Famagusta City Walls Approach",
+          "description": "Approaching Famagusta from the rural northwest reveals the formidable scale of the Venetian fortifications rising abruptly from the plain. Viewing the sandstone curtains and angled bastions across the open dry moat allows visitors to appreciate the strategic perimeter engineering before re-entering the historic gates of the walled city.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -2174,7 +1918,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "isk-longbeach",
@@ -2195,24 +1940,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "İskele Arkeoloji Müzesi",
-      "en": "Iskele Town Center"
+      "en": "İskele Archaeology Museum"
     },
     "heroImage": "/images/route-card-images/iskele-golden-sands.jpg",
     "title": {
       "tr": "İskele Sahil & Miras Rotası",
-      "en": "Iskele Golden Sands & Coastal Heritage Trail"
+      "en": "İskele Coastline & Heritage Trail"
     },
     "subtitle": {
       "tr": "Altın kumlu Long Beach, Boğaz balıkçı limanı, arkeoloji ve ikon müzeleri. Doğal güzellikle kültürel mirasın dengeli birleşimi.",
-      "en": "Golden-sand Long Beach, Boğaz fishing harbour, and archaeology and icon museums. A balanced day combining coastal relaxation with culture."
+      "en": "Golden sands of Long Beach, the scenic fishing harbour of Boğaz, archaeology exhibits, and historic icon museums. A harmonious blend of seaside relaxation and cultural discovery."
     },
     "intro": {
       "tr": "Altın kumlu Long Beach, Boğaz balıkçı limanı, arkeoloji ve ikon müzeleri. Doğal güzellikle kültürel mirasın dengeli birleşimi. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Golden-sand Long Beach, Boğaz fishing harbour, and archaeology and icon museums. A balanced day combining coastal relaxation with culture. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Golden sands of Long Beach, the scenic fishing harbour of Boğaz, archaeology exhibits, and historic icon museums. A harmonious blend of seaside relaxation and cultural discovery. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Boğaz Limanı'nda öğleden sonra balıkçılar taze tuttukları balığı doğrudan satar; akşam yemeği için buradan alınabilir.",
-      "en": "At Boğaz Harbour in the afternoon, local fishermen sell their fresh catch directly at the docks; perfect for an authentic seafood lunch."
+      "en": "At Boğaz Harbour in the afternoon, local fishing boats pull up with their daily catch; you can buy fish right off the dock or enjoy it freshly grilled at the waterside taverns."
     },
     "proposers": [
       "A.T.",
@@ -2224,48 +1969,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "İskele Arkeoloji Müzesi",
-          "description": "İskele Arkeoloji Müzesi, İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "İskele kent merkezinde yer alan müze, bölgede yürütülen arkeolojik kazılarda ortaya çıkarılan zengin Neolitik, Tunç Çağı, Geometrik ve Roma dönemlerine ait eserleri sergiler. Pişmiş toprak kaplar, heykeller ve mezar buluntuları, İskele ve Karpaz yarımadasının binlerce yıllık yerleşim tarihine ışık tutar. Bölgenin geçmişine dair derli toplu ve aydınlatıcı bir kültür durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/guzelyurt/güzelyurt-archaeology/1.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/2.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/3.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/4.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Panayia Theotokos İkon Müzesi",
-          "description": "Panayia Theotokos İkon Müzesi, İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "İskele'nin kalbinde yer alan 12. yüzyıl Bizans yapısı kilise, tek nefli kubbeli mimarisi ve daha sonra 15. yüzyılda eklenen yan nefiyle dikkat çeker. İç duvarlarında yer alan orijinal 12. ve 15. yüzyıl fresk kalıntıları ile adanın dört bir yanından toplanan tarihi Ortodoks ikonaları burada sergilenmektedir. Kıbrıs dini sanatının ve fresk işçiliğinin önemli örneklerindendir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Long Beach (Altınkum)",
-          "description": "Long Beach (Altınkum), İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "İskele sahil şeridi boyunca kilometrelerce uzanan Long Beach, ince kumlu plajı, sığ ve berrak denizi ile bölgenin en popüler sahil aksıdır. Sahil boyunca uzanan palmiyeli yürüyüş ve bisiklet yolları, çocuk oyun parkları, açık hava spor alanları ve modern sahil kafeleriyle gün boyu deniz ve güneş keyfi sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Boğaz Balıkçı Limanı",
-          "description": "Boğaz Balıkçı Limanı, İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "İskele'nin kuzeyinde yer alan Boğaz, renkli balıkçı teknelerinin demirlediği doğal bir liman koyudur. Rıhtım boyunca sıralanan geleneksel balık restoranları, günlük tutulan taze balıkları ve Kıbrıs usulü sıcak mezeleriyle ünlüdür. Sakin deniz manzarası eşliğinde öğle veya akşam yemeği yemek için bölgenin en bilinen gastronomi durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kalecik Halk Plajı",
-          "description": "Kalecik Halk Plajı, İskele Sahil & Miras Rotası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Boğaz'ın hemen yakınında yer alan Kalecik Plajı, sakin ve huzurlu ortamıyla bilinen doğal bir kumsaldır. Kalabalıklardan uzak, berrak sularda yüzmek ve dinlenmek isteyenler için ideal olan sahil, İskele rotasının denizle iç içe, dinlendirici kapanış noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -2273,49 +2005,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Iskele Archaeology Museum",
-          "description": "Iskele Archaeology Museum is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "İskele Archaeology Museum",
+          "description": "Located in the center of İskele (Trikomo), this regional museum showcases archaeological discoveries unearthed across the Karpas Peninsula. The curated collection features Neolithic stone tools, Bronze Age ceramics, Geometric-period terracottas, and Roman glassware, offering a chronological overview of early settlements in eastern Cyprus.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/guzelyurt/güzelyurt-archaeology/1.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/2.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/3.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/4.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Panayia Theotokos Icon Museum",
-          "description": "Panayia Theotokos Icon Museum is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Panagia Theotokos Icon Museum",
+          "description": "Dating to the 12th century, this domed Byzantine church in central İskele preserves rare fragments of medieval wall paintings in its apse and nave. Expanded in the 15th century with a Gothic-influenced northern aisle, the interior functions as an ecclesiastical museum housing restored wooden icons, ecclesiastical vessels, and liturgical artifacts from regional chapels.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Long Beach Golden Sands Promenade",
-          "description": "Long Beach Golden Sands Promenade is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Long Beach Coastline",
+          "description": "Stretching along the İskele coastline, Long Beach is renowned for its expansive golden-sand shoreline and gentle, shallow waters. A landscaped promenade running parallel to the beach features dedicated cycling lanes, pedestrian boardwalks, green parks, and open-air cafes, making it a vibrant center for family leisure and water activities.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Boğaz Picturesque Fishing Harbour",
-          "description": "Boğaz Picturesque Fishing Harbour is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Boğaz Fishing Harbour",
+          "description": "Situated north of İskele, Boğaz is an authentic coastal fishing village arranged around a sheltered natural boat basin. Celebrated for its waterfront seafood taverns lining the quayside, it is one of the island's best-known destinations to sample freshly caught seasonal fish, grilled octopus, and classic Mediterranean meze beside docked wooden trawlers.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Kalecik Public Beach & Cove",
-          "description": "Kalecik Public Beach & Cove is an essential milestone along the Iskele Golden Sands & Coastal Heritage Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Kalecik Public Beach",
+          "description": "Located just north of the Boğaz fishing harbor, Kalecik Public Beach is a relaxed sandy strip favored by those seeking a quieter swimming environment away from major resort crowds. Its clean water and tranquil setting provide an unhurried coastal finale to the İskele heritage itinerary.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -2341,7 +2060,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "isk-kantara",
@@ -2363,24 +2083,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Kantara Kalesi",
-      "en": "Kantara Castle Entrance"
+      "en": "Kantara Castle"
     },
     "heroImage": "/images/route-card-images/kantara.jpg",
     "title": {
       "tr": "Kantara Kalesi & Doğu Panoraması",
-      "en": "Kantara Mountain Fortress & Dual-Coast Panorama"
+      "en": "Kantara Castle & Eastern Panorama"
     },
     "subtitle": {
       "tr": "Adanın en doğudaki dağ kalesinden ormanlara, kırsal köylere ve sessiz kıyıya uzanan manzara rotası. Buffavento ile birleştirilebilen çoklu kale seçeneği de mevcut.",
-      "en": "The easternmost Crusader mountain fortress looking out across pine forests, quiet villages, and both the northern and southern seas simultaneously."
+      "en": "A scenic mountain drive taking you to the easternmost peak stronghold, overlooking pine forests, traditional hamlets, and unspoiled coastline. Can also be paired with Buffavento."
     },
     "intro": {
       "tr": "Adanın en doğudaki dağ kalesinden ormanlara, kırsal köylere ve sessiz kıyıya uzanan manzara rotası. Buffavento ile birleştirilebilen çoklu kale seçeneği de mevcut. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "The easternmost Crusader mountain fortress looking out across pine forests, quiet villages, and both the northern and southern seas simultaneously. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A scenic mountain drive taking you to the easternmost peak stronghold, overlooking pine forests, traditional hamlets, and unspoiled coastline. Can also be paired with Buffavento. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Kantara üç dağ kalesinin en iyi korunmuşu ve en doğudakidir; açık havada hem kuzey hem güney sahilleri aynı anda görünür.",
-      "en": "Kantara is the best preserved of the three mountain fortresses; on clear days you can gaze out at the Mediterranean on both sides of the peninsula."
+      "en": "Kantara is both the most accessible and best preserved of the three Crusader mountain fortresses; on a clear day, both the northern and southern coastlines are visible simultaneously from the battlements."
     },
     "proposers": [
       "A.T.",
@@ -2394,35 +2114,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Kantara Kalesi",
-          "description": "Kantara Kalesi, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Deniz seviyesinden 630 metre yükseklikte yer alan Kantara Kalesi, Beşparmak Dağları'ndaki üç savunma kalesinin en doğuda olanıdır. 10. yüzyılda Bizanslılar tarafından Arap akınlarına karşı gözetleme amacıyla kurulan kale, Lüzinyanlar tarafından genişletilmiştir. Kaleden bakıldığında açık havalarda kuzeyde Akdeniz, güneyde Mağusa Körfezi ve doğuya doğru uzanan Karpaz Yarımadası aynı anda 360 derecelik eşsiz bir panoramayla izlenebilir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Kantara Köyü",
-          "description": "Kantara Köyü, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kalenin hemen eteklerinde, çam ormanlarıyla çevrili serin bir yayla köyü olan Kantara, tarihi bir dağ dinlenme yeridir. Lüzinyan döneminden beri temiz havası ve manzarasıyla bilinen köyde, eski yazlık taş konutlar ve yerel kahvehaneler yer alır. Yaz sıcaklarından kaçmak ve dağ havasında çay molası vermek için ideal bir duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Mersinlik Ormanı",
-          "description": "Mersinlik Ormanı, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kantara sırtlarından kuzey sahiline inen dağ yolu boyunca uzanan Mersinlik Ormanı, kızılçam, servi ve mersin ağaçlarıyla kaplı zengin bir bitki örtüsüne sahiptir. Yaban çiçekleri ve endemik türlerin yetiştiği bu bakir ormanlık alan, doğa yürüyüşü ve fotoğrafçılık için adanın en huzurlu doğal koridorlarından biridir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kaplıca Sahili",
-          "description": "Kaplıca Sahili, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kuzey sahilinde, dağların denizle buluştuğu noktada yer alan Kaplıca Koyu, geniş kumsal plajı ve arkasındaki dik yamaç manzarasıyla dikkat çeker. Doğal ve sakin yapısını koruyan koy, dağ tırmanışının ardından denize girmek ve sahil restoranında taze balık yemek için harika bir duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Tatlısu Kıyısı",
-          "description": "Tatlısu Kıyısı, Kantara Kalesi & Doğu Panoraması güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne ile Karpaz arasındaki sahil şeridinde yer alan Tatlısu kıyıları; kayalık burunları, antik zeytinlikleri ve kristal sularıyla bilinir. Bölgedeki Minia Kıbrıs açık hava müzesi ve kıyı yürüyüş yolları, gün batımına doğru rotayı tamamlayan keyifli bir seyir noktası oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -2430,36 +2150,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Kantara Crusader Castle",
-          "description": "Kantara Crusader Castle is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Kantara Castle",
+          "description": "Perched at an elevation of 630 meters at the eastern terminus of the Kyrenia Range, Kantara Castle originated as a 10th-century Byzantine watchpost against naval incursions before being heavily fortified by the Lusignans. Its preserved barbican, vaulted barracks, and northern watchtowers command an extraordinary dual-coastline panorama, simultaneously capturing the Karpas Peninsula, Famagusta Bay, and the open northern sea.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
           "name": "Kantara Mountain Village",
-          "description": "Kantara Mountain Village is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Sheltered beneath pine-clad ridges below the fortress, the mountain hamlet of Kantara has long functioned as a tranquil summer retreat favored for its brisk elevation and pine-scented air. Comprising rustic stone houses and small family-run tea houses, it offers a peaceful pause for travelers transitioning between the mountain peaks and coastal lowlands.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Mersinlik Pine Forest Path",
-          "description": "Mersinlik Pine Forest Path is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Mersinlik Pine Woods",
+          "description": "Stretching across the northern mountain slopes below Kantara, the Mersinlik forest reserve encompasses dense canopies of Calabrian pine, wild cypress, and fragrant myrtle shrubs. Intersected by quiet forestry tracks and hiking trails, it harbors native bird species and seasonal wild orchids, providing a secluded haven for nature walks.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Kaplıca Sandy Coast",
-          "description": "Kaplıca Sandy Coast is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Kaplıca Coastal Bay",
+          "description": "Located on the northern coast where the Kantara foothills descend into the sea, Kaplıca Bay offers a wide natural sandy beach set against dramatic coastal cliffs. Uncrowded and protected from heavy swell, the bay features clear waters for swimming alongside simple beachfront taverns serving fresh catch of the day.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Tatlısu Coastal Shoreline",
-          "description": "Tatlısu Coastal Shoreline is an essential milestone along the Kantara Mountain Fortress & Dual-Coast Panorama. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Tatlısu Coastal Road",
+          "description": "Bordering the transitional coast between Kyrenia and the Karpas, the Tatlısu shoreline is framed by sea cliffs, historic carob stores, and ancient olive groves. Home to cultural sites like the Minia Kıbrıs open-air model park, the area offers scenic coastal viewpoints that capture the evening light across the Mediterranean.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -2485,7 +2205,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "isk-bafra",
@@ -2512,19 +2233,19 @@ export const rawRoutes: RawRouteItem[] = [
     "heroImage": "/images/route-card-images/bogaz-harbor.jpg",
     "title": {
       "tr": "Mehmetçik Bağları, Bafra & Boğaz Kıyısı",
-      "en": "Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour"
+      "en": "Mehmetçik Vineyards, Bafra Coast & Boğaz"
     },
     "subtitle": {
       "tr": "Köy hayatı ve üzüm bağı manzaralarından Bafra sahiline ve Boğaz balıkçı limanına uzanan sakin, gastronomik bir gün. Kimsenin listesine girmeyen bir bölge.",
-      "en": "Gentle village life and vineyard panoramas leading to pristine Bafra sands and the charming seafood harbor of Boğaz. Unhurried and authentic."
+      "en": "A peaceful culinary road trip wandering through heritage grape-growing villages, vineyard landscapes, pristine Bafra sands, and charming Boğaz harbour. A serene slice of Cyprus often missed by travelers."
     },
     "intro": {
       "tr": "Köy hayatı ve üzüm bağı manzaralarından Bafra sahiline ve Boğaz balıkçı limanına uzanan sakin, gastronomik bir gün. Kimsenin listesine girmeyen bir bölge. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Gentle village life and vineyard panoramas leading to pristine Bafra sands and the charming seafood harbor of Boğaz. Unhurried and authentic. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A peaceful culinary road trip wandering through heritage grape-growing villages, vineyard landscapes, pristine Bafra sands, and charming Boğaz harbour. A serene slice of Cyprus often missed by travelers. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Bölge küçük aile şarap üreticileriyle dolu; acele etmeyin ve uzun bir öğle yemeği için plan yapın.",
-      "en": "The region is home to small family grape and wine producers; don’t rush, plan for a relaxed and leisurely lunch."
+      "en": "The region is dotted with small artisanal grape and wine growers; take your time and plan for an unhurried, multi-course village lunch."
     },
     "proposers": [
       "C.A."
@@ -2533,35 +2254,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Mehmetçik Köyü",
-          "description": "Mehmetçik Köyü, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz Yarımadası'nın girişinde tepeye kurulu Mehmetçik (Galatia), geleneksel taş evleri, sakin köy meydanı ve köklü bağcılık kültürüyle tanınır. Kıbrıs'ın 'cittaslow' (sakin şehir) felsefesini benimseyen yerleşimlerinden biri olup, yerel zivaniya, üzüm sucuğu (köfter) ve pekmez üretimiyle adanın gastronomi mirasını canlı tutar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Mehmetçik Festival Meydanı",
-          "description": "Mehmetçik Festival Meydanı, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Her yıl geleneksel Üzüm Festivali'ne ev sahipliği yapan köy meydanı, yerel üreticilerin el yapımı ürünlerini sergilediği kültürel bir merkezdir. Çevresindeki asırlık kahvehaneler ve kooperatif dükkanları, köy halkıyla sohbet etmek ve taze üzüm ürünlerini tatmak için harika bir buluşma noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Üzüm Bağı Manzarası",
-          "description": "Üzüm Bağı Manzarası, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Mehmetçik ve Kumyalı çevresindeki yamaçlara yayılan teraslanmış üzüm bağları, Akdeniz fonunda pastoral bir kırsal manzara oluşturur. Özellikle hasat dönemi olan sonbahar aylarında bağ bozumu hareketliliği yaşanan bu yollar, doğa fotoğrafçılığı ve kırsal sürüş için eşsiz manzaralar sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Bafra Halk Plajı",
-          "description": "Bafra Halk Plajı, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Bafra turizm bölgesinde yer alan halk plajı; incecik altın kumu, sığ ve dalgasız deniziyle Akdeniz'in en nitelikli doğal kumsallarından biridir. Geniş kıyı şeridi, ahşap yürüme yolları ve temiz sularıyla hem aileler hem de sakin bir deniz günü arayanlar için mükemmel bir yüzme noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Boğaz Balıkçı Limanı",
-          "description": "Boğaz Balıkçı Limanı, Mehmetçik Bağları, Bafra & Boğaz Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kırsal bağ rotasının ardından ulaşılan Boğaz Limanı, renkli balıkçı tekneleri ve mendireğiyle bölgenin denizle buluştuğu noktadır. Gün batımında liman kenarındaki restoranlarda taze balık, ızgara ahtapot ve yerel mezeler eşliğinde günü tamamlamak için en uygun gastronomi durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -2569,36 +2290,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Mehmetçik Grape Village",
-          "description": "Mehmetçik Grape Village is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Mehmetçik Traditional Village",
+          "description": "Set atop rolling hills overlooking the eastern coast, Mehmetçik (historically Galateia) is a traditional village celebrated for its viticulture and adherence to the Cittaslow movement. Characterized by limestone masonry homes and quiet village streets, it remains a primary regional producer of grape must confections (köfter), molasses, and artisan zivania spirit.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Mehmetçik Festival Square",
-          "description": "Mehmetçik Festival Square is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Mehmetçik Village Square",
+          "description": "Serving as the civic focal point of the village, this plaza hosts the long-running annual Grape Festival, which brings regional growers together. Bordered by shaded coffee shops and local agricultural cooperatives, it provides travelers with a venue to sample traditional grape delicacies and converse with local residents.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Rolling Vineyards Viewpoint",
-          "description": "Rolling Vineyards Viewpoint is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Mehmetçik Vineyard Vista",
+          "description": "Spreading across the terraced limestone slopes between Mehmetçik and Kumyalı, these traditional vineyards form a scenic rural landscape against the Mediterranean Sea. The quiet lanes traversing the vines are particularly engaging during the late summer harvest when grapes are collected for artisanal pressing.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "Bafra Public Beach",
-          "description": "Bafra Public Beach is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Located in the designated Bafra tourism precinct, this public beach features a broad expanse of fine golden sand and very gentle, crystal-clear water. Maintained with boardwalks and basic amenities, its expansive shoreline offers pristine swimming conditions protected from rough open swells.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Boğaz Seafood Harbour",
-          "description": "Boğaz Seafood Harbour is an essential milestone along the Mehmetçik Vineyards, Bafra Beach & Boğaz Harbour. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Boğaz Fishing Harbour",
+          "description": "Serving as the culinary terminus of this agrarian circuit, Boğaz harbor is an active coastal anchorage populated by local fishing skiffs. Lined with seafood taverns along the stone quay, it is the premier local destination to savor grilled Mediterranean fish, local mezes, and evening sea breezes.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -2624,7 +2345,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "isk-wetland",
@@ -2645,24 +2367,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Boğaz Balıkçı Limanı",
-      "en": "Boğaz Harbour"
+      "en": "Boğaz Fishing Harbour"
     },
     "heroImage": "/images/route-card-images/bogaz-wetlands.jpg",
     "title": {
       "tr": "Boğaz Sulak Alan & Kuş Gözlem",
-      "en": "Boğaz Wetlands, Salt Flats & Birdwatching Trail"
+      "en": "Boğaz Wetlands & Birdwatching Trail"
     },
     "subtitle": {
       "tr": "Boğaz balıkçı limanından başlayıp Gastria sulak alanları ve Kaplıca kıyısını keşfeden, tuz düzlüğü ve kuş gözlem noktalı bir doğa rotası.",
-      "en": "Starting from Boğaz harbour, exploring the Gastria coastal wetlands, salt flats, and migratory birdwatching lookout points."
+      "en": "Setting off from Boğaz fishing harbour to uncover the Gastria salt flats and Kaplıca shoreline, featuring coastal lagoons and birdwatching observation points."
     },
     "intro": {
       "tr": "Boğaz balıkçı limanından başlayıp Gastria sulak alanları ve Kaplıca kıyısını keşfeden, tuz düzlüğü ve kuş gözlem noktalı bir doğa rotası. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Starting from Boğaz harbour, exploring the Gastria coastal wetlands, salt flats, and migratory birdwatching lookout points. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Setting off from Boğaz fishing harbour to uncover the Gastria salt flats and Kaplıca shoreline, featuring coastal lagoons and birdwatching observation points. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Sabah erken saatler kuş gözlemi için en verimli; dürbün getirmeyi unutmayın. Kıyı ve sulak alan kuş çeşitliliği açısından zengindir.",
-      "en": "Early morning is by far the most rewarding window for birdwatching; bring binoculars to spot flamingos and migratory waterfowl."
+      "en": "Early morning is the most rewarding window for birdwatching; do not forget to bring binoculars. The shallow marshlands attract a diverse variety of migratory waterfowl."
     },
     "proposers": [
       "A.M.",
@@ -2672,35 +2394,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Boğaz Balıkçı Limanı",
-          "description": "Boğaz Balıkçı Limanı, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Boğaz, korunaklı koyunda yer alan balıkçı barınağı ve sakin sahil atmosferiyle bu doğa rotasının başlangıç noktasıdır. Sabahın erken saatlerinde balıkçıların dönüşünü izlemek, kıyı boyunca beslenen deniz kuşlarını gözlemlemek ve güne taze bir deniz havasıyla başlamak için ideal bir merkezdir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Gastria Sulak Alanı",
-          "description": "Gastria Sulak Alanı, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kalecik (Gastria) kalesi yakınlarındaki kıyı düzlüğünde yer alan sulak alan, mevsimsel yağışlarla beslenen lagün yapısıyla göçmen kuşlar için önemli bir mola yeridir. İlkbahar ve sonbahar göç dönemlerinde flamingolar, balıkçıllar, çulluklar ve çeşitli su kuşlarına ev sahipliği yapan bu doğal ekosistem, kuş gözlemcileri ve doğaseverler için eşsiz bir yaşam alanıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kaplıca Sahili",
-          "description": "Kaplıca Sahili, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yarımadanın kuzey kıyısına geçiş noktasında yer alan Kaplıca sahili, kireçtaşı tepelerin denize kavuştuğu bakir bir kıyı şerididir. Doğal kumulları ve denizel bitki örtüsüyle korunan sahil, hem kıyı kuşlarının yuvalama alanı hem de doğayla baş başa yüzmek isteyenler için el değmemiş bir duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Tuz Düzlüğü Manzarası",
-          "description": "Tuz Düzlüğü Manzarası, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıyı arkasındaki alçak havzalarda yer alan mevsimlik tuzcul bataklıklar ve tuz düzlükleri, yazın buharlaşmayla beyaz kristal katmanlara dönüşürken kışın sığ göletler oluşturur. Tuzcul bitki türlerinin (halofitler) yetiştiği bu kendine özgü peyzaj, fotoğraf meraklıları için minimalist ve etkileyici görsel kompozisyonlar sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kıyı Kuş Gözlem Noktası",
-          "description": "Kıyı Kuş Gözlem Noktası, Boğaz Sulak Alan & Kuş Gözlem güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Mağusa Körfezi'nin kuzey sınırında yer alan bu açık seyir noktası, deniz ile kıyı ekosisteminin kesiştiği stratejik bir gözlem yeridir. Dürbünle yalıçapkınları, karabataklar, martılar ve kıyı yağmurcanlarını doğal ortamlarında izlemek için rota üzerindeki en verimli durağı oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -2708,36 +2430,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Boğaz Harbour Docks",
-          "description": "Boğaz Harbour Docks is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Boğaz Fishing Harbour",
+          "description": "Serving as the starting point for this coastal nature loop, Boğaz is an authentic fishing harbor located within a calm bay. Early mornings offer opportunities to watch working fishermen unloading their nets and observe seabirds gathering around the piers before setting out toward regional wetlands.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
           "name": "Gastria Coastal Wetland",
-          "description": "Gastria Coastal Wetland is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Located near historic Kalecik (Gastria), this seasonal coastal wetland is sustained by winter rainfall and tidal lagoons, serving as an important stopover along the Eastern Mediterranean avian flyway. During migration periods, birdwatchers can observe greater flamingos, herons, stilts, and plovers foraging across the shallow salt flats.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Kaplıca Natural Bay",
-          "description": "Kaplıca Natural Bay is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Kaplıca Coastal Bay",
+          "description": "Situated on the northern shore of the peninsula neck, Kaplıca Beach is an open coastal habitat where rocky limestone bluffs meet a wide sandy shore. Preserving native coastal scrub and dune ecosystems, it offers a tranquil natural setting for observing shorebirds and enjoying a swim in uncrowded waters.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Coastal Salt Flats Vista",
-          "description": "Coastal Salt Flats Vista is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Gastria Salt Flats Lookout",
+          "description": "Forming in shallow coastal basins behind the shore, these seasonal saline flats glisten with white mineral crusts during dry summer months and fill with brackish pools in winter. Colonized by specialized halophytic flora, this distinct terrain provides compelling minimalist landscapes for landscape photographers.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Coastal Bird Sanctuary Point",
-          "description": "Coastal Bird Sanctuary Point is an essential milestone along the Boğaz Wetlands, Salt Flats & Birdwatching Trail. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Coastal Bird Sanctuary Viewpoint",
+          "description": "Positioned on an open coastal headland overlooking Famagusta Bay, this natural vantage point offers exceptional visibility over both marine and intertidal habitats. With binoculars, visitors can track species including kingfishers, cormorants, Audouin's gulls, and wading migratory birds feeding along the shoreline.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -2763,11 +2485,12 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "kar-classic",
-    "slug": "kar-classic",
+    "slug": "karpaz-nature-loop",
     "region": "karpaz",
     "themes": [
       "nature",
@@ -2777,11 +2500,11 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "140–170 km",
     "duration": {
       "tr": "Tam gün (uzun sürüş)",
-      "en": "Full day (scenic drive)"
+      "en": "Full day (uzun sürüş)"
     },
     "difficulty": {
       "tr": "Kolay (yürüyüş) / Uzun sürüş",
-      "en": "Easy walk / long drive"
+      "en": "Easy (walk) / Uzun sürüş"
     },
     "startFinish": {
       "tr": "Dipkarpaz Köyü",
@@ -2790,19 +2513,19 @@ export const rawRoutes: RawRouteItem[] = [
     "heroImage": "/images/routes/karpaz-loop.jpg",
     "title": {
       "tr": "Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas",
-      "en": "Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos"
+      "en": "Classic Karpas: Wild Donkeys, Golden Beach & Apostolos Andreas"
     },
     "subtitle": {
       "tr": "Adanın en doğusuna tam günlük yol yolculuğu: köy hayatı, açık manzaralar, yabani eşekler, kilometrelerce Altınkum ve efsanevi manastır. Karpaz'ın imza rotası.",
-      "en": "A full-day scenic road odyssey to Cyprus’ eastern edge: traditional villages, wild roaming donkeys, miles of pristine Golden Beach, and the historic monastery."
+      "en": "The signature full-day road trip to the easternmost tip: rustic village life, vast open panoramas, friendly wild donkeys, endless dunes of Golden Beach, and the historic pilgrimage monastery."
     },
     "intro": {
       "tr": "Adanın en doğusuna tam günlük yol yolculuğu: köy hayatı, açık manzaralar, yabani eşekler, kilometrelerce Altınkum ve efsanevi manastır. Karpaz'ın imza rotası. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "A full-day scenic road odyssey to Cyprus’ eastern edge: traditional villages, wild roaming donkeys, miles of pristine Golden Beach, and the historic monastery. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "The signature full-day road trip to the easternmost tip: rustic village life, vast open panoramas, friendly wild donkeys, endless dunes of Golden Beach, and the historic pilgrimage monastery. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Yabani eşekler yol kenarında yaklaşır ama beslemeyin — yasak ve onlar için zararlı. Uzun sürüş için depoyu Dipkarpaz öncesi doldurun.",
-      "en": "Wild donkeys will approach your vehicle along the roadside, but please do not feed them. Always top up your fuel tank before leaving Dipkarpaz."
+      "en": "The wild donkeys often greet motorists along the park road, but please do not feed them processed human food. Be sure to top up your fuel tank in Dipkarpaz before entering the national park."
     },
     "proposers": [
       "E.A.",
@@ -2825,181 +2548,103 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Dipkarpaz Köyü",
-          "description": "Dipkarpaz Köyü, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz Yarımadası'nın en uçtaki büyük yerleşimi olan Dipkarpaz (Rizokarpaso), Kıbrıslı Türk ve Kıbrıslı Rum toplumlarının bir arada yaşamaya devam ettiği ender köylerdendir. Köy meydanındaki tarihi Agios Synesios Kilisesi ve cami, bu çok kültürlü geçmişin simgesidir. Taş evleri, kahvehaneleri ve samimi atmosferiyle milli park bölgesine girmeden önceki son ikmal ve mola noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/karpaz/dipkarpaz-village/1.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/2.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/3.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/4.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Karpaz Manzaralı Sürüş",
-          "description": "Karpaz Manzaralı Sürüş, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dipkarpaz köyünden Zafer Burnu'na uzanan asfalt yol boyunca yapılan sürüş, Akdeniz'in en bakir kıyı ve tepe manzaralarını sunar. Yolun iki yanında uzanan ardıç ormanları, makilikler, antik tarım terasları ve her iki taraftan görünen turkuaz deniz, yolculuğu unutulmaz bir yol macerasına dönüştürür.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Yabani Eşek Bölgesi",
-          "description": "Yabani Eşek Bölgesi, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz Milli Parkı sınırları içinde yaşayan ve adanın simgesi haline gelen serbest dolaşımdaki yabani eşekler (Karpaz eşekleri), yol boyunca ziyaretçileri karşılar. Geçmişte tarımda kullanılan ve zamanla doğaya salınarak vahşileşen bu koruma altındaki hayvanlar, yarımadanın doğal ve bozulmamış faunasının en sevimli parçasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/karpaz-national-park/1.jpg",
-            "/images/routes/karpaz/karpaz-national-park/2.jpg",
-            "/images/routes/karpaz/karpaz-national-park/3.jpg",
-            "/images/routes/karpaz/karpaz-national-park/4.jpg",
-            "/images/routes/karpaz/karpaz-national-park/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Altınkum (Golden Beach)",
-          "description": "Altınkum (Golden Beach), Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz Yarımadası'nın güney kıyısında kilometrelerce uzanan Altınkum, ince altın sarısı kumu ve kristal berraklığındaki turkuaz deniziyle Akdeniz'in en el değmemiş plajlarındandır. Caretta caretta ve yeşil deniz kaplumbağalarının önemli yuvalama alanlarından olan sahil, devasa kum tepeleri ve yapılaşmasız bakir doğasıyla büyüleyicidir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Ayios Philon Kilisesi",
-          "description": "Ayios Philon Kilisesi, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dipkarpaz'ın kuzey sahilinde, antik Karpasia kentinin kalıntıları üzerinde yükselen 12. yüzyıl Bizans kilisesidir. Helenistik ve Roma dönemi liman mendireğinin hemen yanında yer alan yapının tabanında 5. yüzyıldan kalma renkli mozaikler görülebilir. Denize sıfır konumu ve antik taş bloklarıyla büyüleyici bir tarihi atmosfer sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/ayios-philon/1.jpg",
-            "/images/routes/karpaz/ayios-philon/2.jpg",
-            "/images/routes/karpaz/ayios-philon/3.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Apostolos Andreas Manastırı",
-          "description": "Apostolos Andreas Manastırı, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yarımadanın en uç noktasında yer alan manastır, Ortodoks Hristiyanlar için Kıbrıs'ın en kutsal hac yeridir. Havari Andreas'ın gemisiyle adaya çıktığı ve kayadan şifalı su fışkırttığı efsanesine dayanan mekan, 19. yüzyıldan kalma görkemli kilisesi ve deniz seviyesindeki 15. yüzyıl ayazmasıyla binlerce hacı ve ziyaretçiyi ağırlar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Zafer Burnu",
-          "description": "Zafer Burnu, Klasik Karpaz: Eşekler, Altınkum & Apostolos Andreas güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıbrıs adasının en doğu ucu olan Zafer Burnu (Cape Apostolos Andreas), kayalık tepeleri ve açıklarındaki Klidhes (Kilit) Adacıkları ile rotanın dramatik zirve noktasıdır. Gönderdeki bayraklar ve deniz fenerinin bulunduğu bu uç nokta, Akdeniz'in enginliğini hissetmek ve günün batımını veya doğuşunu izlemek için adadaki en etkileyici coğrafi mekandır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "18:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         }
       ],
       "en": [
         {
-          "name": "Dipkarpaz Village Center",
-          "description": "Dipkarpaz Village Center is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Dipkarpaz Village",
+          "description": "Serving as the principal settlement of the Karpas Peninsula, Dipkarpaz (Rizokarpaso) is one of the few bi-communal villages in Cyprus where Turkish and Greek Cypriot residents continue to live side by side. Anchored by the historic Church of Agios Synesios and the village mosque on the central square, it offers traditional stone cafes and represents the final service stop before entering the national park.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/karpaz/dipkarpaz-village/1.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/2.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/3.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/4.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Karpaz Scenic National Highway",
-          "description": "Karpaz Scenic National Highway is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Karpas Scenic Coastal Drive",
+          "description": "The scenic drive extending east from Dipkarpaz toward the tip of the peninsula cuts through some of the wildest terrain in Cyprus. Flanked by Phoenician juniper, low scrub, dry-stone pastoral terraces, and dual coastal glimpses of the turquoise Mediterranean to both north and south, the route offers an exceptional coastal road trip experience.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Wild Donkey Sanctuary Zone",
-          "description": "Wild Donkey Sanctuary Zone is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Wild Donkey Nature Reserve",
+          "description": "Inhabiting the open expanse of the Karpaz National Park, the peninsula's famous feral donkeys roam freely across scrub-covered hillsides and along the roadway. Descendants of domesticated pack animals released after agricultural mechanization, these protected herds have become celebrated mascots of the eastern wilderness.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/karpaz-national-park/1.jpg",
-            "/images/routes/karpaz/karpaz-national-park/2.jpg",
-            "/images/routes/karpaz/karpaz-national-park/3.jpg",
-            "/images/routes/karpaz/karpaz-national-park/4.jpg",
-            "/images/routes/karpaz/karpaz-national-park/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Golden Beach (Altınkum)",
-          "description": "Golden Beach (Altınkum) is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Golden Beach Dunes",
+          "description": "Stretching for several kilometers along the southern shoreline of the peninsula, Golden Beach (Altınkum) is renowned as one of the finest and least developed sand beaches in the Mediterranean. Framed by towering shifting dunes and rolling surf, the bay provides critical seasonal nesting habitats for both loggerhead and green sea turtles.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Ayios Philon Ancient Church",
-          "description": "Ayios Philon Ancient Church is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ayios Philon Church",
+          "description": "Located on the northern coast near Dipkarpaz amidst the ruins of ancient Karpasia, this 12th-century Byzantine domed church was built over a 5th-century Christian basilica. Adjacent to partially submerged Hellenistic harbor moles, the site retains intricate geometric floor mosaics and offers striking views of open northern waters.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/ayios-philon/1.jpg",
-            "/images/routes/karpaz/ayios-philon/2.jpg",
-            "/images/routes/karpaz/ayios-philon/3.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
           "name": "Apostolos Andreas Monastery",
-          "description": "Apostolos Andreas Monastery is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Situated near the easternmost tip of Cyprus, this historic sanctuary is the island's premier Orthodox pilgrimage site. According to tradition, Saint Andrew landed here and brought forth a miraculous freshwater spring; today, the complex features a 19th-century church, historical pilgrim cloisters, and an underground 15th-century seaside holy water chapel.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Cape Apostolos Andreas (Zafer Burnu)",
-          "description": "Cape Apostolos Andreas (Zafer Burnu) is an essential milestone along the Classic Karpaz: Wild Donkeys, Golden Beach & Cape Apostolos. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Cape Apostolos Andreas (Cape Zafer)",
+          "description": "Zafer Burnu (Cape Apostolos Andreas) forms the rugged geographical tip of Cyprus, pointing east toward Syria. Marked by prominent flags and a historic lighthouse, the headland overlooks the offshore Klidhes Islands (Cleides), offering travelers a dramatic maritime panorama of endless horizons at the island's ultimate land's end.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "18:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         }
       ]
     },
@@ -3022,7 +2667,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "kar-seacaves",
@@ -3044,24 +2690,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Blue House Deniz Mağarası",
-      "en": "Kaplıca Coast"
+      "en": "Blue House Sea Cave"
     },
     "heroImage": "/images/route-card-images/blue-sea-cave.jpg",
     "title": {
       "tr": "Gizli Koylar & Deniz Mağaraları",
-      "en": "Hidden Karpaz Coves & Glowing Sea Caves"
+      "en": "Hidden Coves & Sea Caves"
     },
     "subtitle": {
       "tr": "Akdeniz'in kendi mimarisini oyduğu yer: mavi ışıltılı deniz mağarası, Camel Point, Horseshoe Beach ve Altınkum'un daha az kalabalık ucu. Mayo şart.",
-      "en": "Where the Mediterranean carved natural architecture: glowing sea caves, Camel Point, Horseshoe Beach, and secluded swimming stretches. Swimwear required."
+      "en": "Where the Mediterranean carves its own sculpture: azure-glowing sea caves, Camel Point, Horseshoe Beach, and secluded stretches of Golden Beach. Swimwear is essential."
     },
     "intro": {
       "tr": "Akdeniz'in kendi mimarisini oyduğu yer: mavi ışıltılı deniz mağarası, Camel Point, Horseshoe Beach ve Altınkum'un daha az kalabalık ucu. Mayo şart. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Where the Mediterranean carved natural architecture: glowing sea caves, Camel Point, Horseshoe Beach, and secluded swimming stretches. Swimwear required. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Where the Mediterranean carves its own sculpture: azure-glowing sea caves, Camel Point, Horseshoe Beach, and secluded stretches of Golden Beach. Swimwear is essential. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Birkaç durak yüzmeyi gerektiriyor — mayo ve su ayakkabısı getirin. Deniz mağarasının içindeki mavi ışık öğle saatlerinde en belirgin.",
-      "en": "Several stops require wading or swimming — bring water shoes and snorkeling goggles. The azure light inside the sea cave is most striking at midday."
+      "en": "Several stops require a short swim — bring a swimsuit and water shoes. The turquoise glow inside the sea caves is at its most vibrant around midday when the sun is overhead."
     },
     "proposers": [
       "O.O."
@@ -3070,117 +2716,89 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Blue House Deniz Mağarası",
-          "description": "Blue House Deniz Mağarası, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz'ın kayalık kuzey sahilinde deniz dalgalarının kireçtaşı falezleri oymasıyla oluşan bu doğal deniz mağarası, adını suyun altından yansıyan parlak mavi ışıktan alır. Sakin havalarda yüzerek veya küçük teknelerle içine girilebilen mağara, şnorkelle dalış ve su altı fotoğrafçılığı için Doğu Akdeniz'in en etkileyici doğal oluşumlarındandır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Camel Point",
-          "description": "Camel Point, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz kıyısında yer alan ve denize doğru uzanan kayalık kütlesi uzaktan bir deveyi andıran Camel Point, yarımadanın doğal jeomorfolojik anıtlarındandır. Yüksek kayalık burun, kıyı boyunca uzanan falezleri ve turkuaz koyları kuşbakışı izlemek için harika bir fotoğraf noktası sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Horseshoe Beach",
-          "description": "Horseshoe Beach, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Doğal bir at nalı şeklinde kıvrılan kayalık burunların kucağında yer alan Horseshoe Beach, rüzgarlardan korunaklı sığ ve sakin bir yüzme lagünü oluşturur. İncecik kumu ve dalgasız berrak sularıyla kalabalıktan uzak, huzurlu bir deniz molası arayanlar için saklı bir cennettir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kaplıca Sahili",
-          "description": "Kaplıca Sahili, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kuzey sahil şeridinde yer alan Kaplıca Koyu, geniş kumsalı ve arkasında yükselen Kantara dağlarının görkemli silüetiyle deniz mağaraları rotasının dengeli bir mola durağıdır. Temiz ve sakin deniziyle yüzme keyfi sunarken sahil tesislerinde taze yerel lezzetler tatma imkanı verir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Altınkum (Az Kalabalık Uç)",
-          "description": "Altınkum (Az Kalabalık Uç), Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Ünlü Altınkum plajının ana giriş noktalarından uzakta, doğu ucunda yer alan bu bakir kesim; insan izinden uzak devasa kum tepeleri ve el değmemiş kumsalıyla bilinir. Sadece rüzgarın ve dalgaların sesinin duyulduğu bu nokta, doğayla baş başa kalmak ve sakin sularda yüzmek için idealdir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Zafer Burnu Kayalıkları",
-          "description": "Zafer Burnu Kayalıkları, Gizli Koylar & Deniz Mağaraları güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıbrıs'ın en doğu ucunda denize dik inen aşınmış kireçtaşı kayalıklar, Akdeniz'in hırçın dalgalarının şekillendirdiği sert ve vahşi bir kıyı topoğrafyası sergiler. Klidhes Adacıkları'na bakan bu kayalıklar, gün batımında gökyüzü renklerinin dalgalarla buluştuğu dramatik bir kapanış durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         }
       ],
       "en": [
         {
-          "name": "Blue Sea Cave & Grotto",
-          "description": "Blue Sea Cave & Grotto is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Blue House Sea Cave",
+          "description": "Sculpted by wave erosion into the northern limestone cliffs of the Karpas, this sea cave owes its local reputation to the luminous azure light refracted through its submerged entrance. Accessible by swimming or small craft in calm weather, its crystalline waters offer an exceptional location for coastal snorkeling and marine photography.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Camel Point Rock Formation",
-          "description": "Camel Point Rock Formation is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Camel Point Beach",
+          "description": "Named for its distinctive silhouette resembling a reclining camel when viewed from coastal angles, Camel Point is a prominent natural headland jutting into the clear northern waters. The cliff-top vantage point provides expansive perspectives along the jagged coastline and secluded inlets below.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Horseshoe Cove",
-          "description": "Horseshoe Cove is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Horseshoe Bay",
+          "description": "Enclosed within a natural horseshoe-shaped amphithere of low limestone bluffs, this sheltered cove boasts a tranquil, shallow swimming basin protected from offshore currents. With soft sand underfoot and transparent waters, it serves as a secluded sanctuary for travelers seeking peaceful swimming away from marked resorts.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Kaplıca Sand Beach",
-          "description": "Kaplıca Sand Beach is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Kaplıca Coastal Bay",
+          "description": "Nestled beneath the northern ridges of the Kyrenia mountain range, Kaplıca Beach features an expansive sandy crescent where the waters remain remarkably clear. Providing simple seaside dining alongside wide horizons, it offers an unhurried swimming stop during a full-day coastal exploration.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Golden Beach (Quiet Far End)",
-          "description": "Golden Beach (Quiet Far End) is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Golden Beach (Quiet End)",
+          "description": "Positioned far from the primary access trail of Golden Beach, this quiet eastern reach of the dunes offers untouched sand stretches free of footprints. Sheltered by massive coastal dunes, it provides an intimate wilderness setting where travelers can swim in complete tranquility.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
           "name": "Cape Zafer Sea Cliffs",
-          "description": "Cape Zafer Sea Cliffs is an essential milestone along the Hidden Karpaz Coves & Glowing Sea Caves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Forming the jagged terminus of Cyprus, the sea cliffs of Cape Apostolos Andreas drop steeply into deep open Mediterranean currents. Facing the uninhabited Klidhes islets, these weathered limestone ledges present an elemental landscape ideal for observing maritime swells and dusk skies at the edge of the island.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         }
       ]
     },
@@ -3203,7 +2821,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "kar-wildnature",
@@ -3229,19 +2848,19 @@ export const rawRoutes: RawRouteItem[] = [
     "heroImage": "/images/route-card-images/yenierenkoy.jpg",
     "title": {
       "tr": "Karpaz Vahşi Doğa (70 km Yarımada)",
-      "en": "Karpaz 70 km Wild Nature Peninsula Drive"
+      "en": "Karpas Wilderness: The 70km Peninsula Trail"
     },
     "subtitle": {
       "tr": "Yarımadanın tüm uzunluğunu, tarım arazisinden deniz fenerine kadar kat eden rota. Avrupa kıyısından çok ıssız bir adayı andıran manzaralar.",
-      "en": "Traversing the entire wild length of the peninsula from rural farmland to the historic lighthouse. Landscapes reminiscent of a secluded desert island."
+      "en": "Traverse the full length of the remote peninsula, from agricultural plains to the lonely lighthouse at Cape Apostolos Andreas. Landscapes that feel like a wild, untamed island."
     },
     "intro": {
       "tr": "Yarımadanın tüm uzunluğunu, tarım arazisinden deniz fenerine kadar kat eden rota. Avrupa kıyısından çok ıssız bir adayı andıran manzaralar. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Traversing the entire wild length of the peninsula from rural farmland to the historic lighthouse. Landscapes reminiscent of a secluded desert island. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Traverse the full length of the remote peninsula, from agricultural plains to the lonely lighthouse at Cape Apostolos Andreas. Landscapes that feel like a wild, untamed island. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Ronnas Koyu neredeyse hiç bilinmez ve genelde bomboştur — yarımadanın en sakin yüzme noktalarından biri.",
-      "en": "Ronnas Bay is almost completely unknown to travelers and usually entirely deserted — one of the most serene swimming spots in Cyprus."
+      "en": "Ronnas Bay is almost completely unpublicised and typically deserted — offering one of the quietest, most pristine coastal swim spots anywhere on the peninsula."
     },
     "proposers": [
       "O.O."
@@ -3250,83 +2869,49 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Yenierenköy",
-          "description": "Yenierenköy, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Geçmişte adanın en önemli tütün üretim merkezlerinden biri olan Yenierenköy (Yialousa), tarihi taş tütün depoları, zeytinlikleri ve canlı köy meydanıyla Karpaz'ın ana merkezlerindendir. Yarımadanın vahşi doğasına girmeden önce geleneksel kahvehanelerinde mola vermek ve yöresel fırın ürünlerini tatmak için ideal bir başlangıç noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Karpaz Milli Parkı",
-          "description": "Karpaz Milli Parkı, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yarımadanın doğu ucunu kapsayan Karpaz Özel Çevre Koruma Bölgesi (Milli Park), Akdeniz'in en bakir ekosistemlerinden biridir. Fenike ardıçları, yabani zeytinler ve endemik bitkilerle kaplı alanda serbestçe dolaşan yabani eşekler ve zengin bir kuş popülasyonu yaşar. İnsan müdahalesinden uzak doğasıyla adanın gerçek vahşi yüzünü temsil eder.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/karpaz-national-park/1.jpg",
-            "/images/routes/karpaz/karpaz-national-park/2.jpg",
-            "/images/routes/karpaz/karpaz-national-park/3.jpg",
-            "/images/routes/karpaz/karpaz-national-park/4.jpg",
-            "/images/routes/karpaz/karpaz-national-park/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Altınkum",
-          "description": "Altınkum, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Milli park sınırları içindeki Altınkum, kilometrelerce kesintisiz uzanan altın sarısı kum tepeleri ve turkuaz renkli deniziyle Akdeniz'in en büyüleyici sahilidir. Caretta caretta kaplumbağalarının ana üreme sahası olan bu koruma altındaki plaj, yapılaşmadan tamamen uzak, sessiz ve dingin bir doğa deneyimi sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Dipkarpaz Köyü",
-          "description": "Dipkarpaz Köyü, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Milli parkın kapısı konumundaki Dipkarpaz, Türk ve Rum nüfusun ortak yaşam sürdürdüğü tarihi dokusuyla öne çıkar. Geleneksel sarı taştan yapılmış avlulu evleri, sokaklarda dinlenen sakinleri ve meydandaki tarihi kilisesiyle modern dünyadan izole, otantik bir köy atmosferi sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/dipkarpaz-village/1.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/2.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/3.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/4.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Zafer Burnu",
-          "description": "Zafer Burnu, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıbrıs'ın haritadaki sivri burnunu oluşturan Zafer Burnu, Akdeniz'in uçsuz bucaksız sularına uzanan kayalık bir kara parçasıdır. Karşısındaki Klidhes Adacıkları ve deniz feneriyle adanın fiziki bitiş noktası olan bu alan, vahşi doğa rotasının en görkemli coğrafi durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Apostolos Andreas",
-          "description": "Apostolos Andreas, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yarımadanın kayalık sahilinde yükselen Apostolos Andreas Manastırı, yüzyıllardır denizcilerin ve hacıların sığınağı olmuştur. Alt katında deniz kenarından çıkan şifalı ayazması, taş kemerli avlusu ve tarihi manolyalarıyla vahşi doğanın ortasında derin bir manevi huzur durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Ronnas Koyu",
-          "description": "Ronnas Koyu, Karpaz Vahşi Doğa (70 km Yarımada) güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yenierenköy ile Dipkarpaz arasında kuzey sahiline saklanmış olan Ronnas Koyu, gür zakkum ağaçları ve yeşil vadinin denizle buluştuğu bakir bir kumsaldır. Yeşil deniz kaplumbağalarının Kuzey Kıbrıs'taki en yoğun yuvalama alanlarından biri olan koy, turistlerin nadiren uğradığı sessiz bir doğa sığınağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 dk"
@@ -3334,84 +2919,50 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Yenierenköy Coastal Hub",
-          "description": "Yenierenköy Coastal Hub is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Yenierenköy Coastal Town",
+          "description": "Historically known as Yialousa and celebrated as a regional hub for tobacco cultivation, Yenierenköy is a substantial community characterized by historic stone tobacco warehouses and olive groves. Its central square provides traditional bakeries and cafes, serving as a key gateway before entering the remote landscapes of the eastern peninsula.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Karpaz National Park Gateway",
-          "description": "Karpaz National Park Gateway is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Karpas National Park",
+          "description": "Encompassing the eastern tip of the peninsula, the Karpas Special Environmental Protection Area preserves an expansive sanctuary of coastal sand dunes, Phoenician juniper forests, and rocky headlands. Home to feral donkey herds and migratory sea birds, it remains one of the largest untamed coastal reserves in the Eastern Mediterranean basin.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/karpaz-national-park/1.jpg",
-            "/images/routes/karpaz/karpaz-national-park/2.jpg",
-            "/images/routes/karpaz/karpaz-national-park/3.jpg",
-            "/images/routes/karpaz/karpaz-national-park/4.jpg",
-            "/images/routes/karpaz/karpaz-national-park/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Golden Beach Dunes",
-          "description": "Golden Beach Dunes is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Golden Beach",
+          "description": "Stretching for kilometers along the southern shoreline of the national park, Golden Beach is characterized by sweeping sand dunes and clear, shallow turquoise waters. An essential nesting refuge for endangered sea turtles, the beach is protected from commercial development, providing an awe-inspiring expanse of coastal solitude.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Dipkarpaz Traditional Quarter",
-          "description": "Dipkarpaz Traditional Quarter is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Dipkarpaz Village",
+          "description": "Serving as the administrative center at the boundary of the national park, Dipkarpaz retains an enduring bi-communal heritage where Greek and Turkish Cypriots coexist. Yellow-sandstone village residences, agricultural courtyards, and the central Byzantine church of Agios Synesios reflect an authentic rural pace of life.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/dipkarpaz-village/1.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/2.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/3.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/4.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Cape Zafer Edge",
-          "description": "Cape Zafer Edge is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Cape Apostolos Andreas (Cape Zafer)",
+          "description": "Marking the far eastern tip of Cyprus, Cape Apostolos Andreas forms a dramatic headland pointing across the sea toward the Syrian coastline. Framed by windswept cliffs, a solitary lighthouse, and the rocky Klidhes islets, it delivers an elemental sense of geographical extremity.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Apostolos Andreas Grounds",
-          "description": "Apostolos Andreas Grounds is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Apostolos Andreas Monastery",
+          "description": "Anchored on the rocky shoreline near the cape, the Monastery of Saint Andrew is the historical heart of pilgrimage in Cyprus. Founded around a coastal spring associated with the apostle's journey, the complex includes 19th-century church buildings, monastic quarters, and a stone-built chapel by the surf.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/apostolos-andreas-monastery/1.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/2.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/3.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/4.jpg",
-            "/images/routes/karpaz/apostolos-andreas-monastery/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Ronnas Secluded Bay",
-          "description": "Ronnas Secluded Bay is an essential milestone along the Karpaz 70 km Wild Nature Peninsula Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ronnas Bay Wild Beach",
+          "description": "Tucked away along the northern coast between Yenierenköy and Dipkarpaz, Ronnas Bay is an isolated sandy cove framed by wild oleander scrub and coastal dunes. As one of Northern Cyprus's most critical nesting grounds for green sea turtles, this secluded inlet offers a pristine sanctuary far removed from standard routes.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "18:00",
           "driveTime": "15–20 min"
@@ -3437,7 +2988,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "kar-yudi",
@@ -3454,7 +3006,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "difficulty": {
       "tr": "Zor (yürüyüş)",
-      "en": "Challenging (hike)"
+      "en": "Challenging (walk)"
     },
     "startFinish": {
       "tr": "Yudi Dağı Yürüyüş Parkuru",
@@ -3463,19 +3015,19 @@ export const rawRoutes: RawRouteItem[] = [
     "heroImage": "/images/route-card-images/mount-yudi.jpg",
     "title": {
       "tr": "Yudi Dağı Yürüyüşü & Karpaz Gate Marina",
-      "en": "Mount Yudi Trail Hike & Karpaz Gate Marina"
+      "en": "Mount Yudi Trek & Karpaz Gate Marina"
     },
     "subtitle": {
       "tr": "Yudi Dağı'nda zorlu bir yürüyüş, Yeni Erenköy plajında yüzme ve Karpaz Gate Marina'da sakin bir gün batımı finali. Aktif gezginler için.",
-      "en": "An exhilarating scenic ridge hike on Mount Yudi, swimming at Yenierenköy beach, and relaxing with marina yachts and sunset dining."
+      "en": "An invigorating mountain ridge hike on Mount Yudi, a refreshing swim along Yenierenköy beach, and a relaxing sunset finale at luxury Karpaz Gate Marina. Designed for active travelers."
     },
     "intro": {
       "tr": "Yudi Dağı'nda zorlu bir yürüyüş, Yeni Erenköy plajında yüzme ve Karpaz Gate Marina'da sakin bir gün batımı finali. Aktif gezginler için. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "An exhilarating scenic ridge hike on Mount Yudi, swimming at Yenierenköy beach, and relaxing with marina yachts and sunset dining. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "An invigorating mountain ridge hike on Mount Yudi, a refreshing swim along Yenierenköy beach, and a relaxing sunset finale at luxury Karpaz Gate Marina. Designed for active travelers. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Yudi Dağı tırmanışı için sağlam ayakkabı ve bol su şart; marina ise yürüyüş sonrası konforlu bir toparlanma durağı.",
-      "en": "Sturdy hiking shoes and plenty of drinking water are essential for the Yudi climb; the modern marina afterwards offers a comfortable relaxation haven."
+      "en": "Sturdy hiking boots and ample drinking water are essential for tackling Mount Yudi; the marina lounge afterward provides a luxurious and comfortable place to unwind."
     },
     "proposers": [
       "K.A."
@@ -3484,35 +3036,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Yudi Dağı Yürüyüş Parkuru",
-          "description": "Yudi Dağı Yürüyüş Parkuru, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz omurgasında yükselen Yudi Dağı (Yuda Tepesi), bölgenin en heyecan verici doğa yürüyüşü rotalarından biridir. Çam ve makiliklerle kaplı dik patikalardan zirveye ulaşıldığında, yarımadanın hem kuzey hem güney kıyılarını aynı anda gören nefes kesici bir panorama açılır. Yürüyüşçülere vahşi doğayı ve adanın coğrafi yapısını yakından tanıma fırsatı sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Yeni Erenköy Halk Plajı",
-          "description": "Yeni Erenköy Halk Plajı, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yudi Dağı yürüyüşünün ardından ulaşılan Yeni Erenköy Halk Plajı, altın sarısı kumu ve berrak deniziyle yorgunluk atmak için ideal bir sahil durağıdır. Korunaklı yapısı sayesinde dalgasız ve güvenli bir yüzme imkanı sunarken sahil kafesinde serinletici içecekler bulunur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Karpaz Gate Marina",
-          "description": "Karpaz Gate Marina, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yenierenköy kıyısında yer alan Karpaz Gate Marina, uluslararası standartlarda lüks bir yat limanı ve yaşam merkezidir. Butik oteli, deniz kulübü, şık Akdeniz restoranı ve sanat galerisiyle yarımadanın en modern tesisidir. Dingin liman atmosferinde tekneleri izleyerek kahve içmek veya yemek yemek için seçkin bir mola noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Gün Batımı Noktası",
-          "description": "Gün Batımı Noktası, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Marina mendireği veya yakınlardaki falezlerin üzerinde yer alan bu seyir noktası, güneşin kuzeybatı ufkunda Akdeniz'e gömülüşünü izlemek için mükemmel bir açıdır. Dağ yürüyüşü ve deniz keyfinin ardından denizin üzerindeki renk kırılmalarını izleyerek günü dingin bir atmosferde sonlandırmayı sağlar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Revaklı Ev Konağı",
-          "description": "Revaklı Ev Konağı, Yudi Dağı Yürüyüşü & Karpaz Gate Marina güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yenierenköy merkezinde yer alan Revaklı Ev, Osmanlı ve erken dönem Kıbrıs sivil mimarisini yansıtan kemerli ön revakları ve sarı taş işçiliğiyle dikkat çeken tarihi bir konaktır. Restore edilerek kültürel mirasın bir parçası haline getirilen yapı, geleneksel Karpaz ev hayatını ve mimari zarafetini gözler önüne serer.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -3521,35 +3073,35 @@ export const rawRoutes: RawRouteItem[] = [
       "en": [
         {
           "name": "Mount Yudi Hiking Trail",
-          "description": "Mount Yudi Hiking Trail is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Rising prominently along the spine of the Karpas Peninsula, Mount Yudi provides an invigorating hiking trail through pine woods and Mediterranean scrub. Reaching its elevated ridge rewards trekkers with sweeping vistas extending simultaneously over both the northern and southern coastlines of the peninsula.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Yeni Erenköy Public Beach",
-          "description": "Yeni Erenköy Public Beach is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Yeni Erenköy Sandy Beach",
+          "description": "Situated on the northern coast near Yenierenköy, this public sandy beach features clear, gentle waters protected by natural coastal headlands. It is a favored resting spot for travelers and hikers to swim and relax by the water after traversing the mountain trails.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Karpaz Gate Marina Promenade",
-          "description": "Karpaz Gate Marina Promenade is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Karpaz Gate Marina",
+          "description": "Nestled on the northern shore of the peninsula, Karpaz Gate Marina is an internationally accredited luxury yacht haven and resort complex. Providing boutique accommodation, an open-air beach club, a contemporary art gallery, and fine Mediterranean dining, it represents the primary upscale maritime retreat in the region.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Marina Pier Sunset View",
-          "description": "Marina Pier Sunset View is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Panoramic Sunset Point",
+          "description": "Located along the marina breakwater and nearby coastal cliffs, this viewpoint affords an unobstructed westward horizon across open northern waters. It is an ideal setting to witness dramatic sunset tones reflecting off the calm sea following an active day outdoors.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Revaklı Ev Heritage Mansion",
-          "description": "Revaklı Ev Heritage Mansion is an essential milestone along the Mount Yudi Trail Hike & Karpaz Gate Marina. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Arcaded Ottoman Heritage House",
+          "description": "Situated in the heart of Yenierenköy, the Revaklı Ev (Arcaded House) is a restored historic stone mansion characterized by classical ground-floor arches and traditional vernacular sandstone craftsmanship. The landmark offers insights into regional domestic architecture and historic village lifestyle.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -3575,7 +3127,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "kar-caves",
@@ -3597,24 +3150,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Hill Coffee",
-      "en": "Hill Coffee Lookout"
+      "en": "Hill Coffee"
     },
     "heroImage": "/images/route-card-images/ayios-philon-church.jpg",
     "title": {
       "tr": "Karpaz Mağaraları & Antik İzler",
-      "en": "Karpaz Caves & Ancient Coastal Antiquities"
+      "en": "Karpas Caves & Ancient Footprints"
     },
     "subtitle": {
       "tr": "Antik mağaralar, Agla Trias, tarihi kiliseler ve uçsuz plajlarla Karpaz'ın en uç noktasına — dünyanın kenarındaymış hissi veren bir rota.",
-      "en": "Ancient cave dwellings, Agla Trias mosaics, historic churches, and vast empty sands leading to the edge-of-the-world tip of Karpaz."
+      "en": "Sea cliffs, Ayia Trias mosaics, Byzantine chapels, and vast untouched shores leading to the rugged eastern headlands — a journey that feels like reaching the end of the earth."
     },
     "intro": {
       "tr": "Antik mağaralar, Agla Trias, tarihi kiliseler ve uçsuz plajlarla Karpaz'ın en uç noktasına — dünyanın kenarındaymış hissi veren bir rota. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Ancient cave dwellings, Agla Trias mosaics, historic churches, and vast empty sands leading to the edge-of-the-world tip of Karpaz. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Sea cliffs, Ayia Trias mosaics, Byzantine chapels, and vast untouched shores leading to the rugged eastern headlands — a journey that feels like reaching the end of the earth. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Uzun bir sürüş rotası — sabah erken çıkın ve Dipkarpaz sonrası benzin istasyonu olmadığını unutmayın.",
-      "en": "This is a long and remote drive — depart early in the morning and note that there are zero gas stations past the village of Dipkarpaz."
+      "en": "This is a full day of driving — set off early in the morning and bear in mind that there are no fuel stations past Dipkarpaz."
     },
     "proposers": [
       "A.T."
@@ -3623,42 +3176,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Hill Coffee",
-          "description": "Hill Coffee, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz tepelerinde manzaraya hakim bir noktada yer alan Hill Coffee, yarımadanın her iki yakasını gören konumuyla rotanın keyifli bir başlangıç noktasıdır. Taze demlenmiş kahveleri ve yerel atıştırmalıklarıyla uzun yarımada sürüşü öncesi dinlendirici bir kahvaltı ve manzara molası sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Antik Mağaralar",
-          "description": "Antik Mağaralar, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz'ın kireçtaşı yamaçlarında yer alan bu doğal ve insan eliyle genişletilmiş kaya mağaraları, Neolitik ve Bronz çağlarından bu yana sığınak ve mezar olarak kullanılmıştır. Erken Hristiyanlık döneminde keşişlerin inzivaya çekildiği mağaralar, bölgenin jeolojik ve arkeolojik derinliğini gözler önüne serer.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Agla Trias",
-          "description": "Agla Trias, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Sipahi köyünde yer alan 5. ve 6. yüzyıl Erken Hristiyanlık bazilikası Agia Trias, geometrik desenler, nar, incir ve kuş motifleriyle bezenmiş renkli taban mozaikleriyle ünlüdür. Vaftizhanesi ve sütun dizileri günümüze ulaşan yapı, Kıbrıs'ın erken Hristiyanlık sanatının en seçkin açık hava arkeoloji duraklarındandır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Aylos Kilisesi",
-          "description": "Aylos Kilisesi, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yarımadanın kuzey kıyısına yakın kırsal alanda yer alan tarihi şapel kalıntısı, Orta Çağ taş işçiliği ve sakin doğasıyla dikkat çeker. Çevresindeki asırlık zeytin ağaçları ve yabani çiçeklerle çevrili yapı, Karpaz'ın unutulmuş manevi mirasını keşfetmek isteyenler için huzurlu bir mola yeridir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Big Sand Beach",
-          "description": "Big Sand Beach, Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Altınkum sahilinin en geniş kumul alanını oluşturan Big Sand Beach, rüzgarın şekillendirdiği dev kum tepeleri ve kristal berraklığındaki turkuaz deniziyle bilinir. Yapılaşmanın bulunmadığı bu koruma altındaki sahil, deniz kaplumbağalarının doğal yaşam alanı olup ziyaretçilere adanın en görkemli yüzme deneyimini sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Rizokarpaso (Uç Nokta)",
-          "description": "Rizokarpaso (Uç Nokta), Karpaz Mağaraları & Antik İzler güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dipkarpaz sınırlarının doğusunda, yarımadanın Zafer Burnu'na kavuştuğu en uç noktadır. Akdeniz'in iki yakasını birleştiren vahşi kayalıkları, deniz feneri ve tarihi Apostolos Andreas Manastırı çevresiyle, medeniyetin bittiği ve sonsuz maviliğin başladığı eşsiz bir coğrafi final noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -3666,43 +3219,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Hill Coffee Hillside Lookout",
-          "description": "Hill Coffee Hillside Lookout is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Hill Coffee Lookout",
+          "description": "Perched on an elevated ridge along the Karpas transit corridor, Hill Coffee offers expansive panoramic vistas taking in the rolling terrain of the peninsula. Serving specialty coffees, herbal teas, and fresh breakfast bites, it provides a scenic starting point before venturing deeper into remote areas.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Ancient Rock-Cut Caves",
-          "description": "Ancient Rock-Cut Caves is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ancient Coastal Caves",
+          "description": "Hollowed into the limestone escarpments of the peninsula, these natural and expanded rock chambers served historically as prehistoric shelters, tomb chambers, and early Christian hermit cells. They offer an interesting glimpse into early human habitation and geological history in eastern Cyprus.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Agla Trias Basilica Mosaics",
-          "description": "Agla Trias Basilica Mosaics is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Agia Trias Basilica",
+          "description": "Located in the village of Sipahi, the 5th-century Basilica of Agia Trias is renowned for its remarkably preserved polychrome floor mosaics depicting geometric motifs, pomegranates, and stylized fauna. Visitors can explore the exposed nave foundations, column plinths, and cruciform baptistery representing early Byzantine ecclesiastical architecture.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Aylos Historic Chapel",
-          "description": "Aylos Historic Chapel is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ayios Church Ruins",
+          "description": "Situated in the rustic backcountry of the peninsula, these medieval stone chapel remains reflect early monastic presence on the Karpas. Surrounded by wild carob trees and grazing pastures, the site provides a tranquil, unhurried stop for heritage enthusiasts exploring regional stone ruins.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Big Sand Beach Shoreline",
-          "description": "Big Sand Beach Shoreline is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Big Sand Beach",
+          "description": "Representing the widest dune sector of Golden Beach, Big Sand Beach is defined by rolling sand formations and clear turquoise water. Free of permanent structures and acting as a vital nesting ground for endangered loggerhead turtles, it delivers a pristine seaside swimming experience.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Rizokarpaso Wilderness Point",
-          "description": "Rizokarpaso Wilderness Point is an essential milestone along the Karpaz Caves & Ancient Coastal Antiquities. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Rizokarpaso Eastern Headland",
+          "description": "Marking the far eastern perimeter of the Dipkarpaz territory toward Cape Apostolos Andreas, this point encompasses rocky shores, solitary maritime landscapes, and historical chapel sites. It provides a dramatic culmination to an itinerary exploring the outer reaches of Cyprus.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -3728,7 +3281,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "kar-buyukkonuk",
@@ -3742,7 +3296,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "35–50 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Half to full day"
+      "en": "Yarım–tam gün"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -3750,24 +3304,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "İskele Arkeoloji Müzesi",
-      "en": "Büyükkonuk Village"
+      "en": "İskele Archaeology Museum"
     },
     "heroImage": "/images/route-card-images/buyukkonuk.jpg",
     "title": {
       "tr": "Büyükkonuk Eko-Köy & Doğu Kapısı",
-      "en": "Büyükkonuk Eco-Village & Traditional Village Crafts"
+      "en": "Büyükkonuk Eco-Village & Eastern Gateway"
     },
     "subtitle": {
       "tr": "KKTC'nin ilk eko-turizm köyü Büyükkonuk üzerinden Karpaz'a giriş: geleneksel el sanatları, yerel yemek ve köy yaşamı.",
-      "en": "Enter Karpaz through Northern Cyprus’ first certified eco-tourism village: traditional artisan crafts, halloumi making, and genuine village hospitality."
+      "en": "Enter the Karpas through Northern Cyprus's pioneer eco-tourism village, Büyükkonuk: traditional crafts, homemade stone-oven bread, local cuisine, and warm village hospitality."
     },
     "intro": {
       "tr": "KKTC'nin ilk eko-turizm köyü Büyükkonuk üzerinden Karpaz'a giriş: geleneksel el sanatları, yerel yemek ve köy yaşamı. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Enter Karpaz through Northern Cyprus’ first certified eco-tourism village: traditional artisan crafts, halloumi making, and genuine village hospitality. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Enter the Karpas through Northern Cyprus's pioneer eco-tourism village, Büyükkonuk: traditional crafts, homemade stone-oven bread, local cuisine, and warm village hospitality. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Büyükkonuk'ta eko-gün festivalleri düzenlenir; denk gelirseniz geleneksel hellim yapımı ve zeytin ezme gösterilerini kaçırmayın.",
-      "en": "Büyükkonuk frequently hosts traditional eco-day festivals; if your trip coincides, don’t miss live halloumi making and olive bread baking."
+      "en": "Büyükkonuk hosts periodic eco-festivals; if your dates align, do not miss the live demonstrations of traditional halloumi cheesemaking and carob syrup pressing."
     },
     "proposers": [
       "U.S."
@@ -3776,109 +3330,75 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "İskele Arkeoloji Müzesi",
-          "description": "İskele Arkeoloji Müzesi, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Karpaz Yarımadası'na açılan kapı olan İskele'de yer alan müze, bölgenin binlerce yıllık tarihine ışık tutan zengin bir arkeolojik koleksiyona ev sahipliği yapar. Neolitik dönemden Roma çağına kadar uzanan seramikler, figürinler ve mezar buluntuları, kırsal ve ekolojik gezi öncesinde bölgenin kadim geçmişini anlamak için ideal bir giriş sağlar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/guzelyurt/güzelyurt-archaeology/1.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/2.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/3.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/4.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Kantara Kalesi",
-          "description": "Kantara Kalesi, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Beşparmak Dağları'nın doğu ucunda 630 metre yükseklikte yer alan Kantara Kalesi, Lüzinyanlar ve Bizanslılar tarafından kullanılan görkemli bir dağ hisarıdır. Kalenin burçlarından kuzeyde Akdeniz kıyıları, güneyde Mağusa Körfezi ve doğuda uzanan Karpaz Yarımadası aynı anda panoramik olarak izlenebilir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Büyükkonuk Eko-Köy",
-          "description": "Büyükkonuk Eko-Köy, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kuzey Kıbrıs'ın ilk tescilli eko-turizm köyü olan Büyükkonuk (Komi Kebir), geleneksel ada yaşamının ve sürdürülebilir tarımın merkezidir. Taş fırınlarda pişen geleneksel zeytinli ve hellimli ekmekler, el dokuma tezgahları, organik zeytinyağı değirmenleri ve kerpiç konukevleriyle ziyaretçilerine otantik bir Kıbrıs köy deneyimi sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Dipkarpaz Köyü",
-          "description": "Dipkarpaz Köyü, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yarımadanın en ucundaki tarihi yerleşim olan Dipkarpaz, Türk ve Rum toplumlarının bir arada yaşamaya devam ettiği çok kültürlü bir köydür. Geleneksel taş evleri, köy kahvehaneleri ve meydanındaki Agios Synesios Kilisesi ile milli park öncesindeki son büyük kültürel duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/dipkarpaz-village/1.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/2.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/3.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/4.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Ayios Philon Kilisesi",
-          "description": "Ayios Philon Kilisesi, Büyükkonuk Eko-Köy & Doğu Kapısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dipkarpaz'ın kuzey sahilinde, antik Karpasia limanı üzerinde yükselen 12. yüzyıl Bizans kilisesidir. 5. yüzyıldan kalma renkli mozaik zeminleri ve antik mendirek kalıntılarıyla denize sıfır konumlanan yapı, doğa ve tarihin birleştiği dingin bir kapanış noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/karpaz/ayios-philon/1.jpg",
-            "/images/routes/karpaz/ayios-philon/2.jpg",
-            "/images/routes/karpaz/ayios-philon/3.jpg"
-          ]
+          "driveTime": "15–20 dk"
         }
       ],
       "en": [
         {
-          "name": "Iskele Archaeology Museum",
-          "description": "Iskele Archaeology Museum is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "İskele Archaeology Museum",
+          "description": "Located in İskele at the threshold of the Karpas Peninsula, this archaeological museum displays prehistoric pottery, Hellenistic statues, and Roman artifacts recovered from regional excavations. It serves as an informative cultural foundation before exploring the rural eco-villages and historic landscapes to the east.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/guzelyurt/güzelyurt-archaeology/1.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/2.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/3.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/4.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Kantara Castle Foothills",
-          "description": "Kantara Castle Foothills is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Kantara Castle",
+          "description": "Commanding a 630-meter limestone summit in the eastern Kyrenia Mountains, Kantara Castle is an imposing medieval mountain redoubt fortified under Byzantine and Lusignan rule. Its surviving gatehouses and battlements present extraordinary views embracing both the northern coastline and the southern expanse of Famagusta Bay.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Büyükkonuk Eco-Village Square",
-          "description": "Büyükkonuk Eco-Village Square is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Büyükkonuk Eco-Village",
+          "description": "Recognized as the pioneer eco-tourism village in Northern Cyprus, Büyükkonuk (Komi Kebir) is dedicated to preserving traditional rural heritage and agrarian crafts. Visitors can tour working olive oil presses, observe sourdough bread baking in clay dome ovens, and explore restored mud-brick farmsteads hosting local artisan workshops.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Dipkarpaz Village Lanes",
-          "description": "Dipkarpaz Village Lanes is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Dipkarpaz Village",
+          "description": "Located deep along the peninsula, Dipkarpaz is an authentic bi-communal agricultural village where Greek and Turkish Cypriot families reside together. The central square, framed by the Church of Agios Synesios and community coffee shops, preserves an unhurried pastoral rhythm of life.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/dipkarpaz-village/1.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/2.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/3.jpg",
-            "/images/routes/karpaz/dipkarpaz-village/4.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Ayios Philon Seaside Church",
-          "description": "Ayios Philon Seaside Church is an essential milestone along the Büyükkonuk Eco-Village & Traditional Village Crafts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ayios Philon Church",
+          "description": "Standing on the northern coastline over the foundations of ancient Karpasia, this 12th-century Byzantine domed church features preserved geometric floor mosaics from a 5th-century basilica. Overlooking ancient stone breakwaters and the open sea, it provides a serene coastal conclusion to the itinerary.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/karpaz/ayios-philon/1.jpg",
-            "/images/routes/karpaz/ayios-philon/2.jpg",
-            "/images/routes/karpaz/ayios-philon/3.jpg"
-          ]
+          "driveTime": "15–20 min"
         }
       ]
     },
@@ -3901,11 +3421,12 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "bati-soli",
-    "slug": "bati-soli",
+    "slug": "guzelyurt-lefke-heritage",
     "region": "bati",
     "themes": [
       "history",
@@ -3914,7 +3435,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "45–65 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Half to full day"
+      "en": "Yarım–tam gün"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -3922,24 +3443,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Soli Bazilikası",
-      "en": "Ancient Soli Ruins"
+      "en": "Soli Basilica"
     },
     "heroImage": "/images/routes/guzelyurt-loop.jpg",
     "title": {
       "tr": "Soli Antik Kenti & Vouni Sarayı",
-      "en": "Ancient Soli & Vouni Cliffside Palace"
+      "en": "Ancient Soli & Vouni Palace"
     },
     "subtitle": {
       "tr": "Kuğu mozaiğiyle ünlü Soli, tepedeki Vouni Sarayı ve batı kıyısının sessiz antik kentleri. Turist otobüsleri buraya pek uğramaz.",
-      "en": "Ancient Soli renowned for its delicate swan mosaic, the hilltop Persian palace of Vouni, and the serene western coast away from tour buses."
+      "en": "Famous for its intricate Swan Mosaic, ancient Soli combines with the commanding clifftop ruins of Vouni Palace and peaceful western coastlines. Tour buses rarely venture here."
     },
     "intro": {
       "tr": "Kuğu mozaiğiyle ünlü Soli, tepedeki Vouni Sarayı ve batı kıyısının sessiz antik kentleri. Turist otobüsleri buraya pek uğramaz. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Ancient Soli renowned for its delicate swan mosaic, the hilltop Persian palace of Vouni, and the serene western coast away from tour buses. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Famous for its intricate Swan Mosaic, ancient Soli combines with the commanding clifftop ruins of Vouni Palace and peaceful western coastlines. Tour buses rarely venture here. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Vouni Sarayı'ndan gün batımı batı kıyısının en güzellerinden biri ve popüler noktalara göre çok daha sakin.",
-      "en": "Sunset from the ruins of Vouni Palace is one of the most stunning spectacles in Cyprus, with vast views over Morphou Bay and far fewer crowds."
+      "en": "Sunset from the high terraces of Vouni Palace is among the most dramatic on the entire island, with vast sea views and complete serenity."
     },
     "proposers": [
       "U.S.",
@@ -3955,54 +3476,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Soli Bazilikası",
-          "description": "Soli Bazilikası, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gemikonağı yakınlarında yer alan Soli Bazilikası, MS 4. yüzyılın sonlarında inşa edilmiş adanın en erken ve en büyük Hristiyan bazilikalarından biridir. Yapının zemininde korunan ve geometrik motifler, kuş figürleri ile ünlü 'Soli Kuğusu'nu içeren renkli taban mozaikleri, geç antik dönem sanatının şaheserlerindendir. Koruma çatısı altında sergilenen kalıntılar, kentin zengin tarihini belgeler.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/guzelyurt/soli-ancient-city/1.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/2.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/3.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/4.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Soli Roma Tiyatrosu",
-          "description": "Soli Roma Tiyatrosu, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Bazilikanın hemen yukarısındaki tepe yamacına oyulmuş olan Soli Roma Tiyatrosu, MS 2. yüzyıldan kalma yarım daire biçimli bir gösteri yapısıdır. Yaklaşık 3.500 seyirci kapasitesine sahip olan yapı, Güzelyurt Körfezi'nin engin maviliğine bakan muazzam bir sahne manzarasına sahiptir. Restore edilmiş basamaklarında otururken antik çağın deniz manzarasını izlemek büyüleyicidir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/guzelyurt/soli-ancient-city/1.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/2.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/3.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/4.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Antik Agora",
-          "description": "Antik Agora, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Soli antik kentinin idari ve ticari kalbi olan agora alanı, sütunlu caddeleri, dükkan temelleri ve mermer çeşme kalıntılarıyla Roma döneminin canlı kentsel yaşamını yansıtır. Bakır ticaretiyle zenginleşen kentin limanına bağlanan bu alan, antik Soli'nin ekonomik gücünü ortaya koyar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Vouni Sarayı",
-          "description": "Vouni Sarayı, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Deniz seviyesinden 250 metre yükseklikte sarp bir tepe üzerinde yer alan Vouni Sarayı, MÖ 5. yüzyılda (yaklaşık MÖ 498) Pers yanlısı Marion Kralı Doxandros tarafından yakındaki Yunan yanlısı Soli kentini gözetim altında tutmak için inşa edilmiştir. 137 odalı saray kompleksi, merkezi avlusu (megaron), sarnıçları ve Athena Tapınağı ile Doğu Akdeniz'de Klasik Dönem Pers-Yunan mimari çekişmesinin ayakta kalan tek örneğidir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/guzelyurt/vouni-palace/1.jpg",
-            "/images/routes/guzelyurt/vouni-palace/2.jpg",
-            "/images/routes/guzelyurt/vouni-palace/3.jpg",
-            "/images/routes/guzelyurt/vouni-palace/4.jpg",
-            "/images/routes/guzelyurt/vouni-palace/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Manzara Noktası",
-          "description": "Manzara Noktası, Soli Antik Kenti & Vouni Sarayı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Vouni Sarayı'nın bulunduğu kayalık tepenin zirvesinde yer alan seyir noktası, Güzelyurt Körfezi'ni, Yeşilırmak kıyılarını ve açık denizde yükselen Petra tou Limniti adacığını kapsayan eşsiz bir görsel şölen sunar. Batı Kıbrıs'ın el değmemiş doğasını ve masmavi denizini izlemek için adadaki en etkileyici panoramik noktalardan biridir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -4010,55 +3512,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Soli Basilica & Swan Mosaic",
-          "description": "Soli Basilica & Swan Mosaic is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Soli Basilica (Swan Mosaic)",
+          "description": "Situated near Gemikonağı, the Basilica of Soli is one of the earliest and most expansive 4th-century Christian basilicas in Cyprus. The archaeological site is celebrated for its elaborate polychrome floor mosaics, notably the famous mosaic of a delicate swan framed by geometric borders and floral motifs, preserved beneath an engineered protective roof.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/guzelyurt/soli-ancient-city/1.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/2.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/3.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/4.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Soli Roman Amphitheatre",
-          "description": "Soli Roman Amphitheatre is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Soli Ancient Roman Theatre",
+          "description": "Cut into the hillside overlooking the sea just above the basilica, the Roman Theatre of Soli dates to the 2nd century AD and originally seated around 3,500 spectators. Reconstructed on its original foundations, its semicircular tiered stone seating provides commanding panoramic vistas across the azure waters of Morphou Bay.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/guzelyurt/soli-ancient-city/1.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/2.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/3.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/4.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
           "name": "Ancient Roman Agora",
-          "description": "Ancient Roman Agora is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Representing the civic and commercial center of ancient Soli, the agora precinct retains foundations of public market buildings, colonnaded walkways, and monumental water basins. Excavations demonstrate how Soli prospered from the export of copper ore mined in the nearby foothills and shipped across the Mediterranean.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Vouni Cliffside Palace",
-          "description": "Vouni Cliffside Palace is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Vouni Palace Clifftop Ruins",
+          "description": "Perched dramatically on an isolated clifftop 250 meters above the sea, Vouni Palace was constructed around 498 BC by the pro-Persian ruler of Marion to monitor the Greek-sympathizing city of Soli. The 137-room stone complex features a central peristyle courtyard, royal living quarters, stone cisterns, and the foundations of a temple dedicated to Athena, standing as a rare architectural monument of the Classical period.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/guzelyurt/vouni-palace/1.jpg",
-            "/images/routes/guzelyurt/vouni-palace/2.jpg",
-            "/images/routes/guzelyurt/vouni-palace/3.jpg",
-            "/images/routes/guzelyurt/vouni-palace/4.jpg",
-            "/images/routes/guzelyurt/vouni-palace/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Morphou Bay Scenic Lookout",
-          "description": "Morphou Bay Scenic Lookout is an essential milestone along the Ancient Soli & Vouni Cliffside Palace. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Scenic Lookout Point",
+          "description": "The precipitous lookout from the summit of Vouni hill delivers one of the most magnificent coastal vistas in Cyprus. Overlooking the entirety of Morphou Bay, the rugged western cliffs, and the offshore islet of Petra tou Limniti, it is an exceptional vantage point for wide-angle landscape photography.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -4084,7 +3567,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "bati-guzelyurt",
@@ -4106,24 +3590,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Güzelyurt Merkez",
-      "en": "Güzelyurt Town Center"
+      "en": "Güzelyurt Town Centre"
     },
     "heroImage": "/images/route-card-images/guzelyurt-archaeology.jpg",
     "title": {
       "tr": "Güzelyurt Arkeoloji & Portakal Kasabası",
-      "en": "Güzelyurt Archaeology & Citrus Capital"
+      "en": "Güzelyurt Archaeology & Citrus Orchards"
     },
     "subtitle": {
       "tr": "Tarım bahçeleri, bölge kasabası pazarları ve müze tarihleri etrafında kurulu sakin bir batı rotası; St. Mamas ve portakal bahçeleri.",
-      "en": "Fragrant citrus orchards, regional farmers markets, and rich archaeological history centered around St. Mamas Church and gold relics."
+      "en": "A tranquil western journey centred on lush citrus groves, regional town markets, and rich archaeological finds; featuring St. Mamas Church and sweet-scented orange orchards."
     },
     "intro": {
       "tr": "Tarım bahçeleri, bölge kasabası pazarları ve müze tarihleri etrafında kurulu sakin bir batı rotası; St. Mamas ve portakal bahçeleri. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Fragrant citrus orchards, regional farmers markets, and rich archaeological history centered around St. Mamas Church and gold relics. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A tranquil western journey centred on lush citrus groves, regional town markets, and rich archaeological finds; featuring St. Mamas Church and sweet-scented orange orchards. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Sabah erken gidin — yerel çiftçiler taze portakal ve limon getirdiğinde pazar en canlı halinde olur.",
-      "en": "Arrive early in the morning when local growers bring fresh oranges, lemons, and mandarins — the village market is at its liveliest."
+      "en": "Visit on market morning when regional farmers arrive with freshly harvested oranges, lemons, and local preserves — the town centre is at its most vibrant."
     },
     "proposers": [
       "E.A.",
@@ -4134,51 +3618,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Güzelyurt Merkez",
-          "description": "Güzelyurt Merkez, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Tarihi adıyla Omorfo (Morphou) olarak bilinen Güzelyurt, Kıbrıs'ın narenciye kalbi ve batı bölgesinin ana ticaret merkezidir. Her cumartesi kurulan büyük açık pazarında taze narenciyeler, hellim, zeytin ve yerel otlar satılır. Sakin kasaba meydanı, geleneksel kahvehaneleri ve samimi atmosferiyle batı bölgesini keşfetmek için ideal bir başlangıç noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/guzelyurt/güzelyurt-town-centre/1.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Arkeoloji & Doğa Tarihi Müzesi",
-          "description": "Arkeoloji & Doğa Tarihi Müzesi, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Güzelyurt Piskoposluk Sarayı'nda yer alan müze, iki ana bölümden oluşur. Zemin katında Kıbrıs'ın jeolojik yapısı, fosiller ve adaya özgü doldurulmuş yaban hayatı örnekleri sergilenirken; üst katta Soli ve Toumba tou Skourou kazılarından çıkarılan Neolitik, Bronz ve Klasik dönem altın takıları, heykelleri ve pişmiş toprak eserleri sergilenmektedir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/guzelyurt/güzelyurt-archaeology/1.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/2.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/3.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/4.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "St. Mamas Kilisesi & İkon Müzesi",
-          "description": "St. Mamas Kilisesi & İkon Müzesi, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Vergi ödemeyi reddederek bir aslanın sırtında saraya gitmesiyle ünlü vergi mükelleflerinin ve hayvanların koruyucu azizi St. Mamas'a adanmış 18. yüzyıl kilisesidir. Gotik ve Venedik mimari izlerini taşıyan yapının içinde azize ait mermer bir lahit ve duvarlarında zengin bir Ortodoks ikon koleksiyonu yer alır. Adanın en önemli dini ziyaret merkezlerindendir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/guzelyurt/st-mamas-church/1.jpg",
-            "/images/routes/guzelyurt/st-mamas-church/2.jpg",
-            "/images/routes/guzelyurt/st-mamas-church/3.jpg",
-            "/images/routes/guzelyurt/st-mamas-church/4.jpg",
-            "/images/routes/guzelyurt/st-mamas-church/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Portakal Bahçeleri",
-          "description": "Portakal Bahçeleri, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Güzelyurt'u çepeçevre saran yüzlerce hektarlık narenciye bahçeleri, adanın portakal, greyfurt ve mandalina üretiminin merkezidir. İlkbaharda tüm ovayı saran portakal çiçeği kokusu, kış aylarında ise ağaçları donatan parlak turuncu meyveler arasında yürüyüş yapmak ve taze sıkılmış narenciye sularını tatmak eşsiz bir deneyimdir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Yakın Köyler",
-          "description": "Yakın Köyler, Güzelyurt Arkeoloji & Portakal Kasabası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Güzelyurt çevresinde yer alan Bostancı, Yayla ve Aydınköy gibi kırsal köyler, geleneksel tarım hayatının devam ettiği sakin yerleşimlerdir. Taş evlerin sıralandığı sokaklar, su kuyuları ve köy meydanlarındaki kahvehaneler, batı Kıbrıs'ın huzurlu ve misafirperver kırsal dokusunu yansıtır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -4186,52 +3654,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Güzelyurt Town Center",
-          "description": "Güzelyurt Town Center is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Güzelyurt Town Centre",
+          "description": "Historically known as Morphou, Güzelyurt is the agricultural hub of western Cyprus, celebrated for its citrus groves. The town center hosts a bustling Saturday regional market featuring seasonal oranges, fresh halloumi, and regional produce. Its relaxed streets and traditional tea houses offer an authentic taste of local town life.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/guzelyurt/güzelyurt-town-centre/1.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Archaeology & Nature Museum",
-          "description": "Archaeology & Nature Museum is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Museum of Archaeology & Natural History",
+          "description": "Housed within the former Bishop's Palace, this museum contains dual wings dedicated to natural history and regional archaeology. The lower level displays geological specimens, fossils, and preserved wildlife, while upper galleries exhibit Bronze Age gold jewelry, Classical terracottas, and Hellenistic artifacts recovered from Soli and Toumba tou Skourou.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/guzelyurt/güzelyurt-archaeology/1.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/2.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/3.jpg",
-            "/images/routes/guzelyurt/güzelyurt-archaeology/4.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
           "name": "St. Mamas Church & Icon Museum",
-          "description": "St. Mamas Church & Icon Museum is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Dedicated to Saint Mamas, the 12th-century hermit saint revered as the protector of animals and tax-exempt individuals, this 18th-century church incorporates Franco-Byzantine and Venetian architectural elements. Inside, a marble sarcophagus believed to exude miraculous healing oil rests alongside a distinguished gallery of Greek Orthodox icons.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/guzelyurt/st-mamas-church/1.jpg",
-            "/images/routes/guzelyurt/st-mamas-church/2.jpg",
-            "/images/routes/guzelyurt/st-mamas-church/3.jpg",
-            "/images/routes/guzelyurt/st-mamas-church/4.jpg",
-            "/images/routes/guzelyurt/st-mamas-church/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Citrus & Orange Groves Trail",
-          "description": "Citrus & Orange Groves Trail is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Sweet Orange Orchards",
+          "description": "Blanketing the alluvial plain around Güzelyurt, these extensive commercial citrus orchards produce the bulk of the island's oranges, lemons, and grapefruits. Fragrant with citrusblossoms in spring and vibrant with ripe fruit throughout winter, the rural lanes wind past irrigation canals where travelers can purchase freshly picked fruit and freshly squeezed juices directly from local growers.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Surrounding Countryside Villages",
-          "description": "Surrounding Countryside Villages is an essential milestone along the Güzelyurt Archaeology & Citrus Capital. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Historic Foothill Villages",
+          "description": "Scattered across the agrarian perimeter of Güzelyurt, rural villages such as Bostancı (Zodeia), Yayla, and Aydınköy preserve an unhurried Cypriot countryside pace. Characterized by traditional stone houses, artisan workshops, and village coffee houses where residents gather, these settlements offer a warm, welcoming glimpse into the daily life of western Cyprus.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -4257,7 +3709,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "bati-lefke",
@@ -4279,24 +3732,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Lefke Merkez",
-      "en": "Lefke Town Center"
+      "en": "Lefke Town Centre"
     },
     "heroImage": "/images/route-card-images/lefke-citrus.jpg",
     "title": {
       "tr": "Lefke Narenciye & Osmanlı Su Kemerleri",
-      "en": "Lefke Citrus Groves, Date Palms & Ottoman Aqueducts"
+      "en": "Lefke Citrus Groves & Ottoman Aqueducts"
     },
     "subtitle": {
       "tr": "Portakal kokulu tarihi sokaklar, Osmanlı konakları, su kemerleri ve Piri Mehmet Paşa Camii. Kalabalıktan uzak otantik bir Kıbrıs.",
-      "en": "Historic streets fragrant with orange blossoms, Ottoman town mansions, stone aqueducts, and Piri Mehmet Pasha Mosque. Authentic Cyprus at its purest."
+      "en": "Historic streets scented with orange blossoms, Ottoman townhouses, ancient stone aqueducts, and Piri Mehmet Pasha Mosque. An authentic, timeless slice of rural Cyprus."
     },
     "intro": {
       "tr": "Portakal kokulu tarihi sokaklar, Osmanlı konakları, su kemerleri ve Piri Mehmet Paşa Camii. Kalabalıktan uzak otantik bir Kıbrıs. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Historic streets fragrant with orange blossoms, Ottoman town mansions, stone aqueducts, and Piri Mehmet Pasha Mosque. Authentic Cyprus at its purest. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Historic streets scented with orange blossoms, Ottoman townhouses, ancient stone aqueducts, and Piri Mehmet Pasha Mosque. An authentic, timeless slice of rural Cyprus. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Sabah erken, yerel çiftçiler taze portakal ve limon getirdiğinde uğrayın. İlkbaharda narenciye çiçeği kokusu tüm kasabayı sarar.",
-      "en": "Visit in early morning or spring when citrus blossoms fill the entire valley with perfume. Traditional coffee houses welcome visitors warmly."
+      "en": "Visit in springtime when the citrus trees are in full bloom and their sweet fragrance blankets the entire valley. Pick up jars of walnut and date spoon sweets from village producers."
     },
     "proposers": [
       "A.A.",
@@ -4308,42 +3761,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Lefke Merkez",
-          "description": "Lefke Merkez, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Trodos Dağları'nın eteklerinde, yemyeşil bir vadiye kurulan sakin şehir (Cittaslow) Lefke, adadaki Osmanlı sivil mimarisinin en özgün örneklerini barındırır. Ahşap cumbalı sarı taş konakları, hurma ağaçları, sokak aralarından akan su arkları ve asırlık çınarların gölgelediği kahvehaneleriyle Lefke, Kıbrıs'ın dingin ve köklü kültürel dokusunu yaşatır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Piri Mehmet Paşa Camii",
-          "description": "Piri Mehmet Paşa Camii, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefke'nin merkezinde yer alan cami, 17. yüzyıl başında Osmanlı Sadrazamı Piri Mehmed Paşa'nın torunu Mehmet Bey tarafından yaptırılmış adanın en eski Osmanlı ibadethanelerindendir. Kubbeli harimi, zarif kesme taş minaresi ve haziresinde yer alan Osmanlı dönemine ait sarıklı mezar taşlarıyla dikkat çeken yapı, kasabanın manevi ve tarihi kalbidir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Osmanlı Su Kemeri",
-          "description": "Osmanlı Su Kemeri, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dağlardan gelen bol pınar sularını Lefke'nin bahçelerine ve un değirmenlerine ulaştırmak amacıyla Osmanlı devrinde inşa edilen tarihi kesme taş su kemerleri, vadi boyunca uzanır. Kemerli gözleri ve özgün taş mimarisiyle kasabanın simgesi haline gelen bu hidrolik miras, yemyeşil bitki örtüsüyle bütünleşerek etkileyici fotoğraf kareleri sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Narenciye Bahçeleri",
-          "description": "Narenciye Bahçeleri, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefke vadisinin zengin su kaynakları sayesinde asırlardır verimini koruyan bahçeler, ünlü Yafa portakalı, mandalina ve adanın en kaliteli hurma ağaçlarına ev sahipliği yapar. İlkbahar aylarında taze çiçek kokularının sokaklara taştığı bu bahçeler arasında yürümek, kasabanın bereketli tarım mirasını doğrudan hissettirir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Yerel Kahvehaneler",
-          "description": "Yerel Kahvehaneler, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefke çarşısında ve mahalle meydanlarında yer alan geleneksel kahvehaneler, yerel halkın ve üniversite öğrencilerinin buluştuğu samimi mekanlardır. Közde demlenen taze Türk kahvesi, yerel ceviz macunu ve ev yapımı limonata eşliğinde soluklanmak, Lefke'nin telaşsız yaşam temposunu deneyimlemek için idealdir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Citrus Pazarı",
-          "description": "Citrus Pazarı, Lefke Narenciye & Osmanlı Su Kemerleri güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefke merkezinde kurulan yerel pazar tezgahları; taze toplanmış Yafa portakalları, yerel hurmalar, dağ kekiği, zeytinyağı ve geleneksel ceviz macunlarıyla renklenir. Doğrudan yerel üreticiden alışveriş yapma imkanı sunan bu durak, batı Kıbrıs'ın taze tarımsal lezzetlerini keşfetmek için rotanın mükemmel bir tamamlayıcısıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -4351,43 +3804,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Lefke Historic Center",
-          "description": "Lefke Historic Center is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Lefke Town Centre",
+          "description": "Nestled in a verdian valley at the foot of the Troodos foothills, the Cittaslow town of Lefke (Lefka) preserves one of the most coherent collections of Ottoman vernacular domestic architecture in Cyprus. Characterized by honey-colored sandstone mansions with overhanging timber bay windows (cumbas), soaring date palms, and fresh irrigation rivulets, it offers an unhurried, historically rich atmosphere.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Piri Mehmet Pasha Ottoman Mosque",
-          "description": "Piri Mehmet Pasha Ottoman Mosque is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Piri Mehmet Pasha Historic Mosque",
+          "description": "Located in the historical center of Lefke, this early 17th-century mosque was endowed by Mehmet Bey, a descendant of the Ottoman Grand Vizier Piri Mehmed Pasha. Featuring a domed prayer sanctuary, an elegant ashlar minaret, and an adjacent historic cemetery containing intricately carved turbaned Ottoman headstones, it serves as the spiritual landmark of the district.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Historic Ottoman Aqueduct",
-          "description": "Historic Ottoman Aqueduct is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ottoman Aqueducts",
+          "description": "Engineered during the Ottoman era to channel fresh mountain spring waters from the heights down to Lefke's terraced orchards and flour mills, these historic ashlar stone aqueducts span the verdant valley. The weathered masonry arches, framed by wild figs and date palms, represent an enduring feat of pre-modern regional hydraulic engineering.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Lefke Date & Citrus Orchards",
-          "description": "Lefke Date & Citrus Orchards is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Citrus Groves",
+          "description": "Sustained by perennial hillside springs, Lefke's lush orchards are celebrated across Cyprus for producing prized Jaffa oranges, mandarins, and rare date palm groves. Wandering the shaded pathways between these stone-walled groves reveals the fragrant blossoms of spring and deep agricultural traditions that have sustained the community for centuries.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Traditional Village Coffeehouses",
-          "description": "Traditional Village Coffeehouses is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Traditional Village Coffee Houses",
+          "description": "Clustered around the town square beneath broad plane trees, Lefke's traditional coffee shops provide an authentic social venue. Frequented by local townsfolk, farmers, and university students, they provide a relaxed environment to enjoy freshly brewed Cypriot coffee, handmade walnut preserves, and informal local conversations.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Local Farmers Citrus Market",
-          "description": "Local Farmers Citrus Market is an essential milestone along the Lefke Citrus Groves, Date Palms & Ottoman Aqueducts. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Lefke Citrus Market",
+          "description": "The open-air citrus and produce stalls in Lefke showcase seasonal harvests direct from local orchards, including sweet Jaffa oranges, fragrant lemons, indigenous dates, and artisanal carob syrup. It provides travelers with an authentic farm-to-table shopping stop to sample the natural agricultural wealth of the western valleys.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -4413,7 +3866,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "bati-cmc",
@@ -4434,24 +3888,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Eski CMC Yapıları",
-      "en": "Gemikonağı Pier"
+      "en": "Historic CMC Mining Complex"
     },
     "heroImage": "/images/route-card-images/gemikonagi-industrial-heritage.jpg",
     "title": {
       "tr": "Gemikonağı Endüstri Hafızası & CMC Mirası",
-      "en": "Gemikonağı Industrial Heritage & CMC Mining Relics"
+      "en": "Gemikonağı Industrial Heritage & CMC Legacy"
     },
     "subtitle": {
       "tr": "Lefke'nin madencilik tarihini anlatan eski CMC yapıları, maden demiryolu ve Gemikonağı'nın kıyı manzarası. Çoğu ziyaretçinin bilmediği bir endüstri rotası.",
-      "en": "Uncovering the 20th-century copper mining legacy of CMC, vintage narrow-gauge railway relics, and the coastal piers of Gemikonağı."
+      "en": "Delve into the island's twentieth-century copper mining history with surviving Cyprus Mines Corporation infrastructure, the historic ore-loading pier, and scenic Gemikonağı coastlines."
     },
     "intro": {
       "tr": "Lefke'nin madencilik tarihini anlatan eski CMC yapıları, maden demiryolu ve Gemikonağı'nın kıyı manzarası. Çoğu ziyaretçinin bilmediği bir endüstri rotası. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Uncovering the 20th-century copper mining legacy of CMC, vintage narrow-gauge railway relics, and the coastal piers of Gemikonağı. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Delve into the island's twentieth-century copper mining history with surviving Cyprus Mines Corporation infrastructure, the historic ore-loading pier, and scenic Gemikonağı coastlines. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Gemikonağı'nın eski iskelesi fotoğraf için mükemmel; bu bölgenin Kıbrıs bakır madenciliğindeki tarihi rolünü çoğu kişi bilmez.",
-      "en": "The rusted old shipping pier at Gemikonağı offers dramatic photography; few travelers know the crucial role this port played in ancient and modern copper trade."
+      "en": "The rustic wooden and steel loading pier at Gemikonağı makes for striking photography; few tourists realize Cyprus takes its very name from ancient copper mining."
     },
     "proposers": [
       "B.K.",
@@ -4463,35 +3917,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Eski CMC Yapıları",
-          "description": "Eski CMC Yapıları, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "1916 yılında kurulan Cyprus Mines Corporation (CMC), 20. yüzyıl boyunca adanın en büyük bakır madenciliği işletmesi olmuştur. Gemikonağı sahilinde yer alan eski cevher işleme tesisleri, depolar ve atölyeler, Kıbrıs'ın binlerce yıllık bakır madenciliği geçmişinin sanayi devrimi sonrasındaki son anıtsal izleridir. Günümüzde endüstriyel miras meraklıları ve fotoğrafçılar için etkileyici bir açık hava hafıza alanıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Maden Demiryolu Alanı",
-          "description": "Maden Demiryolu Alanı, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefke ve Skouriotissa yataklarından çıkarılan bakır cevherini Gemikonağı yükleme limanına taşımak için inşa edilen dar hatlı tarihi maden demiryolunun izleri, lokomotif kalıntıları ve vagon parçaları bu alanda görülebilir. Adadaki demiryolu çağının somut bir tanığı olan hat, dönemin ağır sanayi lojistiğini gözler önüne serer.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Cengiz Topel Anıtı",
-          "description": "Cengiz Topel Anıtı, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gemikonağı sahil yolunda yer alan anıt, 8 Ağustos 1964 Erenköy Direnişi sırasında uçağı vurularak esir düşen ve hayatını kaybeden Türkiye Cumhuriyeti'nin ilk hava harp şehidi Yüzbaşı Cengiz Topel'in anısına dikilmiştir. Paraşütle indiği noktaya yakın bir konumda yer alan anıt ve müze alanı, adanın yakın askeri ve siyasi tarihinin en sembolik duraklarındandır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Gemikonağı Limanı & İskele",
-          "description": "Gemikonağı Limanı & İskele, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Geçmişte işlenen bakır cevherinin uluslararası kargo gemilerine yüklendiği tarihi maden iskelesi, paslanmış çelik ayakları ve devasa vinç kalıntılarıyla denizin içine doğru uzanır. Karataş (Xeros) limanının kalbi olan bu yapı, gün batımında silüetiyle deniz fotoğrafçıları için dramatik ve nostaljik bir görsel kompozisyon oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Sahil Yürüyüş Yolu",
-          "description": "Sahil Yürüyüş Yolu, Gemikonağı Endüstri Hafızası & CMC Mirası güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gemikonağı sahil şeridi boyunca uzanan sahil kordonu, balıkçı barınakları, yerel kafeler ve açık deniz manzarasıyla sakin bir yürüyüş parkuru sunar. Endüstriyel miras keşfinin ardından deniz kenarında oturup Güzelyurt Körfezi'nin dalgalarını dinlemek ve yerel deniz ürünlerini tatmak için dinlendirici bir final noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -4499,36 +3953,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Historic CMC Mining Structures",
-          "description": "Historic CMC Mining Structures is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Historic CMC Copper Mining Facilities",
+          "description": "Founded in 1916, the American-owned Cyprus Mines Corporation (CMC) operated the island's foremost modern copper mining and processing facility through much of the 20th century. The surviving industrial processing plants, workshops, and storage structures standing along the shoreline at Gemikonağı (Karavostasi) offer a compelling open-air perspective into Cyprus's 20th-century extractive labor history.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Vintage Mine Railway Yard",
-          "description": "Vintage Mine Railway Yard is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Historic Mine Railway Yard",
+          "description": "Engineered to transport raw copper ore from the inland mines of Skouriotissa down to the coastal processing and shipping facilities at Gemikonağı, this narrow-gauge industrial railway site still preserves abandoned track sections, rail beds, and rolling stock fragments. It stands as a physical artifact of early modern mineral transport on the island.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Cengiz Topel Coastal Memorial",
-          "description": "Cengiz Topel Coastal Memorial is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Cengiz Topel Memorial",
+          "description": "Located along the coastal highway in Gemikonağı, this memorial honors Captain Cengiz Topel, a Turkish Air Force pilot whose aircraft was downed during the Erenköy clashes in August 1964. Positioned near the coastal site of the incident, the monument complex features commemorative bronze sculptures and informative panels detailing modern military history.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Gemikonağı Port & Historic Pier",
-          "description": "Gemikonağı Port & Historic Pier is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Gemikonağı Pier & Ore Port",
+          "description": "Extending far into Morphou Bay, this historical industrial loading pier was used to transfer refined copper ore onto cargo freighters. Although now decommissioned, the weathered steel gantry and iron pylons create a dramatic coastal silhouette, making it an iconic subject for industrial and sunset photography.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Gemikonağı Sea Promenade",
-          "description": "Gemikonağı Sea Promenade is an essential milestone along the Gemikonağı Industrial Heritage & CMC Mining Relics. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Coastal Promenade Walk",
+          "description": "Tracing the waterfront of Gemikonağı near the university campus, this paved coastal walkway connects small local fishing docks with relaxed seaside cafes. Looking out across Morphou Bay toward the western capes, it offers a peaceful pedestrian finale to an itinerary focused on industrial memory and coastal heritage.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -4554,7 +4008,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "bati-yesilirmak",
@@ -4576,24 +4031,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Soli Antik Kenti",
-      "en": "Yeşilırmak Village"
+      "en": "Ancient Soli"
     },
     "heroImage": "/images/route-card-images/yesilirmak-strawberry.jpg",
     "title": {
       "tr": "Yeşilırmak Çilek Bahçeleri & Batı Kıyısı",
-      "en": "Yeşilırmak Strawberry Terraces & Far West Shore"
+      "en": "Yeşilırmak Strawberry Fields & West Coast"
     },
     "subtitle": {
       "tr": "Soli ve Vouni'den başlayıp Lefke ve Yeşilırmak'ta yerel molalarla ilerleyen, çilek sezonunda bahçe ziyareti ve Yedidalga plajıyla biten batı rotası.",
-      "en": "From Soli and Vouni to local stops in Lefke and the lush strawberry fields of Yeşilırmak, finishing with a swim at Yedidalga beach."
+      "en": "Winding from ancient Soli and Vouni through Lefke into the lush valley of Yeşilırmak; featuring pick-your-own strawberry farms in spring and dining on Yedidalga beach."
     },
     "intro": {
       "tr": "Soli ve Vouni'den başlayıp Lefke ve Yeşilırmak'ta yerel molalarla ilerleyen, çilek sezonunda bahçe ziyareti ve Yedidalga plajıyla biten batı rotası. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "From Soli and Vouni to local stops in Lefke and the lush strawberry fields of Yeşilırmak, finishing with a swim at Yedidalga beach. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Winding from ancient Soli and Vouni through Lefke into the lush valley of Yeşilırmak; featuring pick-your-own strawberry farms in spring and dining on Yedidalga beach. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Çilek sezonu (ilkbahar) için zamanlayın; Yeşilırmak'ın dev çilek heykeli ve yerel çilek ürünleri sezonun simgesi.",
-      "en": "Time your trip for strawberry season in spring; pick your own sweet strawberries and pose beside the famous giant strawberry monument."
+      "en": "Time your visit for the spring strawberry harvest; snap a photo with Yeşilırmak's giant strawberry monument and sample homemade strawberry liqueurs and jams."
     },
     "proposers": [
       "B.S.",
@@ -4604,55 +4059,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Soli Antik Kenti",
-          "description": "Soli Antik Kenti, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Geç Hitit ve Antik Yunan dönemlerinden Roma çağına kadar uzanan Soli Antik Kenti, Kıbrıs'ın on tarihi şehir krallığından biridir. Ünlü 'Soli Kuğusu' mozaiğini barındıran Erken Hristiyanlık bazilikası, denize bakan Roma tiyatrosu ve agora kalıntılarıyla bu sahil rotasının tarihi temelini oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
-          "driveTime": "0 dk",
-          "images": [
-            "/images/routes/guzelyurt/soli-ancient-city/1.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/2.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/3.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/4.jpg"
-          ]
+          "driveTime": "0 dk"
         },
         {
           "name": "Vouni Sarayı",
-          "description": "Vouni Sarayı, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "MÖ 5. yüzyılda sarp bir tepe üzerinde denize hakim bir noktada kurulan Vouni Sarayı, antik Marion krallığının Soli kentini gözetim altında tutmak için inşa ettiği bir kraliyet yerleşkesidir. Merkezi avlulu megaron planı, taş sarnıçları ve zirvedeki Athena Tapınağı temelleriyle Akdeniz'in en etkileyici arkeolojik manzaralarından birini sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 dk",
-          "images": [
-            "/images/routes/guzelyurt/vouni-palace/1.jpg",
-            "/images/routes/guzelyurt/vouni-palace/2.jpg",
-            "/images/routes/guzelyurt/vouni-palace/3.jpg",
-            "/images/routes/guzelyurt/vouni-palace/4.jpg",
-            "/images/routes/guzelyurt/vouni-palace/5.jpg"
-          ]
+          "driveTime": "15–20 dk"
         },
         {
           "name": "Lefke Yerel Durak",
-          "description": "Lefke Yerel Durak, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefke'nin portakal ağaçlarıyla çevrili tarihi merkezinde yer alan bu durak, yerel halkın işlettiği küçük fırınlar ve kahvehanelerden oluşur. Geleneksel Kıbrıs köy böreği, taze sıkılmış narenciye suyu ve ceviz reçeli tadarak batı bölgesinin kendine has misafirperverliğini tatmak için ideal bir dinlenme yeridir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Yeşilırmak Çilek Bahçeleri",
-          "description": "Yeşilırmak Çilek Bahçeleri, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kuzey Kıbrıs'ın çilek başkenti olarak bilinen Yeşilırmak (Limnitis), dağ yamaçları arasına kurulu bereketli vadisiyle ünlüdür. İlkbahar ve erken yaz aylarında ziyaretçilere kendi elleriyle taze çilek toplama imkanı veren bahçeler, dalından koparılan meyvelerin kokusu ve tadıyla benzersiz bir tarım turizmi deneyimi yaşatır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Dev Çilek Heykeli",
-          "description": "Dev Çilek Heykeli, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Yeşilırmak köyünün girişinde yükselen renkli dev çilek heykeli, bölgenin tarımsal kimliğini kutlayan neşeli ve popüler bir simgedir. Köyü ziyaret eden hemen her gezginin fotoğraf çektirdiği heykelin çevresinde taze çilek, çilek reçeli ve yerel narenciye ürünleri satan köylü tezgahları yer alır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Yedidalga Plajı",
-          "description": "Yedidalga Plajı, Yeşilırmak Çilek Bahçeleri & Batı Kıyısı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Güzelyurt Körfezi'nin batı sahilinde yer alan Yedidalga kıyısı, balıkçı limanı, berrak denizi ve hemen sahil kenarındaki taze balık restoranlarıyla tanınır. Gün boyu süren bahçe ve antik kent gezilerinin ardından sakin kumsalında yüzmek ve gün batımında taze deniz mahsulleri tatmak için mükemmel bir kapanış durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -4660,56 +4102,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Ancient Soli",
-          "description": "Ancient Soli is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ancient Soli Archaeological Site",
+          "description": "Once among the prominent ancient city-kingdoms of Cyprus, Soli prospered from the Late Bronze Age through the Roman era. Its seaside archaeological park is renowned for the 4th-century Christian basilica containing the famous swan floor mosaic, an elevated Roman theatre overlooking the sea, and extensive agora foundations.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
-          "driveTime": "0 min",
-          "images": [
-            "/images/routes/guzelyurt/soli-ancient-city/1.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/2.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/3.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/4.jpg"
-          ]
+          "driveTime": "0 min"
         },
         {
-          "name": "Vouni Palace",
-          "description": "Vouni Palace is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Vouni Palace Clifftop Ruins",
+          "description": "Erected on a sheer coastal ridge 250 meters above the Mediterranean around 498 BC, Vouni Palace was an unassailable redoubt built by the pro-Persian king of Marion. Featuring a monumental megaron courtyard, stone water reservoirs, and an upper sanctuary of Athena, it offers dramatic vistas across the entire western shoreline.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
-          "driveTime": "15–20 min",
-          "images": [
-            "/images/routes/guzelyurt/vouni-palace/1.jpg",
-            "/images/routes/guzelyurt/vouni-palace/2.jpg",
-            "/images/routes/guzelyurt/vouni-palace/3.jpg",
-            "/images/routes/guzelyurt/vouni-palace/4.jpg",
-            "/images/routes/guzelyurt/vouni-palace/5.jpg"
-          ]
+          "driveTime": "15–20 min"
         },
         {
-          "name": "Lefke Village Rest Stop",
-          "description": "Lefke Village Rest Stop is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Lefke Village Heritage Stop",
+          "description": "Located within the historic Ottoman and British colonial lanes of Lefke, this village pause offers traditional bakery treats, fresh local pastries, and seasonal citrus juices. It provides a peaceful setting to meet local residents and sample authentic regional hospitality before heading toward the coast.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Yeşilırmak Strawberry Fields",
-          "description": "Yeşilırmak Strawberry Fields is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Yeşilırmak Strawberry Orchards",
+          "description": "Recognized as the strawberry capital of Northern Cyprus, the verdant mountain valley of Yeşilırmak (Limnitis) is lined with terraced fruit farms. During the spring and early summer harvesting seasons, visitors can walk through the cultivated plots, pick ripe strawberries directly from the plants, and sample fresh berry products.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "Giant Strawberry Monument",
-          "description": "Giant Strawberry Monument is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Standing at the roadside entrance to Yeşilırmak, this oversized strawberry monument celebrates the community's agricultural trademark. Flanked by family-operated farm stands offering jars of freshly prepared strawberry preserves and seasonal fruits, it serves as a lighthearted photo stop along the route.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Yedidalga Seaside Fish Tavern Beach",
-          "description": "Yedidalga Seaside Fish Tavern Beach is an essential milestone along the Yeşilırmak Strawberry Terraces & Far West Shore. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Yedidalga Seaside & Fish Restaurants",
+          "description": "Situated on the western curve of Morphou Bay, the coast at Yedidalga (Potamos tou Kambou) features a tranquil pebble-and-sand beach alongside an authentic small fishing pier. Its seaside taverns serve freshly landed fish and meze, providing a calm setting to swim and watch the sunset over the sea.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -4735,7 +4164,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "bati-kormakitis",
@@ -4749,7 +4179,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "50–70 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Half to full day"
+      "en": "Yarım–tam gün"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -4757,24 +4187,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Kormakitis Burnu Kıyısı",
-      "en": "Sadrazamköy & Kyrenia Pier"
+      "en": "Cape Kormakitis Coast"
     },
-    "heroImage": "/images/routes/guzelyurt-loop.jpg",
+    "heroImage": "/images/route-card-images/cape-kormakitis.jpg",
     "title": {
       "tr": "Kormakitis Burnu & Blue Lagoon Tekne Turu",
-      "en": "Cape Kormakitis & Blue Lagoon Snorkel Cruise"
+      "en": "Cape Kormakitis & Blue Lagoon Boat Cruise"
     },
     "subtitle": {
       "tr": "Girne'nin batısında kıyı boyunca tekne turu: Kormakitis Burnu, Blue Lagoon'da yüzme, şnorkelli resif keşfi ve sakin Sadrazamköy sahili.",
-      "en": "A scenic coastal cruise along the wild western cape: Cape Kormakitis, snorkeling the pristine Blue Lagoon reefs, and peaceful Sadrazamköy beaches."
+      "en": "A coastal maritime adventure along the northwest headlands: navigate Cape Kormakitis, swim in the iridescent Blue Lagoon, snorkel offshore reefs, and relax on peaceful Sadrazamköy beach."
     },
     "intro": {
       "tr": "Girne'nin batısında kıyı boyunca tekne turu: Kormakitis Burnu, Blue Lagoon'da yüzme, şnorkelli resif keşfi ve sakin Sadrazamköy sahili. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "A scenic coastal cruise along the wild western cape: Cape Kormakitis, snorkeling the pristine Blue Lagoon reefs, and peaceful Sadrazamköy beaches. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A coastal maritime adventure along the northwest headlands: navigate Cape Kormakitis, swim in the iridescent Blue Lagoon, snorkel offshore reefs, and relax on peaceful Sadrazamköy beach. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Blue Lagoon'un berrak suyu şnorkel için ideal; tekne turları genelde Girne limanından kalkar, sabah slotunu tercih edin.",
-      "en": "The crystalline waters of the Blue Lagoon are fantastic for snorkeling; boats usually depart from Kyrenia harbour, so book a morning slot."
+      "en": "The pristine waters of the Blue Lagoon are extraordinary for snorkeling; boat departures usually set sail from Kyrenia harbour, so book a morning departure slot for the calmest seas."
     },
     "proposers": [
       "A.M.",
@@ -4784,35 +4214,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Kormakitis Burnu Kıyısı",
-          "description": "Kormakitis Burnu Kıyısı, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıbrıs'ın kuzeybatı ucunu oluşturan Kormakitis Burnu (Koruçam Burnu), kayalık falezleri ve deniz feneriyle adanın en vahşi kıyı peyzajlarından biridir. Akdeniz'in açık akıntılarıyla dövülen bu ıssız burun, rüzgarın şekillendirdiği kireçtaşı oluşumları ve el değmemiş doğasıyla doğaseverler için büyüleyici bir manzara sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Blue Lagoon Yüzme Durağı",
-          "description": "Blue Lagoon Yüzme Durağı, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kormakitis yarımadasının korunaklı kayalık koylarında yer alan Mavi Lagün (Blue Lagoon), adını akvaryumu andıran elektrik mavisi ve turkuaz berrak sularından alır. Tekne turlarının ana demirleme noktası olan bu doğal koy, kumlu tabanı ve dalgasız yapısıyla Akdeniz'in en temiz yüzme alanlarından birini oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Şnorkel Resif Alanı",
-          "description": "Şnorkel Resif Alanı, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıyı falezlerinin denizle buluştuğu noktadaki su altı kayalık resifleri, zengin bir Akdeniz deniz yaşamına ev sahipliği yapar. Berrak görüş mesafesi sayesinde su altı mağaralarını, mercan oluşumlarını, orfozları, çipuraları ve deniz kestanelerini şnorkelle gözlemlemek için benzersiz bir dalış noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Sadrazamköy Sahili",
-          "description": "Sadrazamköy Sahili, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kormakitis Burnu'nun hemen güneyinde yer alan Sadrazamköy sahili, yapılaşmadan tamamen uzak, doğal taş ve çakıl kumsallarıyla sessizliğin hakim olduğu bir kıyı şerididir. Caretta caretta kaplumbağalarının da uğrak yeri olan bu el değmemiş sahil, doğayla baş başa kalmak ve deniz sesini dinlemek için eşsiz bir sığınaktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kyrenia Limanı Dönüş",
-          "description": "Kyrenia Limanı Dönüş, Kormakitis Burnu & Blue Lagoon Tekne Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Batı kıyısındaki deniz ve tekne turunun ardından Girne Tarihi Limanı'na dönüş, geziye nostaljik bir kapanış sunar. Akşam güneşinin Girne Kalesi'nin taş duvarlarına vurduğu saatlerde limana yanaşmak ve rıhtımdaki kafelerde kahve yudumlamak, deniz yolculuğunun en keyifli anıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -4820,36 +4250,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Cape Kormakitis Dramatic Shore",
-          "description": "Cape Kormakitis Dramatic Shore is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Cape Kormakitis Coastline",
+          "description": "Forming the northwestern geographical extremity of Cyprus, Cape Kormakitis features rugged limestone headlands, sea arches, and a solitary coastal lighthouse. Exposed to open Mediterranean currents, this untamed windswept coast provides travelers with an uncommercialized wilderness panorama of sea and sky.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Blue Lagoon Snorkeling Bay",
-          "description": "Blue Lagoon Snorkeling Bay is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Blue Lagoon Swimming Cove",
+          "description": "Tucked into the sheltered rocky coves along the cape, the Blue Lagoon is celebrated for its radiant turquoise waters and white sandy seabed. Frequented by excursion boats, its transparent, wave-free waters offer ideal conditions for swimming and diving in pristine coastal surroundings.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Crystal Reef Diving Spot",
-          "description": "Crystal Reef Diving Spot is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Reef Snorkeling Cove",
+          "description": "The submerged limestone shelves and rock cavities fringing Cape Kormakitis create a thriving marine ecosystem. Snorkelers benefit from remarkable water clarity to observe sea bream, damselfish, groupers, and natural sea sponges inhabiting this preserved underwater habitat.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Sadrazamköy Peaceful Beach",
-          "description": "Sadrazamköy Peaceful Beach is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Sadrazamköy Wild Beach",
+          "description": "Stretching south from the tip of Cape Kormakitis, Sadrazamköy Beach is an undeveloped, remote coastline lined with coarse sand and shingle shelves. Free of resort crowds and occasionally hosting nesting sea turtles, it provides visitors with a tranquil setting of natural coastal solitude.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Kyrenia Pier Return",
-          "description": "Kyrenia Pier Return is an essential milestone along the Cape Kormakitis & Blue Lagoon Snorkel Cruise. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Return to Kyrenia Harbour",
+          "description": "Concluding the maritime circuit with a return to the historic Old Harbour of Kyrenia brings travelers back to the animated waterfront. Docking beside centuries-old carob warehouses as the late afternoon light illuminates Kyrenia Castle provides a memorable visual finale.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -4875,7 +4305,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "bati-maronit",
@@ -4889,7 +4320,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "40–60 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Half to full day"
+      "en": "Yarım–tam gün"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -4899,22 +4330,22 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Koruçam Köy Meydanı",
       "en": "Koruçam Village Square"
     },
-    "heroImage": "/images/routes/guzelyurt-loop.jpg",
+    "heroImage": "/images/route-card-images/korucam-maronites.jpg",
     "title": {
       "tr": "Koruçam Maronit Kültürü & Kormakitis Burnu",
-      "en": "Koruçam Maronite Culture, Cuisine & Western Coast"
+      "en": "Koruçam Maronite Heritage & Cape Kormakitis"
     },
     "subtitle": {
       "tr": "Kendine özgü Maronit köyü, dini mirası, geleneksel yemek kültürü ve batının uzak kıyısı. Postkarta hiç girmemiş bir Kıbrıs.",
-      "en": "Experience the unique Maronite village of Koruçam: centuries-old Arabic-dialect heritage, stone cathedral, and famous hospitable tavern dining."
+      "en": "A rare cultural immersion into the historic Maronite village, its Catholic cathedral, traditional culinary customs, and the raw western cape. A side of Cyprus unseen on postcards."
     },
     "intro": {
       "tr": "Kendine özgü Maronit köyü, dini mirası, geleneksel yemek kültürü ve batının uzak kıyısı. Postkarta hiç girmemiş bir Kıbrıs. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Experience the unique Maronite village of Koruçam: centuries-old Arabic-dialect heritage, stone cathedral, and famous hospitable tavern dining. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A rare cultural immersion into the historic Maronite village, its Catholic cathedral, traditional culinary customs, and the raw western cape. A side of Cyprus unseen on postcards. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Köyde yabancılara el sallanır ve içemeyeceğiniz kadar kahve ikram edilir — acele etmeyin, bu rotanın ruhu yavaşlıkta.",
-      "en": "Locals in the village square will greet you with genuine warmth and Turkish coffee — take your time, the beauty of this route is in its slow pace."
+      "en": "Locals in the village square will warmly wave you over and treat you to more Cypriot coffee than you can drink — don't rush, the beauty of this route lies in taking things slow."
     },
     "proposers": [
       "C.A.",
@@ -4926,35 +4357,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Koruçam Köy Meydanı",
-          "description": "Koruçam Köy Meydanı, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kuzey Kıbrıs'taki Maronit Katolik toplumunun ana merkezi olan Koruçam (Kormakitis), Orta Çağ'da Lübnan'dan göç eden Maronitlerin kültürel mirasını ve Arapça kökenli özgün Sanna lehçesini koruyan tarihi bir yerleşimdir. Köy meydanındaki asırlık kahvehaneler, yerel lokantalar ve samimi köy atmosferi, adanın en özgün çok kültürlü duraklarından birini oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "St. George Maronit Katedrali",
-          "description": "St. George Maronit Katedrali, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Koruçam köyünün merkezinde görkemli bir şekilde yükselen St. George Katedrali, 1930'lu yıllarda inşa edilmiş adanın en büyük Maronit ibadethanesidir. Çift çan kulesi, mermer sunakları ve Doğu Katolik liturjisinin izlerini taşıyan iç mekanıyla köyün dini ve toplumsal hayatının odak noktasını oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Geleneksel Maronit Yemek Durağı",
-          "description": "Geleneksel Maronit Yemek Durağı, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Koruçam meydanındaki geleneksel aile tavernaları, Lübnan ve Kıbrıs mutfaklarının yüzyıllar içinde harmanlanmasıyla oluşan özgün lezzetler sunar. Fırında kuzu kleftiko, el yapımı mezeler, taze hellim ve köy şarapları, hafta sonları adanın dört bir yanından gelen ziyaretçilerin vazgeçilmez gastronomi deneyimidir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Koruçam Sahili",
-          "description": "Koruçam Sahili, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Köyün kuzeybatısında yer alan Koruçam sahili, kireçtaşı kayalıklar arasına gizlenmiş doğal kumsalları ve tertemiz deniziyle bilinir. Turistik tesisleşmenin olmadığı bu sakin sahil şeridi, Akdeniz'in serin sularında yüzmek ve doğanın sessizliğini dinlemek için ideal bir mola yeridir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kormakitis Burnu",
-          "description": "Kormakitis Burnu, Koruçam Maronit Kültürü & Kormakitis Burnu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kıbrıs haritasının kuzeybatı sivrilen ucunu oluşturan Kormakitis Burnu, fırtınaların ve dalgaların oyduğu vahşi falezleri ve deniz feneriyle adanın en etkileyici coğrafi bitiş noktalarındandır. Akdeniz'in sonsuz ufkuyla baş başa kalmak ve gün batımının kızıl tonlarını izlemek için unutulmaz bir final noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -4963,35 +4394,35 @@ export const rawRoutes: RawRouteItem[] = [
       "en": [
         {
           "name": "Koruçam Village Square",
-          "description": "Koruçam Village Square is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Serving as the cultural center of the Maronite Catholic community in Cyprus, Koruçam (Kormakitis) preserves centuries of heritage tracing back to medieval Lebanese migrations, including the endangered Cypriot Arabic dialect (Sanna). The central square, lined with traditional coffee houses and family taverns, offers an authentic bi-cultural experience.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
           "name": "St. George Maronite Cathedral",
-          "description": "St. George Maronite Cathedral is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Dominating the village skyline, the Cathedral of Saint George was completed in the 1930s to replace an earlier church and stands as the principal Maronite cathedral in northern Cyprus. Its twin bell towers, marble altars, and distinctive Eastern Catholic liturgical appointments represent the enduring faith of the community.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Traditional Maronite Tavern Lunch",
-          "description": "Traditional Maronite Tavern Lunch is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Traditional Maronite Tavern",
+          "description": "The rustic, family-run taverns in Koruçam village are celebrated across the island for their unique fusion of Levant and Cypriot culinary traditions. Specializing in slow-roasted lamb kleftiko, artisan cheeses, and house-cured mezes, they provide a sought-after cultural dining stop.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Koruçam Coastal Shore",
-          "description": "Koruçam Coastal Shore is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Koruçam Rocky Coastline",
+          "description": "Situated northwest of the village, the Koruçam coastal stretch comprises natural sandy pockets set between low limestone bluffs. Free of large commercial resorts, its clear, refreshing waters and quiet shore provide an unhurried seaside stop along the western headlands.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Cape Kormakitis Lighthouse Edge",
-          "description": "Cape Kormakitis Lighthouse Edge is an essential milestone along the Koruçam Maronite Culture, Cuisine & Western Coast. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Cape Kormakitis Headland",
+          "description": "Marking the far northwestern tip of Cyprus, Cape Kormakitis features dramatic wave-cut marine benches, a navigational beacon, and windswept shrublands. Projecting boldly into the Mediterranean, it offers sweeping maritime horizons and an exceptional vantage point for sunset observation.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -5017,7 +4448,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "bati-eul",
@@ -5039,24 +4471,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "LAÜ Kampüsü",
-      "en": "EUL Campus & Aphrodite Coast"
+      "en": "EUL Campus"
     },
-    "heroImage": "/images/routes/guzelyurt-loop.jpg",
+    "heroImage": "/images/route-card-images/lefke-campus.jpg",
     "title": {
       "tr": "Lefke Üniversite Çevresi & Aphrodite Sahili",
-      "en": "Lefke Campus Vibes & Aphrodite Beachfront"
+      "en": "Lefke University Quarter & Aphrodite Coast"
     },
     "subtitle": {
       "tr": "Lefke Avrupa Üniversitesi çevresinden başlayıp sahil restoranları ve gün batımı noktalarıyla ilerleyen, akademik enerjiyle kıyı huzurunu birleştiren rahat bir rota.",
-      "en": "Starting from European University of Lefke, strolling through town, and concluding at seaside restaurants for western sunset views."
+      "en": "Beginning around the scenic campus of European University of Lefke, branching out to seaside seafood taverns and sunset viewpoints; blending youthful academic energy with coastal peace."
     },
     "intro": {
       "tr": "Lefke Avrupa Üniversitesi çevresinden başlayıp sahil restoranları ve gün batımı noktalarıyla ilerleyen, akademik enerjiyle kıyı huzurunu birleştiren rahat bir rota. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Starting from European University of Lefke, strolling through town, and concluding at seaside restaurants for western sunset views. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Beginning around the scenic campus of European University of Lefke, branching out to seaside seafood taverns and sunset viewpoints; blending youthful academic energy with coastal peace. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Aphrodite sahilindeki restoranlar gün batımına karşı konumlanmış; akşam yemeği için bu saati kollayın.",
-      "en": "The beachfront restaurants around Aphrodite beach are oriented directly towards sunset; plan your dinner reservation for dusk."
+      "en": "The casual fish taverns along Aphrodite Beach are positioned perfectly for open-sea sunsets; reserve your dinner table for just before twilight."
     },
     "proposers": [
       "V.R."
@@ -5065,35 +4497,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "LAÜ Kampüsü",
-          "description": "LAÜ Kampüsü, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Lefke tepelerinde, Trodos Dağları manzarasına hakim bir konumda yer alan Lefke Avrupa Üniversitesi kampüsü; modern eğitim binaları, palmiyeli bahçeleri ve onlarca farklı ülkeden gelen öğrencilerin oluşturduğu çok kültürlü dinamik atmosferiyle bölgeye genç bir canlılık katar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Lefke Merkez",
-          "description": "Lefke Merkez, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kampüsten kısa bir sürüşle ulaşılan Lefke kasaba merkezi, Cittaslow kimliğini yansıtan sakin sokakları, Osmanlı dönemi ahşap cumbalı sarı taş konakları ve tarihi su arklarıyla modern üniversite hayatının hemen yanı başında korunmuş bir geleneksel dünya sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Aphrodite Sahil Restoranı",
-          "description": "Aphrodite Sahil Restoranı, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gemikonağı ile Gaziveren arasındaki sahil bandında yer alan restoran, denize sıfır terasları ve taze Akdeniz balıklarıyla ünlüdür. Güzelyurt Körfezi'nin dalgaları eşliğinde sunulan mezeleri ve deniz ürünleri menüsü, öğle veya akşam yemekleri için keyifli bir gastronomi durağı oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Sahil Yürüyüşü",
-          "description": "Sahil Yürüyüşü, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Gaziveren sahil şeridi boyunca uzanan kum ve çakıl karışımı sahil hattı, sakin deniz esintisi eşliğinde yürüyüş yapmak ve Güzelyurt Körfezi'nin açık sularını seyretmek için huzurlu bir rota sunar. Bölgedeki sörf kulüpleri ve sahil yürüyüş aksı dinlendirici bir atmosfer sağlar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Gün Batımı Noktası",
-          "description": "Gün Batımı Noktası, Lefke Üniversite Çevresi & Aphrodite Sahili güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Batı kıyısında denizin hemen üzerine inen bu sahil noktası, güneşin batı ufkunda Akdeniz'e batışını kesintisiz bir açıyla izleme olanağı tanır. Akşamüstü kızıla bürünen gökyüzü ve deniz yansımaları, günü tamamlamak için dingin ve romantik bir manzara sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -5101,36 +4533,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "EUL University Campus",
-          "description": "EUL University Campus is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "European University of Lefke Campus",
+          "description": "Perched on the scenic foothills overlooking the town of Lefke and Morphou Bay, the European University of Lefke (EUL) campus features modern academic facilities, landscaped gardens, and an international student body that injects cosmopolitan energy into the historic district.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Lefke Historic Center",
-          "description": "Lefke Historic Center is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Lefke Town Centre",
+          "description": "A short drive downhill leads to the historic core of Lefke, characterized by its Cittaslow rhythm, stone-built Ottoman residences with overhanging timber bays, and fresh spring water canals, offering an authentic traditional contrast to modern university life.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Aphrodite Beachfront Restaurant",
-          "description": "Aphrodite Beachfront Restaurant is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Aphrodite Coastal Restaurant",
+          "description": "Situated directly on the coastal strip between Gemikonağı and Gaziveren, this waterfront restaurant is known for its open sea terraces and fresh Mediterranean seafood. Its wide selection of local mezes and grilled catch provides an inviting culinary stop beside the surf.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Sunset Sea Walkway",
-          "description": "Sunset Sea Walkway is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Scenic Coastal Stroll",
+          "description": "Extending along the Gaziveren coastal fringe, this tranquil shoreline walk provides unbroken views across Morphou Bay. Favored for its uncrowded beaches and gentle sea breezes, it offers a peaceful environment for casual strolling and coastal recreation.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Western Horizon Sunset Point",
-          "description": "Western Horizon Sunset Point is an essential milestone along the Lefke Campus Vibes & Aphrodite Beachfront. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Panoramic Sunset Point",
+          "description": "Positioned right on the westward-facing shore, this viewpoint commands an unobstructed view across the open waters of the Mediterranean. As dusk falls, the horizon transitions through rich hues of gold and crimson, providing a serene conclusion to the west-coast tour.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -5156,7 +4588,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "dag-buffavento",
@@ -5178,24 +4611,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Buffavento Kalesi",
-      "en": "Alevkaya Forest Gateway"
+      "en": "Buffavento Castle Trailhead"
     },
-    "heroImage": "/images/hero-bg.jpg",
+    "heroImage": "/images/route-card-images/buffavento-castle.jpg",
     "title": {
       "tr": "Buffavento & Unutulmuş Manastırlar",
-      "en": "Buffavento Castle & Lost Mountain Monasteries"
+      "en": "Buffavento Castle & Forgotten Monasteries"
     },
     "subtitle": {
       "tr": "Kuzey kıyısının üzerinde saklı dramatik dağ rotası: Buffavento Kalesi, orman manzaraları, Sourp Magar Ermeni Manastırı ve Antiphonitis Kilisesi.",
-      "en": "A dramatic mountain adventure perched high in the clouds: Buffavento Fortress, pine trails, Armenian monastery Sourp Magar, and Antiphonitis."
+      "en": "A dramatic mountain route high above the northern coastline: the rugged crags of Buffavento Castle, fragrant pine forests, Sourp Magar Armenian Monastery, and historic Antiphonitis Church."
     },
     "intro": {
       "tr": "Kuzey kıyısının üzerinde saklı dramatik dağ rotası: Buffavento Kalesi, orman manzaraları, Sourp Magar Ermeni Manastırı ve Antiphonitis Kilisesi. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "A dramatic mountain adventure perched high in the clouds: Buffavento Fortress, pine trails, Armenian monastery Sourp Magar, and Antiphonitis. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "A dramatic mountain route high above the northern coastline: the rugged crags of Buffavento Castle, fragrant pine forests, Sourp Magar Armenian Monastery, and historic Antiphonitis Church. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Buffavento 'rüzgarların meydan okuyanı' demek; zirveye 30–40 dakikalık tırmanışta gölge yok, sabah serinde çıkın. Ödül 360 derece manzara.",
-      "en": "Buffavento means \"Defier of the Winds\" — the 30–40 minute uphill hike has no shade, so climb early in the morning for rewarding 360-degree views."
+      "en": "Buffavento translates to 'Defier of the Winds'; the 30–40 minute uphill hike has little shade, so set off in the morning chill. The reward is a stupendous 360-degree island vista."
     },
     "proposers": [
       "U.S.",
@@ -5207,35 +4640,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Buffavento Kalesi",
-          "description": "Buffavento Kalesi, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Deniz seviyesinden 950 metre yükseklikte sarp bir zirveye kurulan Buffavento (Rüzgara Meydan Okuyan), Beşparmak Dağları'ndaki kalelerin en yüksek ve en sarp olanıdır. 11. yüzyıl Bizans gözetleme kulesi olarak başlayan kale, Lüzinyanlar döneminde siyasi suçluların hapsedildiği bir zindan olarak kullanılmıştır. Yaklaşık 45 dakikalık dik taş basamaklı tırmanışın ardından ulaşılan zirve, tüm adayı kuşbakışı gören 360 derecelik inanılmaz bir panorama sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Alevkaya Piknik Alanı",
-          "description": "Alevkaya Piknik Alanı, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Beşparmak sırtında, kızılçam ve servi ağaçlarının çevrelediği Alevkaya, dağ havası ve serin gölgeleriyle bilinen popüler bir açık hava dinlenme alanıdır. Çevresindeki zengin flora, endemik orkide türleri ve yürüyüş patikalarıyla kale tırmanışının ardından soluklanmak için ideal bir doğa durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Sourp Magar Ermeni Manastırı",
-          "description": "Sourp Magar Ermeni Manastırı, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Alevkaya ormanlarının derinliklerinde bir vadide saklanan Sourp Magar Manastırı, MS 1000 civarında Kıpti Hristiyanlar tarafından kurulmuş ve 15. yüzyılda Ermeni cemaatine geçmiştir. Yüzyıllar boyunca adadaki Ermenilerin ana hac merkezi ve yazlık dinlenme yeri olan yapı, terk edilmiş taş kemerleri, geniş avlusu ve Akdeniz'e bakan manzarasıyla mistik bir atmosfer taşır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Antiphonitis Kilisesi",
-          "description": "Antiphonitis Kilisesi, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Esentepe'nin güneyindeki ormanlık dağ yamacında yer alan 12. yüzyıl Bizans kilisesi Antiphonitis (Cevap Veren Mesih), sekizgen plan üzerine oturtulmuş kubbesi ve revaklı narteksiyle Kıbrıs'ın mimari açıdan en özgün kiliselerindendir. İç duvarlarında yer alan 12. ve 15. yüzyıllara ait fresk kalıntıları, Bizans dini sanatının zirve örneklerindendir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Esentepe Dağ Seyir Noktası",
-          "description": "Esentepe Dağ Seyir Noktası, Buffavento & Unutulmuş Manastırlar güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Antiphonitis Kilisesi'nden Esentepe köyüne doğru inen dağ yolu üzerindeki seyir noktası, dağların dik yamaçlarından Akdeniz'in masmavi sularına uzanan derin vadi manzaraları sunar. Çam ormanları ile kıyı şeridinin buluştuğu bu yüksek nokta, dağ rotasının büyüleyici kapanış fotoğraf durağıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -5243,36 +4676,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Buffavento Mountain Fortress",
-          "description": "Buffavento Mountain Fortress is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Buffavento Castle",
+          "description": "Perched at an elevation of 950 meters on a sheer limestone pinnacle, Buffavento Castle—meaning 'Defier of the Winds'—is the highest and most precipitous fortress in the Kyrenia Range. Originating as a Byzantine beacon station and later utilized as a high-security prison by the Lusignans, an ascent of roughly 45 minutes up a rock-hewn stairway rewards hikers with unparalleled 360-degree views across the entire breadth of Cyprus.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
           "name": "Alevkaya Forest Picnic Grounds",
-          "description": "Alevkaya Forest Picnic Grounds is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Set along the mountain ridge surrounded by Calabrian pines and wild cypress trees, Alevkaya is a cherished forestry recreation area known for its refreshing mountain air. Frequented by botanists for its rich endemic flora and wild orchids, it provides a quiet natural setting to rest after the rugged fortress hike.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Sourp Magar Armenian Monastery",
-          "description": "Sourp Magar Armenian Monastery is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Sourp Magar Armenian Monastery Ruins",
+          "description": "Secluded within a forested valley below the ridge, the Monastery of Saint Makarios (Sourp Magar) was founded around 1000 AD by Coptic monks before passing to the Armenian community in the 15th century. Long functioning as the premier Armenian pilgrimage site and monastic retreat in Cyprus, its evocative stone ruins and cloistered courtyards overlook the northern coastline.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Antiphonitis Byzantine Church",
-          "description": "Antiphonitis Byzantine Church is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Antiphonitis Church",
+          "description": "Hidden in a forested ravine south of Esentepe, the 12th-century Byzantine Church of Christ Antiphonitis is an architectural treasure featuring a dome carried on eight freestanding pillars. The interior preserves important 12th-century Byzantine wall paintings and 15th-century post-Byzantine frescoes, including a celebrated depiction of the Last Judgment.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Esentepe Mountain Ridge Lookout",
-          "description": "Esentepe Mountain Ridge Lookout is an essential milestone along the Buffavento Castle & Lost Mountain Monasteries. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Esentepe Mountain Viewpoint",
+          "description": "Located along the winding mountain descent toward Esentepe village, this elevated vantage point provides dramatic views across rugged pine-covered gorges dropping down to the Mediterranean Sea. It serves as an ideal landscape photography stop to conclude a day of mountain exploration.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -5298,7 +4731,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "dag-ridge",
@@ -5311,7 +4745,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "60–85 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Half to full day"
+      "en": "Yarım–tam gün"
     },
     "difficulty": {
       "tr": "Orta",
@@ -5319,24 +4753,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Değirmenlik Orman Girişi",
-      "en": "Değirmenlik Forest Gateway"
+      "en": "Değirmenlik Forest Entrance"
     },
-    "heroImage": "/images/hero-bg.jpg",
+    "heroImage": "/images/route-card-images/besparmak.jpg",
     "title": {
       "tr": "Beşparmak Sırtı & Orman Kaçamağı",
-      "en": "Beşparmak Mountain Ridge & Forest Scenic Drive"
+      "en": "Kyrenia Ridge & Forest Escapes"
     },
     "subtitle": {
       "tr": "Değirmenlik orman girişinden başlayıp Beşparmak sırt yolu boyunca panoramik manzaralarla ilerleyen, piknik ve köy kafesi molalı bir dağ rotası.",
-      "en": "Beginning at Değirmenlik forest gateway, winding along the panoramic high crest of the Beşparmak mountains with picnics and mountain cafes."
+      "en": "Setting off from the Değirmenlik mountain pass along the ridge road of the Five Finger Mountains; filled with sweeping panoramas, shaded picnic spots, and rustic village cafés."
     },
     "intro": {
       "tr": "Değirmenlik orman girişinden başlayıp Beşparmak sırt yolu boyunca panoramik manzaralarla ilerleyen, piknik ve köy kafesi molalı bir dağ rotası. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Beginning at Değirmenlik forest gateway, winding along the panoramic high crest of the Beşparmak mountains with picnics and mountain cafes. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Setting off from the Değirmenlik mountain pass along the ridge road of the Five Finger Mountains; filled with sweeping panoramas, shaded picnic spots, and rustic village cafés. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "İlkbahar (Mart–Nisan) yaban çiçekleri ve orkidelerin dağ yamaçlarını kapladığı en iyi dönem.",
-      "en": "Spring (March–April) is the prime window when rare wild orchids and alpine wildflowers carpet the mountain slopes."
+      "en": "Spring (March to April) is by far the most magical season, when rare wild orchids and carpets of colourful cyclamens blanket the rocky mountain slopes."
     },
     "proposers": [
       "A.T.",
@@ -5348,42 +4782,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Değirmenlik Orman Girişi",
-          "description": "Değirmenlik Orman Girişi, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Mesarya Ovası'ndan Beşparmak Dağları'na tırmanan Değirmenlik (Kythrea) orman girişi, çam ağaçları ve zeytinliklerle bezeli dik dağ patikalarının başlangıcıdır. Tarih boyunca bol su kaynakları ve un değirmenleriyle tanınan bölgeden başlayan bu tırmanış, ovanın sıcaklığından dağın serinliğine geçiş sağlar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Beşparmak Sırt Yolu",
-          "description": "Beşparmak Sırt Yolu, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dağ silsilesinin omurgasını takip eden asfalt ve stabilize sırt yolu, adanın en etkileyici panoramik sürüş güzergahıdır. Yol boyunca bir tarafta masmavi Akdeniz kıyıları, diğer tarafta ise sonsuz Mesarya Ovası ve uzaktaki Trodos Dağları aynı anda izlenebilir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Panoramik Seyir Noktası",
-          "description": "Panoramik Seyir Noktası, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Sırt yolu üzerindeki en yüksek kaya çıkıntılarından birinde yer alan seyir terası, adanın coğrafi bölünüşünü tek bir bakışta kavramayı sağlar. Karstik kireçtaşı kulelerin arasından esen serin dağ rüzgarı eşliğinde fotoğraf çekmek için mükemmel bir duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Orman Piknik Alanı",
-          "description": "Orman Piknik Alanı, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kızılçam ve servi ağaçlarının gölgesinde kurulmuş olan Alevkaya yakınlarındaki piknik alanı, ahşap masaları ve temiz dağ havasıyla dinlenmek için ideal bir noktadır. Doğa yürüyüşü yapanların ve yerli halkın temiz hava almak için tercih ettiği huzurlu bir orman köşesidir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Herbaryum (Alevkaya)",
-          "description": "Herbaryum (Alevkaya), Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Alevkaya Orman İstasyonu bünyesinde yer alan Herbaryum, Kıbrıs'ın zengin bitki örtüsünü ve adaya özgü endemik türleri tanıtan bilimsel bir botanik merkezidir. Kurutulmuş bitki koleksiyonları, fotoğraflar ve bilgilendirici panolarla Kıbrıs'ın yabani orkideleri ve nadir florası hakkında eşsiz bilgiler sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Köy Kafesi",
-          "description": "Köy Kafesi, Beşparmak Sırtı & Orman Kaçamağı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Dağ sırtından vadiye inen yolda yer alan geleneksel dağ köyü kahvehanesi, asma çardakları altında yerel misafirperverliği sunar. Taze demlenmiş Kıbrıs kahvesi, dağ kekiği çayı ve ev yapımı ceviz macunu eşliğinde rota boyunca çekilen fotoğrafları incelemek için samimi bir mola yeridir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -5391,43 +4825,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Değirmenlik Forest Trailhead",
-          "description": "Değirmenlik Forest Trailhead is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Değirmenlik Forest Pass",
+          "description": "Ascending from the Mesaoria plain into the Kyrenia Range, the forest gateway above Değirmenlik (Kythrea) marks the start of the high ridge trail. Historically famous for its perennial spring and water mills, this ascent marks the transition from low-lying agricultural plains to cool pine-clad ridges.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Beşparmak Crest Mountain Road",
-          "description": "Beşparmak Crest Mountain Road is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Besparmak Mountain Ridge Road",
+          "description": "Following the spine of the Kyrenia mountain range, this ridge-top route delivers one of the most scenic road drives in Cyprus. The road presents simultaneous dual vistas: the sparkling northern Mediterranean coast on one side and the expansive, golden Mesaoria plain on the other.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Dual-Sea High Viewpoint",
-          "description": "Dual-Sea High Viewpoint is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Panoramic Ridge Lookout",
+          "description": "Situated on a natural rocky ledge high above the tree line, this scenic viewpoint offers uninhibited sightlines taking in the dramatic topography of the island. Breezy and quiet, it is a favored stop for panoramic photography across the northern coastline and deep mountain ravines.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Pine Forest Picnic Glade",
-          "description": "Pine Forest Picnic Glade is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Pine Forest Picnic Area",
+          "description": "Sheltered beneath the dense canopy of Calabrian pine and cypress woods near Alevkaya, this recreation ground features shaded timber tables and clean mountain air. It provides a peaceful setting for outdoor relaxation along the high ridge route.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "Alevkaya Herbarium & Botanical Station",
-          "description": "Alevkaya Herbarium & Botanical Station is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Housed at the Alevkaya Forestry Station, the Herbarium is dedicated to documenting and exhibiting the rich botanical diversity of Cyprus. It features a comprehensive collection of pressed plant specimens, color illustrations, and educational exhibits focusing on the island's rare endemic flora and wild orchids.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Traditional Mountain Village Cafe",
-          "description": "Traditional Mountain Village Cafe is an essential milestone along the Beşparmak Mountain Ridge & Forest Scenic Drive. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Village Coffee House",
+          "description": "Located in a hillside village as the mountain road descends, this rustic coffee house provides outdoor seating under grapevine trellises. Offering freshly brewed Cypriot coffee, mountain herbal infusions, and traditional fruit preserves, it serves as a comforting final stop on the ridge tour.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -5453,7 +4887,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "dag-dam",
@@ -5474,24 +4909,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Geçitköy Barajı",
-      "en": "Geçitköy Dam"
+      "en": "Geçitköy Reservoir"
     },
-    "heroImage": "/images/hero-bg.jpg",
+    "heroImage": "/images/route-card-images/gecitkoy.jpg",
     "title": {
       "tr": "Geçitköy Barajı & Çam Ormanı",
-      "en": "Geçitköy Turquoise Dam & Pine Forest Escape"
+      "en": "Geçitköy Reservoir & Pine Forest Trail"
     },
     "subtitle": {
       "tr": "Geçitköy Barajı'nın sessiz suları, çam ormanları, taş evli köyler ve manzara noktalarını birleştiren sakin bir kırsal rota. Değirmenlik köyleriyle birleştirilebilir.",
-      "en": "The turquoise mirror waters of Geçitköy Dam, fragrant pine forests, stone villages, and panoramic scenic lookouts."
+      "en": "Serene turquoise waters of Geçitköy Dam, cooling pine woods, traditional stone villages, and panoramic ridge overlooks. Can easily be connected with Değirmenlik and Gönyeli."
     },
     "intro": {
       "tr": "Geçitköy Barajı'nın sessiz suları, çam ormanları, taş evli köyler ve manzara noktalarını birleştiren sakin bir kırsal rota. Değirmenlik köyleriyle birleştirilebilir. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "The turquoise mirror waters of Geçitköy Dam, fragrant pine forests, stone villages, and panoramic scenic lookouts. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Serene turquoise waters of Geçitköy Dam, cooling pine woods, traditional stone villages, and panoramic ridge overlooks. Can easily be connected with Değirmenlik and Gönyeli. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Doğa yürüyüşü ve piknik için ideal; hafta içi neredeyse tamamen sizindir. Değirmenlik ve Gönyeli köyleriyle birleştirilebilir.",
-      "en": "Perfect for tranquil nature walks and picnics; on weekdays you will have the reservoir and forest trails virtually to yourself."
+      "en": "Ideal for easy nature walks and peaceful family picnics; on weekdays, you will practically have the reservoir viewing trails entirely to yourself."
     },
     "proposers": [
       "A.M.",
@@ -5501,35 +4936,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Geçitköy Barajı",
-          "description": "Geçitköy Barajı, Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Türkiye'den boru hattıyla Akdeniz'in altından gelen tatlı suyun depolandığı Geçitköy Barajı, devasa su aynası ve çevresini saran çam ormanlarıyla adanın en etkileyici mühendislik ve doğa alanlarından biridir. Turkuaz renkli durgun suları, su kuşları ve dağ yamaçlarıyla birleşerek huzurlu bir göl manzarası oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Çam Ormanı Patikası",
-          "description": "Çam Ormanı Patikası, Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Baraj gölünü çevreleyen tepeler boyunca uzanan toprak orman patikaları, kızılçam ağaçları ve dağ kekiği kokuları arasında doğa yürüyüşü imkanı sağlar. Gölün farklı açılardan su yansımalarını izlemek ve temiz dağ havası solumak için popüler bir yürüyüş parkurudur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Geçitköy Köyü (Taş Evler)",
-          "description": "Geçitköy Köyü (Taş Evler), Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Baraj gölünün yukarısında yer alan tarihi Geçitköy (Panagra), sarı kesme taştan inşa edilmiş geleneksel Kıbrıs evleri ve dar sokaklarıyla kırsal mimariyi korumuştur. Çevresindeki zeytinlikler ve sakin köy meydanı, telaşsız bir köy hayatına tanıklık etmek için keyifli bir duraktır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Piknik Alanı",
-          "description": "Piknik Alanı, Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Baraj gölüne bakan yüksek bir yamaçta, gölgeli çam ağaçlarının altına kurulmuş piknik alanı; ahşap bankları ve göl manzarasıyla aileler ve doğaseverler için ideal bir dinlenme yeridir. Açık havada atıştırmak ve manzaranın tadını çıkarmak için ferah bir ortam sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Panoramik Baraj Manzarası",
-          "description": "Panoramik Baraj Manzarası, Geçitköy Barajı & Çam Ormanı güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Geçitköy-Çamlıbel yolu üzerindeki seyir noktasından bakıldığında, baraj gölü, baraj seti ve arkasındaki masmavi Akdeniz aynı kadraja girer. Özellikle gün batımı saatlerinde su yüzeyinde oluşan altın yansımaları fotoğraflamak için rotanın en gözde görsel noktasıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -5537,36 +4972,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Geçitköy Reservoir Dam",
-          "description": "Geçitköy Reservoir Dam is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Geçitköy Reservoir & Dam",
+          "description": "Serving as the terminal reservoir for the freshwater pipeline traversing the Mediterranean seabed from mainland Turkey, the Geçitköy Reservoir is an impressive modern engineering landmark. Its broad turquoise water surface, framed by pine-covered hills, forms a serene inland lake setting.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Pine Forest Nature Trail",
-          "description": "Pine Forest Nature Trail is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Pine Forest Walking Trail",
+          "description": "Winding through fragrant Calabrian pine groves on the hillsides flanking the reservoir, these quiet unpaved trails are well-suited for nature walks and trail running. Elevated trail sections offer scenic water reflections across the mountain basin.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Geçitköy Stone Village",
-          "description": "Geçitköy Stone Village is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Geçitköy Historic Stone Village",
+          "description": "Perched above the reservoir, the historic village of Geçitköy (historically Panagra) features well-preserved yellow sandstone masonry cottages and rustic agricultural courtyards. Framed by centuries-old olive orchards, it offers an authentic view into traditional rural life.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Lakeside Picnic Area",
-          "description": "Lakeside Picnic Area is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Scenic Shaded Picnic Grounds",
+          "description": "Set within shaded pine woods overlooking the reservoir, this recreational picnic area provides timber tables and tranquil forest clearings. It provides a peaceful setting for travelers to pause for an outdoor lunch while enjoying elevated lake views.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Panoramic Dam Lookout",
-          "description": "Panoramic Dam Lookout is an essential milestone along the Geçitköy Turquoise Dam & Pine Forest Escape. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Panoramic Dam Viewpoint",
+          "description": "Situated at an elevated roadside vantage point along the road toward Çamlıbel, this scenic viewpoint provides a sweeping vista capturing the turquoise reservoir waters, the dam structure, and the open sea on the horizon.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -5592,7 +5027,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "dag-olive",
@@ -5613,24 +5049,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Anıtsal Zeytinlik",
-      "en": "Kalkanlı Village"
+      "en": "Monumental Olive Groves"
     },
-    "heroImage": "/images/hero-bg.jpg",
+    "heroImage": "/images/route-card-images/monumental-olive-trees.jpg",
     "title": {
       "tr": "Kalkanlı Anıtsal Zeytinlikler & ODTÜ",
-      "en": "Kalkanlı Monumental Olive Trees & Nature Valley"
+      "en": "Kalkanlı Monumental Olive Groves & METU"
     },
     "subtitle": {
       "tr": "Yüzlerce yaşında anıtsal zeytin ağaçları, vadi manzaraları, Çoban Mağarası ve ODTÜ kampüsünün huzurlu çevresi. Fotoğrafçılar için özel.",
-      "en": "Ancient monumental olive trees hundreds of years old, valley vistas, Shepherd’s Cave, and the serene surroundings of the METU campus."
+      "en": "Centuries-old monumental olive trees, scenic valley vistas, Shepherd's Cave, and the serene surroundings of the METU Northern Cyprus campus. A photographer's dream."
     },
     "intro": {
       "tr": "Yüzlerce yaşında anıtsal zeytin ağaçları, vadi manzaraları, Çoban Mağarası ve ODTÜ kampüsünün huzurlu çevresi. Fotoğrafçılar için özel. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Ancient monumental olive trees hundreds of years old, valley vistas, Shepherd’s Cave, and the serene surroundings of the METU campus. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Centuries-old monumental olive trees, scenic valley vistas, Shepherd's Cave, and the serene surroundings of the METU Northern Cyprus campus. A photographer's dream. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Zeytin ağaçlarının bazıları binlerce yıllık; en iyi ışık için sabah erken ya da gün batımına yakın gidin.",
-      "en": "Some of these monumental olive trees are over 800 years old; early morning or late afternoon light creates striking silhouettes for photography."
+      "en": "Several monumental olive trees here are over 800 years old; visit in the soft morning or late afternoon light when the ancient gnarled trunks look truly majestic."
     },
     "proposers": [
       "A.M."
@@ -5639,35 +5075,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Anıtsal Zeytinlik",
-          "description": "Anıtsal Zeytinlik, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kalkanlı köyü yakınlarında koruma altında bulunan bu özel alan, yaşları 500 ile 1000 yıl arasında değişen yaklaşık 2000 adet anıtsal zeytin ağacına ev sahipliği yapar. Lüzinyan ve Venedik dönemlerinden bu yana ürün vermeye devam eden, gövdeleri heykelsi kıvrımlara bürünmüş bu kadim ağaçlar, Akdeniz'in en değerli yaşayan doğal anıtları arasındadır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Çoban Mağarası",
-          "description": "Çoban Mağarası, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Anıtsal zeytinliklerin kenarındaki kireçtaşı yamaçta yer alan Çoban Mağarası, geçmiş yüzyıllarda hayvan otlatan çobanların yağmurdan ve sıcaktan korunmak için kullandığı doğal bir kaya sığınağıdır. Bölgenin pastoral geçmişini yansıtan mağara, yürüyüş parkuru üzerindeki ilgi çekici jeolojik duraklardan biridir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Kalkanlı Vadi Manzarası",
-          "description": "Kalkanlı Vadi Manzarası, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Zeytinliklerin arasından geçen patikaların ulaştığı vadi sırtı, Güzelyurt Ovası'na ve narenciye bahçelerine doğru açılan geniş bir görüş açısı sunar. Sabahın erken saatlerinde veya gün batımına yakın zamanlarda, asırlık ağaç gövdelerinin üzerine düşen ışık oyunlarını fotoğraflamak için mükemmeldir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "ODTÜ Kampüs Alanı",
-          "description": "ODTÜ Kampüs Alanı, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kalkanlı tepelerinde kurulu Orta Doğu Teknik Üniversitesi Kuzey Kıbrıs Kampüsü, modern mimarisi, ödüllü peyzaj tasarımı ve yeşil yerleşke alanlarıyla bölgenin modern çehresini temsil eder. Sakin kampüs yolları ve sosyal tesisleri, doğa yürüyüşü sonrasında dinlenmek için çağdaş bir mola imkanı sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Anı Ağaçları Dinlenme Noktası",
-          "description": "Anı Ağaçları Dinlenme Noktası, Kalkanlı Anıtsal Zeytinlikler & ODTÜ güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Zeytin anıtlarının en görkemlilerinin bulunduğu gölgeli alanda oluşturulmuş ahşap oturma alanları, ziyaretçilerin doğanın huzurunu hissetmesini sağlar. Yüzlerce yıllık ağaçların gölgesinde oturup rüzgarın gümüşi yapraklardaki fısıltısını dinlemek bu rotanın en dingin anıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
@@ -5675,36 +5111,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Monumental Olive Grove Sanctuary",
-          "description": "Monumental Olive Grove Sanctuary is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Monumental Olive Groves",
+          "description": "Located near Kalkanlı village, this designated nature protection area contains nearly 2,000 monumental olive trees, many dating between 500 and 1,000 years of age. Originating in the Lusignan and Venetian periods, their massive, sculptural gnarled trunks stand as remarkable living historical monuments of the Mediterranean.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Shepherd’s Cave",
-          "description": "Shepherd’s Cave is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Shepherd's Cave",
+          "description": "Hollowed into a limestone ridge bordering the monumental olive groves, the Shepherd's Cave is a natural rock chamber historically utilized by local pastoralists for shade and storm shelter. The rustic site adds geological interest to the walking circuit.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "Kalkanlı Valley Viewpoint",
-          "description": "Kalkanlı Valley Viewpoint is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Following trails along the ridge above the grove reveals open vistas across the agricultural lowlands of Morphou Bay. In morning and late afternoon light, the long shadows cast through the ancient silver-green olive canopies create exceptional landscape photography scenes.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "METU NCC Green Grounds",
-          "description": "METU NCC Green Grounds is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "METU Northern Cyprus Campus",
+          "description": "Set on the rolling terrain of Kalkanlı, Middle East Technical University Northern Cyprus Campus features contemporary architecture, botanical landscaping, and modern academic facilities. Its quiet plazas and cafes offer a convenient, welcoming resting stop.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Heritage Trees Rest Spot",
-          "description": "Heritage Trees Rest Spot is an essential milestone along the Kalkanlı Monumental Olive Trees & Nature Valley. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Monumental Trees Resting Point",
+          "description": "Arranged beneath the canopy of some of the oldest surviving olive specimens, this shaded rest area provides timber benches where hikers can sit in peace. Listening to the breeze rustle through ancient olive foliage provides a serene conclusion to this nature trail.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
@@ -5730,7 +5166,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "dag-beylerbeyi",
@@ -5754,22 +5191,22 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": "Beylerbeyi Köy Meydanı",
       "en": "Beylerbeyi Village Square"
     },
-    "heroImage": "/images/hero-bg.jpg",
+    "heroImage": "/images/route-card-images/pottery.jpg",
     "title": {
       "tr": "Beylerbeyi Zanaat & Zeytinlik Turu",
-      "en": "Beylerbeyi Artisan Pottery & Village Olive Groves"
+      "en": "Beylerbeyi Artisan Crafts & Olive Trails"
     },
     "subtitle": {
       "tr": "Beylerbeyi'nin çömlek atölyeleri, zeytinlikleri ve sade köy hayatını keşfeden, yerel lezzetlerle biten bir kültür-doğa rotası.",
-      "en": "Discover working ceramic studios, olive groves, and classic village life in Beylerbeyi (Bellapais), ending with traditional lunch."
+      "en": "Discover traditional pottery workshops, tranquil olive groves, and slow village life in hillside Beylerbeyi, ending with authentic local flavours."
     },
     "intro": {
       "tr": "Beylerbeyi'nin çömlek atölyeleri, zeytinlikleri ve sade köy hayatını keşfeden, yerel lezzetlerle biten bir kültür-doğa rotası. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "Discover working ceramic studios, olive groves, and classic village life in Beylerbeyi (Bellapais), ending with traditional lunch. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "Discover traditional pottery workshops, tranquil olive groves, and slow village life in hillside Beylerbeyi, ending with authentic local flavours. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Çömlek atölyesinde ustaların çalışmasını izleyebilir, hatta kendi parçanızı yapabilirsiniz — çocuklu aileler için ideal.",
-      "en": "You can watch master potters at work in the local workshop and even sculpt your own souvenir clay piece — wonderful for families."
+      "en": "You can watch master potters shaping clay on the wheel and even try making your own ceramic piece — an engaging, hands-on experience for adults and kids alike."
     },
     "proposers": [
       "A.M."
@@ -5778,28 +5215,28 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Beylerbeyi Köy Meydanı",
-          "description": "Beylerbeyi Köy Meydanı, Beylerbeyi Zanaat & Zeytinlik Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Bellapais Manastırı'nın eteklerinde yer alan Beylerbeyi köy meydanı, begonvillerle sarılı taş evleri, tarihi çınarları ve asırlık zeytin ağaçlarıyla Girne'nin en zarif yamaç yerleşimidir. Lawrence Durrell'in 'Huzur Ağacı' (Tree of Idleness) altında oturduğu tarihi kahvehanelerin bulunduğu meydan, köyün edebiyat ve kültür geçmişini yansıtır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Çalışan Çömlek Atölyesi",
-          "description": "Çalışan Çömlek Atölyesi, Beylerbeyi Zanaat & Zeytinlik Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Köy sokaklarında yer alan geleneksel çömlek ve seramik atölyeleri, Kıbrıs'ın binlerce yıllık pişmiş toprak zanaatını yaşatır. Usta ellerin tornada şekillendirdiği amforaları, zeytinyağı testilerini ve dekoratif seramikleri izleyebilir, geleneksel yöntemlerle çamurdan eşya yapımına bizzat katılabilirsiniz.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Zeytinlikler",
-          "description": "Zeytinlikler, Beylerbeyi Zanaat & Zeytinlik Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Beylerbeyi yamaçlarından Akdeniz'e doğru teraslar halinde inen zeytinlikler, yüzlerce yıllık zeytin ve keçiboynuzu ağaçlarıyla kaplıdır. Taş duvarlarla örülmüş yürüyüş yolları boyunca yapılan gezintiler, deniz manzarası eşliğinde ada tarımının kadim köklerine tanıklık etme fırsatı sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Köy Öğle Yemeği Durağı",
-          "description": "Köy Öğle Yemeği Durağı, Beylerbeyi Zanaat & Zeytinlik Turu güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Köy merkezindeki avlulu geleneksel lokantalar, odun fırınında pişen kleftiko, ev yapımı hellim börekleri, taze mevsim salataları ve yerel şaraplarla bezeli zengin Kıbrıs sofraları sunar. Manastırın Gotik kulelerine bakan teraslarda oturmak, geziyi otantik bir gastronomi deneyimiyle taçlandırır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
@@ -5807,29 +5244,29 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Beylerbeyi Village Square",
-          "description": "Beylerbeyi Village Square is an essential milestone along the Beylerbeyi Artisan Pottery & Village Olive Groves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Beylerbeyi (Bellapais) Village Square",
+          "description": "Set on the hillside below Bellapais Abbey, the village square of Beylerbeyi is framed by stone townhouses, vibrant bougainvillea, and mature plane trees. The square is famously home to the historic Tree of Idleness, celebrated by British author Lawrence Durrell in his classic memoir 'Bitter Lemons'.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Working Artisan Pottery Studio",
-          "description": "Working Artisan Pottery Studio is an essential milestone along the Beylerbeyi Artisan Pottery & Village Olive Groves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Active Ceramic & Pottery Workshop",
+          "description": "Located along the village alleys, these active pottery and ceramic studios maintain Cyprus's ancient terracotta craft traditions. Visitors can observe master artisans shaping earthenware amphorae and jugs on foot-powered wheels, and can participate in hands-on pottery workshops.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Ancient Village Olive Groves",
-          "description": "Ancient Village Olive Groves is an essential milestone along the Beylerbeyi Artisan Pottery & Village Olive Groves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Centuries-Old Olive Groves",
+          "description": "Descending in stone-retained terraces from the village toward the sea, these ancient groves feature mature olive and carob trees. Walking between the dry-stone walls provides scenic perspectives looking toward Kyrenia while highlighting traditional tree crop cultivation.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Village Meze Tavern Lunch",
-          "description": "Village Meze Tavern Lunch is an essential milestone along the Beylerbeyi Artisan Pottery & Village Olive Groves. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Traditional Village Lunch Stop",
+          "description": "Traditional courtyard restaurants in the village serve slow-cooked clay-oven kleftiko, fresh halloumi pastries, and seasonal meze dishes. Dining on terraces overlooking the stone arches of Bellapais Abbey and the coastline provides an authentic local culinary conclusion.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
@@ -5855,7 +5292,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "dag-villages",
@@ -5876,24 +5314,24 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "startFinish": {
       "tr": "Karmi Köyü",
-      "en": "Karmi (Karaman)"
+      "en": "Karmi Village"
     },
-    "heroImage": "/images/hero-bg.jpg",
+    "heroImage": "/images/route-card-images/secret-mountain-villages.jpg",
     "title": {
       "tr": "Gizli Köyler & Otantik Yerel Hayat",
-      "en": "Secret Mountain Villages & Timeless Island Life"
+      "en": "Secret Mountain Villages & Authentic Life"
     },
     "subtitle": {
       "tr": "Kale yok, kalabalık yok — sadece zeytinlikler, taş kiliseler ve haftanın en büyük olayının hâlâ pazar günü olduğu köyler. Karmi'den Koruçam'a.",
-      "en": "No tourist rush — only olive groves, stone chapels, and mountain villages where life moves at the gentle pace of traditional Sunday markets."
+      "en": "No fortress lines, no crowds — just silvery olive groves, stone belfries, and sleepy hamlets where Sunday market remains the highlight of the week. From Karmi to Koruçam."
     },
     "intro": {
       "tr": "Kale yok, kalabalık yok — sadece zeytinlikler, taş kiliseler ve haftanın en büyük olayının hâlâ pazar günü olduğu köyler. Karmi'den Koruçam'a. Bu rota, bölgenin en seçkin duraklarını, doğal güzelliklerini ve yerel lezzetlerini bir araya getirerek keyifli ve akıcı bir keşif deneyimi sunar.",
-      "en": "No tourist rush — only olive groves, stone chapels, and mountain villages where life moves at the gentle pace of traditional Sunday markets. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
+      "en": "No fortress lines, no crowds — just silvery olive groves, stone belfries, and sleepy hamlets where Sunday market remains the highlight of the week. From Karmi to Koruçam. Crafted by locals, this itinerary connects the most captivating viewpoints, historical milestones, and scenic highlights for an unforgettable journey."
     },
     "insiderTip": {
       "tr": "Rota planlı değil, keşif için — bir köyde durup kahve içmek, yabancılarla sohbet etmek bu rotanın asıl amacı.",
-      "en": "This itinerary is built for serendipitous discovery — stopping for a Turkish coffee and chatting with village elders is the true soul of this route."
+      "en": "This itinerary isn't about rushing through a checklist; stopping for a slow Turkish coffee at a village square and chatting with locals is the true soul of this journey."
     },
     "proposers": [
       "O.O.",
@@ -5903,42 +5341,42 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Karmi Köyü",
-          "description": "Karmi Köyü, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Beşparmak Dağları'nın yamacında çam ormanları arasına saklanmış Karmi (Karaman), titizlikle restore edilmiş taş evleri, çiçeklerle bezeli dar sokakları ve merkezindeki tarihi Meryem Ana Kilisesi ile adanın en karakteristik dağ köyüdür. Bir masal köyünü andıran mimari dokusu ve huzurlu sessizliğiyle rotanın göz alıcı başlangıcıdır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "9:00",
           "driveTime": "0 dk"
         },
         {
           "name": "Ozanköy",
-          "description": "Ozanköy, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Girne'nin doğusunda zeytinliklerin ortasında yer alan Ozanköy (Kazafana), geleneksel taş mimarisi ve Orta Çağ'dan kalma küçük şapelleriyle bilinir. Kıbrıs edebiyatının önemli şairlerinden Osman Türkay'ın memleketi olan köy, her sonbaharda düzenlenen Harnup (Keçiboynuzu) Festivali ile ada kültürünü yaşatır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Çatalköy",
-          "description": "Çatalköy, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Tarihi Girne-Gazimağusa eski yolu üzerinde yer alan Çatalköy (Agios Epiktitos), geleneksel kerpiç ve taş mimarisini koruyan sokakları, yerel sanat galerileri ve köy meydanındaki kahvehaneleriyle öne çıkar. Dağ ile sahil arasındaki konumuyla otantik köy dokusunu sakin bir atmosferde sunar.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Tepebaşı (Lale Köyü)",
-          "description": "Tepebaşı (Lale Köyü), Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kalkanlı sırtlarında yer alan Tepebaşı (Diorios), her ilkbaharda çevresindeki vadilerde açan Kıbrıs'a özgü endemik Medoş Lalesi (Tulipa cypria) ile ünlüdür. Yıllık lale festivaline ev sahipliği yapan köy, çam ormanları ve geleneksel köy meydanıyla doğa ve kültürün kesiştiği özel bir yerleşimdir.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Sadrazamköy",
-          "description": "Sadrazamköy, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Adanın en batı ucundaki Kormakitis Burnu yakınında kurulu Sadrazamköy, modern turizmin tamamen dışında kalmış huzurlu bir kıyı köyüdür. Alçak taş evleri, keçi sürüleri ve açık deniz manzarasıyla Kıbrıs'ın onlarca yıl önceki el değmemiş kırsal atmosferini günümüze taşır.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 dk"
         },
         {
           "name": "Koruçam",
-          "description": "Koruçam, Gizli Köyler & Otantik Yerel Hayat güzergahının en karakteristik duraklarından biridir. Bölgenin tarihi dokusu, dingin atmosferi ve eşsiz fotoğraf açılarıyla ziyaretçilerine otantik bir Kuzey Kıbrıs deneyimi sunar.",
+          "description": "Kuzey Kıbrıs'taki Maronit toplumunun tarihi merkezi olan Koruçam, kendine özgü dili, Katolik katedrali ve ünlü köy meyhaneleriyle rotanın son durağıdır. Köy meydanında kleftiko ve yerel mezeler eşliğinde dostça bir sohbet, otantik köy gezisinin en sıcak kapanışını oluşturur.",
           "visitTime": "30–60 dakika",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 dk"
@@ -5946,43 +5384,43 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Karmi (Karaman) Picturesque Village",
-          "description": "Karmi (Karaman) Picturesque Village is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Karmi (Karaman) Mountain Village",
+          "description": "Tucked against the pine-clad heights of the Kyrenia Range, Karmi (Karaman) is an immaculately preserved hillside village. Featuring restored stone cottages, narrow cobbled lanes lined with climbing roses, and a 19th-century church of the Virgin Mary, it presents a picturesque and tranquil mountain retreat.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "9:00",
           "driveTime": "0 min"
         },
         {
-          "name": "Ozanköy Historic Quarter",
-          "description": "Ozanköy Historic Quarter is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Ozanköy Village",
+          "description": "Set amid ancient carob and olive orchards east of Kyrenia, Ozanköy (Kazafana) is renowned for traditional stone houses and medieval village chapels. Celebrated as the birthplace of poet Osman Türkay, the village hosts an annual Carob Festival celebrating regional agrarian heritage.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "10:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Çatalköy Foothills",
-          "description": "Çatalköy Foothills is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Çatalköy Coastal Village",
+          "description": "Positioned along the lower mountain terraces east of Kyrenia, Çatalköy retains traditional vernacular sandstone houses, local art workshops, and shaded village squares. It offers travelers an authentic glimpse into North Cyprus village life removed from coastal hotel corridors.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "12:00",
           "driveTime": "15–20 min"
         },
         {
           "name": "Tepebaşı (Tulip Village)",
-          "description": "Tepebaşı (Tulip Village) is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "description": "Located on the western limestone hills, Tepebaşı (Diorios) is renowned for the wild Medosh Tulip (Tulipa cypria), an endemic red tulip species that blooms across surrounding fields every March. The village celebrates its botanical heritage with an annual spring festival.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "13:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Sadrazamköy Rural Outpost",
-          "description": "Sadrazamköy Rural Outpost is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Sadrazamköy Coastal Hamlet",
+          "description": "Situated near the remote western headlands of Cape Kormakitis, Sadrazamköy is an isolated coastal village untouched by commercial tourism. Characterized by simple stone farmhouses and grazing sheep, it preserves an authentic, historic rural rhythm.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "15:00",
           "driveTime": "15–20 min"
         },
         {
-          "name": "Koruçam Traditional Settlement",
-          "description": "Koruçam Traditional Settlement is an essential milestone along the Secret Mountain Villages & Timeless Island Life. Offering panoramic vistas, authentic local character, and rich heritage, it is an essential highlight on your itinerary.",
+          "name": "Koruçam (Kormakitis) Maronite Village",
+          "description": "Serving as the heart of the Maronite community in Cyprus, Koruçam (Kormakitis) retains its distinctive heritage, prominent Catholic cathedral, and renowned family-run taverns. Savoring traditional slow-cooked lamb kleftiko in the village square provides an authentic conclusion to the rural village itinerary.",
           "visitTime": "30–60 mins",
           "suggestedArrival": "16:00",
           "driveTime": "15–20 min"
@@ -6008,7 +5446,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Authentic local taverns, seaside cafes, and village bakeries along the way.",
         "publicTransport": "Self-drive by private or rental vehicle strongly recommended for flexibility."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "sig-grand",
@@ -6026,28 +5465,28 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "difficulty": {
       "tr": "Manzaralı Yolculuk",
-      "en": "Scenic Road Odyssey"
+      "en": "Scenic Road Trip"
     },
     "startFinish": {
       "tr": "Girne (Liman & Bellapais)",
-      "en": "Kyrenia Harbour (Finish: Cape Zafer)"
+      "en": "Kyrenia (Harbour & Bellapais)"
     },
     "heroImage": "/images/hero-kyrenia.jpg",
     "title": {
       "tr": "Büyük Kıbrıs Turu",
-      "en": "The Grand Cyprus Cross-Island Road Odyssey"
+      "en": "Grand Cyprus Expedition"
     },
     "subtitle": {
       "tr": "Adanın uçtan uca en manzaralı sürüşü",
-      "en": "From mountain fortresses and Crusader castles to the wild golden sands of Cape Zafer — the definitive 3 to 5-day cross-island road trip."
+      "en": "The ultimate scenic cross-island journey from mountain citadels to wild Karpas"
     },
     "intro": {
       "tr": "Dağ köyü, üç kale, dramatik sırt yolu ve Zafer Burnu'na kadar uzanan vahşi Karpaz — otelden otele, adanın nihai yol yolculuğu. Bir ucundan diğerine Kuzey Kıbrıs'ın ruhunu hissettiren, özenle tasarlanmış çok günlük veya tematik bir yol macerası.",
-      "en": "From mountain fortresses and Crusader castles to the wild golden sands of Cape Zafer — the definitive 3 to 5-day cross-island road trip. An epic thematic and multi-day journey traversing the breadth of Northern Cyprus for true road trip explorers."
+      "en": "Mountain hamlets, three Crusader castles, dramatic mountain ridges, and the untamed wilderness of Karpas leading all the way to Cape Zafer — an epic multi-day expedition capturing the true spirit of Cyprus."
     },
     "insiderTip": {
       "tr": "Otel ve konaklama rezervasyonlarınızı rota güzergahındaki farklı köylere ve sahil kasabalarına yayarak adayı tam anlamıyla yaşayın.",
-      "en": "Spread your overnight hotel stays across quaint coastal villages and mountain retreats to experience the authentic heartbeat of the island."
+      "en": "Spread your overnight bookings across quaint coastal villages and mountain retreats along the route to immerse yourself fully in the island's varied atmospheres."
     },
     "proposers": [
       "N.P.",
@@ -6059,131 +5498,75 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Girne (Liman & Bellapais)",
-          "description": "Girne (Liman & Bellapais), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Büyük Kıbrıs Turu'nun başlangıç aşaması olan bu durak, tarihi nal biçimli Girne Limanı, görkemli Girne Kalesi ve dağ eteklerindeki Gotik Bellapais Manastırı'nı kapsar. Akdeniz kıyı zarafetiyle Orta Çağ şövalye mirasını birleştiren bölge, adanın kuzey kapısını simgeler.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 1",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Dağlar (Üç Kale)",
-          "description": "Dağlar (Üç Kale), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Beşparmak Dağları'nın zirvelerinde yükselen St. Hilarion, Buffavento ve Kantara kalelerini içeren bu etap, Orta Çağ savunma mimarisinin zirvesidir. Sarp kayalıklar üzerine kurulu bu kalelerden Akdeniz'in iki yakasını gören panoramik manzaralar eşliğinde dağ sırtı boyunca ilerlenir.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 2",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Gazimağusa (Salamis & Surlar)",
-          "description": "Gazimağusa (Salamis & Surlar), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Doğu kıyısına geçildiğinde ulaşılan Gazimağusa etabı; anıtsal Venedik surları, Gotik Lala Mustafa Paşa Camii ve antik çağın görkemli kenti Salamis Harabeleri'ni birleştirir. Roma tiyatrosu ve Orta Çağ katedraliyle adanın en zengin tarihi katmanını sergiler.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 3",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/famagusta/ancient-salamis/1.jpg",
-            "/images/routes/famagusta/ancient-salamis/2.jpg",
-            "/images/routes/famagusta/ancient-salamis/3.jpg",
-            "/images/routes/famagusta/ancient-salamis/4.jpg",
-            "/images/routes/famagusta/ancient-salamis/5.jpg",
-            "/images/routes/famagusta/ancient-salamis/6.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Karpaz (Altınkum & Zafer Burnu)",
-          "description": "Karpaz (Altınkum & Zafer Burnu), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Adanın en doğusundaki el değmemiş yarımadayı kat eden bu etap; serbest dolaşan yabani eşekleri, kilometrelerce uzanan el değmemiş Altınkum sahilini, Apostolos Andreas Manastırı'nı ve Kıbrıs'ın kara bitimi olan Zafer Burnu falezlerini kapsar.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 4",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Batı (Antik Kentler)",
-          "description": "Batı (Antik Kentler), Büyük Kıbrıs Turu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Turun kapanış aşaması olan batı bölgesi; narenciye başkenti Güzelyurt'u, kuğu mozaiğiyle ünlü Soli Bazilikası'nı, tepe sarayı Vouni'yi ve sakin Lefke kasabasını bir araya getirerek ada yolculuğunu dingin bir kültür ve doğa senteziyle tamamlar.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 5",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/guzelyurt/soli-ancient-city/1.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/2.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/3.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/4.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         }
       ],
       "en": [
         {
-          "name": "Kyrenia (Old Harbour & Bellapais Abbey)",
-          "description": "Kyrenia (Old Harbour & Bellapais Abbey) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Kyrenia (Harbour & Bellapais)",
+          "description": "Serving as the starting stage of the Grand Cyprus Tour, this milestone encompasses Kyrenia's historic crescent harbor, Kyrenia Castle, and the 13th-century Gothic cloister of Bellapais Abbey nestled on the mountain slopes.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 1",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Kyrenia Mountains (Three Crusader Fortresses)",
-          "description": "Kyrenia Mountains (Three Crusader Fortresses) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Besparmak Mountain Castles",
+          "description": "Traversing the crest of the Kyrenia Mountains, this high-altitude stage connects the three formidable mountain redoubts: Saint Hilarion, Buffavento, and Kantara, offering magnificent 360-degree vistas over the northern and southern coasts.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 2",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Famagusta (Ancient Salamis & Venetian Ramparts)",
-          "description": "Famagusta (Ancient Salamis & Venetian Ramparts) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Famagusta (Salamis & Medieval Walls)",
+          "description": "Focusing on the eastern coast, this leg links the classical Roman ruins of ancient Salamis with the monumental Venetian ramparts, Othello Castle, and French Gothic architecture of the walled city of Famagusta.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 3",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/famagusta/ancient-salamis/1.jpg",
-            "/images/routes/famagusta/ancient-salamis/2.jpg",
-            "/images/routes/famagusta/ancient-salamis/3.jpg",
-            "/images/routes/famagusta/ancient-salamis/4.jpg",
-            "/images/routes/famagusta/ancient-salamis/5.jpg",
-            "/images/routes/famagusta/ancient-salamis/6.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Karpaz Peninsula (Golden Beach & Cape Zafer)",
-          "description": "Karpaz Peninsula (Golden Beach & Cape Zafer) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Karpas (Golden Beach & Cape Apostolos Andreas)",
+          "description": "Cutting through the remote eastern peninsula, this wilderness segment features roaming feral donkeys, the vast pristine dunes of Golden Beach, the pilgrimage complex of Saint Andrew, and the rocky bluffs of Cape Apostolos Andreas.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 4",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/karpaz/golden-beach/1.jpg",
-            "/images/routes/karpaz/golden-beach/2.jpg",
-            "/images/routes/karpaz/golden-beach/3.jpg",
-            "/images/routes/karpaz/golden-beach/4.jpg",
-            "/images/routes/karpaz/golden-beach/5.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "West Coast (Ancient Soli & Vouni Palace)",
-          "description": "West Coast (Ancient Soli & Vouni Palace) is a premier milestone of The Grand Cyprus Cross-Island Road Odyssey, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Western Ancient Cities",
+          "description": "Concluding the island circuit across the west, this phase highlights the classical archaeological sites of Soli and Vouni Palace alongside the historic Cittaslow oasis and citrus groves of Lefke and Güzelyurt.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 5",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/guzelyurt/soli-ancient-city/1.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/2.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/3.jpg",
-            "/images/routes/guzelyurt/soli-ancient-city/4.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         }
       ]
     },
@@ -6206,7 +5589,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Wide variety of authentic meze taverns, seaside fish harbors, and village cafes.",
         "publicTransport": "Rental car or private vehicle is essential for this cross-island route."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "sig-gastronomy",
@@ -6224,28 +5608,28 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "difficulty": {
       "tr": "Manzaralı Yolculuk",
-      "en": "Relaxed Culinary Tour"
+      "en": "Scenic Road Trip"
     },
     "startFinish": {
       "tr": "Girne Limanı Kahvaltı",
-      "en": "Kyrenia Harbour"
+      "en": "Kyrenia Harbour (Breakfast)"
     },
     "heroImage": "/images/hero-kyrenia.jpg",
     "title": {
       "tr": "Gastronomi Yolculuğu",
-      "en": "Cyprus Culinary & Artisan Gastronomy Trail"
+      "en": "Culinary & Vineyard Odyssey"
     },
     "subtitle": {
       "tr": "Bir köy mutfağı, bir sonraki durak",
-      "en": "Tracing fresh halloumi, citrus orchards, wild thyme honey, and village meze taverns across family farms and scenic seaside tables."
+      "en": "From family orchard tables to seaside taverns: a true taste of Cyprus"
     },
     "intro": {
       "tr": "Narenciye, hellim, zeytin ve keçiboynuzu — Kıbrıs mutfağının ham maddelerini yetiştiği tarlalardan aile sofralarına kadar takip eden, otelden otele rota. Bir ucundan diğerine Kuzey Kıbrıs'ın ruhunu hissettiren, özenle tasarlanmış çok günlük veya tematik bir yol macerası.",
-      "en": "Tracing fresh halloumi, citrus orchards, wild thyme honey, and village meze taverns across family farms and scenic seaside tables. An epic thematic and multi-day journey traversing the breadth of Northern Cyprus for true road trip explorers."
+      "en": "Sun-ripened citrus, artisanal halloumi, fragrant olive oils, and wild carob — follow the island's authentic gastronomic staples straight from regional producers and farms to family tavern tables."
     },
     "insiderTip": {
       "tr": "Otel ve konaklama rezervasyonlarınızı rota güzergahındaki farklı köylere ve sahil kasabalarına yayarak adayı tam anlamıyla yaşayın.",
-      "en": "Never rush a meal in Cyprus — the traditional multi-course meze lunch is an art of slow living and shared conversation."
+      "en": "Plan for generous multi-course lunches and don't hesitate to ask tavern owners for their daily off-menu meze specialties and local village wines."
     },
     "proposers": [
       "N.P.",
@@ -6255,56 +5639,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Girne Limanı Kahvaltı",
-          "description": "Girne Limanı Kahvaltı, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Tarihi Girne Limanı'nın deniz kenarındaki taş ambar restoranlarında güne taze Kıbrıs kahvaltısıyla başlanır. Sıcak kızarmış hellim peyniri, taze kırılmış yeşil zeytinler (çakıstez), pekmez, turunç macunu ve taze köy ekmeği eşliğinde limanın sabah dinginliği yaşanır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 1",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/kyrenia/kyrenia-harbour/1.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/2.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/3.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/4.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/5.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Bellapais Köyü",
-          "description": "Bellapais Köyü, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Gotik manastırın gölgesindeki Beylerbeyi yamaçlarında yer alan bu durak, taş fırınlarda pişen geleneksel fırın kebabı (kleftiko) ve Kıbrıs usulü taze meze çeşitleriyle adanın dağ gastronomisini öne çıkarır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 2",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Zeytinlik Köyü",
-          "description": "Zeytinlik Köyü, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Girne'nin batısında asırlık zeytin ağaçlarıyla çevrili Zeytinlik (Templos), geleneksel zeytinyağı değirmenleri ve zeytinli köy ekmekleriyle Kıbrıs zeytin kültürünün kalbidir. Soğuk sıkım zeytinyağları ve zeytin bazlı yöresel tatlar burada keşfedilir.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Lefke & Vouni",
-          "description": "Lefke & Vouni, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Batı Kıbrıs'ın narenciye ve ceviz diyarı olan Lefke ile Vouni kıyısı; taze portakal suları, meşhur ceviz macunu, deniz kenarında taze Akdeniz balıkları ve mevsimlik otlarıyla eşsiz bir vadi ve sahil sofrası sunar.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 4",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/guzelyurt/vouni-palace/1.jpg",
-            "/images/routes/guzelyurt/vouni-palace/2.jpg",
-            "/images/routes/guzelyurt/vouni-palace/3.jpg",
-            "/images/routes/guzelyurt/vouni-palace/4.jpg",
-            "/images/routes/guzelyurt/vouni-palace/5.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Değirmenlik Meze Öğle Yemeği",
-          "description": "Değirmenlik Meze Öğle Yemeği, Gastronomi Yolculuğu rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Beşparmak Dağları'nın su kaynaklarıyla beslenen Değirmenlik eteklerindeki otantik köy meyhanelerinde, onlarca çeşit sıcak ve soğuk Kıbrıs mezesi, şeftali kebabı ve yerel karaf şarapları eşliğinde gastronomi turunun zengin finali yapılır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş"
@@ -6312,57 +5675,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Kyrenia Waterfront Breakfast",
-          "description": "Kyrenia Waterfront Breakfast is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Kyrenia Harbour Breakfast Walk",
+          "description": "The gastronomy route opens with a traditional Cypriot breakfast along the historic quayside of Kyrenia Harbour. Highlights include warm grilled halloumi, cracked green olives (çakıstez), carob pekmez, bitter-orange preserves, and crusty village bread served beside morning water views.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 1",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/kyrenia/kyrenia-harbour/1.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/2.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/3.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/4.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/5.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Bellapais Village Heritage Dining",
-          "description": "Bellapais Village Heritage Dining is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Bellapais Village",
+          "description": "Perched below Bellapais Abbey, the hillside village of Beylerbeyi showcases mountain cuisine centered around slow-cooked clay oven lamb kleftiko, fresh herb salads, and artisan cheeses served on garden terraces.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 2",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Zeytinlik Olive & Halloumi Farm",
-          "description": "Zeytinlik Olive & Halloumi Farm is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Zeytinlik (Templos) Village",
+          "description": "Surrounded by centuries-old groves west of Kyrenia, Zeytinlik (Templos) is the historical epicenter of Cypriot olive oil production, where visitors experience cold-pressed olive oils, savory olive breads, and regional preserves.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Lefke Citrus Orchards & Sea Taverns",
-          "description": "Lefke Citrus Orchards & Sea Taverns is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Lefke & Ancient Vouni",
+          "description": "Encompassing the rich citrus valleys of Lefke and coastal Vouni, this stage introduces sweet Jaffa orange specialties, candied green walnut macun, and freshly landed Mediterranean fish enjoyed beside the sea.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 4",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/guzelyurt/vouni-palace/1.jpg",
-            "/images/routes/guzelyurt/vouni-palace/2.jpg",
-            "/images/routes/guzelyurt/vouni-palace/3.jpg",
-            "/images/routes/guzelyurt/vouni-palace/4.jpg",
-            "/images/routes/guzelyurt/vouni-palace/5.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Değirmenlik Traditional Meze Feast",
-          "description": "Değirmenlik Traditional Meze Feast is a premier milestone of Cyprus Culinary & Artisan Gastronomy Trail, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Değirmenlik Village Meze Tavern",
+          "description": "Concluding in the spring-fed foothills of Değirmenlik, travelers savor a banquet of traditional Cypriot hot and cold mezes, including authentic charcoal-grilled şeftali kebab, local village breads, and regional wines.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive"
@@ -6388,7 +5730,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Wide variety of authentic meze taverns, seaside fish harbors, and village cafes.",
         "publicTransport": "Rental car or private vehicle is essential for this cross-island route."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "sig-adventure",
@@ -6406,28 +5749,28 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "difficulty": {
       "tr": "Manzaralı Yolculuk",
-      "en": "Active & Adventurous"
+      "en": "Scenic Road Trip"
     },
     "startFinish": {
       "tr": "Cemsa Karting (Ortaköy)",
-      "en": "Nicosia & Kyrenia"
+      "en": "Cemsa Karting (Ortaköy)"
     },
-    "heroImage": "/images/hero-kyrenia.jpg",
+    "heroImage": "/images/route-card-images/cemsa-karting.jpg",
     "title": {
       "tr": "Macera & Eğlence",
-      "en": "High-Adrenaline Adventure, Diving & Safari"
+      "en": "Action & Coastal Adventure"
     },
     "subtitle": {
       "tr": "Tam gaz bir gün, adanın bir ucundan diğerine",
-      "en": "Go-karting, underwater scuba reef diving, off-road quad buggy safaris, and western sunset surf — an exhilarating active adventure."
+      "en": "Full throttle across Northern Cyprus: karting, diving, safaris, and surf"
     },
     "intro": {
       "tr": "Lefkoşa dışında karting, resif dalışı, at binme, ATV safari ve batı kıyısında gün batımı sörfü — otelden otele dolu dizgin bir macera günü. Bir ucundan diğerine Kuzey Kıbrıs'ın ruhunu hissettiren, özenle tasarlanmış çok günlük veya tematik bir yol macerası.",
-      "en": "Go-karting, underwater scuba reef diving, off-road quad buggy safaris, and western sunset surf — an exhilarating active adventure. An epic thematic and multi-day journey traversing the breadth of Northern Cyprus for true road trip explorers."
+      "en": "Go-kart racing, crystal-clear reef scuba diving, horseback riding through pine hills, ATV safari trails, and sunset windsurfing along the western coast — an adrenaline-charged, full-throttle expedition."
     },
     "insiderTip": {
       "tr": "Otel ve konaklama rezervasyonlarınızı rota güzergahındaki farklı köylere ve sahil kasabalarına yayarak adayı tam anlamıyla yaşayın.",
-      "en": "Pre-book your scuba dive slot for the morning when underwater visibility is crystal clear; bring a change of clothes for buggy safari dust."
+      "en": "Book your reef diving and sunset water sports slots well ahead of time during peak summer months, and pack high-SPF reef-safe sunscreen and plenty of hydration."
     },
     "proposers": [
       "N.P.",
@@ -6438,40 +5781,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Cemsa Karting (Ortaköy)",
-          "description": "Cemsa Karting (Ortaköy), Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Uluslararası standartlardaki profesyonel açık hava yarış pistiyle Cemsa Karting, adanın en büyük motor sporları merkezidir. Yüksek tempolu go-kart yarışları ve modern zamanlama sistemleriyle adrenalin dolu bir macera başlangıcı sunar.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 1",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Lapta Resif Dalışı",
-          "description": "Lapta Resif Dalışı, Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Lapta'nın kayalık falezleri altında uzanan su altı resifleri ve deniz mağaraları, Akdeniz'in en berrak tüplü dalış (scuba diving) noktalarındandır. Zengin balık çeşitliliği, orfozlar ve amfora kalıntıları arasında büyüleyici bir su altı macerası yaşatır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 2",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "ATV / Buggy Safari",
-          "description": "ATV / Buggy Safari, Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Beşparmak Dağları'nın orman içi patikalarında ve sahil sırtlarında düzenlenen arazi araçlı safari turları; tozlu yollar, dik tırmanışlar ve engellerle dolu heyecanlı bir off-road deneyimi sunar.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "St. Hilarion Seyir",
-          "description": "St. Hilarion Seyir, Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Adrenalin dolu etkinliklerin ardından 700 metre yükseklikteki kartal yuvası St. Hilarion sırtlarına çıkılarak, tüm Girne kıyı şeridini kuşbakışı gören uçurum kenarı patikalarında yürüyüş yapılır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 4",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/kyrenia/st-hilarion-castle/1.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/2.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/3.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Escape Beach Gün Batımı",
-          "description": "Escape Beach Gün Batımı, Macera & Eğlence rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Maceranın finalinde ulaşılan Escape Beach, gün boyu süren jet ski, kano ve su sporlarının ardından deniz kenarında gün batımı müziği ve serinletici içeceklerle enerjik bir kapanış sağlar.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş"
@@ -6479,41 +5817,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Cemsa International Karting Circuit",
-          "description": "Cemsa International Karting Circuit is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Cemsa Karting (Ortaköy)",
+          "description": "Featuring an internationally accredited outdoor asphalt racing circuit, Cemsa Karting is Northern Cyprus's premier motorsport facility, offering high-speed go-karting heats and full timing telemetry.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 1",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Lapta Reef Scuba Diving Spot",
-          "description": "Lapta Reef Scuba Diving Spot is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Lapta Reef Diving Site",
+          "description": "Descending along rocky limestone sea bluffs, the Lapta reef systems provide pristine scuba diving through underwater tunnels, swim-through caverns, and marine habitats teeming with grouper and damselfish.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 2",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Mountain Foothills ATV Buggy Trail",
-          "description": "Mountain Foothills ATV Buggy Trail is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "ATV / Buggy Safari",
+          "description": "Navigating unpaved forestry tracks and rugged limestone trails across the Kyrenia Range, these guided all-terrain quad and buggy excursions offer an action-packed off-road mountain journey.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "St. Hilarion High Peak Lookout",
-          "description": "St. Hilarion High Peak Lookout is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "St. Hilarion Lower Panorama",
+          "description": "Perched over 700 meters above the sea, this cliffside mountain pass allows hikers to take in sheer drop-offs and sweeping aerial vistas of the northern coast from precipitous trails.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 4",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/kyrenia/st-hilarion-castle/1.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/2.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/3.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Escape Beach Sunset Chill & Water Sports",
-          "description": "Escape Beach Sunset Chill & Water Sports is a premier milestone of High-Adrenaline Adventure, Diving & Safari, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Escape Beach Sunset Deck",
+          "description": "Transitioning from active water sports like jet skiing and wakeboarding to sunset lounge sessions on the deck, Escape Beach provides a high-energy seaside finish to the adventure itinerary.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive"
@@ -6539,7 +5872,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Wide variety of authentic meze taverns, seaside fish harbors, and village cafes.",
         "publicTransport": "Rental car or private vehicle is essential for this cross-island route."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "sig-family",
@@ -6553,32 +5887,32 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "30–45 km",
     "duration": {
       "tr": "1 gün",
-      "en": "1 Day"
+      "en": "1 Days"
     },
     "difficulty": {
       "tr": "Manzaralı Yolculuk",
-      "en": "Family Friendly"
+      "en": "Scenic Road Trip"
     },
     "startFinish": {
       "tr": "Ocean Akvaryum",
-      "en": "Kyrenia Coast"
+      "en": "Ocean Aquarium"
     },
-    "heroImage": "/images/hero-kyrenia.jpg",
+    "heroImage": "/images/route-card-images/ocean-aquarium.jpg",
     "title": {
       "tr": "Aile Rotası",
-      "en": "Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets"
+      "en": "Family Fun & Coastal Discoveries"
     },
     "subtitle": {
       "tr": "Çocukların gerçekten sevdiği bir gün",
-      "en": "Safe shallow swimming bays, gentle glass-bottom boat cruise, amusement attractions, and artisanal ice cream parlours designed for all ages."
+      "en": "A relaxed, kid-approved journey with calm waters, marine life, and outdoor play"
     },
     "intro": {
       "tr": "Klimalı akvaryum, sakin tekne turu, lunapark ve sığ, güvenli yüzme — küçük çocuklarla gerçekten işe yarayan duraklarla kurulmuş, otelden otele yarım-tam gün. Bir ucundan diğerine Kuzey Kıbrıs'ın ruhunu hissettiren, özenle tasarlanmış çok günlük veya tematik bir yol macerası.",
-      "en": "Safe shallow swimming bays, gentle glass-bottom boat cruise, amusement attractions, and artisanal ice cream parlours designed for all ages. An epic thematic and multi-day journey traversing the breadth of Northern Cyprus for true road trip explorers."
+      "en": "Air-conditioned ocean exhibits, gentle boat excursions, amusement rides, and shallow, crystal-clear family beaches — a stress-free itinerary packed with activities that children genuinely adore."
     },
     "insiderTip": {
       "tr": "Otel ve konaklama rezervasyonlarınızı rota güzergahındaki farklı köylere ve sahil kasabalarına yayarak adayı tam anlamıyla yaşayın.",
-      "en": "Escape Beach and Alagadi offer gentle shallow shelving waters safe for young children; head out on the morning harbour boat cruise before wind picks up."
+      "en": "Start your outdoor beach and park stops early before midday warmth peaks, and keep shaded afternoon hours for air-conditioned indoor stops or relaxed harbor boat rides."
     },
     "proposers": [
       "N.P.",
@@ -6588,42 +5922,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "Ocean Akvaryum",
-          "description": "Ocean Akvaryum, Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Çocuklu aileler için eğlenceli ve öğretici bir başlangıç noktası olan akvaryum tesisleri; Akdeniz ve tropik deniz canlılarını, renkli mercan resiflerini ve deniz kaplumbağalarını yakından gözlemleme fırsatı sunar.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 1",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Girne Marina Tekne Turu",
-          "description": "Girne Marina Tekne Turu, Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Girne'den kalkan korunaklı aile tekneleriyle yapılan sakin kıyı turu, sahil falezlerini ve berrak koyları denizden izleme keyfi yaşatır. Çocuklar için güvenli can yelekleri eşliğinde dalgasız koylarda yüzme molası verilir.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 2",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/kyrenia/kyrenia-harbour/1.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/2.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/3.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/4.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/5.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Escape Beach (Sığ Koy)",
-          "description": "Escape Beach (Sığ Koy), Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "İnce altın kumu ve dalgakıranlarla korunan son derece sığ, dalgasız deniziyle çocukların güvenle yüzebileceği ve kumdan kaleler yapabileceği adanın en aile dostu organize plajıdır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Lunapark",
-          "description": "Lunapark, Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Dönme dolap, çarpışan arabalar, atlıkarınca ve çocuk trenleriyle donatılmış olan lunapark, akşam serinliğinde aile boyu eğlence ve neşeli anlar sunar.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 4",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Dondurma Kafesi",
-          "description": "Dondurma Kafesi, Aile Rotası rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Günün tatlı kapanışını oluşturan durak, el yapımı taze meyveli dondurmaları, Belçika waffle'ları ve geniş bahçesiyle tüm ailenin keyifle dinlenebileceği bir lezzet molasıdır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş"
@@ -6631,43 +5958,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "Ocean Aquarium & Marine Exhibits",
-          "description": "Ocean Aquarium & Marine Exhibits is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Ocean Aquarium",
+          "description": "An engaging, family-friendly educational discovery stop featuring Mediterranean and tropical marine species, illuminated coral reef displays, and conservation exhibits tailored for young children.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 1",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Kyrenia Harbour Family Boat Tour",
-          "description": "Kyrenia Harbour Family Boat Tour is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Kyrenia Harbour Cruise Excursion",
+          "description": "Departing from the harbor, this relaxed coastal cruise offers safe family sailing along calm northern waters, providing panoramic views of the coastal battlements and calm swimming stops.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 2",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/kyrenia/kyrenia-harbour/1.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/2.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/3.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/4.jpg",
-            "/images/routes/kyrenia/kyrenia-harbour/5.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Escape Beach Safe Shallow Cove",
-          "description": "Escape Beach Safe Shallow Cove is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Escape Beach (Shallow Lagoon)",
+          "description": "With its broad golden-sand shoreline and protected, knee-deep shallow waters, this sheltered cove represents one of the safest family swimming destinations along the northern coast.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Kyrenia Seaside Amusement Park",
-          "description": "Kyrenia Seaside Amusement Park is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Seaside Luna Park",
+          "description": "Equipped with traditional Ferris wheels, carousel rides, bumper cars, and game stalls, this seaside amusement park offers evening recreational enjoyment for families traveling with children.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 4",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Traditional Ice Cream Parlour",
-          "description": "Traditional Ice Cream Parlour is a premier milestone of Family Fun Road Trip: Shallow Bays, Boat Tour & Sweets, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Village Ice Cream & Coffee House",
+          "description": "Providing a relaxed dessert conclusion, this family-oriented parlor serves artisan gelato, fresh fruit smoothies, and waffles in a spacious outdoor garden setting.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive"
@@ -6693,7 +6013,8 @@ export const rawRoutes: RawRouteItem[] = [
         "restaurants": "Wide variety of authentic meze taverns, seaside fish harbors, and village cafes.",
         "publicTransport": "Rental car or private vehicle is essential for this cross-island route."
       }
-    }
+    },
+    "suggestedStart": "09:00"
   },
   {
     "id": "sig-sunset",
@@ -6707,32 +6028,32 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "120–160 km",
     "duration": {
       "tr": "1 gün",
-      "en": "1 Day"
+      "en": "1 Days"
     },
     "difficulty": {
       "tr": "Manzaralı Yolculuk",
-      "en": "Scenic & Romantic"
+      "en": "Scenic Road Trip"
     },
     "startFinish": {
       "tr": "St. Hilarion Seyir Noktası",
-      "en": "St. Hilarion Castle"
+      "en": "St. Hilarion Viewpoint"
     },
-    "heroImage": "/images/hero-kyrenia.jpg",
+    "heroImage": "/images/route-card-images/star-gazing.jpg",
     "title": {
       "tr": "Gün Batımı & Yıldız Gözlemi",
-      "en": "Chasing the Light: Castles, Sunsets & Dark Sky Stargazing"
+      "en": "Chasing the Light: Sunsets & Stargazing"
     },
     "subtitle": {
       "tr": "Işığın peşinde bütün kuzey kıyısı",
-      "en": "Golden hour at mountain castles, blue hour at cliffside terraces, and stargazing under the purest unpolluted dark skies in the Eastern Mediterranean."
+      "en": "Golden hour castles, seaside blue hour, and celestial dark-sky stargazing"
     },
     "intro": {
       "tr": "Tümüyle ışık etrafında kurulmuş rota — dağ kalesinde altın saat, terasta mavi saat ve Doğu Akdeniz'in en az ışık kirliliğine sahip göklerinde tam karanlık. Bir ucundan diğerine Kuzey Kıbrıs'ın ruhunu hissettiren, özenle tasarlanmış çok günlük veya tematik bir yol macerası.",
-      "en": "Golden hour at mountain castles, blue hour at cliffside terraces, and stargazing under the purest unpolluted dark skies in the Eastern Mediterranean. An epic thematic and multi-day journey traversing the breadth of Northern Cyprus for true road trip explorers."
+      "en": "Sculpted entirely around the island's magical light: golden hour atop Crusader fortresses, blue hour drinks on abbey terraces, and pitch-black celestial night skies in the remote Karpas wilderness."
     },
     "insiderTip": {
       "tr": "Otel ve konaklama rezervasyonlarınızı rota güzergahındaki farklı köylere ve sahil kasabalarına yayarak adayı tam anlamıyla yaşayın.",
-      "en": "Bring a light jacket for mountain elevations at night; the stargazing on the remote Karpaz peninsula offers crystal-clear Milky Way visibility."
+      "en": "Bring a light jacket for mountaintop sunsets and late-night stargazing on the peninsula, as mountain breezes and open coastal nights can get pleasantly cool even in summer."
     },
     "proposers": [
       "O.O.",
@@ -6743,47 +6064,35 @@ export const rawRoutes: RawRouteItem[] = [
       "tr": [
         {
           "name": "St. Hilarion Seyir Noktası",
-          "description": "St. Hilarion Seyir Noktası, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Deniz seviyesinden 700 metre yükseklikteki dağ yamacında yer alan bu nokta, öğleden sonra güneşinin dağ kulelerini ve Girne sahil şeridini altın rengi ışıkla aydınlattığı eşsiz bir başlangıç seyir yeridir.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 1",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/kyrenia/st-hilarion-castle/1.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/2.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/3.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Bellapais Terası",
-          "description": "Bellapais Terası, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "13. yüzyıl Gotik manastırının revakları arkasında yer alan teras, akşamüstü güneşinin Akdeniz ve zeytinlikler üzerindeki sıcak yansımalarını izlemek için kentin en büyüleyici mavi saat (blue hour) noktasıdır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 2",
-          "driveTime": "Bölgesel Geçiş",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Sadrazamköy Gün Batımı",
-          "description": "Sadrazamköy Gün Batımı, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Kuzeybatı burnundaki açık falezler üzerinde yer alan Sadrazamköy kıyıları, güneşin doğrudan denizin ufkuna batışını izlemek için adanın en tenha ve doğal açık hava seyir terasıdır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 3",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Kormakitis Burnu",
-          "description": "Kormakitis Burnu, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Karanlığın çökmesiyle birlikte deniz fenerinin ışığının deniz dalgalarına karıştığı bu kayalık burun, şehir ışıklarından uzaklaşarak alacakaranlığın renklerini yakalamak için eşsiz bir duraktır.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 4",
           "driveTime": "Bölgesel Geçiş"
         },
         {
           "name": "Karpaz Gece Göğü",
-          "description": "Karpaz Gece Göğü, Gün Batımı & Yıldız Gözlemi rotasının en önemli aşamalarından birini temsil eder. Farklı coğrafyaları, kültürleri ve manzaraları birbirine bağlar.",
+          "description": "Doğu Akdeniz'in ışık kirliliğinden en uzak vahşi yarımadası olan Karpaz Milli Parkı'nda gece gökyüzü, Samanyolu galaksisini ve milyonlarca yıldızı çıplak gözle izleme imkanı sunan olağanüstü bir astro-turizm finalidir.",
           "visitTime": "Yarım–Tam gün",
           "suggestedArrival": "Gün 5",
           "driveTime": "Bölgesel Geçiş"
@@ -6791,48 +6100,36 @@ export const rawRoutes: RawRouteItem[] = [
       ],
       "en": [
         {
-          "name": "St. Hilarion Golden Hour Pinnacle",
-          "description": "St. Hilarion Golden Hour Pinnacle is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "St. Hilarion Mountain Viewpoint",
+          "description": "Perched 700 meters above sea level along the mountain access road, this viewpoint catches the golden hour light illuminating the limestone spires and the coastal plains of Kyrenia below.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 1",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/kyrenia/st-hilarion-castle/1.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/2.jpg",
-            "/images/routes/kyrenia/st-hilarion-castle/3.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Bellapais Blue Hour Terrace",
-          "description": "Bellapais Blue Hour Terrace is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Bellapais Abbey Terrace",
+          "description": "Overlooking the Gothic arches of the abbey, this elevated hillside terrace offers front-row seats for the Mediterranean blue hour as coastal lights begin to shimmer across the water.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 2",
-          "driveTime": "Scenic regional drive",
-          "images": [
-            "/images/routes/kyrenia/bellapais-abbey/1.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/2.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/3.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/4.jpg",
-            "/images/routes/kyrenia/bellapais-abbey/5.jpg"
-          ]
+          "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Sadrazamköy Western Cape Sunset",
-          "description": "Sadrazamköy Western Cape Sunset is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Sadrazamköy Sunset Lookout",
+          "description": "Set along the western sea cliffs of the island, this remote coastal viewpoint offers an unobstructed western sightline to watch the sun dip directly below the open Mediterranean horizon.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 3",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Cape Kormakitis Dusk Horizon",
-          "description": "Cape Kormakitis Dusk Horizon is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Cape Kormakitis Headland",
+          "description": "As dusk falls over the sea, the rhythmic sweep of the Cape Kormakitis lighthouse against the darkening water marks the transition into pure night away from urban light sources.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 4",
           "driveTime": "Scenic regional drive"
         },
         {
-          "name": "Karpaz Wilderness Dark Sky Stargazing",
-          "description": "Karpaz Wilderness Dark Sky Stargazing is a premier milestone of Chasing the Light: Castles, Sunsets & Dark Sky Stargazing, seamlessly connecting the island's most iconic landscapes and cultural treasures.",
+          "name": "Karpas Dark-Sky Stargazing Sanctuary",
+          "description": "Representing one of the darkest night-sky sanctuaries in the Eastern Mediterranean basin, the remote tip of the Karpas Peninsula offers breathtaking stargazing and Milky Way visibility free of urban light pollution.",
           "visitTime": "Half to Full day",
           "suggestedArrival": "Day 5",
           "driveTime": "Scenic regional drive"
@@ -6854,11 +6151,12 @@ export const rawRoutes: RawRouteItem[] = [
         "parking": "Comfortable parking facilities at hotels and key itinerary waypoints.",
         "entranceFees": "Varies according to historic museums and heritage landmarks visited.",
         "fuelStations": "Refuel at main highway junctions between regional crossings.",
-        "recommendedVehicle": "Comfortable sedan or compact SUV recommended.",
+        "recommendedVehicle": "Standard sedan or compact car is well-suited.",
         "restaurants": "Wide variety of authentic meze taverns, seaside fish harbors, and village cafes.",
         "publicTransport": "Rental car or private vehicle is essential for this cross-island route."
       }
-    }
+    },
+    "suggestedStart": "15:30"
   }
 ];
 
@@ -6887,6 +6185,8 @@ export function getRoutes(lang: Locale = "tr"): Route[] {
     heroImage: r.heroImage,
     duration: isTr ? r.duration.tr : r.duration.en,
     distance: r.distance,
+    difficulty: isTr ? r.difficulty.tr : r.difficulty.en,
+    suggestedStart: r.suggestedStart,
     mapEmbedUrl: r.mapEmbedUrl,
     intro: isTr ? r.intro.tr : r.intro.en,
     insiderTip: isTr ? r.insiderTip.tr : r.insiderTip.en,

@@ -2,11 +2,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
-import { testimonials } from "@/data/testimonials";
+import { getTestimonials } from "@/data/testimonials";
 import { Locale } from "@/lib/i18n";
 
 export default function Testimonials({ lang = "tr" }: { lang?: Locale }) {
-  // Get the first 3 testimonials for the homepage
+  // Get the first 3 testimonials for the homepage in the current language
+  const testimonials = getTestimonials(lang);
   const featuredTestimonials = testimonials.slice(0, 3);
 
   return (

@@ -38,13 +38,13 @@ export default function NotFound() {
             </p>
             <div className="pt-1 flex flex-col gap-2">
               <Button asChild size="sm" className="w-full justify-between">
-                <Link href="/tr/routes">
+                <Link href="/routes">
                   <span>Tüm Rotalar</span>
                   <Route className="h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="sm" variant="ghost" className="w-full justify-between text-xs">
-                <Link href="/tr">
+                <Link href="/">
                   <span>Ana Sayfa</span>
                   <Home className="h-3.5 w-3.5" />
                 </Link>
