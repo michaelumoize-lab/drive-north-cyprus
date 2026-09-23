@@ -16,7 +16,7 @@
 | **TypeScript Compilation** | 🟢 **100% Clean (0 Errors)** | `npx tsc --noEmit` passes with zero diagnostics |
 | **Route & Stop Integrity** | 🟢 **41 / 41 Routes (223 Stops)** | Strict data parity between `all-routes.json` & `routes.ts` |
 | **Bilingual Descriptions** | 🟢 **223 / 223 Stops (100%)** | Rich, unique, localized descriptions in TR & EN |
-| **Route Departure Times** | 🟢 **41 / 41 Routes (100%)** | `suggestedStart` added to all routes; `RouteTimeline` active |
+| **Route Departure Times** | 🟢 **41 / 41 Routes (100%)** | Calibrated `suggestedStart` maintained in route dataset |
 | **Route Card Cover Images** | 🟡 **35 / 41 Custom Photos (85%)** | 35 routes have dedicated photos; 6 use regional loop fallbacks |
 | **Interactive Map URLs** | 🔴 **0 / 41 Routes (0%)** | `mapEmbedUrl` is unpopulated across all routes |
 | **Stop Hours & Fees** | 🔴 **0 / 223 Stops (0%)** | `openingHours` and `entranceFee` fields are empty |
@@ -37,29 +37,19 @@ The following critical issues from Audit V1 have been fully resolved:
 - [x] **223 Unique Stop Descriptions:** Replaced repetitive placeholder templates with rich historical and geographical prose across all 41 routes in both TR & EN.
 - [x] **12 New Route Card Photos Applied:** Moved and mapped 12 new high-res photographs into `public/images/route-card-images/`.
 - [x] **Strict Ground-Truth Parity:** Reverted accidental additions not present in supervisor's `all-routes.json` (e.g. Bedesten in `lef-oldcity`) and deleted orphaned folders.
-- [x] **`suggestedStart` Schedule Generator:** Calibrated start times across all 41 routes, dynamically generating arrival times and stop schedules in `RouteTimeline`.
+- [x] **Route Timeline Removed:** Removed the timeline schedule component from route detail pages per user request.
+- [x] **Practical Road Trip Dossier Removed:** Removed the practical information grid from route detail pages per user request.
+- [x] **Est. Entry Removed & Difficulty Fixed:** Removed non-factual entrance fee estimate from route cards and calibrated difficulty badge to use curated route data.
+- [x] **Redundant Duplicate Asset Deleted:** Deleted `public/images/route-card-images/museums-and-ottoman heritage of nicosia.jpg` (unescaped spaces).
+- [x] **Interactive Social Share Modal:** Upgraded route page Share button from basic clipboard copying to full 1-click sharing (WhatsApp, Facebook, X, Telegram, Email, and System Share Sheet).
 - [x] **Dynamic HTML `lang` Sync:** Mounted `components/LanguageSync.tsx` in `app/layout.tsx` to ensure `document.documentElement.lang` updates seamlessly between `/` and `/en`.
 - [x] **Default SEO OpenGraph Image & Web Manifest:** Configured OpenGraph fallbacks and created `app/manifest.ts` for PWA compliance.
 
 ---
 
-## 3. Prioritized Remaining Issues & New Findings
+## 3. Prioritized Remaining Issues & Incomplete Data
 
-### Priority 1: High-Impact Code & Data Bugs
-
-#### 1. `RouteCard.tsx` Difficulty Calculation Bug
-- **Location:** `components/RouteCard.tsx` (Lines 36–58)
-- **Problem:** `RouteCard` ignores the curated `route.difficulty` property from the database and instead calculates difficulty dynamically based solely on distance (`distance > 100 ? moderate : ...`). This causes short hiking routes (like St. Hilarion Castle hike) to incorrectly display as "Relaxed", and flat long highway drives to display as "Moderate/Challenging".
-- **Fix:** Update `getDifficulty()` in `RouteCard.tsx` to read `route.difficulty` directly and map it to the appropriate badge style and translated label.
-
-#### 2. Legacy Duplicate Image File with Spaces
-- **Location:** `public/images/route-card-images/museums-and-ottoman heritage of nicosia.jpg`
-- **Problem:** Contains unescaped spaces and is a redundant duplicate of `museums-and-ottoman-heritage-of-nicosia.jpg`.
-- **Fix:** Safely delete `public/images/route-card-images/museums-and-ottoman heritage of nicosia.jpg`.
-
----
-
-### Priority 2: Missing Data & Incomplete Features
+### Priority 1: Missing Data & Unlinked Assets
 
 #### 3. Interactive Route Maps (`mapEmbedUrl`)
 - **Status:** 0 / 41 routes populated.

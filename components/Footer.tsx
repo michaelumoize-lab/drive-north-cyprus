@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Image from "next/image";
 import { LOGO } from "@/lib/assets";
 import { getDictionary, Locale } from "@/lib/i18n";
@@ -19,9 +19,19 @@ export default function Footer() {
 
   const socialLinks = {
     facebook: "https://facebook.com/drivenorthcyprus",
-    twitter: "https://twitter.com/drivenorthcyprus",
     instagram: "https://instagram.com/drivenorthcyprus",
-    youtube: "https://youtube.com/@drivenorthcyprus",
+  };
+
+  const handleRegionClick = () => {
+    if (typeof window !== "undefined") {
+      setTimeout(() => {
+        window.dispatchEvent(new Event("hashchange"));
+        const el = document.getElementById("routes-grid");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 60);
+    }
   };
 
   return (
@@ -58,15 +68,6 @@ export default function Footer() {
                 <FaFacebook className="h-5 w-5" />
               </a>
               <a
-                href={socialLinks.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow us on Twitter"
-                className="text-muted-foreground hover:text-[#000000] transition-colors"
-              >
-                <FaTwitter className="h-5 w-5" />
-              </a>
-              <a
                 href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -74,15 +75,6 @@ export default function Footer() {
                 className="text-muted-foreground hover:text-[#E4405F] transition-colors"
               >
                 <FaInstagram className="h-5 w-5" />
-              </a>
-              <a
-                href={socialLinks.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Subscribe to our YouTube channel"
-                className="text-muted-foreground hover:text-[#FF0000] transition-colors"
-              >
-                <FaYoutube className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -144,7 +136,8 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href={routesHref}
+                  href={`${routesHref}#routes-grid`}
+                  onClick={handleRegionClick}
                   className="text-sm font-medium text-primary hover:underline transition-colors"
                 >
                   {dict.footer.viewAll}
@@ -152,7 +145,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`${routesHref}?region=girne`}
+                  href={`${routesHref}?region=girne#routes-grid`}
+                  onClick={handleRegionClick}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Girne & Kuzey Sahili" : "Kyrenia & North Coast"}
@@ -160,7 +154,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`${routesHref}?region=magusa`}
+                  href={`${routesHref}?region=magusa#routes-grid`}
+                  onClick={handleRegionClick}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Gazimağusa & Salamis" : "Famagusta & Salamis"}
@@ -168,7 +163,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`${routesHref}?region=karpaz`}
+                  href={`${routesHref}?region=karpaz#routes-grid`}
+                  onClick={handleRegionClick}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Karpaz Yarımadası" : "Karpaz Peninsula"}
@@ -176,7 +172,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`${routesHref}?region=lefkosa`}
+                  href={`${routesHref}?region=lefkosa#routes-grid`}
+                  onClick={handleRegionClick}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Lefkoşa & Surlariçi" : "Nicosia Old Town"}
@@ -184,7 +181,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`${routesHref}?region=iskele`}
+                  href={`${routesHref}?region=iskele#routes-grid`}
+                  onClick={handleRegionClick}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "İskele & Long Beach" : "Iskele & Long Beach"}
@@ -192,7 +190,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`${routesHref}?region=bati`}
+                  href={`${routesHref}?region=bati#routes-grid`}
+                  onClick={handleRegionClick}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Güzelyurt & Lefke" : "West (Güzelyurt & Lefke)"}
@@ -200,7 +199,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href={`${routesHref}?region=daglar`}
+                  href={`${routesHref}?region=daglar#routes-grid`}
+                  onClick={handleRegionClick}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {lang === "tr" ? "Beşparmak Dağları & Köyler" : "Mountains & Villages"}

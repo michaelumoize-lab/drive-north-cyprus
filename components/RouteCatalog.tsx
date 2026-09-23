@@ -56,12 +56,26 @@ export function RouteCatalog({ routes, lang }: RouteCatalogProps) {
         } else if (!thm) {
           setSelectedTheme("all");
         }
+
+        // Scroll to routes card section if requested via hash or region query
+        if (window.location.hash === "#routes-grid" || reg) {
+          setTimeout(() => {
+            const el = document.getElementById("routes-grid");
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+          }, 120);
+        }
       }
     };
 
     handleUrlSync();
     window.addEventListener("popstate", handleUrlSync);
-    return () => window.removeEventListener("popstate", handleUrlSync);
+    window.addEventListener("hashchange", handleUrlSync);
+    return () => {
+      window.removeEventListener("popstate", handleUrlSync);
+      window.removeEventListener("hashchange", handleUrlSync);
+    };
   }, []);
 
   // Compute count of routes per region
@@ -204,66 +218,68 @@ export function RouteCatalog({ routes, lang }: RouteCatalogProps) {
         </div>
       </div>
 
-      {/* Active Results Summary & Reset */}
-      <div className="flex items-center justify-between px-1">
-        <p className="text-sm font-medium text-muted-foreground">
-          <span className="font-heading font-extrabold text-foreground text-lg mr-1.5 tabular-nums">
-            {filteredRoutes.length}
-          </span>
-          {lang === "tr"
-            ? "özenle seçilmiş rota listeleniyor"
-            : "curated routes available"}
-        </p>
-        {(selectedRegion !== "all" ||
-          selectedTheme !== "all" ||
-          searchQuery) && (
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedRegion("all");
-              setSelectedTheme("all");
-              setSearchQuery("");
-            }}
-            className="inline-flex items-center gap-1 text-xs text-primary font-semibold hover:underline cursor-pointer"
-          >
-            <span>{lang === "tr" ? "Filtreleri Sıfırla" : "Reset Filters"}</span>
-          </button>
+      {/* Active Results Summary & Routes Grid */}
+      <div id="routes-grid" className="scroll-mt-28 space-y-6">
+        <div className="flex items-center justify-between px-1">
+          <p className="text-sm font-medium text-muted-foreground">
+            <span className="font-heading font-extrabold text-foreground text-lg mr-1.5 tabular-nums">
+              {filteredRoutes.length}
+            </span>
+            {lang === "tr"
+              ? "özenle seçilmiş rota listeleniyor"
+              : "curated routes available"}
+          </p>
+          {(selectedRegion !== "all" ||
+            selectedTheme !== "all" ||
+            searchQuery) && (
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedRegion("all");
+                setSelectedTheme("all");
+                setSearchQuery("");
+              }}
+              className="inline-flex items-center gap-1 text-xs text-primary font-semibold hover:underline cursor-pointer"
+            >
+              <span>{lang === "tr" ? "Filtreleri Sıfırla" : "Reset Filters"}</span>
+            </button>
+          )}
+        </div>
+
+        {/* Routes Grid */}
+        {filteredRoutes.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {filteredRoutes.map((route) => (
+              <RouteCard key={route.slug} route={route} lang={lang} />
+            ))}
+          </div>
+        ) : (
+          <div className="bg-card/70 backdrop-blur-md rounded-3xl border border-dashed border-border p-12 sm:p-16 text-center space-y-4 shadow-xs">
+            <div className="h-12 w-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto ring-8 ring-primary/5">
+              <Sparkles className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-heading font-bold text-foreground">
+              {lang === "tr" ? "Uygun rota bulunamadı" : "No matching journeys found"}
+            </h3>
+            <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+              {lang === "tr"
+                ? "Arama kriterlerinizi veya filtrelerinizi değiştirerek daha fazla ada rotası keşfedebilirsiniz."
+                : "Try adjusting your search criteria or resetting filters to explore more curated road trips."}
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedRegion("all");
+                setSelectedTheme("all");
+                setSearchQuery("");
+              }}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition cursor-pointer"
+            >
+              {lang === "tr" ? "Tüm Rotaları Göster" : "View All Routes"}
+            </button>
+          </div>
         )}
       </div>
-
-      {/* Routes Grid */}
-      {filteredRoutes.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredRoutes.map((route) => (
-            <RouteCard key={route.slug} route={route} lang={lang} />
-          ))}
-        </div>
-      ) : (
-        <div className="bg-card/70 backdrop-blur-md rounded-3xl border border-dashed border-border p-12 sm:p-16 text-center space-y-4 shadow-xs">
-          <div className="h-12 w-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto ring-8 ring-primary/5">
-            <Sparkles className="h-6 w-6" />
-          </div>
-          <h3 className="text-xl font-heading font-bold text-foreground">
-            {lang === "tr" ? "Uygun rota bulunamadı" : "No matching journeys found"}
-          </h3>
-          <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-            {lang === "tr"
-              ? "Arama kriterlerinizi veya filtrelerinizi değiştirerek daha fazla ada rotası keşfedebilirsiniz."
-              : "Try adjusting your search criteria or resetting filters to explore more curated road trips."}
-          </p>
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedRegion("all");
-              setSelectedTheme("all");
-              setSearchQuery("");
-            }}
-            className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition cursor-pointer"
-          >
-            {lang === "tr" ? "Tüm Rotaları Göster" : "View All Routes"}
-          </button>
-        </div>
-      )}
     </div>
   );
 }

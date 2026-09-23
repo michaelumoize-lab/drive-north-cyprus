@@ -33,46 +33,28 @@ export default function RouteCard({
 }) {
   const dict = getDictionary(lang);
 
-  // Calculate difficulty based on distance
+  // Curated difficulty from route dataset
   const getDifficulty = () => {
-    const distance = parseInt(route.distance);
-    if (distance > 100) {
+    const diff = (route.difficulty || "").toLowerCase();
+    if (diff.includes("hard") || diff.includes("zor") || diff.includes("challenging")) {
       return {
-        label: dict.common.difficulty.moderate,
+        label: route.difficulty,
+        dotColor: "bg-rose-400",
+        badgeBg: "bg-rose-500/15 border-rose-400/30 text-rose-200",
+      };
+    }
+    if (diff.includes("moderate") || diff.includes("orta")) {
+      return {
+        label: route.difficulty,
         dotColor: "bg-amber-400",
         badgeBg: "bg-amber-500/15 border-amber-400/30 text-amber-200",
       };
     }
-    if (distance > 50) {
-      return {
-        label: dict.common.difficulty.easy,
-        dotColor: "bg-emerald-400",
-        badgeBg: "bg-emerald-500/15 border-emerald-400/30 text-emerald-200",
-      };
-    }
     return {
-      label: dict.common.difficulty.relaxed,
-      dotColor: "bg-sky-400",
-      badgeBg: "bg-sky-500/15 border-sky-400/30 text-sky-200",
+      label: route.difficulty || dict.common.difficulty.easy,
+      dotColor: "bg-emerald-400",
+      badgeBg: "bg-emerald-500/15 border-emerald-400/30 text-emerald-200",
     };
-  };
-
-  const getEntranceFee = (route: Route) => {
-    const feeText = route.practicalInfo.entranceFees;
-
-    if (
-      feeText.toLowerCase().includes("free") ||
-      feeText.toLowerCase().includes("ücretsiz")
-    ) {
-      return dict.common.free;
-    }
-
-    const match = feeText.match(/€(\d+(?:\.\d+)?)/);
-    if (match) {
-      return `${dict.common.from} €${match[1]}`;
-    }
-
-    return feeText.length > 20 ? feeText.slice(0, 18) + "…" : feeText;
   };
 
   const difficulty = getDifficulty();
@@ -181,15 +163,7 @@ export default function RouteCard({
           )}
 
           {/* Card Footer & Action Button */}
-          <div className="flex items-center justify-between pt-3 border-t border-border/60 mt-auto">
-            <div>
-              <span className="text-xs text-muted-foreground block">
-                {lang === "tr" ? "Tahmini Giriş" : "Est. Entry"}
-              </span>
-              <span className="text-sm font-bold text-foreground">
-                {getEntranceFee(route)}
-              </span>
-            </div>
+          <div className="flex items-center justify-end pt-3 border-t border-border/60 mt-auto">
             <span className="inline-flex items-center gap-1.5 text-primary font-semibold text-xs sm:text-sm group-hover:gap-2.5 transition-all">
               <span>{dict.routesGrid.viewRoute}</span>
               <TrendingUp className="h-4 w-4 transition-transform group-hover:translate-x-1" />
