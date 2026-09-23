@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { LanguageSync } from "@/components/LanguageSync";
 
 const outfitHeading = Outfit({
   subsets: ["latin"],
@@ -38,9 +39,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Drive North Cyprus",
+    images: [
+      {
+        url: "/images/hero-bg.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Drive North Cyprus – Scenic Mountain and Coastal Road Trips",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/images/hero-bg.jpg"],
   },
 };
 
@@ -70,6 +80,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <LanguageSync />
           <Navbar />
           {children}
           <Footer />

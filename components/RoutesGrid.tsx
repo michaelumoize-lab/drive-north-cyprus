@@ -10,8 +10,18 @@ export default function RoutesGrid({ lang = "tr" }: { lang?: Locale }) {
   const dict = getDictionary(lang);
   const allRoutes = getRoutes(lang);
   
-  // Feature top diverse routes on homepage
-  const featuredRoutes = allRoutes.slice(0, 6);
+  // Feature 1 flagship route from each major region to showcase full geographic diversity
+  const featuredIds = [
+    "gir-classic",    // Kyrenia / Girne (Coast, Castles & Harbor)
+    "mag-salamis",    // Famagusta / Gazimağusa (Ancient Roman Ruins & Beach)
+    "kar-classic",    // Karpaz Peninsula (Wild Donkeys, Dunes & Monasteries)
+    "bati-soli",      // West Coast (Soli Mosaic, Vouni Palace & Citrus)
+    "dag-buffavento", // Mountains & Castles (Precipitous Ridge & Fortresses)
+    "lef-oldcity",    // Nicosia / Lefkoşa (Walled City, Caravanserais & Culture)
+  ];
+  const featuredRoutes = featuredIds
+    .map((id) => allRoutes.find((r) => r.id === id))
+    .filter((r): r is NonNullable<typeof r> => Boolean(r));
 
   return (
     <section

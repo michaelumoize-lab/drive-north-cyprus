@@ -22,8 +22,8 @@ export const HERO_IMAGES = [
   },
 ];
 
-// Route map images (placeholder – update as you add routes)
-export const ROUTE_MAP = "/images/maps/route1.png";
+// Route map images (placeholder fallback)
+export const ROUTE_MAP = HERO_BG;
 
 export const ROUTE_KYRENIA = "/images/routes/kyrenia-loop.jpg";
 export const ROUTE_FAMAGUSTA = "/images/routes/famagusta-loop.jpg";
