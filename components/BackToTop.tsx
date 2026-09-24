@@ -30,7 +30,7 @@ export default function BackToTop() {
   return (
     <Button
       onClick={scrollToTop}
-      className="fixed bottom-8 right-8 rounded-full shadow-lg z-50 p-3 h-auto"
+      className="fixed bottom-3 right-4 sm:bottom-4 sm:right-6 rounded-full shadow-lg z-50 p-2.5 sm:p-3 h-auto"
       size="icon"
     >
       <ArrowUp className="h-5 w-5" />

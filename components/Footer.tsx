@@ -246,7 +246,7 @@ export default function Footer() {
           <p className="text-xs text-muted-foreground">
             © {currentYear} Drive North Cyprus. {dict.footer.copyright}
           </p>
-          <nav className="flex gap-6 text-xs" aria-label="Legal">
+          <nav className="flex gap-6 text-xs sm:pr-14" aria-label="Legal">
             <Link
               href={lang === "tr" ? "/privacy" : "/en/privacy"}
               className="text-muted-foreground hover:text-primary transition-colors"
