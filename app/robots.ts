@@ -10,6 +10,10 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
       },
+      {
+        userAgent: "Googlebot-Image",
+        allow: ["/", "/favicon.ico", "/icon*.png", "/apple-touch-icon.png", "/images/"],
+      },
     ],
     sitemap: "https://drivenorthcyprus.com/sitemap.xml",
   };

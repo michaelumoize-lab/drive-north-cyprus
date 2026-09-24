@@ -13,10 +13,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "@/components/ShareButton";
-import { RouteTimeline } from "@/components/RouteTimeline";
 import { RouteMap } from "@/components/RouteMap";
 import { RouteStopsSection } from "@/components/RouteStopsSection";
-import { PracticalInfoGrid } from "@/components/PracticalInfoGrid";
 import { Locale, getDictionary } from "@/lib/i18n";
 
 export function RouteDetailView({
@@ -192,15 +190,6 @@ export function RouteDetailView({
               {route.intro}
             </p>
           </div>
-
-          {/* Timeline schedule breakdown */}
-          {route.suggestedStart && (
-            <RouteTimeline
-              stops={route.stops}
-              suggestedStart={route.suggestedStart}
-              lang={lang}
-            />
-          )}
         </section>
 
         {/* 4. Insider Tip Callout */}
@@ -252,12 +241,7 @@ export function RouteDetailView({
           </section>
         )}
 
-        {/* 7. Practical Information Bento Grid */}
-        <section className="pt-4 border-t border-border/60">
-          <PracticalInfoGrid info={route.practicalInfo} lang={lang} />
-        </section>
-
-        {/* 8. Bottom Navigation & CTA Banner */}
+        {/* Bottom Navigation & CTA Banner */}
         <section className="rounded-3xl bg-muted/40 border border-border/70 p-8 sm:p-12 text-center space-y-6 shadow-sm">
           <h3 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
             {dict.routeDetail.ctaTitle}

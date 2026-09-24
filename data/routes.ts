@@ -574,7 +574,7 @@ export const rawRoutes: RawRouteItem[] = [
     },
     "difficulty": {
       "tr": "Orta (kale tırmanışı)",
-      "en": "Moderate (kale climbı)"
+      "en": "Moderate (castle climb)"
     },
     "startFinish": {
       "tr": "Girne Limanı",
@@ -1648,7 +1648,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "10–15 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Yarım–tam gün"
+      "en": "Half–full day"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -2500,11 +2500,11 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "140–170 km",
     "duration": {
       "tr": "Tam gün (uzun sürüş)",
-      "en": "Full day (uzun sürüş)"
+      "en": "Full day (long drive)"
     },
     "difficulty": {
       "tr": "Kolay (yürüyüş) / Uzun sürüş",
-      "en": "Easy (walk) / Uzun sürüş"
+      "en": "Easy (walk) / Long drive"
     },
     "startFinish": {
       "tr": "Dipkarpaz Köyü",
@@ -3296,7 +3296,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "35–50 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Yarım–tam gün"
+      "en": "Half–full day"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -3435,7 +3435,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "45–65 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Yarım–tam gün"
+      "en": "Half–full day"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -4179,7 +4179,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "50–70 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Yarım–tam gün"
+      "en": "Half–full day"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -4320,7 +4320,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "40–60 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Yarım–tam gün"
+      "en": "Half–full day"
     },
     "difficulty": {
       "tr": "Kolay",
@@ -4745,7 +4745,7 @@ export const rawRoutes: RawRouteItem[] = [
     "distance": "60–85 km",
     "duration": {
       "tr": "Yarım–tam gün",
-      "en": "Yarım–tam gün"
+      "en": "Half–full day"
     },
     "difficulty": {
       "tr": "Orta",

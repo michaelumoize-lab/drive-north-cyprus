@@ -19,7 +19,6 @@ export interface ShareButtonProps {
 }
 
 async function copyToClipboard(text: string): Promise<boolean> {
-  // 1. Try modern navigator.clipboard if available and in secure context
   if (
     typeof navigator !== "undefined" &&
     navigator.clipboard &&
@@ -29,11 +28,10 @@ async function copyToClipboard(text: string): Promise<boolean> {
       await navigator.clipboard.writeText(text);
       return true;
     } catch {
-      // Fall through to execCommand
+      // Fall through to textarea
     }
   }
 
-  // 2. Fallback to textarea + execCommand for broader browser/context support
   if (typeof document !== "undefined") {
     try {
       const textArea = document.createElement("textarea");
@@ -50,17 +48,7 @@ async function copyToClipboard(text: string): Promise<boolean> {
       document.body.removeChild(textArea);
       if (successful) return true;
     } catch {
-      // Fall through to prompt
-    }
-  }
-
-  // 3. Fallback prompt if clipboard is completely inaccessible
-  if (typeof window !== "undefined") {
-    try {
-      window.prompt("Copy link:", text);
-      return true;
-    } catch {
-      return false;
+      // Fall through
     }
   }
 
@@ -82,30 +70,27 @@ export function ShareButton({
   // Active locale detection
   const currentLang: Locale =
     lang || (pathname?.startsWith("/en") ? "en" : "tr");
+  const isTr = currentLang === "tr";
   const dict = getDictionary(currentLang);
 
-  const shareLabel = currentLang === "tr" ? "Rotayı Paylaş" : "Share Route";
+  const shareLabel = isTr ? "Rotayı Paylaş" : "Share Route";
   const copiedLabel =
-    dict.common.copied || (currentLang === "tr" ? "Kopyalandı!" : "Copied!");
+    dict.common.copied || (isTr ? "Kopyalandı!" : "Copied!");
   const shareText =
     text ||
-    (currentLang === "tr"
-      ? `Bu rotaya göz atın: ${title}`
-      : `Check out this route: ${title}`);
+    (isTr
+      ? `Kuzey Kıbrıs Rota Önerisi: ${title}`
+      : `Northern Cyprus Road Trip Route: ${title}`);
 
   const handleShare = async () => {
     const targetUrl =
       url ||
       (typeof window !== "undefined"
         ? window.location.href.split("#")[0]
-        : "");
+        : "https://drivenorthcyprus.com");
 
-    // On mobile devices, prefer native Web Share if available
-    const isMobile =
-      typeof navigator !== "undefined" &&
-      /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    if (isMobile && typeof navigator !== "undefined" && navigator.share) {
+    // Check if the device / browser natively supports Web Share API (navigator.share)
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
       try {
         await navigator.share({
           title,
@@ -114,18 +99,17 @@ export function ShareButton({
         });
         return;
       } catch (err: unknown) {
-        // If user cancelled, don't fall back or alert
+        // If the user cancelled or closed the system share sheet, exit cleanly without copying
         if (
           err instanceof Error &&
           (err.name === "AbortError" || err.name === "NotAllowedError")
         ) {
           return;
         }
-        // If share failed unexpectedly, fall through to clipboard copy
       }
     }
 
-    // Desktop or Web Share fallback: copy link to clipboard
+    // Fallback: If device/browser does not support navigator.share (e.g. desktop Firefox), copy to clipboard
     const success = await copyToClipboard(targetUrl);
     if (success) {
       setCopied(true);
