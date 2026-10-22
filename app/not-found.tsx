@@ -1,6 +1,6 @@
 // app/not-found.tsx
 import Link from "next/link";
-import { Compass, Route, Home, ArrowRight } from "lucide-react";
+import { Compass, Route, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function NotFound() {

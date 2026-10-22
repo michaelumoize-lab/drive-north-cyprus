@@ -4,7 +4,7 @@ import { AboutView } from "@/components/AboutView";
 export const metadata = {
   title: "About Us – Drive North Cyprus",
   description:
-    "Discover the story behind Drive North Cyprus – Northern Cyprus' first curated road trip guide platform, built by locals for explorers.",
+    "Discover the story behind Drive North Cyprus – Northern Cyprus' first curated road trip guide platform — from local guides.",
   alternates: {
     canonical: "/en/about",
     languages: {

@@ -38,7 +38,11 @@ const SLIDE_METADATA: Record<
 export default function Hero() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false
+  );
   const pathname = usePathname();
   const lang: Locale = pathname?.startsWith("/en") ? "en" : "tr";
   const dict = getDictionary(lang);
@@ -46,7 +50,6 @@ export default function Hero() {
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) =>
       setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
@@ -55,11 +58,15 @@ export default function Hero() {
 
   useEffect(() => {
     if (!api) return;
-    setCurrent(api.selectedScrollSnap());
     const onSelect = () => setCurrent(api.selectedScrollSnap());
     api.on("select", onSelect);
+    api.on("reInit", onSelect);
+    queueMicrotask(() => {
+      setCurrent(api.selectedScrollSnap());
+    });
     return () => {
       api.off("select", onSelect);
+      api.off("reInit", onSelect);
     };
   }, [api]);
 

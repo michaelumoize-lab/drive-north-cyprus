@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Send, Gift, CheckCircle, Sparkles } from "lucide-react";
+import { Send, CheckCircle, Sparkles } from "lucide-react";
 import { Locale } from "@/lib/i18n";
 
 export default function Newsletter() {
@@ -35,21 +35,15 @@ export default function Newsletter() {
             <div className="grid lg:grid-cols-5 gap-8 items-center">
               {/* Left Content */}
               <div className="lg:col-span-3 space-y-4">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
-                  <Gift className="h-3.5 w-3.5" />
-                  <span>{lang === "tr" ? "Üyelere Özel Ayrıcalıklar" : "Members' Privileges"}</span>
-                </div>
-
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                   {lang === "tr" ? (
                     <>
-                      Kuzey Kıbrıs Yol Rehberini{" "}
-                      <span className="text-primary">ÜCRETSİZ</span> Edinin!
+                      Kuzey Kıbrıs Yol Rehberine{" "}
+                      <span className="text-primary">ÜCRETSİZ</span> Kaydolun!
                     </>
                   ) : (
                     <>
-                      Get Road Trip Guide for{" "}
+                      Sign Up for the Northern Cyprus Road Guide for{" "}
                       <span className="text-primary">FREE!</span>
                     </>
                   )}
@@ -67,16 +61,28 @@ export default function Newsletter() {
                 {/* Features */}
                 <ul className="space-y-2 pt-2">
                   <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Sparkles className="h-4 w-4 text-primary" />
-                    <span>{lang === "tr" ? "Yerlilerden özel rota ve lezzet tüyoları" : "Exclusive insider tips from locals"}</span>
+                    <Sparkles className="h-4 w-4 text-primary shrink-0" />
+                    <span>
+                      {lang === "tr"
+                        ? "Yerel rehberlerden özel rota ve lezzet tüyoları."
+                        : "Exclusive route and food tips from local guides."}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Sparkles className="h-4 w-4 text-primary" />
-                    <span>{lang === "tr" ? "Az bilinen koylar ve tarihi hazineler" : "Best routes and hidden gems revealed"}</span>
+                    <Sparkles className="h-4 w-4 text-primary shrink-0" />
+                    <span>
+                      {lang === "tr"
+                        ? "Az bilinen koylar ve tarihi hazineler."
+                        : "Lesser-known coves and historic treasures."}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Sparkles className="h-4 w-4 text-primary" />
-                    <span>{lang === "tr" ? "Hava durumu, yol ve sürüş güvenlik tavsiyeleri" : "Weather, safety, and driving tips"}</span>
+                    <Sparkles className="h-4 w-4 text-primary shrink-0" />
+                    <span>
+                      {lang === "tr"
+                        ? "Hava durumu, yol ve sürüş güvenlik tavsiyeleri."
+                        : "Weather, road, and driving safety advice."}
+                    </span>
                   </li>
                 </ul>
               </div>

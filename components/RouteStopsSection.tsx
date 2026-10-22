@@ -3,7 +3,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { StopCard } from "@/components/StopCard";
-import { MapPin, Navigation, Compass } from "lucide-react";
+import { MapPin, Navigation } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 
 interface Stop {

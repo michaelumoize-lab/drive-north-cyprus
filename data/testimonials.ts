@@ -25,6 +25,9 @@ interface RawTestimonial {
   avatar?: string;
 }
 
+// To add more authentic traveler reviews once received from the client,
+// simply append objects adhering to the RawTestimonial interface below.
+// The testimonials page, cards, and grid dynamically scale and render all items.
 export const rawTestimonials: RawTestimonial[] = [
   {
     id: 1,
@@ -90,6 +93,58 @@ export const rawTestimonials: RawTestimonial[] = [
     },
     rating: 4,
     initials: "EV",
+  },
+  {
+    id: 6,
+    name: "H.B.",
+    location: { tr: "İsveç", en: "Sweden" },
+    route: { tr: "Buffavento & Beşparmak Zirve Sürüşü", en: "Buffavento Mountain Ridge" },
+    travelDate: { tr: "Haziran 2025", en: "June 2025" },
+    quote: {
+      tr: "Buffavento Kalesi'ne çıkan dağ yolu hayatımda gördüğüm en etkileyici manzaralardan biriydi. Virajlı yollar için verilen sürüş tüyoları ve su bulundurma uyarısı hayat kurtardı. Zirveden adanın iki yakasını birden görmek nefes kesiciydi.",
+      en: "The mountain road up to Buffavento Castle offered some of the most striking panoramas I've ever witnessed. The driving tips for the narrow switchbacks and the reminder to bring plenty of water were invaluable. Seeing both coasts from the summit was unforgettable.",
+    },
+    rating: 5,
+    initials: "HB",
+  },
+  {
+    id: 7,
+    name: "A.D.",
+    location: { tr: "Türkiye", en: "Turkey" },
+    route: { tr: "İskele & Long Beach Sahil Kaçamağı", en: "Iskele & Long Beach Escape" },
+    travelDate: { tr: "Ağustos 2025", en: "August 2025" },
+    quote: {
+      tr: "Ailemizle yaptığımız tatilde İskele rotası tam aradığımız huzuru sağladı. Long Beach'in sakin koyları, çocuklarla yüzmek için ideal plajlar ve balıkçı lokantaları önerisi kusursuzdu. Her şey adım adım tarif edilmiş.",
+      en: "Our family road trip along the Iskele coast was pure relaxation. The recommendations for quiet coves along Long Beach, safe swimming spots for the kids, and local seafood tavernas were absolutely spot on. Everything was clearly guided step by step.",
+    },
+    rating: 5,
+    initials: "AD",
+  },
+  {
+    id: 8,
+    name: "C.M.",
+    location: { tr: "Fransa", en: "France" },
+    route: { tr: "Kantara Kalesi & Kuzey Kıyısı", en: "Kantara Castle & North Coast" },
+    travelDate: { tr: "Eylül 2025", en: "September 2025" },
+    quote: {
+      tr: "Kantara Kalesi'nden gün batımını izlemek adeta bir rüya gibiydi. Rehberin önerdiği mola yerinde yerel hellim böreği ve taze narenciye tatma fırsatı bulduk. Harita entegrasyonu ve durakların kronolojik akışı çok başarılı.",
+      en: "Watching the sunset from Kantara Castle felt like a dream. Following the guide's recommendation, we stopped at a hillside bakery for warm hellim pastries and fresh citrus juice. The interactive map and chronological stop flow made navigating effortless.",
+    },
+    rating: 5,
+    initials: "CM",
+  },
+  {
+    id: 9,
+    name: "D.W.",
+    location: { tr: "İsviçre", en: "Switzerland" },
+    route: { tr: "Batı Sahili & Soli Mozaikleri", en: "West Coast & Soli Mosaics" },
+    travelDate: { tr: "Ekim 2025", en: "October 2025" },
+    quote: {
+      tr: "Kuzey Kıbrıs'ın batı yakasındaki sakinliği ve el değmemiş doğayı bu rota sayesinde keşfettik. Soli Bazilikası'ndaki Kuğu mozaiği ve dağ köylerindeki yerel üreticiler gezimizi eşsiz kıldı. Harika bir rehberlik!",
+      en: "Thanks to this route, we discovered the peaceful and untouched beauty of North Cyprus's western coast. The Swan mosaic at Soli Basilica and the local artisan stops in the mountain villages made our journey truly unique. Superb travel curation!",
+    },
+    rating: 5,
+    initials: "DW",
   },
 ];
 

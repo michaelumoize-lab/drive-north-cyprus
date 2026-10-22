@@ -13,25 +13,27 @@ export default function RoutesPage({ lang = "tr" }: { lang?: Locale }) {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section with scenic road background */}
-      <section className="relative py-16 sm:py-20 md:py-24 bg-black overflow-hidden mb-8 sm:mb-12">
+      <section className="relative h-[45vh] min-h-[360px] flex items-center bg-black overflow-hidden mb-8 sm:mb-12">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero-bg.jpg"
+            src="/images/route-card-images/kantara.jpg"
             alt={lang === "tr" ? "Tüm Sürüş Rotaları" : "All Driving Routes"}
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-50"
+            className="object-cover object-center scale-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/60 to-black/40" />
+          {/* Subtle multi-layer cinematic scrims for crystal clarity & text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/15 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent md:w-3/4 pointer-events-none" />
         </div>
 
         <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="max-w-3xl text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white mb-4 tracking-tight drop-shadow-sm">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white mb-4 tracking-tight drop-shadow-md">
               {lang === "tr" ? "Tüm Sürüş Rotaları" : "All Driving Routes"}
             </h1>
-            <p className="text-lg sm:text-xl text-zinc-200 leading-relaxed drop-shadow-sm">
+            <p className="text-lg sm:text-xl text-zinc-100 leading-relaxed drop-shadow-sm font-normal text-pretty max-w-2xl">
               {lang === "tr"
                 ? "Kuzey Kıbrıs genelinde özenle seçilmiş 41 benzersiz sürüş ve keşif rotası. Dağ kalelerinden altın kumsallara adanın tüm güzelliklerini keşfedin."
                 : "Explore 41 curated driving and road trip routes across Northern Cyprus. From ancient mountain fortresses to pristine beaches, discover the island like a local."}

@@ -3,11 +3,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Mail } from "lucide-react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Image from "next/image";
 import { LOGO } from "@/lib/assets";
 import { getDictionary, Locale } from "@/lib/i18n";
+import { contactConfig } from "@/data/contact";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -37,7 +38,7 @@ export default function Footer() {
   return (
     <footer className="bg-card border-t border-border" role="contentinfo">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {/* Brand Section */}
           <div className="space-y-4">
             <Link
@@ -77,55 +78,6 @@ export default function Footer() {
                 <FaInstagram className="h-5 w-5" />
               </a>
             </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
-              {dict.footer.quickLinks}
-            </h2>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href={lang === "tr" ? "/#routes" : "/en/#routes"}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {dict.footer.routes}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={lang === "tr" ? "/about" : "/en/about"}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {dict.footer.aboutUs}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={lang === "tr" ? "/guide" : "/en/guide"}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {dict.footer.drivingGuide}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={lang === "tr" ? "/testimonials" : "/en/testimonials"}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {dict.footer.testimonials}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={lang === "tr" ? "/faq" : "/en/faq"}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {dict.footer.faq}
-                </Link>
-              </li>
-            </ul>
           </div>
 
           {/* Explore by Region */}
@@ -217,24 +169,15 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                <span>{lang === "tr" ? "Kuzey Kıbrıs Türk Cumhuriyeti" : "Northern Cyprus"}</span>
+                <span>{contactConfig.address[lang]}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                 <a
-                  href="mailto:info@drivenorthcyprus.com"
+                  href={`mailto:${contactConfig.email}`}
                   className="hover:text-primary transition-colors"
                 >
-                  info@drivenorthcyprus.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                <a
-                  href="tel:+903928887766"
-                  className="hover:text-primary transition-colors"
-                >
-                  +90 392 888 77 66
+                  {contactConfig.email}
                 </a>
               </li>
             </ul>
@@ -243,9 +186,22 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-border mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {currentYear} Drive North Cyprus. {dict.footer.copyright}
-          </p>
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <p className="text-xs text-muted-foreground">
+              © {currentYear} Drive North Cyprus. {dict.footer.copyright}
+            </p>
+            <p className="text-xs text-muted-foreground/80">
+              Designed &amp; Powered by{" "}
+              <a
+                href="https://www.atabilisim.pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground hover:text-primary transition-colors font-medium underline underline-offset-2"
+              >
+                Ata Bilişim
+              </a>
+            </p>
+          </div>
           <nav className="flex gap-6 text-xs sm:pr-14" aria-label="Legal">
             <Link
               href={lang === "tr" ? "/privacy" : "/en/privacy"}

@@ -8,12 +8,6 @@ import { usePathname } from "next/navigation";
 import {
   Menu,
   ChevronRight,
-  Home,
-  Compass,
-  Info,
-  Star,
-  Car,
-  HelpCircle,
   Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -35,6 +29,7 @@ import { LOGO } from "@/lib/assets";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { getDictionary, Locale } from "@/lib/i18n";
+import { getMainNavigation } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
@@ -47,14 +42,7 @@ export default function Navbar() {
   const homeHref = lang === "tr" ? "/" : "/en";
   const routesHref = lang === "tr" ? "/routes" : "/en/routes";
 
-  const navLinks = [
-    { name: dict.nav.home, href: homeHref, icon: Home },
-    { name: dict.nav.exploreItineraries, href: routesHref, icon: Compass },
-    { name: dict.nav.about, href: lang === "tr" ? "/about" : "/en/about", icon: Info },
-    { name: dict.nav.testimonials, href: lang === "tr" ? "/testimonials" : "/en/testimonials", icon: Star },
-    { name: dict.nav.drivingGuide, href: lang === "tr" ? "/guide" : "/en/guide", icon: Car },
-    { name: dict.nav.faq, href: lang === "tr" ? "/faq" : "/en/faq", icon: HelpCircle },
-  ];
+  const navLinks = getMainNavigation(dict, lang);
 
   const isLinkActive = (href: string) => {
     if (href === "/" || href === "/en") {
