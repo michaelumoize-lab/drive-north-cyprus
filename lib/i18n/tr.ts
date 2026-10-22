@@ -40,18 +40,17 @@ export const tr: Dictionary = {
     about: "Hakkımızda",
     testimonials: "Yorumlar",
     drivingGuide: "Sürüş Rehberi",
-    faq: "SSS",
     getStarted: "Keşfetmeye Başla",
     theme: "Tema",
   },
   hero: {
-    badge: "Kuzey Kıbrıs Yol Rehberi",
+    badge: "Yerel Rehberler",
     titleLine1: "Kuzey Kıbrıs'ı Keşfet,",
     titleHighlight: "Kendi Tarzınla",
     subtitle:
-      "Yerliler tarafından hazırlanan 41 özel sürüş rotası ile Kuzey Kıbrıs'ın gizli koylarını, antik kalelerini ve dağ köylerini keşfedin.",
+      "Yerel rehberler tarafından hazırlanan 41 özel sürüş rotası ile Kuzey Kıbrıs'ın gizli koylarını, antik kalelerini ve dağ köylerini keşfedin.",
     exploreButton: "Rotaları Keşfet",
-    learnMoreButton: "Nasıl Çalışır?",
+    learnMoreButton: "Hakkımızda",
     curatedRoutesCount: "41",
     curatedRoutesLabel: "Özel Rota",
     stopsCount: "220+",
@@ -62,7 +61,7 @@ export const tr: Dictionary = {
   routesGrid: {
     title: "Öne Çıkan Rotalar",
     subtitle:
-      "Her zevke ve tempoya uygun rotalar — sahil sürüşlerinden dağ kaçamaklarına",
+      "Her zevke ve tempoya uygun rotalar — sahil sürüşlerinden dağ kaçamaklarına.",
     viewRoute: "Rotayı Gör",
     iconicSpots: "Simge Noktalar",
     localEats: "Yerel Lezzetler",
@@ -76,6 +75,10 @@ export const tr: Dictionary = {
     stopsTag: "Rota Güzergahı",
     stopsTitle: "Duraklar & Önemli Noktalar",
     stopsSubtitle: "Her durağın detaylı bilgileri, önerilen varış saatleri ve yerel ipuçları.",
+    stopsOverviewTag: "Yolculuk Özeti",
+    stopsOverviewTitle: "Rota Durakları",
+    stopsOverviewSubtitle: "Bu rotada yer alan tüm duraklar ve keşif noktaları sırasıyla listelenmiştir.",
+    viewStopDetails: "Durağı İncele",
     gpsTag: "GPS & Yol Tarifi",
     mapTitle: "İnteraktif Yol Haritası",
     mapSubtitle: "Tüm duraklar, dönüşler ve ilgi noktalarıyla tam GPS rotası.",
@@ -88,16 +91,16 @@ export const tr: Dictionary = {
   },
   about: {
     title: "Drive North Cyprus Hakkında",
-    subtitle: "Kuzey Kıbrıs'ın ilk küratörlü yol rehberi platformu — yerlilerden kaşiflere.",
+    subtitle: "Kuzey Kıbrıs'ın ilk küratörlü yol rehberi platformu — Yerel rehberlerden.",
     missionTitle: "Misyonumuz",
     missionText:
       "Drive North Cyprus basit bir amaçla doğdu: Kuzey Kıbrıs'ı keşfetmeyi kolay, özgün ve unutulmaz kılmak. En güzel seyahat deneyimlerinin yerel bilgi ve samimi bağlardan geldiğine inanıyoruz. Bu yüzden Kıbrıs'ı evi bilenlerin hazırladığı rotaları, saklı kalmış güzellikleri ve yerel tüyoları tek bir platformda topladık.",
     valuesTitle: "Değerlerimiz",
     values: [
       {
-        title: "Yerlilerden Öneriler",
+        title: "Yerel Rehberlerden",
         description:
-          "Her rota, Kuzey Kıbrıs'ı avucunun içi gibi bilenler tarafından hazırlandı. Turist tuzakları yok, sadece gerçek deneyimler.",
+          "Her rota, Kuzey Kıbrıs'ı yakından tanıyan yerel rehberlerin bilgi ve deneyimleriyle hazırlanmıştır. Gerçek yerel önerilerle adayı keşfedin.",
       },
       {
         title: "Tutkuyla Üretildi",
@@ -107,7 +110,7 @@ export const tr: Dictionary = {
       {
         title: "Topluluk Odaklı",
         description:
-          "Gezginlerden gezginlere... Deneyimlerinizi paylaşın, yeni rotalar keşfedin ve yol arkadaşlarımıza katılın.",
+          "Gezginlerden gezginlere. Deneyimlerinizi paylaşın, yeni rotalar keşfedin ve yol arkadaşlarımıza katılın.",
       },
     ],
     readyTitle: "Keşfetmeye Hazır mısınız?",
@@ -160,11 +163,6 @@ export const tr: Dictionary = {
       },
     ],
   },
-  faq: {
-    title: "Sıkça Sorulan Sorular",
-    subtitle:
-      "Kuzey Kıbrıs sürüş rotaları, araç kiralama, yol koşulları ve seyahat planlamasıyla ilgili tüm cevaplar.",
-  },
   testimonials: {
     title: "Gezgin Yorumları",
     subtitle:
@@ -189,8 +187,8 @@ export const tr: Dictionary = {
         id: "genel-bakis",
         title: "1. Genel Bakış ve Kapsam",
         content: [
-          "Drive North Cyprus (\"biz\", \"platformumuz\"), Kuzey Kıbrıs Türk Cumhuriyeti'ndeki sürüş rotaları ve seyahat deneyimlerini keşfetmeniz amacıyla kurulmuş bağımsız bir seyahat rehberi platformudur.",
-          "Bu Gizlilik Politikası, web sitemizi (drivenorthcyprus.com) ziyaret ettiğinizde, bültenimize abone olduğunuzda veya içeriklerimizle etkileşim kurduğunuzda kişisel verilerinizin nasıl toplandığını, işlendiğini ve korunduğunu açıklamaktadır.",
+          "Drive North Cyprus, Kuzey Kıbrıs Türk Cumhuriyeti'ndeki sürüş rotaları ve seyahat deneyimlerini keşfetmeniz amacıyla kurulmuş bağımsız bir seyahat rehberi platformudur.",
+          "Bu Gizlilik Politikası, web sitemizi ziyaret ettiğinizde, bültenimize abone olduğunuzda veya içeriklerimizle etkileşim kurduğunuzda kişisel verilerinizin nasıl toplandığını, işlendiğini ve korunduğunu açıklamaktadır.",
         ],
       },
       {
@@ -198,8 +196,8 @@ export const tr: Dictionary = {
         title: "2. Toplanan Bilgiler",
         content: [
           "Bülten Aboneliği: E-posta bültenimize kaydolduğunuzda yalnızca sağladığınız e-posta adresinizi toplarız.",
-          "Kullanım Verileri: Sitemizi ziyaret ettiğinizde tarayıcı türü, cihaz bilgisi, ziyaret edilen sayfalar, coğrafi bölge (ülke/şehir seviyesinde) ve oturum süresi gibi anonim istatistiksel veriler toplanabilir.",
-          "Tercihler: Dil tercihiniz (Türkçe / İngilizce) ve açık/koyu tema ayarlarınız, size daha iyi bir deneyim sunabilmek için tarayıcınızın yerel depolama alanında (local storage) saklanır.",
+          "Kullanım Verileri: Sitemizi ziyaret ettiğinizde tarayıcı türü, cihaz bilgisi, ziyaret edilen sayfalar, coğrafi bölge ve oturum süresi gibi anonim istatistiksel veriler toplanabilir.",
+          "Tercihler: Dil tercihiniz ve tema ayarlarınız, size daha iyi bir deneyim sunabilmek için tarayıcınızın yerel depolama alanında saklanır.",
         ],
       },
       {
@@ -215,17 +213,17 @@ export const tr: Dictionary = {
       },
       {
         id: "cerezler-ve-depolama",
-        title: "4. Çerezler ve Yerel Depolama (Cookies)",
+        title: "4. Çerezler ve Yerel Depolama",
         content: [
-          "Web sitemiz, temel işlevleri yerine getirebilmek ve tercihlerinizi hatırlamak için yerel depolama teknolojilerini (localStorage) kullanır.",
-          "Dil seçimi (drive_kktc_lang) ve tema tercihleriniz cihazınızda yerel olarak saklanır. İstemediğiniz takdirde tarayıcı ayarlarınızdan çerezleri ve yerel depolamayı temizleyebilirsiniz.",
+          "Web sitemiz, temel işlevleri yerine getirebilmek ve tercihlerinizi hatırlamak için yerel depolama teknolojilerini kullanır.",
+          "Dil seçimi ve tema tercihleriniz cihazınızda yerel olarak saklanır. İstemediğiniz takdirde tarayıcı ayarlarınızdan çerezleri ve yerel depolamayı temizleyebilirsiniz.",
         ],
       },
       {
         id: "ucuncu-taraf-servisler",
         title: "5. Üçüncü Taraf Hizmetler",
         content: [
-          "Haritalar ve Konum Servisleri: Rotalarımızda interaktif haritalar sunmak amacıyla Google Haritalar (Google Maps) altyapısı kullanılabilir. Bu servislerin kendi gizlilik politikaları geçerlidir.",
+          "Haritalar ve Konum Servisleri: Rotalarımızda interaktif haritalar sunmak amacıyla Google Haritalar altyapısı kullanılabilir. Bu servislerin kendi gizlilik politikaları geçerlidir.",
           "Sosyal Medya ve Dış Bağlantılar: Sitemiz Facebook, Twitter, Instagram ve YouTube gibi harici platformlara yönlendiren bağlantılar içerebilir. Bu sitelerdeki gizlilik uygulamalarından ilgili platformlar sorumludur.",
         ],
       },
@@ -233,7 +231,7 @@ export const tr: Dictionary = {
         id: "veri-guvenligi",
         title: "6. Veri Güvenliği ve Saklama",
         content: [
-          "Verilerinizin güvenliğini sağlamak amacıyla modern şifreleme yöntemleri (SSL/HTTPS) ve endüstri standardı güvenlik önlemleri uygulamaktayız.",
+          "Verilerinizin güvenliğini sağlamak amacıyla modern şifreleme yöntemleri ve endüstri standardı güvenlik önlemleri uygulamaktayız.",
           "E-posta bülteni abonelik listeniz güvenli sunucularda tutulur ve dilediğiniz zaman her e-postanın altındaki 'Abonelikten Çık' bağlantısına tıklayarak kaydınızı silebilirsiniz.",
         ],
       },
@@ -257,7 +255,7 @@ export const tr: Dictionary = {
         id: "kosullarin-kabulu",
         title: "1. Koşulların Kabulü",
         content: [
-          "Drive North Cyprus web sitesine (drivenorthcyprus.com) erişerek ve hizmetlerimizden yararlanarak, burada belirtilen Kullanım Koşulları'nı ve Gizlilik Politikamızı peşinen kabul etmiş olursunuz.",
+          "Drive North Cyprus web sitesine erişerek ve hizmetlerimizden yararlanarak, burada belirtilen Kullanım Koşulları'nı ve Gizlilik Politikamızı peşinen kabul etmiş olursunuz.",
           "Bu koşulları kabul etmiyorsanız lütfen web sitemizi ve içeriklerimizi kullanmayınız.",
         ],
       },
@@ -275,7 +273,7 @@ export const tr: Dictionary = {
         content: [
           "Kuzey Kıbrıs'ta trafik SOL şeritten akar. Sürüş sırasında yerel trafik kurallarına, hız sınırlarına ve trafik işaretlerine uyma yükümlülüğü tamamen sürücüye aittir.",
           "Yol çalışmaları, hava muhalefeti, toprak kayması, mevsimsel yol kapanmaları veya öngörülemeyen doğa şartları rotaların durumunu değiştirebilir.",
-          "Özellikle Karpaz Yarımadası veya Beşparmak Dağları gibi dağlık ve stabilize yollarda aracınızın uygunluğunu (yere yakınlık, lastik durumu, yakıt seviyesi) kontrol etmek sizin sorumluluğunuzdadır.",
+          "Özellikle Karpaz Yarımadası veya Beşparmak Dağları gibi dağlık ve stabilize yollarda aracınızın uygunluğunu kontrol etmek sizin sorumluluğunuzdadır.",
           "Drive North Cyprus; rota kullanımı sırasında meydana gelebilecek trafik cezaları, araç hasarları, kaza veya aksaklıklardan dolayı hiçbir şekilde hukuki veya cezai sorumluluk kabul etmez.",
         ],
       },
@@ -284,7 +282,7 @@ export const tr: Dictionary = {
         title: "4. Fikri Mülkiyet Hakları",
         content: [
           "Web sitemizdeki tüm metinler, rota planları, içerik seçkileri, logolar, tasarım ögeleri ve görsel derlemeler Drive North Cyprus'a aittir ve telif hakları mevzuatıyla korunmaktadır.",
-          "İçerikler kişisel ve ticari olmayan amaçlarla görüntülenebilir veya yazdırılabilir. İçeriklerin izinsiz kopyalanması, otomatik yöntemlerle (scraping) çekilmesi veya ticari amaçla dağıtılması yasaktır.",
+          "İçerikler kişisel ve ticari olmayan amaçlarla görüntülenebilir veya yazdırılabilir. İçeriklerin izinsiz kopyalanması, otomatik yöntemlerle çekilmesi veya ticari amaçla dağıtılması yasaktır.",
         ],
       },
       {
@@ -299,7 +297,7 @@ export const tr: Dictionary = {
         id: "sorumlulugun-sinirlandirilmasi",
         title: "6. Sorumluluğun Sınırlandırılması",
         content: [
-          "Web sitemizdeki tüm bilgiler \"olduğu gibi\" (as-is) esasıyla sağlanmaktadır. Bilgilerin kesintisiz, hatasız veya tamamen eksiksiz olacağı konusunda açık ya da zımni garanti verilmemektedir.",
+          "Web sitemizdeki tüm bilgiler \"olduğu gibi\" esasıyla sağlanmaktadır. Bilgilerin kesintisiz, hatasız veya tamamen eksiksiz olacağı konusunda açık ya da zımni garanti verilmemektedir.",
           "Müze giriş saatleri, restoran çalışma saatleri veya yol durumları değişkenlik gösterebilir; yola çıkmadan önce yerel kaynaklardan teyit edilmesi önerilir.",
         ],
       },
@@ -328,7 +326,6 @@ export const tr: Dictionary = {
     viewAll: "Tüm Rotalar (41 Rota)",
     aboutUs: "Hakkımızda",
     drivingGuide: "Sürüş Rehberi",
-    faq: "Sıkça Sorulan Sorular",
     testimonials: "Gezgin Yorumları",
     legal: "Yasal",
     privacyPolicy: "Gizlilik Politikası",

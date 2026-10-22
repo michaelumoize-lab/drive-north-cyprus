@@ -78,14 +78,31 @@ export function RouteCatalog({ routes, lang }: RouteCatalogProps) {
     };
   }, []);
 
-  // Compute count of routes per region
+  // Compute count of routes matching current theme and search filters per region
   const regionCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: routes.length };
-    routes.forEach((r) => {
+    // Filter by theme and search query first so region counts reflect active filters
+    const routesMatchingThemeAndSearch = routes.filter((route) => {
+      if (selectedTheme !== "all" && !route.themes?.includes(selectedTheme)) {
+        return false;
+      }
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase();
+        const inTitle = route.title.toLowerCase().includes(query);
+        const inSubtitle = route.subtitle.toLowerCase().includes(query);
+        const inStops = route.stops.some((s) =>
+          s.name.toLowerCase().includes(query)
+        );
+        if (!inTitle && !inSubtitle && !inStops) return false;
+      }
+      return true;
+    });
+
+    const counts: Record<string, number> = { all: routesMatchingThemeAndSearch.length };
+    routesMatchingThemeAndSearch.forEach((r) => {
       counts[r.region] = (counts[r.region] || 0) + 1;
     });
     return counts;
-  }, [routes]);
+  }, [routes, selectedTheme, searchQuery]);
 
   const filteredRoutes = useMemo(() => {
     return routes.filter((route) => {
@@ -113,6 +130,18 @@ export function RouteCatalog({ routes, lang }: RouteCatalogProps) {
       return true;
     });
   }, [routes, selectedRegion, selectedTheme, searchQuery]);
+
+  const handleResetFilters = () => {
+    setSelectedRegion("all");
+    setSelectedTheme("all");
+    setSearchQuery("");
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("region");
+      url.searchParams.delete("theme");
+      window.history.replaceState(null, "", url.pathname + url.hash);
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -160,27 +189,29 @@ export function RouteCatalog({ routes, lang }: RouteCatalogProps) {
                 <button
                   key={reg.id}
                   type="button"
-                  onClick={() => setSelectedRegion(reg.id)}
+                  onClick={() => setSelectedRegion(selectedRegion === reg.id ? "all" : reg.id)}
                   className={cn(
                     "inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all duration-200 cursor-pointer border",
                     isSelected
                       ? "bg-primary text-primary-foreground border-primary shadow-[0_0_15px_rgba(234,88,12,0.25)] font-semibold scale-[1.02]"
+                      : count === 0
+                      ? "bg-muted/30 text-muted-foreground/60 border-transparent hover:bg-muted/50 hover:text-foreground"
                       : "bg-muted/50 text-muted-foreground border-transparent hover:bg-muted hover:text-foreground"
                   )}
                 >
                   <span>{reg.name[lang]}</span>
-                  {count > 0 && (
-                    <span
-                      className={cn(
-                        "text-[10px] px-1.5 py-0.2 rounded-full font-mono font-bold",
-                        isSelected
-                          ? "bg-black/20 text-white"
-                          : "bg-background/80 text-muted-foreground"
-                      )}
-                    >
-                      {count}
-                    </span>
-                  )}
+                  <span
+                    className={cn(
+                      "text-[10px] px-1.5 py-0.2 rounded-full font-mono font-bold",
+                      isSelected
+                        ? "bg-black/20 text-white"
+                        : count === 0
+                        ? "bg-background/40 text-muted-foreground/50"
+                        : "bg-background/80 text-muted-foreground"
+                    )}
+                  >
+                    {count}
+                  </span>
                 </button>
               );
             })}
@@ -202,7 +233,7 @@ export function RouteCatalog({ routes, lang }: RouteCatalogProps) {
                 <button
                   key={thm.id}
                   type="button"
-                  onClick={() => setSelectedTheme(thm.id)}
+                  onClick={() => setSelectedTheme(selectedTheme === thm.id ? "all" : thm.id)}
                   className={cn(
                     "px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all duration-200 cursor-pointer border",
                     isSelected
@@ -234,11 +265,7 @@ export function RouteCatalog({ routes, lang }: RouteCatalogProps) {
             searchQuery) && (
             <button
               type="button"
-              onClick={() => {
-                setSelectedRegion("all");
-                setSelectedTheme("all");
-                setSearchQuery("");
-              }}
+              onClick={handleResetFilters}
               className="inline-flex items-center gap-1 text-xs text-primary font-semibold hover:underline cursor-pointer"
             >
               <span>{lang === "tr" ? "Filtreleri Sıfırla" : "Reset Filters"}</span>
@@ -268,11 +295,7 @@ export function RouteCatalog({ routes, lang }: RouteCatalogProps) {
             </p>
             <button
               type="button"
-              onClick={() => {
-                setSelectedRegion("all");
-                setSelectedTheme("all");
-                setSearchQuery("");
-              }}
+              onClick={handleResetFilters}
               className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition cursor-pointer"
             >
               {lang === "tr" ? "Tüm Rotaları Göster" : "View All Routes"}

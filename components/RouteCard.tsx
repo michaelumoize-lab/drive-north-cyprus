@@ -1,5 +1,4 @@
 // components/RouteCard.tsx
-import { Badge } from "@/components/ui/badge";
 import { Route } from "@/data/routes";
 import {
   Calendar,

@@ -41,7 +41,6 @@ export interface Dictionary {
     about: string;
     testimonials: string;
     drivingGuide: string;
-    faq: string;
     getStarted: string;
     theme: string;
   };
@@ -75,6 +74,10 @@ export interface Dictionary {
     stopsTag: string;
     stopsTitle: string;
     stopsSubtitle: string;
+    stopsOverviewTag: string;
+    stopsOverviewTitle: string;
+    stopsOverviewSubtitle: string;
+    viewStopDetails: string;
     gpsTag: string;
     mapTitle: string;
     mapSubtitle: string;
@@ -107,10 +110,6 @@ export interface Dictionary {
       items: string[];
     }[];
   };
-  faq: {
-    title: string;
-    subtitle: string;
-  };
   testimonials: {
     title: string;
     subtitle: string;
@@ -133,7 +132,6 @@ export interface Dictionary {
     viewAll: string;
     aboutUs: string;
     drivingGuide: string;
-    faq: string;
     testimonials: string;
     legal: string;
     privacyPolicy: string;

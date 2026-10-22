@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { ShareButton } from "@/components/ShareButton";
 import { RouteMap } from "@/components/RouteMap";
 import { RouteStopsSection } from "@/components/RouteStopsSection";
+import { RouteDestinationsOverview } from "@/components/RouteDestinationsOverview";
 import { Locale, getDictionary } from "@/lib/i18n";
 
 export function RouteDetailView({
@@ -176,8 +177,11 @@ export function RouteDetailView({
 
       {/* Main Page Flow Container */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-14 sm:space-y-16">
+        {/* Trip Destinations Overview */}
+        <RouteDestinationsOverview stops={route.stops} lang={lang} />
+
         {/* 3. Narrative & Overview Section */}
-        <section className="max-w-4xl space-y-8">
+        <section className="w-full space-y-6">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3 border border-primary/20">
               <Compass className="h-3.5 w-3.5" />

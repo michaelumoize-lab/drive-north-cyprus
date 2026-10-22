@@ -40,18 +40,17 @@ export const en: Dictionary = {
     about: "About Us",
     testimonials: "Testimonials",
     drivingGuide: "Driving Guide",
-    faq: "FAQ",
     getStarted: "Start Exploring",
     theme: "Theme",
   },
   hero: {
-    badge: "Northern Cyprus Road Guide",
+    badge: "Local Guides",
     titleLine1: "Explore Northern Cyprus,",
     titleHighlight: "Your Way",
     subtitle:
-      "Journey through the heart of the island with 41 curated driving routes. From mountain castles to pristine golden beaches, pick your adventure.",
+      "Journey through the heart of the island with 41 curated driving routes crafted by local guides. From mountain castles to pristine golden beaches, pick your adventure.",
     exploreButton: "Explore Routes",
-    learnMoreButton: "Learn More",
+    learnMoreButton: "About Us",
     curatedRoutesCount: "41",
     curatedRoutesLabel: "Curated Routes",
     stopsCount: "220+",
@@ -75,6 +74,10 @@ export const en: Dictionary = {
     stopsTag: "Route Itinerary",
     stopsTitle: "Waypoints & Highlights",
     stopsSubtitle: "Detailed guides for each stop, arrival windows, and insider tips.",
+    stopsOverviewTag: "Trip Itinerary",
+    stopsOverviewTitle: "Route Stops",
+    stopsOverviewSubtitle: "All destinations and waypoints included in this journey, in order of arrival.",
+    viewStopDetails: "View Details",
     gpsTag: "GPS & Directions",
     mapTitle: "Interactive Route Map",
     mapSubtitle: "Full GPS map with all pins, turns, and points of interest.",
@@ -87,16 +90,16 @@ export const en: Dictionary = {
   },
   about: {
     title: "About Drive North Cyprus",
-    subtitle: "Northern Cyprus' first curated road trip guide platform – built by locals, for explorers.",
+    subtitle: "Northern Cyprus' first curated road trip guide platform — from local guides.",
     missionTitle: "Our Mission",
     missionText:
       "Drive North Cyprus was born from a simple idea: make exploring Northern Cyprus easy, authentic, and unforgettable. We believe that the best travel experiences come from local knowledge and genuine connections. That's why we created a platform where travelers can discover curated routes, hidden gems, and insider tips – all from people who call Cyprus home.",
     valuesTitle: "What We Stand For",
     values: [
       {
-        title: "Curated by Locals",
+        title: "From Local Guides",
         description:
-          "Every route is crafted by locals who know Northern Cyprus inside out. No tourist traps – just authentic experiences.",
+          "Every route is crafted with the knowledge and experience of local guides who know Northern Cyprus intimately. Explore the island with authentic local recommendations.",
       },
       {
         title: "Built with Passion",
@@ -159,11 +162,6 @@ export const en: Dictionary = {
       },
     ],
   },
-  faq: {
-    title: "Frequently Asked Questions",
-    subtitle:
-      "Find answers to commonly asked questions about driving routes, road conditions, and planning your Northern Cyprus road trip.",
-  },
   testimonials: {
     title: "Traveler Testimonials",
     subtitle:
@@ -188,7 +186,7 @@ export const en: Dictionary = {
         id: "overview",
         title: "1. Overview & Scope",
         content: [
-          "Drive North Cyprus (\"we\", \"our platform\") is an independent travel guide platform dedicated to helping visitors discover curated road trips and scenic destinations across Northern Cyprus.",
+          "Drive North Cyprus is an independent travel guide platform dedicated to helping visitors discover curated road trips and scenic destinations across Northern Cyprus.",
           "This Privacy Policy explains how we collect, use, and protect your personal information when you visit drivenorthcyprus.com, subscribe to our newsletter, or engage with our route itineraries.",
         ],
       },
@@ -197,8 +195,8 @@ export const en: Dictionary = {
         title: "2. Information We Collect",
         content: [
           "Newsletter Subscriptions: When you subscribe to our newsletter, we only collect the email address you provide.",
-          "Usage & Analytics: When you browse our website, we may collect anonymous aggregate technical data such as browser type, device category, pages visited, session duration, and approximate geographic location (country/city level).",
-          "User Preferences: Your language preference (English or Turkish) and dark/light theme choice are stored locally on your device via browser local storage to deliver an optimal experience.",
+          "Usage & Analytics: When you browse our website, we may collect anonymous aggregate technical data such as browser type, device category, pages visited, session duration, and approximate geographic location.",
+          "User Preferences: Your language preference and theme choice are stored locally on your device via browser local storage to deliver an optimal experience.",
         ],
       },
       {
@@ -216,8 +214,8 @@ export const en: Dictionary = {
         id: "cookies-and-storage",
         title: "4. Cookies & Local Storage",
         content: [
-          "Our website uses local browser storage (such as localStorage) to preserve your preferences without tracking you across external sites.",
-          "The preference keys (such as drive_kktc_lang and theme settings) exist strictly to remember your preferred interface language and display theme. You can clear local storage or cookies anytime via your browser settings.",
+          "Our website uses local browser storage to preserve your preferences without tracking you across external sites.",
+          "The preference keys exist strictly to remember your preferred interface language and display theme. You can clear local storage or cookies anytime via your browser settings.",
         ],
       },
       {
@@ -225,7 +223,7 @@ export const en: Dictionary = {
         title: "5. Third-Party Services",
         content: [
           "Interactive Maps: We utilize mapping providers such as Google Maps to render road trip routes, waypoints, and coordinates. Use of maps is subject to the provider's respective privacy policy.",
-          "External Links: Our website may contain links to external third-party sites (e.g. social platforms, local attractions). We are not responsible for the privacy practices of external websites.",
+          "External Links: Our website may contain links to external third-party sites. We are not responsible for the privacy practices of external websites.",
         ],
       },
       {
@@ -256,7 +254,7 @@ export const en: Dictionary = {
         id: "acceptance-of-terms",
         title: "1. Acceptance of Terms",
         content: [
-          "By accessing and using Drive North Cyprus (drivenorthcyprus.com), you acknowledge that you have read, understood, and agreed to these Terms of Service and our Privacy Policy.",
+          "By accessing and using Drive North Cyprus, you acknowledge that you have read, understood, and agreed to these Terms of Service and our Privacy Policy.",
           "If you do not agree with any part of these terms, please discontinue use of this website.",
         ],
       },
@@ -274,7 +272,7 @@ export const en: Dictionary = {
         content: [
           "In Northern Cyprus, traffic flows on the LEFT side of the road. It is the sole responsibility of the vehicle operator to comply with all traffic laws, speed limits, and signage.",
           "Road conditions, construction, weather changes, rockfalls, and unpaved sections may affect route accessibility without prior notice.",
-          "Drivers are solely responsible for ensuring their vehicle is suitable for the chosen terrain (especially for remote routes in the Karpaz Peninsula or mountain tracks in the Beşparmak range).",
+          "Drivers are solely responsible for ensuring their vehicle is suitable for the chosen terrain.",
           "Drive North Cyprus and its contributors accept no liability for any accidents, injuries, mechanical failures, traffic fines, delays, or losses incurred while following our itineraries.",
         ],
       },
@@ -327,7 +325,6 @@ export const en: Dictionary = {
     viewAll: "View All 41 Routes",
     aboutUs: "About Us",
     drivingGuide: "Driving Guide",
-    faq: "FAQ",
     testimonials: "Testimonials",
     legal: "Legal",
     privacyPolicy: "Privacy Policy",
